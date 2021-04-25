@@ -6,22 +6,21 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="{{ asset('material') }}/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    SIKEBUN
-  </title>
+  <title>SIKEBUN</title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <link href="{{ asset('material') }}/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <link href="{{ asset('material') }}/assets/demo/demo.css" rel="stylesheet" />
+  @yield('css')
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('material') }}/assets/img/sidebar-1.jpg">
-      <div class="logo"><a href="{{ url('/') }}" class="simple-text logo-normal">
-          SI KEBUN
-        </a></div>
+      <div class="logo">
+        <a href="{{ url('/') }}" class="simple-text logo-normal">SI KEBUN</a>
+      </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
@@ -30,22 +29,23 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
+          
+          <li class="nav-item {{ (request()->is('survei/karet*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('survei/karet') }}">
+              <i class="material-icons">library_books</i>
               <p>Karet</p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('survei/sawit/*')) ? 'active' : '' }}">
-            <a class="nav-link" href="./tables.html">
-              <i class="material-icons">content_paste</i>
+          <li class="nav-item {{ (request()->is('survei/sawit*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('survei/sawit') }}">
+              <i class="material-icons">library_books</i>
               <p>Kelapa Sawit</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+          <li class="nav-item {{ (request()->is('survei/tahunan*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('survei/tahunan') }}">
               <i class="material-icons">library_books</i>
-              <p>Survei Tahunan</p>
+              <p>Tahunan</p>
             </a>
           </li>
           
@@ -71,8 +71,7 @@
       </div>
     </div>
     <div class="main-panel">
-      <!-- <div class="content"> -->
-        <div>
+      <div>
             @yield('content')
       </div>
       <footer class="footer">
@@ -111,6 +110,7 @@
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <script src="{{ asset('material') }}/assets/js/plugins/arrive.min.js"></script>
+  @yield('script')
 </body>
 
 </html>
