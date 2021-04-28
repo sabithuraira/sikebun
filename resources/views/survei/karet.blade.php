@@ -6,6 +6,12 @@
 
 @section('content')
 <div class="card" id="app_vue">
+    <ul id="example-1">
+    <li v-for="item in isi" :key="item">
+        @{{ item }}
+    </li>
+    </ul>
+
     <table style="min-width:100%">
         <tr class="text-center">
             <td width="25%">
@@ -339,23 +345,23 @@
         @endfor
         <tr>
             <td>3. Total</td>
-            <td><input type="text" name="301_a3_total_tbm_bulan1" v-model="form.301_a3_total_tbm_bulan1" size="3"></td>
-            <td><input type="text" name="301_a3_total_tsm_bulan1" v-model="form.301_a3_total_tsm_bulan1" size="3"></td>
-            <td><input type="text" name="301_a3_total_tstm_bulan1" v-model="form.301_a3_total_tstm_bulan1" size="3"></td>
-            <td><input type="text" name="301_a3_total_ttm_bulan1" v-model="form.301_a3_total_ttm_bulan1" size="3"></td>
-            <td><input type="text" name="301_a3_total_produksi_bulan1" v-model="form.301_a3_total_produksi_bulan1" size="3"></td>
+            <td><input type="text" name="301_a3_total_tbm_bulan1" v-model="form['301_a3_total_tbm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tsm_bulan1" v-model="form['301_a3_total_tsm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tstm_bulan1" v-model="form['301_a3_total_tstm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_ttm_bulan1" v-model="form['301_a3_total_ttm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_produksi_bulan1" v-model="form['301_a3_total_produksi_bulan1']" size="3"></td>
             
-            <td><input type="text" name="301_a3_total_tbm_bulan2" v-model="form.301_a3_total_tbm_bulan2" size="3"></td>
-            <td><input type="text" name="301_a3_total_tsm_bulan2" v-model="form.301_a3_total_tsm_bulan2" size="3"></td>
-            <td><input type="text" name="301_a3_total_tstm_bulan2" v-model="form.301_a3_total_tstm_bulan2" size="3"></td>
-            <td><input type="text" name="301_a3_total_ttm_bulan2" v-model="form.301_a3_total_ttm_bulan2" size="3"></td>
-            <td><input type="text" name="301_a3_total_produksi_bulan2" v-model="form.301_a3_total_produksi_bulan2" size="3"></td>
+            <td><input type="text" name="301_a3_total_tbm_bulan2" v-model="form['301_a3_total_tbm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tsm_bulan2" v-model="form['301_a3_total_tsm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tstm_bulan2" v-model="form['301_a3_total_tstm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_ttm_bulan2" v-model="form['301_a3_total_ttm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_produksi_bulan2" v-model="form['301_a3_total_produksi_bulan2']" size="3"></td>
             
-            <td><input type="text" name="301_a3_total_tbm_bulan3" v-model="form.301_a3_total_tbm_bulan3" size="3"></td>
-            <td><input type="text" name="301_a3_total_tsm_bulan3" v-model="form.301_a3_total_tsm_bulan3" size="3"></td>
-            <td><input type="text" name="301_a3_total_tstm_bulan3" v-model="form.301_a3_total_tstm_bulan3" size="3"></td>
-            <td><input type="text" name="301_a3_total_ttm_bulan3" v-model="form.301_a3_total_ttm_bulan3" size="3"></td>
-            <td><input type="text" name="301_a3_total_produksi_bulan3" v-model="form.301_a3_total_produksi_bulan3" size="3"></td>
+            <td><input type="text" name="301_a3_total_tbm_bulan3" v-model="form['301_a3_total_tbm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tsm_bulan3" v-model="form['301_a3_total_tsm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tstm_bulan3" v-model="form['301_a3_total_tstm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_ttm_bulan3" v-model="form['301_a3_total_ttm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_produksi_bulan3" v-model="form['301_a3_total_produksi_bulan3']" size="3"></td>
         </tr>
         <tr>
             <td>B. Kode Bentuk Produksi</td>
@@ -363,31 +369,31 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan1" v-model="form.301_b_bulan1" size="3"></td>
+            <td><input type="text" name="301_b_bulan1" v-model="form['301_b_bulan1']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan2" v-model="form.301_b_bulan2" size="3"></td>
+            <td><input type="text" name="301_b_bulan2" v-model="form['301_b_bulan2']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan3" v-model="form.301_b_bulan3" size="3"></td>
+            <td><input type="text" name="301_b_bulan3" v-model="form['301_b_bulan3']" size="3"></td>
         </tr>
         <tr>
             <td colspan="5">    C. Rendemen dari LATEKS menjadi bentuk produksi pada Rincian B kolom (6), (11), (16)</td>
-            <td><input type="text" name="301_c_bulan1" v-model="form.301_c_bulan1" size="3"></td>
+            <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_c_bulan2" v-model="form.301_c_bulan2" size="3"></td>
+            <td><input type="text" name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_c_bulan3" v-model="form.301_c_bulan3" size="3"></td>
+            <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"></td>
         </tr>
         <tr>
             <td colspan="16">**) Kode Produksi (pilih salah satu) :  1. Lateks &nbsp;&nbsp;&nbsp; 2. Lateks Kering &nbsp;&nbsp;&nbsp; 3. Lump &nbsp;&nbsp;&nbsp; 4. Slab &nbsp;&nbsp;&nbsp; 5. Sit Angin</td>
@@ -413,23 +419,23 @@
         
         <tr>
             <td>a.	Diolah sendiri (jika Blok I, Rincian 108 berkode 1)</td>
-            <td colspan="5"><input type="text" name="302_2a" v-model="form.302_2a" size="3"></td>
-            <td colspan="5"><input type="text" name="302_3a" v-model="form.302_3a" size="3"></td>
-            <td colspan="5"><input type="text" name="302_4a" v-model="form.302_4a" size="3"></td>
+            <td colspan="5"><input type="text" name="302_2a" v-model="form['302_2a']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_3a" v-model="form['302_3a']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_4a" v-model="form['302_4a']" size="3"></td>
         </tr>
         
         <tr>
             <td>b. 	Dijual ke pihak lain</td>
-            <td colspan="5"><input type="text" name="302_2a" v-model="form.302_2b" size="3"></td>
-            <td colspan="5"><input type="text" name="302_3a" v-model="form.302_3b" size="3"></td>
-            <td colspan="5"><input type="text" name="302_4a" v-model="form.302_4b" size="3"></td>
+            <td colspan="5"><input type="text" name="302_2a" v-model="form['302_2b']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_3a" v-model="form['302_3b']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_4a" v-model="form['302_4b']" size="3"></td>
         </tr>
         
         <tr>
             <td>c. 	Rusak/susut/hilang</td>
-            <td colspan="5"><input type="text" name="302_2a" v-model="form.302_2c" size="3"></td>
-            <td colspan="5"><input type="text" name="302_3a" v-model="form.302_3c" size="3"></td>
-            <td colspan="5"><input type="text" name="302_4a" v-model="form.302_4c" size="3"></td>
+            <td colspan="5"><input type="text" name="302_2a" v-model="form['302_2c']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_3a" v-model="form['302_3c']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_4a" v-model="form['302_4c']" size="3"></td>
         </tr>
         
         <tr>
@@ -446,11 +452,11 @@
         <tr>
             <td colspan="9">
                 Catatan
-                <textarea class="form-control" v-model="catatan" name="form.catatan" row="4"></textarea>
+                <textarea class="form-control" v-model="form.catatan" name="catatan" row="4"></textarea>
             </td>
             <td colspan="7">
                 Diisi Dengan Sebenarnya<br/>
-                <input type="text" name="diisi_di" v-model="diisi_di">, <input type="text" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
+                <input type="text" name="diisi_di" v-model="form.diisi_di">, <input type="text" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
                 Administratur/Pengurus <br/><br/><br/><br/>
                 .........................<br/>
                 (Nama jelas, tanda tangan dan stempel perusahaan)
@@ -461,14 +467,14 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script>
     
 var vm = new Vue({  
     el: "#app_vue",
     data:  {
         form: {
-            id: '', tahun: '', triwulan: '', nama_perusahaan: '',
+            id: '', tahun: '', triwulan: '', nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
             alamat: '', kode_pos: '',telp: '', email: '', fax: '',
             kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '', label_prov: '',label_kab: '',
             label_kec: '',
@@ -508,38 +514,6 @@ var vm = new Vue({
             tanggal_pemeriksa: '',
             ttd_pemeriksa: '',
             
-            301_a3_total_tbm_bulan1: '',
-            301_a3_total_tsm_bulan1: '',
-            301_a3_total_tstm_bulan1: '',
-            301_a3_total_ttm_bulan1: '',
-            301_a3_total_produksi_bulan1: '',
-            301_a3_total_tbm_bulan2: '',
-            301_a3_total_tsm_bulan2: '',
-            301_a3_total_tstm_bulan2: '',
-            301_a3_total_ttm_bulan2: '',
-            301_a3_total_produksi_bulan2: '',
-            301_a3_total_tbm_bulan3: '',
-            301_a3_total_tsm_bulan3: '',
-            301_a3_total_tstm_bulan3: '',
-            301_a3_total_ttm_bulan3: '',
-            301_a3_total_produksi_bulan3: '',
-            301_b_bulan1: '',
-            301_b_bulan2: '',
-            301_b_bulan3: '',
-            301_c_bulan1: '',
-            301_c_bulan2: '',
-            301_c_bulan3: '',
-            
-            302_2a: '',
-            302_3a: '',
-            302_4a: '',
-            302_2b: '',
-            302_3b: '',
-            302_4b: '',
-            302_2c: '',
-            302_3c: '',
-            302_4c: '',
-            
             catatan: '',
             diisi_di: '',
             diisi_tanggal: '',
@@ -547,154 +521,153 @@ var vm = new Vue({
 
             created_by: '',
             updated_by: '',
+            
+            '301_a3_total_tbm_bulan1': '',
+            '301_a3_total_tsm_bulan1': '',
+            '301_a3_total_tstm_bulan1': '',
+            '301_a3_total_ttm_bulan1': '',
+            '301_a3_total_produksi_bulan1': '',
+            '301_a3_total_tbm_bulan2': '',
+            '301_a3_total_tsm_bulan2': '',
+            '301_a3_total_tstm_bulan2': '',
+            '301_a3_total_ttm_bulan2': '',
+            '301_a3_total_produksi_bulan2': '',
+            '301_a3_total_tbm_bulan3': '',
+            '301_a3_total_tsm_bulan3': '',
+            '301_a3_total_tstm_bulan3': '',
+            '301_a3_total_ttm_bulan3': '',
+            '301_a3_total_produksi_bulan3': '',
+            '301_b_bulan1': '',
+            '301_b_bulan2': '',
+            '301_b_bulan3': '',
+            '301_c_bulan1': '',
+            '301_c_bulan2': '',
+            '301_c_bulan3': '',
+            
+            '302_2a': '',
+            '302_3a': '',
+            '302_4a': '',
+            '302_2b': '',
+            '302_3b': '',
+            '302_4b': '',
+            '302_2c': '',
+            '302_3c': '',
+            '302_4c': '',
         },
-        rincian: []
+        rincian: [],
+        isi: ['satu', 'dua'],
+        pathname : window.location.pathname,
+    },
+    computed: {
+        triwulan() {
+            this.setDatas();
+        },
+        tahun() {
+            this.setDatas();
+        },
+    },
+    watch: {
+        triwulan() {
+            console.log('Foo Changed!');
+        },
+        tahun(){
+            console.log('ini tahun')
+        }
     },
     methods: {
         addLogBook: function (event) {
-            var self = this;
-            if (event) {
-                self.form_id = 0;
-                self.form_tanggal = '';
-                $('#form_tanggal').val(self.form_tanggal);
-                self.form_waktu_mulai = '';
-                self.form_waktu_selesai = '';
-                self.form_isi = '';
-                self.form_hasil = '';
-                self.form_volume = '';
-                self.form_satuan = '';
-                self.form_pemberi_tugas = {!! json_encode($pemberi_tugas) !!};
-            }
+            // var self = this;
+            // if (event) {
+            //     self.form_id = 0;
+            //     self.form_tanggal = '';
+            //     $('#form_tanggal').val(self.form_tanggal);
+            //     self.form_waktu_mulai = '';
+            //     self.form_waktu_selesai = '';
+            //     self.form_isi = '';
+            //     self.form_hasil = '';
+            //     self.form_volume = '';
+            //     self.form_satuan = '';
+            // }
         },
         updateLogBook: function (event) {
-            var self = this;
-            if (event) {
-                self.form_id = event.currentTarget.getAttribute('data-id');
-                self.form_tanggal = event.currentTarget.getAttribute('data-tanggal');
-                $('#form_tanggal').val(self.form_tanggal);
-                self.form_waktu_mulai = event.currentTarget.getAttribute('data-waktu_mulai');
-                self.form_waktu_selesai = event.currentTarget.getAttribute('data-waktu_selesai');
-                self.form_isi = event.currentTarget.getAttribute('data-isi');
-                self.form_hasil = event.currentTarget.getAttribute('data-hasil');
-                self.form_volume = event.currentTarget.getAttribute('data-volume');
-                self.form_satuan = event.currentTarget.getAttribute('data-satuan');
-                self.form_pemberi_tugas = event.currentTarget.getAttribute('data-pemberi_tugas');
-            }
+            // var self = this;
+            // if (event) {
+            //     self.form_id = event.currentTarget.getAttribute('data-id');
+            //     self.form_tanggal = event.currentTarget.getAttribute('data-tanggal');
+            //     $('#form_tanggal').val(self.form_tanggal);
+            //     self.form_waktu_mulai = event.currentTarget.getAttribute('data-waktu_mulai');
+            //     self.form_waktu_selesai = event.currentTarget.getAttribute('data-waktu_selesai');
+            //     self.form_isi = event.currentTarget.getAttribute('data-isi');
+            //     self.form_hasil = event.currentTarget.getAttribute('data-hasil');
+            //     self.form_volume = event.currentTarget.getAttribute('data-volume');
+            //     self.form_satuan = event.currentTarget.getAttribute('data-satuan');
+            //     self.form_pemberi_tugas = event.currentTarget.getAttribute('data-pemberi_tugas');
+            // }
         },
         saveLogBook: function () {
-            var self = this;
+            // var self = this;
 
-            if(self.form_tanggal.length==0 || self.form_waktu_mulai.length==0 || self.form_waktu_mulai.length==0 || 
-                self.form_isi.length==0 || self.form_volume.length==0 || self.form_satuan.length==0 || 
-                self.form_pemberi_tugas.length==0){
-                alert("Pastikan isian tanggal, waku mulai - selesai, isi, volume, satuan dan pemberi tugas telah diisi");
-            }
-            else{
-                if(isNaN(self.form_volume)){
-                    alert("Isian 'Volume' harus angka");    
-                }
-                else{
-                    $('#wait_progres').modal('show');
-                    $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
+            // if(self.form_tanggal.length==0 || self.form_waktu_mulai.length==0 || self.form_waktu_mulai.length==0 || 
+            //     self.form_isi.length==0 || self.form_volume.length==0 || self.form_satuan.length==0 || 
+            //     self.form_pemberi_tugas.length==0){
+            //     alert("Pastikan isian tanggal, waku mulai - selesai, isi, volume, satuan dan pemberi tugas telah diisi");
+            // }
+            // else{
+            //     if(isNaN(self.form_volume)){
+            //         alert("Isian 'Volume' harus angka");    
+            //     }
+            //     else{
+            //         $('#wait_progres').modal('show');
+            //         $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
 
-                    $.ajax({
-                        url :  self.pathname,
-                        method : 'post',
-                        dataType: 'json',
-                        data:{
-                            id: self.form_id,
-                            tanggal: self.form_tanggal,
-                            waktu_mulai: self.form_waktu_mulai,
-                            waktu_selesai: self.form_waktu_selesai, 
-                            isi: self.form_isi, 
-                            hasil: self.form_hasil,
-                            volume: self.form_volume,
-                            satuan: self.form_satuan,
-                            pemberi_tugas: self.form_pemberi_tugas,
-                        },
-                    }).done(function (data) {
-                        $('#add_logbooks').modal('hide');
-                        self.setDatas();
-                    }).fail(function (msg) {
-                        console.log(JSON.stringify(msg));
-                        $('#wait_progres').modal('hide');
-                    });
-                }  
-            }
+            //         $.ajax({
+            //             url :  self.pathname,
+            //             method : 'post',
+            //             dataType: 'json',
+            //             data:{
+            //                 id: self.form_id,
+            //                 tanggal: self.form_tanggal,
+            //                 waktu_mulai: self.form_waktu_mulai,
+            //                 waktu_selesai: self.form_waktu_selesai, 
+            //                 isi: self.form_isi, 
+            //                 hasil: self.form_hasil,
+            //                 volume: self.form_volume,
+            //                 satuan: self.form_satuan,
+            //                 pemberi_tugas: self.form_pemberi_tugas,
+            //             },
+            //         }).done(function (data) {
+            //             $('#add_logbooks').modal('hide');
+            //             self.setDatas();
+            //         }).fail(function (msg) {
+            //             console.log(JSON.stringify(msg));
+            //             $('#wait_progres').modal('hide');
+            //         });
+            //     }  
+            // }
         },
-        delLogBook: function (idnya) {
-            if (confirm('anda yakin mau menghapus data ini?')) {
-                var self = this;
-
-                $('#send_ckp').modal('hide');
+        setDatas: function(){
+            var self = this;
+            if(self.form.tahun.length>0 && self.form.triwulan.length>0){
                 $('#wait_progres').modal('show');
-                $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
-
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                })
                 $.ajax({
-                    url :  self.pathname + '/destroy_logbook/' + idnya,
+                    url : self.pathname+"/"+self.form.tahun+"/"+ self.form.triwulan + "/show" ,
                     method : 'get',
                     dataType: 'json',
                 }).done(function (data) {
-                    $('#wait_progress').modal('hide');
-                    self.setDatas();
+                    console.log("masuk");
+                    self.form.data = data.data;
+                    self.form.rincian = data.rincian;
+                    $('#wait_progres').modal('hide');
                 }).fail(function (msg) {
                     console.log(JSON.stringify(msg));
                     $('#wait_progres').modal('hide');
                 });
             }
-        },
-        sendCkpId: function (event) {
-            var self = this;
-            if (event) {
-                self.ckp_id = event.currentTarget.getAttribute('data-id');
-            }
-        },
-        sendToCkp: function (jenis) {
-            var self = this;
-
-            $('#send_ckp').modal('hide');
-            $('#wait_progres').modal('show');
-            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
-
-            $.ajax({
-                url :  self.pathname + '/send_to_ckp',
-                method : 'post',
-                dataType: 'json',
-                data:{
-                    form_id_data: self.ckp_id,
-                    jenis: jenis,
-                },
-            }).done(function (data) {
-                $('#wait_progress').modal('hide');
-                self.setDatas();
-            }).fail(function (msg) {
-                console.log(JSON.stringify(msg));
-                $('#wait_progres').modal('hide');
-            });
-        },
-        setDatas: function(){
-            var self = this;
-            $('#wait_progres').modal('show');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            })
-            $.ajax({
-                url : self.pathname+"/data_log_book",
-                method : 'post',
-                dataType: 'json',
-                data:{
-                    start: self.start, 
-                    end: self.end, 
-                },
-            }).done(function (data) {
-                self.datas = data.datas;
-                $('#wait_progres').modal('hide');
-            }).fail(function (msg) {
-                console.log(JSON.stringify(msg));
-                $('#wait_progres').modal('hide');
-            });
         }
     }
 });

@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/survei/sawit', [SurveiController::class, 'sawit_store']);
     Route::get('/survei/karet', [SurveiController::class, 'karet']);
     Route::post('/survei/karet', [SurveiController::class, 'karet_store']);
+    Route::get('/survei/karet/{tahun}/{triwulan}/show', [SurveiController::class, 'show_karet']);
     Route::get('/survei/tahunan', [SurveiController::class, 'tahunan']);
     Route::post('/survei/tahunan', [SurveiController::class, 'tahunan_store']);
 });

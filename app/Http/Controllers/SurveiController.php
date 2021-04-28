@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SurveiKaret;
 use App\Models\RincianKaret;
+use Illuminate\Support\Facades\Auth;
 
 class SurveiController extends Controller
 {
@@ -159,8 +160,8 @@ class SurveiController extends Controller
         }
     }
 
-    public function show_karet($user_id, $tahun, $triwulan){
-        $model = SurveiKaret::where('user_id', '=', $user_id)
+    public function show_karet($tahun, $triwulan){
+        $model = SurveiKaret::where('user_id', '=', Auth::id())
                 ->where('tahun', '=', $tahun)
                 ->where('triwulan', '=', $triwulan)
                 ->first();
