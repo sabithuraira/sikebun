@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 
-@section('css')
-    <link href="{{ asset('css') }}/simple_table.css" rel="stylesheet" />
-@endsection
-
 @section('content')
 <div class="card" id="app_vue">
     <table style="min-width:100%">
@@ -104,7 +100,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select v-model="form.kode_kab" @change="setKec()">
+                <select id="kode_kab" v-model="form.kode_kab" @change="setKec()">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -114,7 +110,7 @@
             </td>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select v-model="form.kode_kab_grup">
+                <select id="kode_kab_grup" v-model="form.kode_kab_grup" @change="namaKab(2)">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_grup_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -127,7 +123,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; d. Kecamatan</td>
             <td>
-                <select v-model="form.kode_kec" @change="setDesa()">
+                <select id="kode_kec" v-model="form.kode_kec" @change="setDesa()">
                     <option value="">- Pilih Kecamatan -</option>
                     <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
                         @{{ v.idKec }} - @{{ v.nmKec }}
@@ -142,7 +138,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; e. Desa/Kelurahan *)</td>
             <td>
-                <select v-model="form.kode_desa">
+                <select id="kode_desa" v-model="form.kode_desa" @click="namaDesa()">
                     <option value="">- Pilih Desa -</option>
                     <option v-for="v in list_desa" :key="v.idDesa" :value="v.idDesa">
                         @{{ v.idDesa }} - @{{ v.nmDesa }}
@@ -234,7 +230,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select v-model="form.kode_kab_kantor_pusat">
+                <select id="kode_kab_kantor_pusat" v-model="form.kode_kab_kantor_pusat"  @change="namaKab(3)">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_pusat_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -319,49 +315,47 @@
         </tr>
         
         <tr><td colspan="16">1. Kebun Sendiri/Inti</td></tr>
-        @for ($i = 0; $i < 3; $i++)
-            <tr>
-                <td>a. ......</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        @endfor
-
         
+        <tr v-for="(item, index) in rincian1" :key="'rincian1'+index">
+            <td><input type="text" v-model="item.rincian"></td>
+            <td><input type="text" v-model="item.tbm1" size="3"></td>
+            <td><input type="text" v-model="item.tsm1" size="3"></td>
+            <td><input type="text" v-model="item.tstm1" size="3"></td>
+            <td><input type="text" v-model="item.ttm1" size="3"></td>
+            <td><input type="text" v-model="item.produksi1" size="3"></td>
+            <td><input type="text" v-model="item.tbm2" size="3"></td>
+            <td><input type="text" v-model="item.tsm2" size="3"></td>
+            <td><input type="text" v-model="item.tstm2" size="3"></td>
+            <td><input type="text" v-model="item.ttm2" size="3"></td>
+            <td><input type="text" v-model="item.produksi2" size="3"></td>
+            <td><input type="text" v-model="item.tbm3" size="3"></td>
+            <td><input type="text" v-model="item.tsm3" size="3"></td>
+            <td><input type="text" v-model="item.tstm3" size="3"></td>
+            <td><input type="text" v-model="item.ttm3" size="3"></td>
+            <td><input type="text" v-model="item.produksi3" size="3"></td>
+        </tr>
+
         <tr><td colspan="16">2. Kebun Plasma yang Belum Dikonversi/Kemitraan</td></tr>
-        @for ($i = 0; $i < 3; $i++)
-            <tr>
-                <td>a. ......</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        @endfor
+        
+        <tr v-for="(item, index) in rincian2" :key="'rincian2'+index">
+            <td><input type="text" v-model="item.rincian"></td>
+            <td><input type="text" v-model="item.tbm1" size="3"></td>
+            <td><input type="text" v-model="item.tsm1" size="3"></td>
+            <td><input type="text" v-model="item.tstm1" size="3"></td>
+            <td><input type="text" v-model="item.ttm1" size="3"></td>
+            <td><input type="text" v-model="item.produksi1" size="3"></td>
+            <td><input type="text" v-model="item.tbm2" size="3"></td>
+            <td><input type="text" v-model="item.tsm2" size="3"></td>
+            <td><input type="text" v-model="item.tstm2" size="3"></td>
+            <td><input type="text" v-model="item.ttm2" size="3"></td>
+            <td><input type="text" v-model="item.produksi2" size="3"></td>
+            <td><input type="text" v-model="item.tbm3" size="3"></td>
+            <td><input type="text" v-model="item.tsm3" size="3"></td>
+            <td><input type="text" v-model="item.tstm3" size="3"></td>
+            <td><input type="text" v-model="item.ttm3" size="3"></td>
+            <td><input type="text" v-model="item.produksi3" size="3"></td>
+        </tr>
+
         <tr>
             <td>3. Total</td>
             <td><input type="text" name="301_a3_total_tbm_bulan1" v-model="form['301_a3_total_tbm_bulan1']" size="3"></td>
@@ -485,7 +479,6 @@
 
     <button class="btn btn-info" @click="saveData()">SIMPAN</button>
 
-    
     <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -500,6 +493,7 @@
 @endsection
 
 @section('css')
+    <link href="{{ asset('css') }}/simple_table.css" rel="stylesheet" />
     <meta name="_token" content="{{csrf_token()}}" />
     <meta name="csrf-token" content="@csrf">
 @endsection
@@ -512,7 +506,7 @@ var vm = new Vue({
     el: "#app_vue",
     data:  {
         form: {
-            id: '', tahun: '', triwulan: '', nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
+            id: 0, tahun: '', triwulan: '', nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
             alamat: '', kode_pos: '',telp: '', email: '', fax: '',
             kode_prov: '16', kode_kab: '', kode_kec: '', kode_desa: '', 
             label_prov: 'SUMATERA SELATAN',label_kab: '', label_kec: '', label_desa: '',
@@ -591,101 +585,67 @@ var vm = new Vue({
             '302_3c': '',
             '302_4c': '',
         },
-        rincian: [],
+        rincian1: [], rincian2: [],
         pathname : window.location.pathname.replace("/karet", ""),
         list_kab: [], list_pusat_kab: [], list_grup_kab: [],
         list_kec: [], list_desa: [],
     },
     computed: {
-        triwulan() {
-            this.setDatas();
-        },
-        tahun() {
-            this.setDatas();
-        },
+        triwulan() { return this.form.triwulan },
+        tahun() { return this.form.tahun },
     },
     watch: {
-        triwulan() {
-            this.setDatas();
-        },
-        tahun(){
-            this.setDatas();
-        }
+        triwulan() { this.setDatas(); },
+        tahun(){ this.setDatas(); }
     },
     methods: {
-        addLogBook: function (event) {
-            // var self = this;
-            // if (event) {
-            //     self.form_id = 0;
-            //     self.form_tanggal = '';
-            //     $('#form_tanggal').val(self.form_tanggal);
-            //     self.form_waktu_mulai = '';
-            //     self.form_waktu_selesai = '';
-            //     self.form_isi = '';
-            //     self.form_hasil = '';
-            //     self.form_volume = '';
-            //     self.form_satuan = '';
-            // }
-        },
-        updateLogBook: function (event) {
-            // var self = this;
-            // if (event) {
-            //     self.form_id = event.currentTarget.getAttribute('data-id');
-            //     self.form_tanggal = event.currentTarget.getAttribute('data-tanggal');
-            //     $('#form_tanggal').val(self.form_tanggal);
-            //     self.form_waktu_mulai = event.currentTarget.getAttribute('data-waktu_mulai');
-            //     self.form_waktu_selesai = event.currentTarget.getAttribute('data-waktu_selesai');
-            //     self.form_isi = event.currentTarget.getAttribute('data-isi');
-            //     self.form_hasil = event.currentTarget.getAttribute('data-hasil');
-            //     self.form_volume = event.currentTarget.getAttribute('data-volume');
-            //     self.form_satuan = event.currentTarget.getAttribute('data-satuan');
-            //     self.form_pemberi_tugas = event.currentTarget.getAttribute('data-pemberi_tugas');
-            // }
+        addRincian: function (jenis_rincian) {
+            if(jenis_rincian==1){
+                this.rincian1.push({
+                    id: 0, survei_id: '', jenis: '1', rincian: '',
+                    tbm1: '', tsm1: '', tstm1: '', ttm1: '', produksi1: '',
+                    tbm2: '', tsm2: '', tstm2: '', ttm2: '', produksi2: '',
+                    tbm3: '', tsm3: '', tstm3: '', ttm3: '', produksi3: ''
+                })
+            }
+            else{
+                this.rincian2.push({
+                    id: 0, survei_id: '', jenis: '2', rincian: '',
+                    tbm1: '', tsm1: '', tstm1: '', ttm1: '', produksi1: '',
+                    tbm2: '', tsm2: '', tstm2: '', ttm2: '', produksi2: '',
+                    tbm3: '', tsm3: '', tstm3: '', ttm3: '', produksi3: ''
+                }) 
+            }
         },
         saveData: function () {
             var self = this;
+            $('#wait_progres').modal('show');
+            
+            if(self.form.tahun!='' && self.form.triwulan!='' && self.form.nama_perusahaan!='' && 
+                self.form.alamat!=''){
+                    var data_post = self.form
+                    var rincian = { rincian1: self.rincian1, rincian2: self.rincian2 }
+                    data_post = { ...data_post, ...rincian }
 
-            // if(self.form_tanggal.length==0 || self.form_waktu_mulai.length==0 || self.form_waktu_mulai.length==0 || 
-            //     self.form_isi.length==0 || self.form_volume.length==0 || self.form_satuan.length==0 || 
-            //     self.form_pemberi_tugas.length==0){
-            //     alert("Pastikan isian tanggal, waku mulai - selesai, isi, volume, satuan dan pemberi tugas telah diisi");
-            // }
-            // else{
-            //     if(isNaN(self.form_volume)){
-            //         alert("Isian 'Volume' harus angka");    
-            //     }
-            //     else{
-            //         $('#wait_progres').modal('show');
-            //         $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
+                    $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
+                    $.ajax({
+                        url :  self.pathname+"/karet",
+                        method : 'post',
+                        dataType: 'json',
+                        data: data_post,
+                    }).done(function (data) {
+                        $('#wait_progres').modal('hide');
+                        window.location.href = pathname + "/sawit"
+                    }).fail(function (msg) {
+                        console.log(JSON.stringify(msg));
+                        $('#wait_progres').modal('hide');
+                    });
 
-            //         $.ajax({
-            //             url :  self.pathname,
-            //             method : 'post',
-            //             dataType: 'json',
-            //             data:{
-            //                 id: self.form_id,
-            //                 tanggal: self.form_tanggal,
-            //                 waktu_mulai: self.form_waktu_mulai,
-            //                 waktu_selesai: self.form_waktu_selesai, 
-            //                 isi: self.form_isi, 
-            //                 hasil: self.form_hasil,
-            //                 volume: self.form_volume,
-            //                 satuan: self.form_satuan,
-            //                 pemberi_tugas: self.form_pemberi_tugas,
-            //             },
-            //         }).done(function (data) {
-            //             $('#add_logbooks').modal('hide');
-            //             self.setDatas();
-            //         }).fail(function (msg) {
-            //             console.log(JSON.stringify(msg));
-            //             $('#wait_progres').modal('hide');
-            //         });
-            //     }  
-            // }
+            }
         },
         setDatas: function(){
             var self = this;
-            if(self.form.tahun.length>0 && self.form.triwulan.length>0){
+            if(self.form.tahun.toString().length>0 && self.form.triwulan.toString().length>0){
                 $('#wait_progres').modal('show');
                 $.ajaxSetup({
                     headers: {
@@ -697,14 +657,107 @@ var vm = new Vue({
                     method : 'get',
                     dataType: 'json',
                 }).done(function (data) {
-                    console.log("masuk");
-                    self.form.data = data.data;
-                    self.form.rincian = data.rincian;
+                    if(data.data!=null){
+                        self.form = data.data;
+                        self.rincian1 = data.rincian1;
+                        self.rincian2 = data.rincian2;
+                    }
+                    else{
+                        var temp_tahun = self.form.tahun
+                        var temp_triwulan = self.form.triwulan
+                        self.form = {
+                            id: 0, tahun: temp_tahun, triwulan: temp_triwulan, nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
+                            alamat: '', kode_pos: '',telp: '', email: '', fax: '',
+                            kode_prov: '16', kode_kab: '', kode_kec: '', kode_desa: '', 
+                            label_prov: 'SUMATERA SELATAN',label_kab: '', label_kec: '', label_desa: '',
+                            nama_contact: '',
+                            nomor_hp: '',
+                            nama_kantor_pusat: '',
+                            alamat_kantor_pusat: '',
+                            kode_pos_kantor_pusat: '',
+                            telp_kantor_pusat: '',
+                            email_kantor_pusat: '',
+                            fax_kantor_pusat: '',
+                            kode_prov_kantor_pusat: '',
+                            kode_kab_kantor_pusat: '',
+                            label_prov_kantor_pusat: '',
+                            label_kab_kantor_pusat: '',
+                            nama_grup: '',
+                            alamat_grup: '',
+                            kode_pos_grup: '',
+                            telepon_grup: '',
+                            fax_grup: '',
+                            email_grup: '',
+                            kode_prov_grup: '',
+                            kode_kab_grup: '',
+                            label_prov_grup: '',
+                            label_kab_grup: '',
+                            status_pemodalan_grup: '',
+                            badan_hukum_grup: '',
+                            apakah_pelaksana_kemitraan: '',
+                            punya_kebun_plasma: '',
+                            punya_unit_pengolahan: '',
+                            tahun_berdiri: '',
+                            nama_pencacah: '',
+                            tanggal_pencacah: '',
+                            ttd_pencacah: '',
+                            nama_pemeriksa: '',
+                            tanggal_pemeriksa: '',
+                            ttd_pemeriksa: '',
+                            
+                            catatan: '',
+                            diisi_di: '',
+                            diisi_tanggal: '',
+                            status_dokumen: '',
+
+                            created_by: '',
+                            updated_by: '',
+                            
+                            '301_a3_total_tbm_bulan1': '',
+                            '301_a3_total_tsm_bulan1': '',
+                            '301_a3_total_tstm_bulan1': '',
+                            '301_a3_total_ttm_bulan1': '',
+                            '301_a3_total_produksi_bulan1': '',
+                            '301_a3_total_tbm_bulan2': '',
+                            '301_a3_total_tsm_bulan2': '',
+                            '301_a3_total_tstm_bulan2': '',
+                            '301_a3_total_ttm_bulan2': '',
+                            '301_a3_total_produksi_bulan2': '',
+                            '301_a3_total_tbm_bulan3': '',
+                            '301_a3_total_tsm_bulan3': '',
+                            '301_a3_total_tstm_bulan3': '',
+                            '301_a3_total_ttm_bulan3': '',
+                            '301_a3_total_produksi_bulan3': '',
+                            '301_b_bulan1': '',
+                            '301_b_bulan2': '',
+                            '301_b_bulan3': '',
+                            '301_c_bulan1': '',
+                            '301_c_bulan2': '',
+                            '301_c_bulan3': '',
+                            
+                            '302_2a': '', '302_3a': '', '302_4a': '', '302_2b': '',
+                            '302_3b': '', '302_4b': '', '302_2c': '', '302_3c': '', '302_4c': '',
+                        };
+                        self.rincian1 = [] 
+                        self.rincian2 = []
+                    }
+                    
+                    for(var i=self.rincian1.length;i<3;i++)
+                            self.addRincian(1)   
+                    for(var i=self.rincian2.length;i<3;i++)
+                        self.addRincian(2)
+
                     $('#wait_progres').modal('hide');
                 }).fail(function (msg) {
                     console.log(JSON.stringify(msg));
                     $('#wait_progres').modal('hide');
                 });
+            }
+            else{
+                for(var i=self.rincian1.length;i<3;i++)
+                        self.addRincian(1)   
+                for(var i=self.rincian2.length;i<3;i++)
+                    self.addRincian(2)
             }
         },
         setKab: function(kab_mana){
@@ -737,7 +790,10 @@ var vm = new Vue({
         setKec: function(){
             $('#wait_progres').modal('show');
             var self = this;
-            
+
+            var index_kab = $("#kode_kab")[0].selectedIndex;
+            self.form.label_kab = self.list_kab[index_kab-1].nmKab
+
             $.ajax({
                 url :  self.pathname+"/get_kec",
                 method : 'post',
@@ -758,6 +814,9 @@ var vm = new Vue({
             $('#wait_progres').modal('show');
             var self = this;
             
+            var index_kec = $("#kode_kec")[0].selectedIndex;
+            self.form.label_kec = self.list_kec[index_kec-1].nmKec
+
             $.ajax({
                 url :  self.pathname+"/get_desa",
                 method : 'post',
@@ -775,10 +834,28 @@ var vm = new Vue({
                 $('#wait_progres').modal('hide');
             });
         },
+        namaDesa: function(){
+            var self = this;
+            var index_desa = $("#kode_desa")[0].selectedIndex;
+            if(index_desa>0) self.form.label_desa = self.list_desa[index_desa-1].nmDesa
+        },
+        namaKab: function(kab_mana){
+            var self = this;
+            
+            if(kab_mana==2){
+                var index_kab = $("#kode_kab_grup")[0].selectedIndex;
+                self.form.label_kab_grup = self.list_grup_kab[index_kab-1].nmKab
+            }
+            else if(kab_mana==3){
+                var index_kab = $("#kode_kab_kantor_pusat")[0].selectedIndex;
+                self.form.label_kab_kantor_pusat = self.list_pusat_kab[index_kab-1].nmKab
+            }
+        }
     }
 });
 
 $(document).ready(function() {
+    vm.setDatas();
     vm.setKab(1);
     vm.setKab(2);
     vm.setKab(3);

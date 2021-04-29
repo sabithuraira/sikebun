@@ -72,9 +72,13 @@ class SurveiController extends Controller
                 $model->created_by = Auth::id();
             }
         }
+        else{
+            $model->created_by = Auth::id();
+        }
 
         $model->tahun = $request->tahun;
         $model->triwulan = $request->triwulan;
+        $model->user_id = Auth::id();
         
         $model->nama_perusahaan = $request->nama_perusahaan;
         $model->alamat = $request->alamat;
@@ -165,36 +169,72 @@ class SurveiController extends Controller
         $model->updated_by = Auth::id();
 
         if($model->save()){
-            $all_rincian = $request->rincian;
-            foreach($all_rincian as $key=>$value){
-                $model_rincian = new RincianKaret;
+            $all_rincian1 = $request->rincian1;
+            foreach($all_rincian1 as $key=>$value){
+                if($value['rincian']!=''){
+                    $model_rincian = new RincianKaret;
         
-                if($value->id!=0){
-                    $temp_model_rincian = RincianKaret::find($value->id);
-                    if($temp_model_rincian!=null){
-                        $model_rincian = $temp_model_rincian;
+                    if($value['id']!=0){
+                        $temp_model_rincian = RincianKaret::find($value['id']);
+                        if($temp_model_rincian!=null){
+                            $model_rincian = $temp_model_rincian;
+                        }
                     }
-                }
+    
+                    $model_rincian->survei_id = $model->id;
+                    $model_rincian->jenis = 1;
+                    $model_rincian->rincian = $value['rincian'];
+                    $model_rincian->tbm1 = $value['tbm1'];
+                    $model_rincian->tsm1 = $value['tsm1'];
+                    $model_rincian->tstm1 = $value['tstm1'];
+                    $model_rincian->ttm1 = $value['ttm1'];
+                    $model_rincian->produksi1 = $value['produksi1'];
+                    $model_rincian->tbm2 = $value['tbm2'];
+                    $model_rincian->tsm2 = $value['tsm2'];
+                    $model_rincian->tstm2 = $value['tstm2'];
+                    $model_rincian->ttm2 = $value['ttm2'];
+                    $model_rincian->produksi2 = $value['produksi2'];
+                    $model_rincian->tbm3 = $value['tbm3'];
+                    $model_rincian->tsm3 = $value['tsm3'];
+                    $model_rincian->tstm3 = $value['tstm3'];
+                    $model_rincian->ttm3 = $value['ttm3'];
+                    $model_rincian->produksi3 = $value['produksi3'];
+                    $model_rincian->save();
+                } 
+            }
 
-                $model_rincian->survei_id = $model->id;
-                $model_rincian->jenis = $value->jenis;
-                $model_rincian->rincian = $value->rincian;
-                $model_rincian->tbm1 = $value->tbm1;
-                $model_rincian->tsm1 = $value->tsm1;
-                $model_rincian->tstm1 = $value->tstm1;
-                $model_rincian->ttm1 = $value->ttm1;
-                $model_rincian->produksi1 = $value->produksi1;
-                $model_rincian->tbm2 = $value->tbm2;
-                $model_rincian->tsm2 = $value->tsm2;
-                $model_rincian->tstm2 = $value->tstm2;
-                $model_rincian->ttm2 = $value->ttm2;
-                $model_rincian->produksi2 = $value->produksi2;
-                $model_rincian->tbm3 = $value->tbm3;
-                $model_rincian->tsm3 = $value->tsm3;
-                $model_rincian->tstm3 = $value->tstm3;
-                $model_rincian->ttm3 = $value->ttm3;
-                $model_rincian->produksi3 = $value->produksi3;
-                $model_rincian->save();
+            $all_rincian2 = $request->rincian2;
+            foreach($all_rincian2 as $key=>$value){
+                if($value['rincian']!=''){
+                    $model_rincian = new RincianKaret;
+        
+                    if($value['id']!=0){
+                        $temp_model_rincian = RincianKaret::find($value['id']);
+                        if($temp_model_rincian!=null){
+                            $model_rincian = $temp_model_rincian;
+                        }
+                    }
+
+                    $model_rincian->survei_id = $model->id;
+                    $model_rincian->jenis = 2;
+                    $model_rincian->rincian = $value['rincian'];
+                    $model_rincian->tbm1 = $value['tbm1'];
+                    $model_rincian->tsm1 = $value['tsm1'];
+                    $model_rincian->tstm1 = $value['tstm1'];
+                    $model_rincian->ttm1 = $value['ttm1'];
+                    $model_rincian->produksi1 = $value['produksi1'];
+                    $model_rincian->tbm2 = $value['tbm2'];
+                    $model_rincian->tsm2 = $value['tsm2'];
+                    $model_rincian->tstm2 = $value['tstm2'];
+                    $model_rincian->ttm2 = $value['ttm2'];
+                    $model_rincian->produksi2 = $value['produksi2'];
+                    $model_rincian->tbm3 = $value['tbm3'];
+                    $model_rincian->tsm3 = $value['tsm3'];
+                    $model_rincian->tstm3 = $value['tstm3'];
+                    $model_rincian->ttm3 = $value['ttm3'];
+                    $model_rincian->produksi3 = $value['produksi3'];
+                    $model_rincian->save();
+                }
             }
         }
     }
@@ -206,11 +246,16 @@ class SurveiController extends Controller
                 ->first();
 
         if($model==null){
-            return response()->json(['data'=>null, 'rincian'=> []]);
+            return response()->json(['data'=>null, 'rincian1'=> [], 'rincian2'=> []]);
         }
         else{
-            $rincian = RincianKaret::where('survei_id', '=', $model->id)->get();
-            return response()->json(['data'=>$model, 'rincian'=> $rincian]);
+            $rincian1 = RincianKaret::where('survei_id', '=', $model->id)
+                    ->where('jenis', '=', 1)->get();
+                    
+            $rincian2 = RincianKaret::where('survei_id', '=', $model->id)
+                    ->where('jenis', '=', 2)->get();
+
+            return response()->json(['data'=>$model, 'rincian1'=> $rincian1, 'rincian2'=> $rincian2]);
         }
     }
     
