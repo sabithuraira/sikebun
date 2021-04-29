@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/survei/karet/{tahun}/{triwulan}/show', [SurveiController::class, 'show_karet']);
     Route::get('/survei/tahunan', [SurveiController::class, 'tahunan']);
     Route::post('/survei/tahunan', [SurveiController::class, 'tahunan_store']);
+
+    Route::post('/survei/get_kab', [SurveiController::class, 'getKab']);
+    Route::post('/survei/get_kec', [SurveiController::class, 'getKec']);
+    Route::post('/survei/get_desa', [SurveiController::class, 'getDesa']);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

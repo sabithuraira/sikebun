@@ -5,10 +5,48 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SurveiKaret;
 use App\Models\RincianKaret;
+use App\Models\Kab;
+use App\Models\Kec;
+use App\Models\Desa;
 use Illuminate\Support\Facades\Auth;
 
 class SurveiController extends Controller
 {
+    public function getKab(Request $request){
+        $prov = '16';
+        if(strlen($request->kode_prov)>0) $prov = $request->kode_prov;
+
+        $result = Kab::where('idProv', '=', $prov)->get();
+        return response()->json(['result'=>$result]);
+    }
+    
+    public function getKec(Request $request){
+        $prov = '16';
+        $kab = '';
+        
+        if(strlen($request->kode_prov)>0) $prov = $request->kode_prov;
+        if(strlen($request->kode_kab)>0) $kab = $request->kode_kab;
+
+        $result = Kec::where('idProv', '=', $prov)->where('idKab', '=', $kab)->get();
+        return response()->json(['result'=>$result]);
+    }
+    
+    public function getDesa(Request $request){
+        $prov = '16';
+        $kab = '';
+        $kec = '';
+        
+        if(strlen($request->kode_prov)>0) $prov = $request->kode_prov;
+        if(strlen($request->kode_kab)>0) $kab = $request->kode_kab;
+        if(strlen($request->kode_kec)>0) $kec = $request->kode_kec;
+
+        $result = Desa::where('idProv', '=', $prov)
+                    ->where('idKab', '=', $kab)
+                    ->where('idKec', '=', $kec)
+                    ->get();
+        return response()->json(['result'=>$result]);
+    }
+
     public function sawit(){
         return view('survei.sawit');
     }
@@ -18,6 +56,7 @@ class SurveiController extends Controller
     }
     
     public function karet(){
+        $list_kab = Kab::all();
         return view('survei.karet');
     }
     

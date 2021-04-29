@@ -6,12 +6,6 @@
 
 @section('content')
 <div class="card" id="app_vue">
-    <ul id="example-1">
-    <li v-for="item in isi" :key="item">
-        @{{ item }}
-    </li>
-    </ul>
-
     <table style="min-width:100%">
         <tr class="text-center">
             <td width="25%">
@@ -97,7 +91,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
             <td>
-                <input type="text" name="kode_prov" v-model="form.kode_prov">
+                <input type="text" name="kode_prov" disabled v-model="form.kode_prov" size="4">@{{ form.label_prov }}
                 <input type="hidden" name="label_prov" v-model="form.label_prov">
             </td>
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
@@ -110,12 +104,22 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <input type="text" name="kode_kab" v-model="form.kode_kab">
+                <select v-model="form.kode_kab" @change="setKec()">
+                    <option value="">- Pilih Kabupaten -</option>
+                    <option v-for="v in list_kab" :key="v.idKab" :value="v.idKab">
+                        @{{ v.idKab }} - @{{ v.nmKab }}
+                    </option>
+                </select>
                 <input type="hidden" name="label_kab" v-model="form.label_kab">
             </td>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <input type="text" name="kode_kab_grup" v-model="form.kode_kab_grup">
+                <select v-model="form.kode_kab_grup">
+                    <option value="">- Pilih Kabupaten -</option>
+                    <option v-for="v in list_grup_kab" :key="v.idKab" :value="v.idKab">
+                        @{{ v.idKab }} - @{{ v.nmKab }}
+                    </option>
+                </select>
                 <input type="hidden" name="label_kab_grup" v-model="form.label_kab_grup">
             </td>
         </tr>
@@ -123,7 +127,12 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; d. Kecamatan</td>
             <td>
-                <input type="text" name="kode_kec" v-model="form.kode_kec">
+                <select v-model="form.kode_kec" @change="setDesa()">
+                    <option value="">- Pilih Kecamatan -</option>
+                    <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
+                        @{{ v.idKec }} - @{{ v.nmKec }}
+                    </option>
+                </select>
                 <input type="hidden" name="label_kec" v-model="form.label_kec">
             </td>
             <td>104. Status permodalan/pemilikan *)</td>
@@ -133,7 +142,12 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; e. Desa/Kelurahan *)</td>
             <td>
-                <input type="text" name="kode_desa" v-model="form.kode_desa">
+                <select v-model="form.kode_desa">
+                    <option value="">- Pilih Desa -</option>
+                    <option v-for="v in list_desa" :key="v.idDesa" :value="v.idDesa">
+                        @{{ v.idDesa }} - @{{ v.nmDesa }}
+                    </option>
+                </select>
                 <input type="hidden" name="label_desa" v-model="form.label_desa">
             </td>
             <td>105. Bentuk Badan Hukum</td>
@@ -220,8 +234,13 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <input type="text" name="kode_kab_kantor_pusat" v-model="form.kode_kab_kantor_pusat">
-                <input type="text" name="label_kab_kantor_pusat" v-model="form.label_kab_kantor_pusat">
+                <select v-model="form.kode_kab_kantor_pusat">
+                    <option value="">- Pilih Kabupaten -</option>
+                    <option v-for="v in list_pusat_kab" :key="v.idKab" :value="v.idKab">
+                        @{{ v.idKab }} - @{{ v.nmKab }}
+                    </option>
+                </select>
+                <input type="hide" name="label_kab_kantor_pusat" v-model="form.label_kab_kantor_pusat">
             </td>
         </tr>
     </table>
@@ -463,7 +482,26 @@
             </td>
         </tr>
     </table>
+
+    <button class="btn btn-info" @click="saveData()">SIMPAN</button>
+
+    
+    <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center"><img src="{!! asset('img/loading.gif') !!}" width="200" height="200" alt="Loading..."></div>
+                    <h4 class="text-center">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+@endsection
+
+@section('css')
+    <meta name="_token" content="{{csrf_token()}}" />
+    <meta name="csrf-token" content="@csrf">
 @endsection
 
 @section('scripts')
@@ -476,9 +514,8 @@ var vm = new Vue({
         form: {
             id: '', tahun: '', triwulan: '', nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
             alamat: '', kode_pos: '',telp: '', email: '', fax: '',
-            kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '', label_prov: '',label_kab: '',
-            label_kec: '',
-            label_desa: '',
+            kode_prov: '16', kode_kab: '', kode_kec: '', kode_desa: '', 
+            label_prov: 'SUMATERA SELATAN',label_kab: '', label_kec: '', label_desa: '',
             nama_contact: '',
             nomor_hp: '',
             nama_kantor_pusat: '',
@@ -555,8 +592,9 @@ var vm = new Vue({
             '302_4c': '',
         },
         rincian: [],
-        isi: ['satu', 'dua'],
-        pathname : window.location.pathname,
+        pathname : window.location.pathname.replace("/karet", ""),
+        list_kab: [], list_pusat_kab: [], list_grup_kab: [],
+        list_kec: [], list_desa: [],
     },
     computed: {
         triwulan() {
@@ -568,10 +606,10 @@ var vm = new Vue({
     },
     watch: {
         triwulan() {
-            console.log('Foo Changed!');
+            this.setDatas();
         },
         tahun(){
-            console.log('ini tahun')
+            this.setDatas();
         }
     },
     methods: {
@@ -604,8 +642,8 @@ var vm = new Vue({
             //     self.form_pemberi_tugas = event.currentTarget.getAttribute('data-pemberi_tugas');
             // }
         },
-        saveLogBook: function () {
-            // var self = this;
+        saveData: function () {
+            var self = this;
 
             // if(self.form_tanggal.length==0 || self.form_waktu_mulai.length==0 || self.form_waktu_mulai.length==0 || 
             //     self.form_isi.length==0 || self.form_volume.length==0 || self.form_satuan.length==0 || 
@@ -655,7 +693,7 @@ var vm = new Vue({
                     }
                 })
                 $.ajax({
-                    url : self.pathname+"/"+self.form.tahun+"/"+ self.form.triwulan + "/show" ,
+                    url : self.pathname+"/karet/"+self.form.tahun+"/"+ self.form.triwulan + "/show" ,
                     method : 'get',
                     dataType: 'json',
                 }).done(function (data) {
@@ -668,8 +706,82 @@ var vm = new Vue({
                     $('#wait_progres').modal('hide');
                 });
             }
-        }
+        },
+        setKab: function(kab_mana){
+            $('#wait_progres').modal('show');
+            var self = this;
+            var kd_prov = ''
+            if(kab_mana==1) kd_prov = self.form.kode_prov 
+            else if(kab_mana==2)  kd_prov = self.form.kode_prov_kantor_pusat
+            else if(kab_mana==3)  kd_prov = self.form.kode_prov_grup
+            
+            $.ajax({
+                url :  self.pathname+"/get_kab",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: kd_prov,
+                },
+            }).done(function (data) {
+                    
+                if(kab_mana==1) self.list_kab = data.result 
+                else if(kab_mana==2) self.list_pusat_kab = data.result 
+                else if(kab_mana==3) self.list_grup_kab = data.result 
+
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
+        },
+        setKec: function(){
+            $('#wait_progres').modal('show');
+            var self = this;
+            
+            $.ajax({
+                url :  self.pathname+"/get_kec",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: self.form.kode_prov,
+                    kode_kab: self.form.kode_kab,
+                },
+            }).done(function (data) {
+                self.list_kec = data.result 
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
+        },
+        setDesa: function(){
+            $('#wait_progres').modal('show');
+            var self = this;
+            
+            $.ajax({
+                url :  self.pathname+"/get_desa",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: self.form.kode_prov,
+                    kode_kab: self.form.kode_kab,
+                    kode_kec: self.form.kode_kec,
+                },
+            }).done(function (data) {
+                self.list_desa = data.result 
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
+        },
     }
+});
+
+$(document).ready(function() {
+    vm.setKab(1);
+    vm.setKab(2);
+    vm.setKab(3);
 });
 </script>
 @endsection

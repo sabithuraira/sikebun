@@ -13,5 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/survei/get_kab',
+        '/survei/get_kec',
+        '/survei/get_desa',
     ];
 }
