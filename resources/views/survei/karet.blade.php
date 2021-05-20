@@ -132,7 +132,10 @@
                 <input type="hidden" name="label_kec" v-model="form.label_kec">
             </td>
             <td>104. Status permodalan/pemilikan *)</td>
-            <td><input type="text" name="status_pemodalan_grup" v-model="form.status_pemodalan_grup"></td>
+            <td>
+                PMDN -1 &nbsp;&nbsp;&nbsp; PMA -2 &nbsp;&nbsp;
+                <input class="float-right" type="text" name="status_pemodalan_grup" v-model="form.status_pemodalan_grup" size="1">
+            </td>
         </tr>
         
         <tr>
@@ -147,27 +150,41 @@
                 <input type="hidden" name="label_desa" v-model="form.label_desa">
             </td>
             <td>105. Bentuk Badan Hukum</td>
-            <td><input type="text" name="badan_hukum_grup" v-model="form.badan_hukum_grup"></td>
+            <td>
+                <ul>
+                    <li>PTPN -1 &nbsp;&nbsp;&nbsp; PT -5 &nbsp;&nbsp;</li>
+                    <li>Perusahaan Daerah -2 &nbsp;&nbsp;&nbsp; CV -6 &nbsp;&nbsp;</li>
+                    <li>Persero -3 &nbsp;&nbsp;&nbsp; Koperasi/KUD -7 &nbsp;&nbsp;</li>
+                    <li>Perum -4 &nbsp;&nbsp;&nbsp; Yayasan -8 &nbsp;&nbsp;</li>
+                </ul>
+                <input class="float-right" type="text" name="badan_hukum_grup" v-model="form.badan_hukum_grup" size="1">
+            </td>
         </tr>
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; f. Nama Contact Person</td>
             <td><input type="text" name="nama_contact" v-model="form.nama_contact"></td>
             <td>106. Apakah Sebagai Pelaksana Kemitraan</td>
-            <td><input type="text" name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan"></td>
+            <td>
+                Ya -1 &nbsp;&nbsp;&nbsp; Tidak -2 &nbsp;&nbsp;
+                <input class="float-right" type="text" name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan" size="1"></td>
         </tr>
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; g. Nomor HP/Telp.</td>
             <td><input type="text" name="nomor_hp" v-model="form.nomor_hp"></td>
             <td>107. Apakah mempunyai Kebun Plasma yang belum dikonversi</td>
-            <td><input type="text" name="punya_kebun_plasma" v-model="form.punya_kebun_plasma"></td>
+            <td>
+                Ya -1 &nbsp;&nbsp;&nbsp; Tidak -2 &nbsp;&nbsp;
+                <input class="float-right" type="text" name="punya_kebun_plasma" v-model="form.punya_kebun_plasma" size="1"></td>
         </tr>
         
         <tr>
             <td colspan="2"><b>Kondisi Perusahaan: Aktif/Tutup Sementara/Non Respon/Tidak Ditemukan *)</b></td>
             <td>108. Apakah mempunyai unit pengolahan produksi</td>
-            <td><input type="text" name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan"></td>
+            <td>
+                Ya -1 &nbsp;&nbsp;&nbsp; Tidak -2 &nbsp;&nbsp;
+                <input class="float-right" type="text" name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan" size="1"></td>
         </tr>
         
         <tr>
@@ -236,7 +253,7 @@
                         @{{ v.idKab }} - @{{ v.nmKab }}
                     </option>
                 </select>
-                <input type="hide" name="label_kab_kantor_pusat" v-model="form.label_kab_kantor_pusat">
+                <input type="hidden" name="label_kab_kantor_pusat" v-model="form.label_kab_kantor_pusat">
             </td>
         </tr>
     </table>
@@ -589,6 +606,7 @@ var vm = new Vue({
         pathname : window.location.pathname.replace("/karet", ""),
         list_kab: [], list_pusat_kab: [], list_grup_kab: [],
         list_kec: [], list_desa: [],
+        user_profile: {!! json_encode($user_profile) !!},
     },
     computed: {
         triwulan() { return this.form.triwulan },
@@ -643,6 +661,98 @@ var vm = new Vue({
 
             }
         },
+        setDataKosong: function(){
+            var self = this;
+            var temp_tahun = self.form.tahun
+            var temp_triwulan = self.form.triwulan
+            self.form = {
+                id: 0, tahun: temp_tahun, triwulan: temp_triwulan, 
+                nama_perusahaan: self.user_profile.nama_perusahaan, 
+                user_id: {!! json_encode(Auth::id()) !!},
+                alamat: self.user_profile.alamat_perusahaan, 
+                kode_pos: self.user_profile.kode_pos_perusahaan,
+                telp: self.user_profile.telp_perusahaan, 
+                email: '', 
+                fax: self.user_profile.fax_perusahaan,
+                kode_prov: self.user_profile.kode_prov, 
+                kode_kab: self.user_profile.kode_kab, 
+                kode_kec: self.user_profile.kode_kec, 
+                kode_desa: self.user_profile.kode_desa, 
+                label_prov: self.user_profile.label_prov,
+                label_kab: self.user_profile.label_kab, 
+                label_kec: self.user_profile.label_kec, 
+                label_desa: self.user_profile.label_desa,
+                nama_contact: '',
+                nomor_hp: '',
+                nama_kantor_pusat: self.user_profile.nama_kantor_pusat,
+                alamat_kantor_pusat: self.user_profile.alamat_kantor_pusat,
+                kode_pos_kantor_pusat: self.user_profile.kode_pos_kantor_pusat,
+                telp_kantor_pusat: self.user_profile.telp_kantor_pusat,
+                email_kantor_pusat: '',
+                fax_kantor_pusat: self.user_profile.fax_kantor_pusat,
+                kode_prov_kantor_pusat: self.user_profile.kode_prov_kantor_pusat,
+                kode_kab_kantor_pusat: self.user_profile.kode_kab_kantor_pusat,
+                label_prov_kantor_pusat: self.user_profile.label_prov_kantor_pusat,
+                label_kab_kantor_pusat: self.user_profile.label_kab_kantor_pusat,
+                nama_grup: '',
+                alamat_grup: '',
+                kode_pos_grup: '',
+                telepon_grup: '',
+                fax_grup: '',
+                email_grup: '',
+                kode_prov_grup: '',
+                kode_kab_grup: '',
+                label_prov_grup: '',
+                label_kab_grup: '',
+                status_pemodalan_grup: '',
+                badan_hukum_grup: '',
+                apakah_pelaksana_kemitraan: '',
+                punya_kebun_plasma: '',
+                punya_unit_pengolahan: '',
+                tahun_berdiri: '',
+                nama_pencacah: '',
+                tanggal_pencacah: '',
+                ttd_pencacah: '',
+                nama_pemeriksa: '',
+                tanggal_pemeriksa: '',
+                ttd_pemeriksa: '',
+                
+                catatan: '',
+                diisi_di: '',
+                diisi_tanggal: '',
+                status_dokumen: '',
+
+                created_by: '',
+                updated_by: '',
+                
+                '301_a3_total_tbm_bulan1': '',
+                '301_a3_total_tsm_bulan1': '',
+                '301_a3_total_tstm_bulan1': '',
+                '301_a3_total_ttm_bulan1': '',
+                '301_a3_total_produksi_bulan1': '',
+                '301_a3_total_tbm_bulan2': '',
+                '301_a3_total_tsm_bulan2': '',
+                '301_a3_total_tstm_bulan2': '',
+                '301_a3_total_ttm_bulan2': '',
+                '301_a3_total_produksi_bulan2': '',
+                '301_a3_total_tbm_bulan3': '',
+                '301_a3_total_tsm_bulan3': '',
+                '301_a3_total_tstm_bulan3': '',
+                '301_a3_total_ttm_bulan3': '',
+                '301_a3_total_produksi_bulan3': '',
+                '301_b_bulan1': '',
+                '301_b_bulan2': '',
+                '301_b_bulan3': '',
+                '301_c_bulan1': '',
+                '301_c_bulan2': '',
+                '301_c_bulan3': '',
+                
+                '302_2a': '', '302_3a': '', '302_4a': '', '302_2b': '',
+                '302_3b': '', '302_4b': '', '302_2c': '', '302_3c': '', '302_4c': '',
+            };
+            self.rincian1 = [] 
+            self.rincian2 = []
+        },
         setDatas: function(){
             var self = this;
             if(self.form.tahun.toString().length>0 && self.form.triwulan.toString().length>0){
@@ -663,83 +773,7 @@ var vm = new Vue({
                         self.rincian2 = data.rincian2;
                     }
                     else{
-                        var temp_tahun = self.form.tahun
-                        var temp_triwulan = self.form.triwulan
-                        self.form = {
-                            id: 0, tahun: temp_tahun, triwulan: temp_triwulan, nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
-                            alamat: '', kode_pos: '',telp: '', email: '', fax: '',
-                            kode_prov: '16', kode_kab: '', kode_kec: '', kode_desa: '', 
-                            label_prov: 'SUMATERA SELATAN',label_kab: '', label_kec: '', label_desa: '',
-                            nama_contact: '',
-                            nomor_hp: '',
-                            nama_kantor_pusat: '',
-                            alamat_kantor_pusat: '',
-                            kode_pos_kantor_pusat: '',
-                            telp_kantor_pusat: '',
-                            email_kantor_pusat: '',
-                            fax_kantor_pusat: '',
-                            kode_prov_kantor_pusat: '',
-                            kode_kab_kantor_pusat: '',
-                            label_prov_kantor_pusat: '',
-                            label_kab_kantor_pusat: '',
-                            nama_grup: '',
-                            alamat_grup: '',
-                            kode_pos_grup: '',
-                            telepon_grup: '',
-                            fax_grup: '',
-                            email_grup: '',
-                            kode_prov_grup: '',
-                            kode_kab_grup: '',
-                            label_prov_grup: '',
-                            label_kab_grup: '',
-                            status_pemodalan_grup: '',
-                            badan_hukum_grup: '',
-                            apakah_pelaksana_kemitraan: '',
-                            punya_kebun_plasma: '',
-                            punya_unit_pengolahan: '',
-                            tahun_berdiri: '',
-                            nama_pencacah: '',
-                            tanggal_pencacah: '',
-                            ttd_pencacah: '',
-                            nama_pemeriksa: '',
-                            tanggal_pemeriksa: '',
-                            ttd_pemeriksa: '',
-                            
-                            catatan: '',
-                            diisi_di: '',
-                            diisi_tanggal: '',
-                            status_dokumen: '',
-
-                            created_by: '',
-                            updated_by: '',
-                            
-                            '301_a3_total_tbm_bulan1': '',
-                            '301_a3_total_tsm_bulan1': '',
-                            '301_a3_total_tstm_bulan1': '',
-                            '301_a3_total_ttm_bulan1': '',
-                            '301_a3_total_produksi_bulan1': '',
-                            '301_a3_total_tbm_bulan2': '',
-                            '301_a3_total_tsm_bulan2': '',
-                            '301_a3_total_tstm_bulan2': '',
-                            '301_a3_total_ttm_bulan2': '',
-                            '301_a3_total_produksi_bulan2': '',
-                            '301_a3_total_tbm_bulan3': '',
-                            '301_a3_total_tsm_bulan3': '',
-                            '301_a3_total_tstm_bulan3': '',
-                            '301_a3_total_ttm_bulan3': '',
-                            '301_a3_total_produksi_bulan3': '',
-                            '301_b_bulan1': '',
-                            '301_b_bulan2': '',
-                            '301_b_bulan3': '',
-                            '301_c_bulan1': '',
-                            '301_c_bulan2': '',
-                            '301_c_bulan3': '',
-                            
-                            '302_2a': '', '302_3a': '', '302_4a': '', '302_2b': '',
-                            '302_3b': '', '302_4b': '', '302_2c': '', '302_3c': '', '302_4c': '',
-                        };
-                        self.rincian1 = [] 
-                        self.rincian2 = []
+                        self.setDataKosong()
                     }
                     
                     for(var i=self.rincian1.length;i<3;i++)
@@ -754,6 +788,7 @@ var vm = new Vue({
                 });
             }
             else{
+                self.setDataKosong()
                 for(var i=self.rincian1.length;i<3;i++)
                         self.addRincian(1)   
                 for(var i=self.rincian2.length;i<3;i++)

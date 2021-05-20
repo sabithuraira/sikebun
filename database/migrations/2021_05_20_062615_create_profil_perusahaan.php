@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilPerusahaanTable extends Migration
+class CreateProfilPerusahaan extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,6 @@ class CreateProfilPerusahaanTable extends Migration
     {
         Schema::create('profil_perusahaan', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->string('nama_perusahaan')->nullable();
             $table->text('alamat_perusahaan')->nullable();
             $table->string('kode_pos_perusahaan')->nullable();
@@ -30,7 +29,6 @@ class CreateProfilPerusahaanTable extends Migration
             $table->string('label_kec')->nullable();
             $table->string('label_desa')->nullable();
 
-            
             $table->string('nama_kantor_pusat')->nullable();
             $table->text('alamat_kantor_pusat')->nullable();
             $table->string('kode_pos_kantor_pusat')->nullable();

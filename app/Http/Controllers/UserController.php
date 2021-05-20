@@ -13,11 +13,7 @@ class UserController extends Controller
         $model = User::find(Auth::id());
         $model_profil = new ProfilPerusahaan;
 
-        $temp_profile = ProfilPerusahaan::where('user_id', '=', $model->id)->first();
-        
-        if($temp_profile!=null){
-            $model_profil = $temp_profile;
-        }
+        if($model->company_id!=null) $model_profil = ProfilPerusahaan::find($model->company_id);
 
         return view('user.edit', compact(
             'model', 'model_profil'
@@ -28,8 +24,8 @@ class UserController extends Controller
         $model = User::find(Auth::id());
         $model_profil = new ProfilPerusahaan;
 
-        $temp_profile = ProfilPerusahaan::where('user_id', '=', $model->id)->first();
-        if($temp_profile!=null) $model_profil = $temp_profile;
+        // $temp_profile = ProfilPerusahaan::where('user_id', '=', $model->id)->first();
+        if($model->company_id!=null) $model_profil = ProfilPerusahaan::find($model->company_id);
         else $model_profil->created_by = Auth::id();
 
         $model_profil->user_id = $model->id;

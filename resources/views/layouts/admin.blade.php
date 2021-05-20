@@ -23,8 +23,8 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item  ">
-            <a class="nav-link" href="./dashboard.html">
+          <li class="nav-item {{ (request()->is('dashboard*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('dashboard') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -72,8 +72,11 @@
     </div>
     <div class="main-panel">
       <div>
+      <div class="content">
+        <div class="container-fluid">
             @yield('content')
-      </div>
+        </div>
+      </div></div>
       <footer class="footer">
         <div class="container-fluid">
           <div class="copyright float-right">
