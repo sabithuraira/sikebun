@@ -58,7 +58,21 @@ class PerusahaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = ProfilPerusahaan::find($id);
+        if($data!=null){
+            $respon = [
+                'status' => 'success',
+                'data' => $data,
+            ];
+        }
+        else{
+            $respon = [
+                'status' => 'error',
+                'data' => null,
+            ];
+        }
+
+        return response()->json($respon, 200);
     }
 
     /**

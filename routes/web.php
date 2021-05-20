@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SurveiController;
 use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserRoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +38,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/survei/get_kec', [SurveiController::class, 'getKec']);
     Route::post('/survei/get_desa', [SurveiController::class, 'getDesa']);
     
-    Route::resource('perusahaan', PerusahaanController::class)->except(['show']);
+    Route::resource('perusahaan', PerusahaanController::class);
 });
+
+Route::resource('role', RoleController::class);
+Route::resource('user_role', UserRoleController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

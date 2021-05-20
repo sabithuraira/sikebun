@@ -11,25 +11,20 @@ class UserController extends Controller
 {
     public function edit(){
         $model = User::find(Auth::id());
-        $model_profil = new ProfilPerusahaan;
-
-        if($model->company_id!=null) $model_profil = ProfilPerusahaan::find($model->company_id);
-
+        $list_perusahaan = ProfilPerusahaan::all();
         return view('user.edit', compact(
-            'model', 'model_profil'
+            'model', 'list_perusahaan'
         ));
     }
 
     public function update(Request $request){
         $model = User::find(Auth::id());
-        $model_profil = new ProfilPerusahaan;
+        $company_id =  $request->company_id;
+        $model_profil = ProfilPerusahaan::find($company_id);
 
-        // $temp_profile = ProfilPerusahaan::where('user_id', '=', $model->id)->first();
-        if($model->company_id!=null) $model_profil = ProfilPerusahaan::find($model->company_id);
-        else $model_profil->created_by = Auth::id();
+        $model->company_id = $company_id;
+        $model->save();
 
-        $model_profil->user_id = $model->id;
-        $model_profil->nama_perusahaan = $request->nama_perusahaan;
         $model_profil->alamat_perusahaan = $request->alamat_perusahaan;
         $model_profil->kode_pos_perusahaan = $request->kode_pos_perusahaan;
         $model_profil->telp_perusahaan = $request->telp_perusahaan;
