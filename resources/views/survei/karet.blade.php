@@ -133,8 +133,11 @@
             </td>
             <td>104. Status permodalan/pemilikan *)</td>
             <td>
-                PMDN -1 &nbsp;&nbsp;&nbsp; PMA -2 &nbsp;&nbsp;
-                <input class="float-right" type="text" name="status_pemodalan_grup" v-model="form.status_pemodalan_grup" size="1">
+                <select name="status_pemodalan_grup" v-model="form.status_pemodalan_grup">
+                    <option value="">- Pilih Status Permodalan/Pemilikan -</option>
+                    <option value="1">1. PMDN</option>
+                    <option value="2">2. PMA</option>
+                </select>
             </td>
         </tr>
         
@@ -151,13 +154,17 @@
             </td>
             <td>105. Bentuk Badan Hukum</td>
             <td>
-                <ul>
-                    <li>PTPN -1 &nbsp;&nbsp;&nbsp; PT -5 &nbsp;&nbsp;</li>
-                    <li>Perusahaan Daerah -2 &nbsp;&nbsp;&nbsp; CV -6 &nbsp;&nbsp;</li>
-                    <li>Persero -3 &nbsp;&nbsp;&nbsp; Koperasi/KUD -7 &nbsp;&nbsp;</li>
-                    <li>Perum -4 &nbsp;&nbsp;&nbsp; Yayasan -8 &nbsp;&nbsp;</li>
-                </ul>
-                <input class="float-right" type="text" name="badan_hukum_grup" v-model="form.badan_hukum_grup" size="1">
+                <select name="badan_hukum_grup" v-model="form.badan_hukum_grup">
+                    <option value="">- Pilih Bentuk Badan Hukum -</option>
+                    <option value="1">1. PTPN</option>
+                    <option value="2">2. Perusahaan Daerah</option>
+                    <option value="3">3. Persero</option>
+                    <option value="4">4. Perum</option>
+                    <option value="5">5. PT</option>
+                    <option value="6">6. CV</option>
+                    <option value="7">7. Koperasi/KUD</option>
+                    <option value="8">8. Yayasan</option>
+                </select>
             </td>
         </tr>
         
@@ -166,8 +173,11 @@
             <td><input type="text" name="nama_contact" v-model="form.nama_contact"></td>
             <td>106. Apakah Sebagai Pelaksana Kemitraan</td>
             <td>
-                Ya -1 &nbsp;&nbsp;&nbsp; Tidak -2 &nbsp;&nbsp;
-                <input class="float-right" type="text" name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan" size="1"></td>
+                <select name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan">
+                    <option value="1">1. Ya</option>
+                    <option value="2">2. Tidak</option>
+                </select>
+            </td>
         </tr>
         
         <tr>
@@ -175,16 +185,22 @@
             <td><input type="text" name="nomor_hp" v-model="form.nomor_hp"></td>
             <td>107. Apakah mempunyai Kebun Plasma yang belum dikonversi</td>
             <td>
-                Ya -1 &nbsp;&nbsp;&nbsp; Tidak -2 &nbsp;&nbsp;
-                <input class="float-right" type="text" name="punya_kebun_plasma" v-model="form.punya_kebun_plasma" size="1"></td>
+                <select name="punya_kebun_plasma" v-model="form.punya_kebun_plasma">
+                    <option value="1">1. Ya</option>
+                    <option value="2">2. Tidak</option>
+                </select>
+            </td>
         </tr>
         
         <tr>
             <td colspan="2"><b>Kondisi Perusahaan: Aktif/Tutup Sementara/Non Respon/Tidak Ditemukan *)</b></td>
             <td>108. Apakah mempunyai unit pengolahan produksi</td>
             <td>
-                Ya -1 &nbsp;&nbsp;&nbsp; Tidak -2 &nbsp;&nbsp;
-                <input class="float-right" type="text" name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan" size="1"></td>
+                <select name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan">
+                    <option value="1">1. Ya</option>
+                    <option value="2">2. Tidak</option>
+                </select>
+            </td>
         </tr>
         
         <tr>
@@ -212,18 +228,18 @@
                     </tr>
                     <tr>
                         <td>201. Nama</td>
-                        <td><input type="text" name="nama_pencacah" v-model="form.nama_pencacah" /></td>
-                        <td><input type="text" name="nama_pemeriksa" v-model="form.nama_pemeriksa" /></td>
+                        <td><input type="text" disabled v-model="form.nama_pencacah" /></td>
+                        <td><input type="text" disabled name="nama_pemeriksa" v-model="form.nama_pemeriksa" /></td>
                     </tr>
                     <tr>
                         <td>202. Tanggal</td>
-                        <td><input type="text" name="tanggal_pencacah" v-model="form.tanggal_pencacah" /></td>
-                        <td><input type="text" name="tanggal_pemeriksa" v-model="form.tanggal_pemeriksa" /></td>
+                        <td><input type="text" disabled name="tanggal_pencacah" v-model="form.tanggal_pencacah" /></td>
+                        <td><input type="text" disabled name="tanggal_pemeriksa" v-model="form.tanggal_pemeriksa" /></td>
                     </tr>
                     <tr>
                         <td>203. Tanda Tangan</td>
-                        <td><input type="text" name="ttd_pencacah" v-model="form.ttd_pencacah" /></td>
-                        <td><input type="text" name="ttd_pemeriksa" v-model="form.ttd_pemeriksa" /></td>
+                        <td><input type="text" disabled name="ttd_pencacah" v-model="form.ttd_pencacah" /></td>
+                        <td><input type="text" disabled name="ttd_pemeriksa" v-model="form.ttd_pemeriksa" /></td>
                     </tr>
                 </table>
             </td>
@@ -555,12 +571,12 @@ var vm = new Vue({
             punya_kebun_plasma: '',
             punya_unit_pengolahan: '',
             tahun_berdiri: '',
-            nama_pencacah: '',
-            tanggal_pencacah: '',
-            ttd_pencacah: '',
+            nama_pencacah: 'SIKEBUN',
+            tanggal_pencacah: new Date().toLocaleDateString(),
+            ttd_pencacah: '1',
             nama_pemeriksa: '',
             tanggal_pemeriksa: '',
-            ttd_pemeriksa: '',
+            ttd_pemeriksa: '1',
             
             catatan: '',
             diisi_di: '',
@@ -653,10 +669,11 @@ var vm = new Vue({
                         data: data_post,
                     }).done(function (data) {
                         $('#wait_progres').modal('hide');
-                        window.location.href = pathname + "/sawit"
+                        window.location.href = self.pathname + "/index_karet"
                     }).fail(function (msg) {
                         console.log(JSON.stringify(msg));
                         $('#wait_progres').modal('hide');
+                        window.location.href = self.pathname + "/index_karet"
                     });
 
             }
@@ -710,12 +727,12 @@ var vm = new Vue({
                 punya_kebun_plasma: '',
                 punya_unit_pengolahan: '',
                 tahun_berdiri: '',
-                nama_pencacah: '',
-                tanggal_pencacah: '',
-                ttd_pencacah: '',
+                nama_pencacah: 'SIKEBUN',
+                tanggal_pencacah: new Date().toLocaleDateString(),
+                ttd_pencacah: '1',
                 nama_pemeriksa: '',
                 tanggal_pemeriksa: '',
-                ttd_pemeriksa: '',
+                ttd_pemeriksa: '1',
                 
                 catatan: '',
                 diisi_di: '',

@@ -7,7 +7,7 @@
             <div class="card-header card-header-danger">
                 <h4 class="card-title ">Survey Triwulanan Karet Anda</h4>
                 @hasanyrole('operator')
-                    <a href="{{ url('survey/sawit') }}" class="btn btn-secondary btn-round">Tambah Data</a>
+                    <a href="{{ url('survei/karet') }}" class="btn btn-secondary btn-round">Tambah Data</a>
                 @endhasanyrole
             </div>
             <div class="card-body">
@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>Triwulan: {{ $value->triwulan }} Tahun: {{ $value->tahun }}</td>
-                                <td>--</td>
+                                <td>{{ $value->listStatus[$value->status_dokumen] }}</td>
                                 <td class="text-center">
                                     @hasanyrole('admin|approval')
                                     <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">

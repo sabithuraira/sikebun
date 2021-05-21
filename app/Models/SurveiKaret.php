@@ -10,4 +10,12 @@ class SurveiKaret extends Model
     use HasFactory;
     
     protected $table = "survei_karet";
+    
+    public function getListStatusAttribute(){
+        return [
+            1 => 'SAVED',
+            2 => 'CLEAN',
+            3 => 'SEND',
+        ];
+    }
 }
