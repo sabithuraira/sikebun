@@ -23,14 +23,20 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/edit', [UserController::class, 'edit']);
     Route::post('/user/update', [UserController::class, 'update']);
     
+    Route::get('/survei/index_sawit', [SurveiController::class, 'index_sawit']);
+    Route::get('/survei/{id}/sawit', [SurveiController::class, 'detail_sawit']);
     Route::get('/survei/sawit', [SurveiController::class, 'sawit']);
     Route::post('/survei/sawit', [SurveiController::class, 'sawit_store']);
     Route::get('/survei/sawit/{tahun}/{triwulan}/show', [SurveiController::class, 'show_sawit']);
 
+    Route::get('/survei/index_karet', [SurveiController::class, 'index_karet']);
+    Route::get('/survei/{id}/karet', [SurveiController::class, 'detail_karet']);
     Route::get('/survei/karet', [SurveiController::class, 'karet']);
     Route::post('/survei/karet', [SurveiController::class, 'karet_store']);
     Route::get('/survei/karet/{tahun}/{triwulan}/show', [SurveiController::class, 'show_karet']);
     
+    Route::get('/survei/index_tahunan', [SurveiController::class, 'index_tahunan']);
+    Route::get('/survei/{id}/tahunan', [SurveiController::class, 'detail_tahunan']);
     Route::get('/survei/tahunan', [SurveiController::class, 'tahunan']);
     Route::post('/survei/tahunan', [SurveiController::class, 'tahunan_store']);
 

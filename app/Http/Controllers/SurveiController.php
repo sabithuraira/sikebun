@@ -51,6 +51,27 @@ class SurveiController extends Controller
         return response()->json(['result'=>$result]);
     }
 
+    public function index_sawit(Request $request){
+        $datas = SurveiSawit::where('user_id', '=', Auth::user()->company_id)->paginate();
+        $datas->withPath('survei/index_sawit');
+        $datas->appends($request->all());    
+        
+        return view('survei.index_sawit', compact('datas'));
+    }
+
+    public function detail_sawit($id){
+        $model = SurveiSawit::find($id);
+        $rincian1 = [];
+        $rincian2 = [];
+
+        if($model!=null){
+            $rincian1 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
+            $rincian2 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
+        }
+
+        return view('survei.detail_sawit', compact('model', 'rincian1', 'rincian2'));
+    }
+
     public function sawit(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
@@ -75,7 +96,7 @@ class SurveiController extends Controller
 
         $model->tahun = $request->tahun;
         $model->triwulan = $request->triwulan;
-        $model->user_id = Auth::id();
+        $model->user_id = Auth::user()->company_id;
         
         $model->nama_perusahaan = $request->nama_perusahaan;
         $model->alamat = $request->alamat;
@@ -237,7 +258,7 @@ class SurveiController extends Controller
     }
 
     public function show_sawit($tahun, $triwulan){
-        $model = SurveiSawit::where('user_id', '=', Auth::id())
+        $model = SurveiSawit::where('user_id', '=', Auth::user()->company_id)
                 ->where('tahun', '=', $tahun)
                 ->where('triwulan', '=', $triwulan)
                 ->first();
@@ -254,6 +275,27 @@ class SurveiController extends Controller
 
             return response()->json(['data'=>$model, 'rincian1'=> $rincian1, 'rincian2'=> $rincian2]);
         }
+    }
+
+    public function index_karet(Request $request){
+        $datas = SurveiKaret::where('user_id', '=', Auth::user()->company_id)->paginate();
+        $datas->withPath('survei/index_karet');
+        $datas->appends($request->all());    
+        
+        return view('survei.index_karet', compact('datas'));
+    }
+
+    public function detail_karet($id){
+        $model = SurveiKaret::find($id);
+        $rincian1 = [];
+        $rincian2 = [];
+
+        if($model!=null){
+            $rincian1 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
+            $rincian2 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
+        }
+
+        return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2'));
     }
     
     public function karet(){
@@ -281,7 +323,7 @@ class SurveiController extends Controller
 
         $model->tahun = $request->tahun;
         $model->triwulan = $request->triwulan;
-        $model->user_id = Auth::id();
+        $model->user_id = Auth::user()->company_id;
         
         $model->nama_perusahaan = $request->nama_perusahaan;
         $model->alamat = $request->alamat;
@@ -443,7 +485,7 @@ class SurveiController extends Controller
     }
 
     public function show_karet($tahun, $triwulan){
-        $model = SurveiKaret::where('user_id', '=', Auth::id())
+        $model = SurveiKaret::where('user_id', '=', Auth::user()->company_id)
                 ->where('tahun', '=', $tahun)
                 ->where('triwulan', '=', $triwulan)
                 ->first();
