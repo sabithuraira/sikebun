@@ -27,7 +27,7 @@
                                 <td>{{ $value->listStatus[$value->status_dokumen] }}</td>
                                 <td class="text-center">
                                     @hasanyrole('admin|approval')
-                                    <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">
+                                    <a href="{{ url('survei/'.$value->id.'/karet') }}" class="btn btn-primary btn-link btn-sm">
                                         <i class="material-icons">search</i>
                                     </a>
                                     @endhasanyrole

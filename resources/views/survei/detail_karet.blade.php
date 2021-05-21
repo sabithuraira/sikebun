@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card" id="app_vue">
-    <table style="min-width:100%">
+<table style="min-width:100%">
         <tr class="text-center">
             <td width="25%">
                 <img src="{{ asset('img') }}/logobps.png" width="130" />
@@ -11,11 +11,11 @@
                 <img src="{{ asset('img') }}/garuda.png" width="55" />
                 <p>REPUBLIK INDONESIA</p>
                 
-                <b>SURVEI PERUSAHAAN PERKEBUNAN KELAPA SAWIT TRIWULANAN</b> <br/>
+                <b>SURVEI PERUSAHAAN PERKEBUNAN KARET TRIWULANAN</b> <br/>
                 <b>TAHUN 2021</b>
             </td>
             <td width="25%">
-                <p>SKP21 - KELAPA SAWIT</p>
+                <p>SKP21 - KARET</p>
             </td>
         </tr>
         
@@ -31,14 +31,14 @@
             <td>RAHASIA</td>
             <td colspan="2" class="text-right">
                 TAHUN
-                <select name="tahun" v-model="form.tahun" disabled>
+                <select name="tahun" v-model="form.tahun">
                     <option>- Pilih Tahun -</option>
                     @for($i = 2020 ;$i <= date('Y'); $i++))
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                 </select>
                 TRIWULAN
-                <select name="triwulan" v-model="form.triwulan" disabled>
+                <select name="triwulan" v-model="form.triwulan">
                     <option>- Pilih TW -</option>
                     @for($i = 1;$i < 5; $i++))
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -49,7 +49,7 @@
     </table>
 
     <table class="table-border" style="min-width:100%">
-        <tr class="bg-success text-center"><td colspan="4"><b>I. PENGENALAN TEMPAT</b></td></tr>
+        <tr class="bg-danger text-center"><td colspan="4"><b>I. PENGENALAN TEMPAT</b></td></tr>
         <tr>
             <td>101. Nama Perusahaan/Kantor Administratur</td>
             <td><input type="text"  disabled name="nama_perusahaan" v-model="form.nama_perusahaan"></td>
@@ -211,7 +211,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; a. Alamat Lengkap Pusat</td>
             <td><input type="text" disabled name="alamat_kantor_pusat" v-model="form.alamat_kantor_pusat"></td>
-            <td colspan="2" class="text-center bg-success"><b>II. KETERANGAN PETUGAS</b></td>
+            <td colspan="2" class="text-center bg-danger"><b>II. KETERANGAN PETUGAS</b></td>
         </tr>
         
         <tr>
@@ -304,7 +304,7 @@
     <br/><br/>
 
     <table class="table-border" style="min-width:100%">
-        <tr><td colspan="16" class="text-center bg-success"><b>III. LUAS TANAMAN, PRODUKSI DAN DISTRIBUSI PRODUKSI</b></td></tr>
+        <tr><td colspan="16" class="text-center bg-danger"><b>III. LUAS TANAMAN, PRODUKSI DAN DISTRIBUSI PRODUKSI</b></td></tr>
         <tr><td colspan="16">301. Luas Tanaman dan Produksi</td></tr>
         <tr><td colspan="16">A. Nama Kebun, Luas Tanaman dan Produksi</td></tr>
         <tr class="text-center">
