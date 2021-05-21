@@ -6,7 +6,9 @@
         <div class="card">
             <div class="card-header card-header-success">
                 <h4 class="card-title ">Survey Triwulanan Sawit Anda</h4>
-                <a href="{{ url('survey/sawit') }}" class="btn btn-secondary btn-round">Tambah Data</a>
+                @hasanyrole('operator')
+                    <a href="{{ url('survey/sawit') }}" class="btn btn-secondary btn-round">Tambah Data</a>
+                @endhasanyrole
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -24,9 +26,11 @@
                                 <td>Triwulan: {{ $value->triwulan }} Tahun: {{ $value->tahun }}</td>
                                 <td>--</td>
                                 <td class="text-center">
+                                    @hasanyrole('admin|approval')
                                     <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">
                                         <i class="material-icons">search</i>
                                     </a>
+                                    @endhasanyrole
                                 </td>
                             </tr>
                         @endforeach

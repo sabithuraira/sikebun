@@ -30,24 +30,26 @@
             </a>
           </li>
           
-          <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('survei/index_karet') }}">
-              <i class="material-icons">library_books</i>
-              <p>Karet</p>
-            </a>
-          </li>
-          <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('survei/index_sawit') }}">
-              <i class="material-icons">library_books</i>
-              <p>Kelapa Sawit</p>
-            </a>
-          </li>
-          <li class="nav-item {{ (request()->is('survei/tahunan*')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('survei/tahunan') }}">
-              <i class="material-icons">library_books</i>
-              <p>Tahunan</p>
-            </a>
-          </li>
+          @hasanyrole('admin|operator|approval')
+            <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('survei/index_karet') }}">
+                <i class="material-icons">library_books</i>
+                <p>Karet</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('survei/index_sawit') }}">
+                <i class="material-icons">library_books</i>
+                <p>Kelapa Sawit</p>
+              </a>
+            </li>
+            <li class="nav-item {{ (request()->is('survei/tahunan*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('survei/tahunan') }}">
+                <i class="material-icons">library_books</i>
+                <p>Tahunan</p>
+              </a>
+            </li>
+          @endhasanyrole
           
           <li class="nav-item {{ (request()->is('user/edit')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ url('user/edit') }}">
@@ -56,19 +58,21 @@
             </a>
           </li>
           
-          <li class="nav-item {{ (request()->is('perusahaan*')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('perusahaan') }}">
-              <i class="material-icons">library_books</i>
-              <p>Master Perusahaan</p>
-            </a>
-          </li>
-          
-          <li class="nav-item {{ (request()->is('user_role*')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('user_role') }}">
-              <i class="material-icons">library_books</i>
-              <p>Kelola Level User</p>
-            </a>
-          </li>
+          @hasanyrole('admin')
+            <li class="nav-item {{ (request()->is('perusahaan*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('perusahaan') }}">
+                <i class="material-icons">library_books</i>
+                <p>Master Perusahaan</p>
+              </a>
+            </li>
+            
+            <li class="nav-item {{ (request()->is('user_role*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('user_role') }}">
+                <i class="material-icons">library_books</i>
+                <p>Kelola Level User</p>
+              </a>
+            </li>
+          @endhasanyrole
 
           <li class="nav-item ">
               <form method="POST" action="{{ route('logout') }}">
