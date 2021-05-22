@@ -17,7 +17,7 @@
                         <th>No</th>
                         <th>Periode</th>
                         <th>Status</th>
-                        <th class="text-center">Aksi</th>
+                        <th colspan="2" class="text-center">Aksi</th>
                     </thead>
                     <tbody>
                         @foreach($datas as $key=>$value)

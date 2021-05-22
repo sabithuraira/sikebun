@@ -42,7 +42,9 @@ class PerusahaanController extends Controller
     {
         $model = new ProfilPerusahaan;
         $model->nama_perusahaan = $request->get('nama_perusahaan');
-        $model->alamat_perusahaan = $request->get('alamat_perusahaan');
+        $model->alamat_perusahaan = '-';
+        $model->is_karet = ($request->get('is_karet')=='1') ? 1 : 0;
+        $model->is_sawit = ($request->get('is_sawit')=='1') ? 1 : 0;
         $model->created_by =  Auth::id();
         $model->updated_by =  Auth::id();
         $model->save();
@@ -96,10 +98,10 @@ class PerusahaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $model = ProfilPerusahaan::find($id);
         $model->nama_perusahaan = $request->get('nama_perusahaan');
-        $model->alamat_perusahaan = $request->get('alamat_perusahaan');
+        $model->is_karet = ($request->get('is_karet')=='1') ? 1 : 0;
+        $model->is_sawit = ($request->get('is_sawit')=='1') ? 1 : 0;
         $model->updated_by =  Auth::id();
         $model->save();
 

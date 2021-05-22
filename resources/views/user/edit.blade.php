@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Pilih Perusahaan</label>
+                            <label class="bmd-label-floating">Nama Perusahaan/Kantor Administratur</label>
                             <select required class="form form-control" name="company_id" v-model="company_id" @change="setDatas()">
                                 <option value="">- PILIH PERUSAHAAN -</option>
                                 @foreach($list_perusahaan as $key=>$value)
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Alamat</label>
+                            <label class="bmd-label-floating">Alamat Lengkap Administratur</label>
                             <input type="text" class="form-control" name="alamat_perusahaan"  v-model="form.alamat_perusahaan">
                         </div>
                     </div>

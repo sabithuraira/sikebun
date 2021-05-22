@@ -17,7 +17,7 @@
                         <th>No</th>
                         <th>Periode</th>
                         <th>Status</th>
-                        <th class="text-center">Aksi</th>
+                        <th colspan="2" class="text-center">Aksi</th>
                     </thead>
                     <tbody>
                         @foreach($datas as $key=>$value)
@@ -25,6 +25,11 @@
                                 <td>{{ $key+1 }}</td>
                                 <td>Triwulan: {{ $value->triwulan }} Tahun: {{ $value->tahun }}</td>
                                 <td>{{ $value->listStatus[$value->status_dokumen] }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url('survei/'.$value->id.'/sawit_print') }}" class="btn btn-primary btn-link btn-sm">
+                                        <i class="material-icons">search</i>
+                                    </a>
+                                </td>
                                 <td class="text-center">
                                     @hasanyrole('admin|approval')
                                     <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">

@@ -13,6 +13,7 @@ use App\Models\Kec;
 use App\Models\Desa;
 use App\Models\ProfilPerusahaan;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class SurveiController extends Controller
 {
@@ -77,6 +78,52 @@ class SurveiController extends Controller
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
         return view('survei.sawit', compact('user_profile'));
+    }
+
+    public function sawit_print($id){
+        // $datas=array();
+        // $month = date('m');
+        // $year = date('Y');
+        // $type = 1;
+
+        // if(strlen($request->get('p_month'))>0)
+        //     $month = $request->get('p_month');
+
+        // if(strlen($request->get('p_year'))>0)
+        //     $year = $request->get('p_year');
+            
+        // // if(strlen($request->get('p_type'))>0)
+        // $type = $_POST['action'];
+            
+        // if(strlen($request->get('p_user'))>0){
+        //     $user_id = $request->get('p_user');
+        //     $user = \App\User::where('email', '=', $user_id)->first();
+        // }
+
+        // $model = new \App\Ckp;
+        // $datas = $model->CkpBulanan(1, $month, $year, $user_id);
+
+        // $monthLabel = config('app.months')[$month];
+        // $monthName = date("F", mktime(0, 0, 0, $month, 10));
+        // $last_day_month  = date('t', mktime(0, 0, 0, $month, 10)); //date("t");
+        // $first_working_day = date('d F Y', strtotime("+0 weekday $monthName $year"));
+        // $last_working_day = date('d F Y', strtotime('last weekday '.date("F Y", strtotime('next month '.$monthName.' '.$year))));
+
+        // $pdf = PDF::loadView('ckp.print', compact('month', 
+        //     'year', 'type', 'model', 'datas', 'user', 
+        //     'monthName', 'monthLabel', 'last_day_month',
+        //     'first_working_day', 'last_working_day'))
+        //     ->setPaper('a4', 'landscape');
+        
+        // $nama_file = $user_id.'_CKP_';
+        // if($type==1)
+        //     $nama_file .= 'T_';
+        // else
+        //     $nama_file .= 'R_';
+
+        // $nama_file .= $month .'_'.$year.'.pdf';
+
+        // return $pdf->download($nama_file);
     }
     
     public function sawit_store(Request $request){
@@ -502,6 +549,10 @@ class SurveiController extends Controller
         return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2'));
     }
     
+    public function karet_print($id){
+        
+    }
+    
     public function karet(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
@@ -895,6 +946,5 @@ class SurveiController extends Controller
     }
     
     public function tahunan_store(Request $request){
-        
     }
 }

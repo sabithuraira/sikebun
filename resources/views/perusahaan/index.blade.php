@@ -14,7 +14,7 @@
                     <thead class=" text-primary">
                         <th>No</th>
                         <th>Nama Perusahaan</th>
-                        <th>Alamat</th>
+                        <th>Komoditas</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -22,7 +22,15 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $value->nama_perusahaan }}</td>
-                                <td>{{ $value->alamat_perusahaan }}</td>
+                                <td>
+                                    @if($value->is_karet==1)
+                                        &nbsp; KARET &nbsp; 
+                                    @endif
+                                    
+                                    @if($value->is_sawit==1)
+                                        &nbsp; KELAPA SAWIT &nbsp; 
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ url('perusahaan/'.$value->id.'/edit') }}" class="btn btn-primary btn-link btn-sm">
                                         <i class="material-icons">edit</i>

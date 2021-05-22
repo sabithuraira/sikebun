@@ -30,6 +30,13 @@
             </a>
           </li>
           
+          <li class="nav-item {{ (request()->is('user/edit')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('user/edit') }}">
+              <i class="material-icons">bubble_chart</i>
+              <p>Profile Perusahaan</p>
+            </a>
+          </li>
+          
           @hasanyrole('admin|operator|approval')
             <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_karet') }}">
@@ -50,13 +57,6 @@
               </a>
             </li>
           @endhasanyrole
-          
-          <li class="nav-item {{ (request()->is('user/edit')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('user/edit') }}">
-              <i class="material-icons">bubble_chart</i>
-              <p>Profile Perusahaan</p>
-            </a>
-          </li>
           
           @hasanyrole('admin')
             <li class="nav-item {{ (request()->is('perusahaan*')) ? 'active' : '' }}">
