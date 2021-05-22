@@ -507,6 +507,23 @@
             </td>
         </tr>
     </table>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-info" @click="sendData()">KIRIM DATA</button>
+        </div>
+    </div>
+
+    <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center"><img src="{!! asset('img/loading.gif') !!}" width="200" height="200" alt="Loading..."></div>
+                    <h4 class="text-center">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -526,9 +543,37 @@ var vm = new Vue({
         form: {!! json_encode($model) !!},
         rincian1: {!! json_encode($rincian1) !!}, 
         rincian2: {!! json_encode($rincian2) !!},
-        pathname : window.location.pathname.replace("/sawit", ""),
         list_kab: [], list_pusat_kab: [], list_grup_kab: [],
         list_kec: [], list_desa: [],
+    },
+    computed: {
+        pathname(){
+            return window.location.pathname.replace("/"+this.form.id+"/karet", "")
+        }
+    },
+    methods: {
+        sendData: function () {
+            var self = this;
+            $('#wait_progres').modal('show');
+            
+            var data_post = self.form
+            var rincian = { rincian1: self.rincian1, rincian2: self.rincian2 }
+            data_post = { ...data_post, ...rincian }
+
+            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
+            $.ajax({
+                url :  self.pathname+"/"+self.form.id+"/karet_send",
+                method : 'post',
+                dataType: 'json'
+            }).done(function (data) {
+                $('#wait_progres').modal('hide');
+                window.location.href = self.pathname + "/index_karet"
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+                window.location.href = self.pathname + "/index_karet"
+            });
+        },
     }
 });
 </script>

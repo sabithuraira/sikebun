@@ -175,7 +175,7 @@ class SurveiController extends Controller
         $model['302_4a'] = $request->get("302_4a");
         $model['302_2b'] = $request->get("302_2b");
         $model['302_3b'] = $request->get("302_3b");
-        $model['302_4b'] = $request->get("302_4a");
+        $model['302_4b'] = $request->get("302_4b");
         $model['302_2c'] = $request->get("302_2c");
         $model['302_3c'] = $request->get("302_3c");
         $model['302_4c'] = $request->get("302_4c");
@@ -255,6 +255,30 @@ class SurveiController extends Controller
                     $model_rincian->save();
                 }
             }
+        }
+    }
+    
+    public function sawit_send_store(Request $request, $id){
+        $model = SurveiSawit::find($id);
+        $model->status_dokumen= 3;
+
+        if($model->save()){
+            return response()->json(['result'=>1]);
+        }
+        else{
+            return response()->json(['result'=>2]);
+        }
+    }
+    
+    public function karet_send_store(Request $request, $id){
+        $model = SurveiKaret::find($id);
+        $model->status_dokumen= 3;
+
+        if($model->save()){
+            return response()->json(['result'=>1]);
+        }
+        else{
+            return response()->json(['result'=>2]);
         }
     }
 
@@ -354,7 +378,7 @@ class SurveiController extends Controller
         $model['302_4a'] = $request->get("302_4a");
         $model['302_2b'] = $request->get("302_2b");
         $model['302_3b'] = $request->get("302_3b");
-        $model['302_4b'] = $request->get("302_4a");
+        $model['302_4b'] = $request->get("302_4b");
         $model['302_2c'] = $request->get("302_2c");
         $model['302_3c'] = $request->get("302_3c");
         $model['302_4c'] = $request->get("302_4c");
@@ -581,7 +605,7 @@ class SurveiController extends Controller
         $model['302_4a'] = $request->get("302_4a");
         $model['302_2b'] = $request->get("302_2b");
         $model['302_3b'] = $request->get("302_3b");
-        $model['302_4b'] = $request->get("302_4a");
+        $model['302_4b'] = $request->get("302_4b");
         $model['302_2c'] = $request->get("302_2c");
         $model['302_3c'] = $request->get("302_3c");
         $model['302_4c'] = $request->get("302_4c");
@@ -760,7 +784,7 @@ class SurveiController extends Controller
         $model['302_4a'] = $request->get("302_4a");
         $model['302_2b'] = $request->get("302_2b");
         $model['302_3b'] = $request->get("302_3b");
-        $model['302_4b'] = $request->get("302_4a");
+        $model['302_4b'] = $request->get("302_4b");
         $model['302_2c'] = $request->get("302_2c");
         $model['302_3c'] = $request->get("302_3c");
         $model['302_4c'] = $request->get("302_4c");

@@ -46,10 +46,12 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::group(['middleware' => ['role:operator']], function () {   
     Route::get('/survei/sawit', [SurveiController::class, 'sawit']);
     Route::post('/survei/sawit', [SurveiController::class, 'sawit_store']);
+    Route::post('/survei/{id}/sawit_send', [SurveiController::class, 'sawit_send_store']);
     Route::post('/survei/sawit_clean', [SurveiController::class, 'sawit_clean_store']);
     
     Route::get('/survei/karet', [SurveiController::class, 'karet']);
     Route::post('/survei/karet', [SurveiController::class, 'karet_store']);
+    Route::post('/survei/{id}/karet_send', [SurveiController::class, 'karet_send_store']);
     Route::post('/survei/karet_clean', [SurveiController::class, 'karet_clean_store']);
     
     Route::get('/survei/tahunan', [SurveiController::class, 'tahunan']);
