@@ -37,7 +37,7 @@
             </a>
           </li>
           
-          @hasanyrole('admin|operator|approval')
+          @hasanyrole('admin')
             <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_karet') }}">
                 <i class="material-icons">library_books</i>
@@ -50,6 +50,29 @@
                 <p>Kelapa Sawit</p>
               </a>
             </li>
+          @else
+            @hasanyrole('operator|approval')
+              @if(Auth::user()->getIsKaretAttributes())
+                <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ url('survei/index_karet') }}">
+                    <i class="material-icons">library_books</i>
+                    <p>Karet</p>
+                  </a>
+                </li>
+              @endif 
+
+              @if(Auth::user()->getIsSawitAttributes())
+                <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ url('survei/index_sawit') }}">
+                    <i class="material-icons">library_books</i>
+                    <p>Kelapa Sawit</p>
+                  </a>
+                </li>
+              @endif
+            @endhasanyrole
+          @endhasanyrole
+            
+          @hasanyrole('admin|operator|approval')
             <li class="nav-item {{ (request()->is('survei/tahunan*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/tahunan') }}">
                 <i class="material-icons">library_books</i>
@@ -73,6 +96,13 @@
               </a>
             </li>
           @endhasanyrole
+
+          <li class="nav-item {{ (request()->is('user/change_password*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('user/change_password') }}">
+                <i class="material-icons">fingerprint</i>
+                <p>Rubah Password</p>
+              </a>
+            </li>
 
           <li class="nav-item ">
               <form method="POST" action="{{ route('logout') }}">

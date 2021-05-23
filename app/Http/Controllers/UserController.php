@@ -5,25 +5,93 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\ProfilPerusahaan;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Actions\Fortify\PasswordValidationRules;
 
 class UserController extends Controller
 {
+    use PasswordValidationRules;
+    public function index(Request $request)
+    {
+        $datas = User::paginate();   
+        $datas->withPath('user');
+        $datas->appends($request->all());     
+        return view('user.index', compact('datas'));
+    }
+
+    public function create(){
+        $model = new User;
+        $list_perusahaan = ProfilPerusahaan::all();
+        return view('user.create', compact('model', 'list_perusahaan'));
+    }
+
+    public function store(Request $request){
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => $this->passwordRules(),
+        ])->validate();
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'company_id' => $request->company_id,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect('user');
+    }
+
+    public function change_password(){
+        $model = new User;
+        return view('user.change_password', compact('model'));
+    }
+
+    public function change_password_store(Request $request){
+        $user = User::find(Auth::id());
+
+        Validator::make($request->all(), [
+            'current_password' => ['required', 'string'],
+            'password' => $this->passwordRules(),
+        ])->after(function ($validator) use ($user, $request) {
+            if (! isset($request->current_password) || ! Hash::check($request->current_password, $user->password)) {
+                $validator->errors()->add('current_password', __('The provided password does not match your current password.'));
+            }
+        })->validate();
+
+        $user->forceFill([
+            'password' => Hash::make($request->password),
+        ])->save();
+        /////////
+        // Validator::make($input, [
+        //     'current_password' => ['required', 'string'],
+        //     'password' => $this->passwordRules(),
+        // ])->after(function ($validator) use ($user, $input) {
+        //     if (! isset($input['current_password']) || ! Hash::check($input['current_password'], $user->password)) {
+        //         $validator->errors()->add('current_password', __('The provided password does not match your current password.'));
+        //     }
+        // })->validateWithBag('updatePassword');
+
+        // $user->forceFill([
+        //     'password' => Hash::make($input['password']),
+        // ])->save();
+
+        return redirect('dashboard');
+    }
+    
     public function edit(){
         $model = User::find(Auth::id());
-        $list_perusahaan = ProfilPerusahaan::all();
+        $perusahaan = ProfilPerusahaan::find($model->company_id);
         return view('user.edit', compact(
-            'model', 'list_perusahaan'
+            'model', 'perusahaan'
         ));
     }
 
     public function update(Request $request){
         $model = User::find(Auth::id());
-        $company_id =  $request->company_id;
-        $model_profil = ProfilPerusahaan::find($company_id);
-
-        $model->company_id = $company_id;
-        $model->save();
+        $model_profil = ProfilPerusahaan::find($model->company_id);
 
         $model_profil->alamat_perusahaan = $request->alamat_perusahaan;
         $model_profil->kode_pos_perusahaan = $request->kode_pos_perusahaan;

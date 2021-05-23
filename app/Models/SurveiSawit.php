@@ -16,6 +16,7 @@ class SurveiSawit extends Model
             1 => 'SAVED',
             2 => 'CLEAN',
             3 => 'SEND',
+            4 => 'SELESAI',
         ];
     }
 }

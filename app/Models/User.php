@@ -60,4 +60,33 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getIsKaretAttributes(){
+        if($this->company_id!='' && $this->company_id!=null){
+            $perusahaan = ProfilPerusahaan::find($this->company_id);
+            if($perusahaan!=null){
+                if($perusahaan->is_karet==1) return true;
+            }
+        }
+
+        return false;
+    }
+    
+    public function getIsSawitAttributes(){
+        if($this->company_id!='' && $this->company_id!=null){
+            $perusahaan = ProfilPerusahaan::find($this->company_id);
+            if($perusahaan!=null){
+                if($perusahaan->is_sawit==1) return true;
+            }
+        }
+
+        return false;
+    }
+
+    
+    //relasi yang menghubungkan dengan user yang melakukan input
+    public function company()
+    {
+        return $this->hasOne(ProfilPerusahaan::class, 'id', 'company_id');
+    }
 }

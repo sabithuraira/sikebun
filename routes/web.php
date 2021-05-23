@@ -41,6 +41,13 @@ Route::group(['middleware' => 'auth'], function(){
 Route::group(['middleware' => ['role:admin']], function () {   
     Route::resource('role', RoleController::class);
     Route::resource('user_role', UserRoleController::class);
+    
+    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user/create', [UserController::class, 'create']);
+    Route::post('/user', [UserController::class, 'store']);
+    
+    Route::get('/user/change_password', [UserController::class, 'change_password']);
+    Route::post('/user/change_password', [UserController::class, 'change_password_store']);
 });
 
 Route::group(['middleware' => ['role:operator']], function () {   

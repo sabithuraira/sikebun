@@ -14,12 +14,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">Nama Perusahaan/Kantor Administratur</label>
-                            <select required class="form form-control" name="company_id" v-model="company_id" @change="setDatas()">
-                                <option value="">- PILIH PERUSAHAAN -</option>
-                                @foreach($list_perusahaan as $key=>$value)
-                                    <option value="{{ $value->id }}">{{ $value->nama_perusahaan }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" disabled class="form-control" value="{{ $perusahaan->nama_perusahaan }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -158,7 +153,7 @@ var vm = new Vue({
     el: "#app_vue",
     data:  {
         pathname : window.location.pathname.replace("/user/edit", ""),
-        company_id: '',
+        company_id: {!! json_encode($perusahaan->id) !!},
         form: {
             nama_perusahaan: '', 
             alamat_perusahaan: '', kode_pos_perusahaan: '',telp_perusahaan: '', fax_perusahaan: '',
@@ -176,13 +171,12 @@ var vm = new Vue({
             label_kab_kantor_pusat: '',
             created_by: '', updated_by: '',
             created_at: '', updated_at: '',
-            
         },
     },
     methods: {
         setDatas: function(){
             var self = this;
-            if(self.company_id.length>0){
+            if(self.company_id.toString().length>0){
                 $('#wait_progres').modal('show');
                 $.ajaxSetup({
                     headers: {
