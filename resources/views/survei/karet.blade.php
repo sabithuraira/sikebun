@@ -52,20 +52,20 @@
         <tr class="bg-danger text-center"><td colspan="4"><b>I. PENGENALAN TEMPAT</b></td></tr>
         <tr>
             <td>101. Nama Perusahaan/Kantor Administratur</td>
-            <td><input type="text" name="nama_perusahaan" v-model="form.nama_perusahaan"></td>
+            <td><input type="text" disabled name="nama_perusahaan" v-model="form.nama_perusahaan"></td>
             <td>103. Nama Group Perusahaan</td>
             <td><input type="text" name="nama_grup" v-model="form.nama_grup"></td>
         </tr>
         
         <tr>
-            <td colspan="2">&nbsp;&nbsp;&nbsp;a. Alamat Lengkap Administratur Kebun:<input type="text" name="alamat" v-model="form.alamat"></td>
+            <td colspan="2">&nbsp;&nbsp;&nbsp;a. Alamat Lengkap Administratur Kebun:<input type="text" disabled name="alamat" v-model="form.alamat"></td>
             <td colspan="2">&nbsp;&nbsp;&nbsp;a. Alamat Lengkap Group Perusahaan:<input type="text" name="alamat_grup" v-model="form.alamat_grup"></td>
         </tr>
         
         <tr>
             <td colspan="2">
-                &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" name="kode_pos" v-model="form.kode_pos">
-                &nbsp;&nbsp;&nbsp; Telepon: <input type="text" name="telp" v-model="form.telp">
+                &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" disabled name="kode_pos" v-model="form.kode_pos">
+                &nbsp;&nbsp;&nbsp; Telepon: <input type="text" disabled name="telp" v-model="form.telp">
             </td>
             <td colspan="2">
                 &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" name="kode_pos_grup"  v-model="form.kode_pos_grup">
@@ -76,7 +76,7 @@
         <tr>
             <td colspan="2">
                 &nbsp;&nbsp;&nbsp; Email: <input type="text" name="email" v-model="form.email">
-                &nbsp;&nbsp;&nbsp; Fax: <input type="text" name="fax" v-model="form.fax">
+                &nbsp;&nbsp;&nbsp; Fax: <input type="text" disabled name="fax" v-model="form.fax">
             </td>
             <td colspan="2">
                 &nbsp;&nbsp;&nbsp; Email: <input type="text" name="email_grup"  v-model="form.email_grup">
@@ -100,7 +100,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select id="kode_kab" v-model="form.kode_kab" @change="setKec()">
+                <select id="kode_kab" disabled v-model="form.kode_kab" @change="setKec()">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -123,7 +123,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; d. Kecamatan</td>
             <td>
-                <select id="kode_kec" v-model="form.kode_kec" @change="setDesa()">
+                <select id="kode_kec" disabled v-model="form.kode_kec" @change="setDesa()">
                     <option value="">- Pilih Kecamatan -</option>
                     <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
                         @{{ v.idKec }} - @{{ v.nmKec }}
@@ -133,7 +133,7 @@
             </td>
             <td>104. Status permodalan/pemilikan *)</td>
             <td>
-                <select name="status_pemodalan_grup" v-model="form.status_pemodalan_grup">
+                <select required name="status_pemodalan_grup" v-model="form.status_pemodalan_grup">
                     <option value="">- Pilih Status Permodalan/Pemilikan -</option>
                     <option value="1">1. PMDN</option>
                     <option value="2">2. PMA</option>
@@ -144,7 +144,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; e. Desa/Kelurahan *)</td>
             <td>
-                <select id="kode_desa" v-model="form.kode_desa" @click="namaDesa()">
+                <select id="kode_desa" disabled v-model="form.kode_desa" @click="namaDesa()">
                     <option value="">- Pilih Desa -</option>
                     <option v-for="v in list_desa" :key="v.idDesa" :value="v.idDesa">
                         @{{ v.idDesa }} - @{{ v.nmDesa }}
@@ -154,7 +154,7 @@
             </td>
             <td>105. Bentuk Badan Hukum</td>
             <td>
-                <select name="badan_hukum_grup" v-model="form.badan_hukum_grup">
+                <select required name="badan_hukum_grup" v-model="form.badan_hukum_grup">
                     <option value="">- Pilih Bentuk Badan Hukum -</option>
                     <option value="1">1. PTPN</option>
                     <option value="2">2. Perusahaan Daerah</option>
@@ -173,7 +173,7 @@
             <td><input type="text" name="nama_contact" v-model="form.nama_contact"></td>
             <td>106. Apakah Sebagai Pelaksana Kemitraan</td>
             <td>
-                <select name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan">
+                <select required name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan">
                     <option value="1">1. Ya</option>
                     <option value="2">2. Tidak</option>
                 </select>
@@ -185,7 +185,7 @@
             <td><input type="text" name="nomor_hp" v-model="form.nomor_hp"></td>
             <td>107. Apakah mempunyai Kebun Plasma yang belum dikonversi</td>
             <td>
-                <select name="punya_kebun_plasma" v-model="form.punya_kebun_plasma">
+                <select required name="punya_kebun_plasma" v-model="form.punya_kebun_plasma">
                     <option value="1">1. Ya</option>
                     <option value="2">2. Tidak</option>
                 </select>
@@ -196,7 +196,7 @@
             <td colspan="2"><b>Kondisi Perusahaan: Aktif/Tutup Sementara/Non Respon/Tidak Ditemukan *)</b></td>
             <td>108. Apakah mempunyai unit pengolahan produksi</td>
             <td>
-                <select name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan">
+                <select required name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan">
                     <option value="1">1. Ya</option>
                     <option value="2">2. Tidak</option>
                 </select>
@@ -205,21 +205,21 @@
         
         <tr>
             <td>102. Nama Kantor Pusat</td>
-            <td><input type="text" name="nama_kantor_pusat" v-model="form.nama_kantor_pusat"></td>
+            <td><input type="text" disabled name="nama_kantor_pusat" v-model="form.nama_kantor_pusat"></td>
             <td>109. Tahun Berdiri/Operasional Perusahaan</td>
-            <td><input type="text" name="tahun_berdiri" v-model="form.tahun_berdiri"></td>
+            <td><input required type="text" name="tahun_berdiri" v-model="form.tahun_berdiri"></td>
         </tr>
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; a. Alamat Lengkap Pusat</td>
-            <td><input type="text" name="alamat_kantor_pusat" v-model="form.alamat_kantor_pusat"></td>
+            <td><input type="text" disabled name="alamat_kantor_pusat" v-model="form.alamat_kantor_pusat"></td>
             <td colspan="2" class="text-center bg-danger"><b>II. KETERANGAN PETUGAS</b></td>
         </tr>
         
         <tr>
             <td colspan="2">
-                &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" name="kode_pos_kantor_pusat" v-model="form.kode_pos_kantor_pusat">
-                Telepon: <input type="text" name="telp_kantor_pusat" v-model="form.telp_kantor_pusat">
+                &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" disabled name="kode_pos_kantor_pusat" v-model="form.kode_pos_kantor_pusat">
+                Telepon: <input type="text" disabled name="telp_kantor_pusat" v-model="form.telp_kantor_pusat">
             </td>
             <td colspan="3" rowspan="4">
                 <table style="min-width:100%">
@@ -248,14 +248,14 @@
         <tr>
             <td colspan="2">
                 &nbsp;&nbsp;&nbsp; Email: <input type="text" name="email_kantor_pusat" v-model="form.email_kantor_pusat">
-                Fax: <input type="text" name="fax_kantor_pusat" v-model="form.fax_kantor_pusat">
+                Fax: <input type="text" disabled name="fax_kantor_pusat" v-model="form.fax_kantor_pusat">
             </td>
         </tr>
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
             <td>
-                <input type="text" name="kode_prov_kantor_pusat" v-model="form.kode_prov_kantor_pusat">
+                <input type="text" disabled name="kode_prov_kantor_pusat" v-model="form.kode_prov_kantor_pusat">
                 <input type="hidden" name="label_prov_kantor_pusat" v-model="form.label_prov_kantor_pusat">
             </td>
         </tr>
@@ -263,7 +263,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select id="kode_kab_kantor_pusat" v-model="form.kode_kab_kantor_pusat"  @change="namaKab(3)">
+                <select id="kode_kab_kantor_pusat" disabled v-model="form.kode_kab_kantor_pusat"  @change="namaKab(3)">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_pusat_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -311,9 +311,9 @@
         <tr><td colspan="16">A. Nama Kebun, Luas Tanaman dan Produksi</td></tr>
         <tr class="text-center">
             <td rowspan="4">Nama Kebun</td>
-            <td colspan="5">Bulan</td>
-            <td colspan="5">Bulan</td>
-            <td colspan="5">Bulan</td>
+            <td colspan="5">Bulan @{{ list_bulan[0] }}</td>
+            <td colspan="5">Bulan @{{ list_bulan[1] }}</td>
+            <td colspan="5">Bulan @{{ list_bulan[2] }}</td>
         </tr>
         <tr class="text-center">
             <td colspan="4">Luas Tanaman</td>
@@ -634,6 +634,13 @@ var vm = new Vue({
     computed: {
         triwulan() { return this.form.triwulan },
         tahun() { return this.form.tahun },
+        list_bulan() {
+            if(this.form.triwulan==1) return ["Januari", "Februari", "Maret"]
+            else if(this.form.triwulan==2) return ["April", "Mei", "Juni"]
+            else if(this.form.triwulan==3) return ["Juli", "Agustus", "September"]
+            else if(this.form.triwulan==4) return ["Oktober", "November", "Desember"]
+            else return ["", "", ""]
+        }
     },
     watch: {
         triwulan() { this.setDatas(); },
