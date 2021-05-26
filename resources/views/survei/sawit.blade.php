@@ -415,31 +415,46 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan1" v-model="form['301_b_bulan1']" size="3"></td>
+            <td>
+                <select required name="301_b_bulan1" v-model="form['301_b_bulan1']">
+                    <option value="1">1.Tandan Buah Segar (TBS)</option>
+                    <option value="2">2.Crude Palm Oil (CPO)</option>
+                </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan2" v-model="form['301_b_bulan2']" size="3"></td>
+            <td>
+                <select required name="301_b_bulan2" v-model="form['301_b_bulan2']">
+                    <option value="1">1.Tandan Buah Segar (TBS)</option>
+                    <option value="2">2.Crude Palm Oil (CPO)</option>
+                </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan3" v-model="form['301_b_bulan3']" size="3"></td>
+            <td>
+                <select required name="301_b_bulan3" v-model="form['301_b_bulan3']">
+                    <option value="1">1.Tandan Buah Segar (TBS)</option>
+                    <option value="2">2.Crude Palm Oil (CPO)</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td colspan="5">    C. Rendemen dari <b>TANDAN BUAH SEGAR</b> menjadi <b><i>CRUDE PALM OIL</i></b></td>
-            <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"></td>
+            <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"> %</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"></td>
+            <td><input type="text" name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"> %</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"></td>
+            <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"> %</td>
         </tr>
         <tr>
             <td colspan="16">**) Kode Produksi (pilih salah satu) :  1. Tandan Buah Segar (TBS) &nbsp;&nbsp;&nbsp; 2. Crude Palm Oil (CPO) &nbsp;&nbsp;&nbsp; </td>
@@ -593,21 +608,21 @@ var vm = new Vue({
             created_by: '',
             updated_by: '',
             
-            '301_a3_total_tbm_bulan1': '',
-            '301_a3_total_tsm_bulan1': '',
-            '301_a3_total_tstm_bulan1': '',
-            '301_a3_total_ttm_bulan1': '',
-            '301_a3_total_produksi_bulan1': '',
-            '301_a3_total_tbm_bulan2': '',
-            '301_a3_total_tsm_bulan2': '',
-            '301_a3_total_tstm_bulan2': '',
-            '301_a3_total_ttm_bulan2': '',
-            '301_a3_total_produksi_bulan2': '',
-            '301_a3_total_tbm_bulan3': '',
-            '301_a3_total_tsm_bulan3': '',
-            '301_a3_total_tstm_bulan3': '',
-            '301_a3_total_ttm_bulan3': '',
-            '301_a3_total_produksi_bulan3': '',
+            '301_a3_total_tbm_bulan1': 0,
+            '301_a3_total_tsm_bulan1': 0,
+            '301_a3_total_tstm_bulan1': 0,
+            '301_a3_total_ttm_bulan1': 0,
+            '301_a3_total_produksi_bulan1': 0,
+            '301_a3_total_tbm_bulan2': 0,
+            '301_a3_total_tsm_bulan2': 0,
+            '301_a3_total_tstm_bulan2': 0,
+            '301_a3_total_ttm_bulan2': 0,
+            '301_a3_total_produksi_bulan2': 0,
+            '301_a3_total_tbm_bulan3': 0,
+            '301_a3_total_tsm_bulan3': 0,
+            '301_a3_total_tstm_bulan3': 0,
+            '301_a3_total_ttm_bulan3': 0,
+            '301_a3_total_produksi_bulan3': 0,
             '301_b_bulan1': '',
             '301_b_bulan2': '',
             '301_b_bulan3': '',

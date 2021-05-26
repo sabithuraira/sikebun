@@ -14,6 +14,22 @@
             <table class="table-border" style="min-width:100%">
                 <tr class="bg-info text-center"><td colspan="2"><b>PANDUAN PENGISIAN</b></td></tr>
                 <tr>
+                    <td>Surat Edaran BUPATI MUSI BANYUASIN TENTANG DUKUNGAN SIKEBUN</td>
+                    <td><a href="https://drive.google.com/file/d/1ufsARiqdjEEnYeuRhB3tOPc0O7n733Qk/view?usp=sharing">Unduh</a></td>
+                </tr>
+                <tr>
+                    <td>Surat Edaran BUPATI MUSI BANYUASIN TENTANG DUKUNGAN DUKUNGAN SURVEI PERUSAHAAN PERKEBUNAN</td>
+                    <td><a href="https://drive.google.com/file/d/1LDBPqxYkPhczFzKWlukWsWAgr_4ot0yO/view?usp=sharing">Unduh</a></td>
+                </tr>
+                <tr>
+                    <td>Perjanjian Kerja Sama BPS dengan GAPKI Tentang Penyediaan, Pemanfaatan dan Pengembangan Data/Informasi Statistik Kelapa Sawit</td>
+                    <td><a href="https://drive.google.com/file/d/1IPXh7eUPl49Vmfvfp2ZOpZDSkHglU9JI/view?usp=sharing">Unduh</a></td>
+                </tr>
+                <tr>
+                    <td>Nota Kesapahaman BPS dan GAPKI Tentang Penyediaan, Pemanfaatan dan Pengembangan Data/Informasi Statistik Kelapa Sawit</td>
+                    <td><a href="https://drive.google.com/file/d/1XL4Z0F8yKkgLDKa3VdaURcvECsYjcMlq/view?usp=sharing">Unduh</a></td>
+                </tr>
+                <tr>
                     <td>Pedoman Pengisian SKB Triwulanan</td>
                     <td><a href="https://drive.google.com/file/d/1HgcCPtXPStKCo73K3uCj04s3S1PxR7jE/view?usp=sharing">Unduh</a></td>
                 </tr>

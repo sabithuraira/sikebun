@@ -21,7 +21,7 @@
                     
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Email</label>
+                            <label class="bmd-label-floating">Username</label>
                             <input type="text" class="form-control" name="email" value="{{ old('email') }}" required />
                             @foreach ($errors->get('email') as $msg)
                                 <p class="text-danger">{{ $msg }}</p>

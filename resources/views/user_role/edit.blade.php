@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Badge No :</label>
+                        <label>Username :</label>
                         <input type="text" class="form-control" name="email" value="{{ old('email', $model->email) }}">
                     </div>
                 </fieldset>

@@ -89,10 +89,17 @@
               </a>
             </li>
             
-            <li class="nav-item {{ (request()->is('user_role*')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('user_role')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('user_role') }}">
                 <i class="material-icons">library_books</i>
                 <p>Kelola Level User</p>
+              </a>
+            </li>
+            
+            <li class="nav-item {{ (request()->is('user')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('user') }}">
+                <i class="material-icons">library_books</i>
+                <p>Kelola User</p>
               </a>
             </li>
           @endhasanyrole

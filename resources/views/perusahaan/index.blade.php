@@ -20,7 +20,7 @@
                     <tbody>
                         @foreach($datas as $key=>$value)
                             <tr>
-                                <td>{{ $key+1 }}</td>
+                                <td>{{ $datas->firstItem() + $key }}</td>
                                 <td>{{ $value->nama_perusahaan }}</td>
                                 <td>
                                     @if($value->is_karet==1)

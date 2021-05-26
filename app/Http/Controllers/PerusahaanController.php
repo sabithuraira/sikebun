@@ -16,7 +16,7 @@ class PerusahaanController extends Controller
     public function index(Request $request)
     {
         $datas = ProfilPerusahaan::paginate();   
-        $datas->withPath('barang');
+        $datas->withPath('perusahaan');
         $datas->appends($request->all());     
         return view('perusahaan.index', compact('datas'));
     }
@@ -49,7 +49,7 @@ class PerusahaanController extends Controller
         $model->updated_by =  Auth::id();
         $model->save();
 
-        return redirect('perusahaan');
+        return redirect(url('perusahaan'));
     }
 
     /**
@@ -105,7 +105,7 @@ class PerusahaanController extends Controller
         $model->updated_by =  Auth::id();
         $model->save();
 
-        return redirect('perusahaan');
+        return redirect(url('perusahaan'));
     }
 
     /**

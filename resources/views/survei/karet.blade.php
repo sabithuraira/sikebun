@@ -415,31 +415,55 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan1" v-model="form['301_b_bulan1']" size="3"></td>
+            <td>
+                <select required name="301_b_bulan1" v-model="form['301_b_bulan1']">
+                    <option value="1">1.Lateks</option>
+                    <option value="2">2.Lateks Kering</option>
+                    <option value="3">3.Lump</option>
+                    <option value="4">4.Slab</option>
+                    <option value="5">5.Sit Angin</option>
+                </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan2" v-model="form['301_b_bulan2']" size="3"></td>
+            <td>
+                <select required name="301_b_bulan2" v-model="form['301_b_bulan2']">
+                    <option value="1">1.Lateks</option>
+                    <option value="2">2.Lateks Kering</option>
+                    <option value="3">3.Lump</option>
+                    <option value="4">4.Slab</option>
+                    <option value="5">5.Sit Angin</option>
+                </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_b_bulan3" v-model="form['301_b_bulan3']" size="3"></td>
+            <td>
+                <select required name="301_b_bulan3" v-model="form['301_b_bulan3']">
+                    <option value="1">1.Lateks</option>
+                    <option value="2">2.Lateks Kering</option>
+                    <option value="3">3.Lump</option>
+                    <option value="4">4.Slab</option>
+                    <option value="5">5.Sit Angin</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td colspan="5">    C. Rendemen dari LATEKS menjadi bentuk produksi pada Rincian B kolom (6), (11), (16)</td>
-            <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"></td>
+            <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"> %</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"></td>
+            <td><input type="text" name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"> %</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"></td>
+            <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"> %</td>
         </tr>
         <tr>
             <td colspan="16">**) Kode Produksi (pilih salah satu) :  1. Lateks &nbsp;&nbsp;&nbsp; 2. Lateks Kering &nbsp;&nbsp;&nbsp; 3. Lump &nbsp;&nbsp;&nbsp; 4. Slab &nbsp;&nbsp;&nbsp; 5. Sit Angin</td>
