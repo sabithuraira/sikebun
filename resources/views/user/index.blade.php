@@ -14,7 +14,7 @@
                     <thead class=" text-primary">
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Email</th>
+                        <th>Username</th>
                         <th>Perusahaan</th>
                     </thead>
                     <tbody>

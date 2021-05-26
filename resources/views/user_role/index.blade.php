@@ -2,19 +2,18 @@
 
 @section('content')
     <div class="container" id="app">
-      <br />
-      @if (\Session::has('success'))
-        <div class="alert alert-success">
-          <p>{{ \Session::get('success') }}</p>
-        </div><br />
-      @endif
+        <br />
+        @if (\Session::has('success'))
+            <div class="alert alert-success">
+            <p>{{ \Session::get('success') }}</p>
+            </div><br />
+        @endif
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Daftar Role</h4>
-                        <a href="#" id="btn-tambah" class="btn btn-secondary btn-round">Tambah</a>
                     </div>
                     
                     <div class="card-body">
@@ -38,46 +37,16 @@
             </div>
         </div>
 
-
-
-    <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="text-center"><img src="{!! asset('lucid/assets/images/loading.gif') !!}" width="200" height="200" alt="Loading..."></div>
-                    <h4 class="text-center">Please wait...</h4>
+        <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center"><img src="{!! asset('lucid/assets/images/loading.gif') !!}" width="200" height="200" alt="Loading..."></div>
+                        <h4 class="text-center">Please wait...</h4>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <div id="form_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span id="myModalLabel">Role</span>
-                </div>
-                
-                <div class="modal-body">
-                    <table class="table table-hover table-condensed">
-                        <tbody>
-                            <tr>
-                                <td><input type="text" class="form-control" placeholder="Nama role..." name="role_name" v-model="role_name"></td>  
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    <button class="btn btn-primary" data-dismiss="modal" id="btn-submit">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
   </div>
 @endsection
 

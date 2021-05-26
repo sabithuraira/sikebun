@@ -1,10 +1,16 @@
 @extends('layouts.login')
 
 @section('content')
+
     <div class="col-md-6 card">
+        <div class="card-header">
+            <div class="row align-bottom">
+                <div class="col-md-6"><img src="{{ asset('img/logo_sikebun.png') }}" width="150px" /></div>
+            </div>
+        </div>
         <div class="card-header card-header-primary">
             <h4 class="card-title">Login</h4>
-            <p class="card-category">Masukkan akun anda atau </p>
+            <p class="card-category">Selamat datang, silahkan masukkan akun anda</p>
         </div>
         <div class="card-body">
             

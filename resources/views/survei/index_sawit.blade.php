@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-success">
-                <h4 class="card-title ">Survey Triwulanan Sawit Anda</h4>
+                <h4 class="card-title ">Survey Triwulanan Kelapa Sawit Anda</h4>
                 @hasanyrole('operator')
                     <a href="{{ url('survei/sawit') }}" class="btn btn-secondary btn-round">Tambah Data</a>
                 @endhasanyrole
@@ -24,18 +24,23 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>Triwulan: {{ $value->triwulan }} Tahun: {{ $value->tahun }}</td>
-                                <td>{{ $value->listStatus[$value->status_dokumen] }}</td>
+                                <td>
+                                    {{ $value->listStatus[$value->status_dokumen] }}<br/>
+                                    <small><i>(Terakhir diperbaharui {{ date('d M Y h:i', strtotime($value->updated_at)) }})</i></small>
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ url('survei/'.$value->id.'/sawit_print') }}" class="btn btn-primary btn-link btn-sm">
                                         <i class="material-icons">search</i>
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    @hasanyrole('admin|approval')
-                                    <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">
-                                        <i class="material-icons">search</i>
-                                    </a>
-                                    @endhasanyrole
+                                    @if($value->status_dokumen>=2)
+                                        @hasanyrole('admin|approval')
+                                        <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">
+                                            <i class="material-icons">search</i>
+                                        </a>
+                                        @endhasanyrole
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

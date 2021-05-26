@@ -33,7 +33,7 @@ class UserController extends Controller
             'email' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
         ])->validate();
-
+        
         User::create([
             'name' => $request->name,
             'email' => $request->email,

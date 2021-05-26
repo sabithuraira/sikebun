@@ -69,37 +69,37 @@
         <tr>
             <td></td>
             <td>b. Provinsi</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>c. Kabupaten/Kota *)</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>d. Kecamatan</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>e. Desa/Kelurahan *)</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>f. Nama Contact Person</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>g. Nomor HP/Telp</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
 
         <tr><td colspan="4">2. Nama Kantor Pusat</td></tr>
@@ -124,13 +124,13 @@
         <tr>
             <td></td>
             <td>b. Provinsi</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>c. Kabupaten/Kota *)</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
 
         <tr><td colspan="4">3. Nama Group Perusahaan</td></tr>
@@ -154,13 +154,13 @@
         <tr>
             <td></td>
             <td>b. Provinsi</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
         
         <tr>
             <td></td>
             <td>c. Kabupaten/Kota *)</td>
-            <td colspan="2" class="text-right"><input type="text"></td>
+            <td colspan="2" class="text-right"><input type="text" size="3"></td>
         </tr>
 
         <tr><td colspan="4"><i>*) Coret yang tidak sesuai</i></td></tr>
@@ -177,11 +177,12 @@
 
     </table>
 
-    <table style="min-width:100%">
-        <tr><td colspan="4">II. KETERANGAN UMUM PERUSHAAN</td></tr>
-        <tr><td colspan="4">1. Kondisi Perusahaan Berdasarkan Hasil Kunjungan ? (Lingkari salah satu kode yang sesuai)</td></tr>
+    <hr/>
+    <table style="min-width:100%"  class="table-border">
+        <tr><td class="bg-success text-center" colspan="4"><b>II. KETERANGAN UMUM PERUSHAAN</b></td></tr>
         <tr>
-            <td colspan="4" class="text-right">
+            <td colspan="3">1. Kondisi Perusahaan Berdasarkan Hasil Kunjungan ? (Lingkari salah satu kode yang sesuai)</td>
+            <td class="text-right">
                 <select>
                     <option value="1">Aktif</option>
                     <option value="2">Belum berproduksi</option>
@@ -191,9 +192,9 @@
                 </select>
             </td>
         </tr>
-        <tr><td colspan="4">2. Bentuk Badan Hukum Perusahaan</td></tr>
         <tr>
-            <td colspan="4" class="text-right">
+            <td colspan="3">2. Bentuk Badan Hukum Perusahaan</td>
+            <td class="text-right">
                 <select>
                     <option value="1">PTP Nusantara</option>
                     <option value="2">Perusahaan Daerah</option>
@@ -206,31 +207,31 @@
                 </select>
             </td>
         </tr>
-        <tr><td colspan="4">3. Status Permodalan (Lingkari salah satu kode yang sesuai)</td></tr>
         <tr>
-            <td colspan="4" class="text-right">
+            <td colspan="3">3. Status Permodalan (Lingkari salah satu kode yang sesuai)</td>
+            <td class="text-right">
                 <select>
                     <option value="1">PMDN</option>
                     <option value="2">PMA</option>
                 </select>
             </td>
         </tr>
-        
         <tr>
-            <td colspan="2">4. Masa Berlaku SK HGU Terakhir</td>
-            <td colspan="2" class="text-right">
+            <td colspan="3">4. Masa Berlaku SK HGU Terakhir</td>
+            <td class="text-right">
                 <input type="text"> s/d <input type="text">
             </td>
         </tr>
         <tr>
-            <td colspan="4">Tulis Jenis Tanamapn Perkebunan Tahunan dan atau Tanaman Perkebunan Semusim yang diusahakan</td>
+            <td colspan="4">Tulis Jenis Tanaman Perkebunan Tahunan dan atau Tanaman Perkebunan Semusim yang diusahakan</td>
         </tr>
         
         <tr>
             <td colspan="4">
+                
                 <select>
                     <option v-for="item in list_jenis_tanaman" :key="item.kode">
-                        @{{ item.kode }} @{{ item.label }} 
+                        @{{ item.kode }} - @{{ item.label }} 
                     </option>
                 </select>
             </td>
@@ -279,44 +280,614 @@
 
         
         <tr>
-            <td></td>
-            <td>Kode diisi BPS</td>
-            <td></td>
-            <td>Kode diisi BPS</td>
-        </tr>
-        
-        <tr>
-            <td>1. <input type="text"></td>
-            <td><input type="text" placeholder="kode" disabled></td>
-            <td>3. <input type="text"></td>
-            <td><input type="text" placeholder="kode" disabled></td>
-        </tr>
-        
-        <tr>
-            <td>2. <input type="text"></td>
-            <td><input type="text" placeholder="kode" disabled></td>
-            <td>4. <input type="text"></td>
-            <td><input type="text" placeholder="kode" disabled></td>
-        </tr>
-        
-
-
-
-        <tr>
-            <td>
-                Aktif  -1<br/>Belum berporduksi -2<br/>
+            <td colspan="4">
+                
+                <select>
+                    <option v-for="item in list_jenis_tanaman" :key="item.kode">
+                        @{{ item.kode }} - @{{ item.label }} 
+                    </option>
+                </select>
             </td>
-            <td>
-                Tutup Sementara/Tidak Ada Kegiatan<br/>
-                Tidak ditemukan<br/>
-                Tutup
+        </tr>
+        
+
+    </table>
+    <hr/>
+    <br/><br/>
+    <span class="text-right">Jenis Tanaman Tahunan I: .....</span>
+    <table class="table-border" style="min-width:100%">
+        <tr class="bg-success text-center">
+            <td colspan="9">III.A UMUR TANAMAN, LUAS TANAMAN, DAN PRODUKSI<br/>TANAMAN PERKEBUNAN TAHUNAN</td>
+        </tr>
+        <tr><td colspan="9">1. Umur Tanaman dan Luas Tanaman Tahun 2020</td></tr>
+        <tr>
+            <td colspan="4">a. Kebun Sendiri/Inti</td>
+            <td></td>
+            <td colspan="4">b. Kebun Plasma yang Belum Dikonversi/Kemitraan</td>
+        </tr>
+        <tr class="text-center">
+            <td>Umur Tanaman<br/>(Tahun)</td>
+            <td colspan="3">Luas Tanaman<br/>(Ha)</td>
+            <td></td>
+            <td>Umur Tanaman<br/>(Tahun)</td>
+            <td colspan="3">Luas Tanaman<br/>(Ha)</td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>(1)</td>
+            <td colspan="3">(2)</td>
+            <td></td>
+            <td>(1)</td>
+            <td colspan="3">(2)</td>
+        </tr>
+        
+        <tr class="text-center">
+            <td> <5 </td><td colspan="3"><input type="text"></td>
+            <td></td>
+            <td> <5 </td><td colspan="3"><input type="text"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td> 5-10 </td><td colspan="3"><input type="text"></td>
+            <td></td>
+            <td> 5-10 </td><td colspan="3"><input type="text"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td> 11-25 </td><td colspan="3"><input type="text"></td>
+            <td></td>
+            <td> 11-25 </td><td colspan="3"><input type="text"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td> >25 </td><td colspan="3"><input type="text"></td>
+            <td></td>
+            <td> >25 </td><td colspan="3"><input type="text"></td>
+        </tr>
+        
+        <tr>
+            <td class="bg-success">Total</td><td colspan="3"></td>
+            <td></td>
+            <td class="bg-success">Total</td><td colspan="3"></td>
+        </tr>
+        <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun 2020 dan Target Tahun 2021</td></tr>
+        <tr  class="text-center">
+            <td colspan="2" rowspan="3">Nama Kebun dan Lokasi Kebun</td>
+            <td rowspan="3">Periode (Triwulan)</td>
+            <td colspan="4">Luas Tanaman<br/>Pada Akhir Triwulan (Ha)</td>
+            <td rowspan="3">Banyaknya<br/>Produksi Primer<br/>(Kg)</td>
+            <td rowspan="3">Nilai Produksi<br/>(000 Rp)</td>
+        </tr>
+        <tr class="text-center">
+            <td rowspan="2">TBM</td>
+            <td colspan="2">TM</td>
+            <td rowspan="2">TTM</td>
+        </tr>
+        <tr class="text-center">
+            <td>TSM</td><td>TSTM</td>
+        </tr>
+        
+        <tr class="text-center">
+            <td colspan="2">(1)</td><td>(2)</td><td>(3)</td><td>(4)</td>
+            <td>(5)</td><td>(6)</td><td>(7)</td><td>(8)</td>
+        </tr>
+
+        <tr>
+            <td colspan="9">
+                a. Kebun Sendiri/Inti
+                &nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: <input name="text" >
+                &nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <input name="text" > %
             </td>
-            <td>-3<br/>-4<br/>-5</td>
-            <td><input type="text"></td>
+        </tr>
+        
+        <tr><td colspan="9">1. Nama Kebun :</td></tr>
+        <tr class="text-center">
+            <td rowspan="10">
+                Provinsi:<br/>
+                <input type="text"><br/>
+                Kabupaten:<br/>
+                <input type="text"><br/>
+                Kecamatan:<br/>
+                <input type="text"><br/>
+                Desa:<br/>
+                <input type="text">
+            </td>
+            <td rowspan="5">Realisasi Tahun 2020</td>
+            <td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td colspan="5" class="bg-success">Total</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+
+        <tr class="text-center">
+            <td rowspan="5">Target Tahun 2020</td><td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td colspan="5" class="bg-success">Total</td>
+            <td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td colspan="9">
+                a. Kebun Plasma yang Belum Dikonversi/Kemitraan
+                &nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: <input name="text" >
+                &nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <input name="text" > %
+            </td>
+        </tr>
+
+        <tr><td colspan="9">1. Nama Kebun :</td></tr>
+        <tr class="text-center">
+            <td rowspan="10">
+                Provinsi:<br/>
+                <input type="text"><br/>
+                Kabupaten:<br/>
+                <input type="text"><br/>
+                Kecamatan:<br/>
+                <input type="text"><br/>
+                Desa:<br/>
+                <input type="text">
+            </td>
+            <td rowspan="5">Realisasi Tahun 2020</td>
+            <td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td colspan="5" class="bg-success">Total</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+
+        <tr class="text-center">
+            <td rowspan="5">Target Tahun 2020</td><td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td colspan="5" class="bg-success">Total</td>
+            <td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td>
         </tr>
     </table>
 
+
+
+    <hr/>
     <br/><br/>
+    <span class="text-right">Jenis Tanaman Semusim I: .....</span>
+    <table class="table-border" style="min-width:100%">
+        <tr class="bg-success text-center">
+            <td colspan="7">III.B LUAS TANAM, LUAS PANEN, DAN PRODUKSI<br/>TANAMAN PERKEBUNAN SEMUSIM</td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2">Nama Kebun dan Lokasi Kebun</td>
+            <td>Periode<br/>(Triwulan)</td>
+            <td>Luas Tanam<br/>(Ha)</td>
+            <td>Luas Panen<br/>(Ha)</td>
+            <td>Banyaknya Produksi Primer<br/>(Kg)</td>
+            <td>Nilai Produksi<br/>(000 Rp)</td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                a. Kebun Sendiri/Inti
+                &nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: <input name="text" >
+                &nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <input name="text" > %
+            </td>
+        </tr>
+        
+        <tr><td colspan="7">1. Nama Kebun</td></tr>
+        <tr class="text-center">
+            <td rowspan="10">
+                Provinsi:<br/>
+                <input type="text"><br/>
+                Kabupaten:<br/>
+                <input type="text"><br/>
+                Kecamatan:<br/>
+                <input type="text"><br/>
+                Desa:<br/>
+                <input type="text">
+            </td>
+            <td rowspan="5">Realisasi Tahun 2020</td>
+            <td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td class="bg-success">Total</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+
+        <tr class="text-center">
+            <td rowspan="5">Target Tahun 2021</td><td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td class="bg-success">Total</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+
+        
+
+        <tr>
+            <td colspan="7">
+                a. Kebun Plasma yang Belum Dikonversi/Kemitraan<br/>
+                - Wujud produksi dalam bentuk: <input type="text" size="3"><br/>
+                - Rata-rata rendemen: <input type="text" size="3"> persen
+            </td>
+        </tr>
+        
+        <tr><td colspan="7">1. Nama Kebun</td></tr>
+        <tr class="text-center">
+            <td rowspan="10">
+                Provinsi:<br/>
+                <input type="text"><br/>
+                Kabupaten:<br/>
+                <input type="text"><br/>
+                Kecamatan:<br/>
+                <input type="text"><br/>
+                Desa:<br/>
+                <input type="text">
+            </td>
+            <td rowspan="5">Realisasi Tahun 2020</td>
+            <td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td class="bg-success">Total</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+
+        <tr class="text-center">
+            <td rowspan="5">Target Tahun 2021</td><td>I</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>II</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>III</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>IV</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr class="text-center">
+            <td class="bg-success">Total</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+    </table>
+
+    <hr/>
+    <br/><br/>
+    <table class="table-border" style="min-width:100%">
+        <tr class="bg-success text-center">
+            <td colspan="5">IV. PENGELUARAN UNTUK SARANA PRODUKSI YANG DIGUNAKAN UNTUK BUDAYA<br/>SELAMA TAHUN 2020</td>
+        </tr>
+        <tr class="text-center">
+            <td rowspan="2">Jenis Sarana Produksi</td>
+            <td colspan="4">Nilai Per Jenis Tanaman Perkebunan yang Diusahakan<br/>(000 Rp)</td>
+        </tr>
+        <tr class="text-center">
+            <td>.......</td>
+            <td>.......</td>
+            <td>.......</td>
+            <td>.......</td>
+        </tr>
+        
+        <tr>
+            <td>a. Bibit Tanaman</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>b. Pupuk/Stimulan</td>
+            <td></td><td></td>
+            <td></td><td></td>
+        </tr>
+        
+        <tr>
+            <td>(1) <input type="text"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>(2) <input type="text"> dst</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+
+        <tr>
+            <td>c. Pestisida</td>
+            <td></td><td></td>
+            <td></td><td></td>
+        </tr>
+        
+        <tr>
+            <td>(1) <input type="text"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>(2) <input type="text"> dst</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>d. Bahan bakar untuk budidaya perkebunan</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>e. Sewa Lahan</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>f. Sewa Alat</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>g. Pengeluaran lainnya</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>Total (Rincian a s.d Rincian g)</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>h. Biaya untuk kemitraan (pupuk, benin, dll)</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+    </table>
+
+    <hr/>
+    <br/><br/>
+    <table class="table-border" style="min-width:100%">
+        <tr class="bg-success text-center">
+            <td colspan="5">V. JUMLAH DAN UPAH TENAGA KERJA SELAMA TAHUN 2020</td>
+        </tr>
+        <tr class="text-center">
+            <td rowspan="2">Tenaga Kerja</td>
+            <td colspan="2">Pekerja Administrator</td>
+            <td colspan="2">Pekerja Kebun/Lapangan</td>
+        </tr>
+        <tr class="text-center">
+            <td>Banyaknya Pekerja</td>
+            <td>Upah Pekerja<br/>(000 Rp)</td>
+            <td>Banyaknya Pekerja</td>
+            <td>Upah Pekerja<br/>(000 Rp)</td>
+        </tr>
+        
+        <tr class="text-center">
+            <td>(1)</td><td>(2)</td><td>(3)</td>
+            <td>(4)</td><td>(5)</td>
+        </tr>
+        
+        <tr>
+            <td>1. Pekerja Tetap</td>
+            <td></td><td></td>
+            <td></td><td></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp &nbsp Laki-laki</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp &nbsp Perempuan</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>1. Pekerja Tetap</td>
+            <td></td><td></td>
+            <td></td><td></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp &nbsp Laki-laki</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp &nbsp Perempuan</td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+            <td><input type="text" size="3"></td><td><input type="text" size="3"></td>
+        </tr>
+        
+        <tr>
+            <td>Total</td>
+            <td></td><td></td>
+            <td></td><td></td>
+        </tr>
+    </table>
 
     <button class="btn btn-info" @click="saveData()">SIMPAN</button>
 
@@ -349,49 +920,49 @@ var vm = new Vue({
         list_tanaman_tahunan: [],
         list_tanaman_musiman: [],
         list_jenis_tanaman:[
-            {'kode': 3101, 'label': Aren/Enau, 'jenis': 1},
-            {'kode': 3102, 'label': Asam Jawa, 'jenis': 1},
-            {'kode': 3103, 'label': Cengkeh, 'jenis': 1},
-            {'kode': 3104, 'label': Gambir, 'jenis': 1},
-            {'kode': 3105, 'label': Jambu Mete, 'jenis': 1},
-            {'kode': 3106, 'label': Jarak Pagar, 'jenis': 1},
-            {'kode': 3107, 'label': Kakao, 'jenis': 1},
-            {'kode': 3108, 'label': Kapok, 'jenis': 1},
-            {'kode': 3109, 'label': Karet, 'jenis': 1},
-            {'kode': 3110, 'label': Kayu Manis, 'jenis': 1},
-            {'kode': 3111, 'label': Kelapa Sawit, 'jenis': 1},
-            {'kode': 3112, 'label': Kelapa, 'jenis': 1},
-            {'kode': 3113, 'label': Kemenyan, 'jenis': 1},
-            {'kode': 3114, 'label': Kemiri, 'jenis': 1},
-            {'kode': 3115, 'label': Kemiri Sunan, 'jenis': 1},
-            {'kode': 3116, 'label': Kenanga, 'jenis': 1},
-            {'kode': 3117, 'label': Kina, 'jenis': 1},
-            {'kode': 3118, 'label': Klerek, 'jenis': 1},
-            {'kode': 3119, 'label': Kopi, 'jenis': 1},
-            {'kode': 3120, 'label': Lada, 'jenis': 1},
-            {'kode': 3121, 'label': Lontar, 'jenis': 1},
-            {'kode': 3122, 'label': Murbai, 'jenis': 1},
-            {'kode': 3123, 'label': Panili/Vanili, 'jenis': 1},
-            {'kode': 3124, 'label': Pala, 'jenis': 1},
-            {'kode': 3125, 'label': Pandan Anyaman, 'jenis': 1},
-            {'kode': 3126, 'label': Pinang/Jambe, 'jenis': 1},
-            {'kode': 3127, 'label': Sagu, 'jenis': 1},
-            {'kode': 3128, 'label': Soga, 'jenis': 1},
-            {'kode': 3129, 'label': Teh, 'jenis': 1},
-            {'kode': 3199, 'label': Lainnya, 'jenis': 1},
+            {kode: 3101, label: 'Aren/Enau', jenis: 1},
+            {kode: 3102, label: 'Asam Jawa', jenis: 1},
+            {kode: 3103, label: 'Cengkeh', jenis: 1},
+            {kode: 3104, label: 'Gambir', jenis: 1},
+            {kode: 3105, label: 'Jambu Mete', jenis: 1},
+            {kode: 3106, label: 'Jarak Pagar', jenis: 1},
+            {kode: 3107, label: 'Kakao', jenis: 1},
+            {kode: 3108, label: 'Kapok', jenis: 1},
+            {kode: 3109, label: 'Karet', jenis: 1},
+            {kode: 3110, label: 'Kayu Manis', jenis: 1},
+            {kode: 3111, label: 'Kelapa Sawit', jenis: 1},
+            {kode: 3112, label: 'Kelapa', jenis: 1},
+            {kode: 3113, label: 'Kemenyan', jenis: 1},
+            {kode: 3114, label: 'Kemiri', jenis: 1},
+            {kode: 3115, label: 'Kemiri Sunan', jenis: 1},
+            {kode: 3116, label: 'Kenanga', jenis: 1},
+            {kode: 3117, label: 'Kina', jenis: 1},
+            {kode: 3118, label: 'Klerek', jenis: 1},
+            {kode: 3119, label: 'Kopi', jenis: 1},
+            {kode: 3120, label: 'Lada', jenis: 1},
+            {kode: 3121, label: 'Lontar', jenis: 1},
+            {kode: 3122, label: 'Murbai', jenis: 1},
+            {kode: 3123, label: 'Panili/Vanili', jenis: 1},
+            {kode: 3124, label: 'Pala', jenis: 1},
+            {kode: 3125, label: 'Pandan Anyaman', jenis: 1},
+            {kode: 3126, label: 'Pinang/Jambe', jenis: 1},
+            {kode: 3127, label: 'Sagu', jenis: 1},
+            {kode: 3128, label: 'Soga', jenis: 1},
+            {kode: 3129, label: 'Teh', jenis: 1},
+            {kode: 3199, label: 'Lainnya', jenis: 1},
 
-            {'kode': 3201, 'label': Abaca/Manila, 'jenis': 2},
-            {'kode': 3202, 'label': Akar Wangi, 'jenis': 2},
-            {'kode': 3203, 'label': Jute, 'jenis': 2},
-            {'kode': 3204, 'label': Kapas, 'jenis': 2},
-            {'kode': 3205, 'label': Kenaf, 'jenis': 2},
-            {'kode': 3206, 'label': Nilam, 'jenis': 2},
-            {'kode': 3207, 'label': Rami/Haramay, 'jenis': 2},
-            {'kode': 3208, 'label': Rosela, 'jenis': 2},
-            {'kode': 3209, 'label': Sereh Wangi, 'jenis': 2},
-            {'kode': 3210, 'label': Tebu, 'jenis': 2},
-            {'kode': 3211, 'label': Tembakau, 'jenis': 2},
-            {'kode': 3299, 'label': Lainnya, 'jenis': 2}
+            {kode: 3201, label: 'Abaca/Manila', jenis: 2},
+            {kode: 3202, label: 'Akar Wangi', jenis: 2},
+            {kode: 3203, label: 'Jute', jenis: 2},
+            {kode: 3204, label: 'Kapas', jenis: 2},
+            {kode: 3205, label: 'Kenaf', jenis: 2},
+            {kode: 3206, label: 'Nilam', jenis: 2},
+            {kode: 3207, label: 'Rami/Haramay', jenis: 2},
+            {kode: 3208, label: 'Rosela', jenis: 2},
+            {kode: 3209, label: 'Sereh Wangi', jenis: 2},
+            {kode: 3210, label: 'Tebu', jenis: 2},
+            {kode: 3211, label: 'Tembakau', jenis: 2},
+            {kode: 3299, label: 'Lainnya', jenis: 2}
         ],
         list_wujud_tahunan: [
             {id: 1, jenis: 'Cengkeh Ambon', wujud: "Bunga Basah"},
@@ -507,7 +1078,7 @@ var vm = new Vue({
             '302_4c': '',
         },
         rincian1: [], rincian2: [],
-        pathname : window.location.pathname.replace("/sawit", ""),
+        pathname : window.location.pathname.replace("/tahunan", ""),
         list_kab: [], list_pusat_kab: [], list_grup_kab: [],
         list_kec: [], list_desa: [],
         user_profile: {!! json_encode($user_profile) !!},

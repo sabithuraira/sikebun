@@ -20,8 +20,6 @@ use App\Http\Controllers\UserRoleController;
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', function () { return view('dashboard'); });
-    Route::get('/user/edit', [UserController::class, 'edit']);
-    Route::post('/user/update', [UserController::class, 'update']);
     
     Route::get('/survei/index_sawit', [SurveiController::class, 'index_sawit']);
     Route::get('/survei/sawit/{tahun}/{triwulan}/show', [SurveiController::class, 'show_sawit']);
@@ -36,6 +34,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/survei/get_desa', [SurveiController::class, 'getDesa']);
     
     Route::resource('perusahaan', PerusahaanController::class);
+    
+    Route::get('/user/change_password', [UserController::class, 'change_password']);
+    Route::post('/user/change_password', [UserController::class, 'change_password_store']);
 });
 
 Route::group(['middleware' => ['role:admin']], function () {   
@@ -46,11 +47,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/user/create', [UserController::class, 'create']);
     Route::post('/user', [UserController::class, 'store']);
     
-    Route::get('/user/change_password', [UserController::class, 'change_password']);
-    Route::post('/user/change_password', [UserController::class, 'change_password_store']);
 });
 
 Route::group(['middleware' => ['role:operator']], function () {   
+    Route::get('/user/edit', [UserController::class, 'edit']);
+    Route::post('/user/update', [UserController::class, 'update']);
+
     Route::get('/survei/sawit', [SurveiController::class, 'sawit']);
     Route::post('/survei/sawit', [SurveiController::class, 'sawit_store']);
     Route::post('/survei/{id}/sawit_send', [SurveiController::class, 'sawit_send_store']);

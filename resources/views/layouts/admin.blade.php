@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="{{ asset('material') }}/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/logo_sikebun.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('img/logo_sikebun.png') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>SIKEBUN</title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
@@ -19,7 +19,9 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('material') }}/assets/img/sidebar-1.jpg">
       <div class="logo">
-        <a href="{{ url('/') }}" class="simple-text logo-normal">SI KEBUN</a>
+        <a href="{{ url('/') }}" class="simple-text logo-normal">
+          <img src="{{ asset('img/logo_sikebun.png') }}" width="130px" />
+        </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -30,24 +32,26 @@
             </a>
           </li>
           
-          <li class="nav-item {{ (request()->is('user/edit')) ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('user/edit') }}">
-              <i class="material-icons">bubble_chart</i>
-              <p>Profile Perusahaan</p>
-            </a>
-          </li>
+          @hasanyrole('operator')
+            <li class="nav-item {{ (request()->is('user/edit')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('user/edit') }}">
+                <i class="material-icons">bubble_chart</i>
+                <p>Profile Perusahaan</p>
+              </a>
+            </li>
+          @endhasanyrole
           
           @hasanyrole('admin')
             <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_karet') }}">
                 <i class="material-icons">library_books</i>
-                <p>Karet</p>
+                <p>Triwulanan - Karet</p>
               </a>
             </li>
             <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_sawit') }}">
                 <i class="material-icons">library_books</i>
-                <p>Kelapa Sawit</p>
+                <p>Triwulanan - Kelapa Sawit</p>
               </a>
             </li>
           @else
@@ -56,7 +60,7 @@
                 <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
                   <a class="nav-link" href="{{ url('survei/index_karet') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Karet</p>
+                    <p>Triwulanan - Karet</p>
                   </a>
                 </li>
               @endif 
@@ -65,7 +69,7 @@
                 <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
                   <a class="nav-link" href="{{ url('survei/index_sawit') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Kelapa Sawit</p>
+                    <p>Triwulanan - Kelapa Sawit</p>
                   </a>
                 </li>
               @endif

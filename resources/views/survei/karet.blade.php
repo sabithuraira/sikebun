@@ -316,12 +316,12 @@
             <td colspan="5">Bulan @{{ list_bulan[2] }}</td>
         </tr>
         <tr class="text-center">
-            <td colspan="4">Luas Tanaman</td>
-            <td rowspan="3">Produksi</td>
-            <td colspan="4">Luas Tanaman</td>
-            <td rowspan="3">Produksi</td>
-            <td colspan="4">Luas Tanaman</td>
-            <td rowspan="3">Produksi</td>
+            <td colspan="4">Luas Tanaman (Ha)</td>
+            <td rowspan="3">Produksi (Kg)</td>
+            <td colspan="4">Luas Tanaman (Ha)</td>
+            <td rowspan="3">Produksi (Kg)</td>
+            <td colspan="4">Luas Tanaman (Ha)</td>
+            <td rowspan="3">Produksi (Kg)</td>
         </tr>
         
         <tr class="text-center">
