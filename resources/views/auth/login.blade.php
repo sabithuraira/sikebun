@@ -1,7 +1,6 @@
 @extends('layouts.login')
 
 @section('content')
-
     <div class="col-md-6 card">
         <div class="card-header">
             <div class="row align-bottom">
@@ -13,7 +12,6 @@
             <p class="card-category">Selamat datang, silahkan masukkan akun anda</p>
         </div>
         <div class="card-body">
-            
             @if(session('status'))
                 <div class="text-sm text-green">
                     {{ session('status') }}

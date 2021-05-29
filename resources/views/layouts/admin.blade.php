@@ -17,7 +17,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('material') }}/assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="{{ asset('material') }}/assets/img/sidebar-1.jpg">
       <div class="logo">
         <a href="{{ url('/') }}" class="simple-text logo-normal">
           <img src="{{ asset('img/logo_sikebun.png') }}" width="130px" />

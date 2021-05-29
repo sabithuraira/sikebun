@@ -12,6 +12,13 @@ use App\Models\Kab;
 use App\Models\Kec;
 use App\Models\Desa;
 use App\Models\ProfilPerusahaan;
+use App\Models\SurveiTahunan;
+use App\Models\KebunTahunanSemusim;
+use App\Models\KebunTahunanTahun;
+use App\Models\RincianTahunanSemusim;
+use App\Models\RincianTahunanTahun;
+use App\Htpp\Resources\RincianTahunanSemusimResource;
+use App\Htpp\Resources\RincianTahunanTahunResource;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 
@@ -549,9 +556,7 @@ class SurveiController extends Controller
         return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2'));
     }
     
-    public function karet_print($id){
-        
-    }
+    public function karet_print($id){}
     
     public function karet(){
         $model = User::find(Auth::id());
@@ -943,6 +948,29 @@ class SurveiController extends Controller
         $user_profile = ProfilPerusahaan::find($model->company_id);
         // $user_profile = ProfilPerusahaan::where('user_id', '=', Auth::id())->first();
         return view('survei.tahunan', compact('user_profile'));
+    }
+    
+    public function show_tahun($tahun){
+        $model = SurveiTahun::where('user_id', '=', Auth::user()->company_id)
+                ->where('tahun', '=', $tahun)
+                ->first();
+
+        if($model==null){
+            return response()->json(['data'=>null, 'rincian1'=> [], 'rincian2'=> []]);
+        }
+        else{
+            $data_rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
+            $data_rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
+
+            $rincian_tahunan = RincianTahunanTahunResource::collection($data_rincian_tahunan);
+            $rincian_semusim = RincianTahunanSemusimResource::collection($data_rincian_semusim);
+
+            return response()->json([
+                'data'=>$model, 
+                'rincian_tahun'=> $rincian_tahun, 
+                'rincian_semusim'=> $rincian_semusim
+            ]);
+        }
     }
     
     public function tahunan_store(Request $request){

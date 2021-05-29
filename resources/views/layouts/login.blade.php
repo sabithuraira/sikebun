@@ -17,7 +17,7 @@
 </head>
 
 <body class="">
-    <div class="wrapper ">
+    <div class="wrapper">
 		<div class="main-panel">
 			<div class="content">
 				<div class="row">
