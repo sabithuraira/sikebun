@@ -253,7 +253,7 @@
                 </div>
                 
                 <div v-for="(item, index)  in rincian_semusim" :key="'semusim'+index">
-                    <select class="form form-control" v-model="item.kode_tanaman">
+                    <select v-model="item.kode_tanaman">
                         <option>- Pilih Tanaman -</option>
                         <option v-for="item in list_jenis_tanaman_semusim" :key="item.kode">
                             @{{ item.kode }} - @{{ item.label }} 
@@ -403,87 +403,89 @@
                 </td>
             </tr>
             
-            <div v-if="item.list_kebun_tahunan_sendiri.length" v-for="(item_kebun_sendiri, index2)  in item.list_kebun_tahunan_sendiri" :key="'tabel_tahunan_list_sendiri'+index2">
-                <tr><td colspan="9">1. Nama Kebun : <input type="text" v-model="item_kebun_sendiri.nama_kebun" ></td></tr>
-                <tr class="text-center">
-                    <td rowspan="10">
-                        Provinsi:<br/>
-                        <input type="text"  v-model="item_kebun_sendiri.kode_prov"><br/>
-                        Kabupaten:<br/>
-                        <input type="text" v-model="item_kebun_sendiri.kode_kab"><br/>
-                        Kecamatan:<br/>
-                        <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
-                        Desa:<br/>
-                        <input type="text" v-model="item_kebun_sendiri.kode_desa">
-                    </td>
-                    <td rowspan="5">Realisasi Tahun 2020</td>
-                    <td>I</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td colspan="5" class="bg-success">Total</td>
-                    <td>@{{ item_kebun_sendiri.real1_produksi + item_kebun_sendiri.real2_produksi + item_kebun_sendiri.real3_produksi + item_kebun_sendiri.real4_produksi  }}</td>
-                    <td>@{{ item_kebun_sendiri.real1_nilai + item_kebun_sendiri.real2_nilai + item_kebun_sendiri.real3_nilai + item_kebun_sendiri.real4_nilai  }}</td>
-                </tr>
+            <template v-if="item.list_kebun_tahunan_sendiri.length>0">
+                <div v-if="item.list_kebun_tahunan_sendiri.length" v-for="(item_kebun_sendiri, index2)  in item.list_kebun_tahunan_sendiri" :key="'tabel_tahunan_list_sendiri'+index2">
+                    <tr><td colspan="9">1. Nama Kebun : <input type="text" v-model="item_kebun_sendiri.nama_kebun" ></td></tr>
+                    <tr class="text-center">
+                        <td rowspan="10">
+                            Provinsi:<br/>
+                            <input type="text"  v-model="item_kebun_sendiri.kode_prov"><br/>
+                            Kabupaten:<br/>
+                            <input type="text" v-model="item_kebun_sendiri.kode_kab"><br/>
+                            Kecamatan:<br/>
+                            <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
+                            Desa:<br/>
+                            <input type="text" v-model="item_kebun_sendiri.kode_desa">
+                        </td>
+                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td>I</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td colspan="5" class="bg-success">Total</td>
+                        <td>@{{ item_kebun_sendiri.real1_produksi + item_kebun_sendiri.real2_produksi + item_kebun_sendiri.real3_produksi + item_kebun_sendiri.real4_produksi  }}</td>
+                        <td>@{{ item_kebun_sendiri.real1_nilai + item_kebun_sendiri.real2_nilai + item_kebun_sendiri.real3_nilai + item_kebun_sendiri.real4_nilai  }}</td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
-                </tr>
+                    <tr class="text-center">
+                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_nilai" size="3"></td>
-                </tr>                
-                
-                <tr class="text-center">
-                    <td colspan="5" class="bg-success">Total</td>
-                    <td>@{{ item_kebun_sendiri.target1_produksi + item_kebun_sendiri.target2_produksi + item_kebun_sendiri.target3_produksi + item_kebun_sendiri.target4_produksi  }}</td>
-                    <td>@{{ item_kebun_sendiri.target1_nilai + item_kebun_sendiri.target2_nilai + item_kebun_sendiri.target3_nilai + item_kebun_sendiri.target4_nilai  }}</td>
-                </tr>
-            </div>
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_nilai" size="3"></td>
+                    </tr>                
+                    
+                    <tr class="text-center">
+                        <td colspan="5" class="bg-success">Total</td>
+                        <td>@{{ item_kebun_sendiri.target1_produksi + item_kebun_sendiri.target2_produksi + item_kebun_sendiri.target3_produksi + item_kebun_sendiri.target4_produksi  }}</td>
+                        <td>@{{ item_kebun_sendiri.target1_nilai + item_kebun_sendiri.target2_nilai + item_kebun_sendiri.target3_nilai + item_kebun_sendiri.target4_nilai  }}</td>
+                    </tr>
+                </div>
+            </template>
             
             <tr>
                 <td colspan="9">
@@ -493,90 +495,92 @@
                 </td>
             </tr>
 
-            <div v-for="(item_kebun_plasma, index2)  in item.list_kebun_tahunan_plasma" :key="'tabel_tahunan_list_plasma'+index2">
-                <tr>
-                    <td colspan="9">1. Nama Kebun :
-                    <input type="text" v-model="item_kebun_plasma.nama_kebun"></td>
-                </tr>
-                <tr class="text-center">
-                    <td rowspan="10">
-                        Provinsi:<br/>
-                        <input type="text"  v-model="item_kebun_plasma.kode_prov"><br/>
-                        Kabupaten:<br/>
-                        <input type="text" v-model="item_kebun_plasma.kode_kab"><br/>
-                        Kecamatan:<br/>
-                        <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
-                        Desa:<br/>
-                        <input type="text" v-model="item_kebun_plasma.kode_desa">
-                    </td>
-                    <td rowspan="5">Realisasi Tahun 2020</td>
-                    <td>I</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real1_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real2_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real2_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real2_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real2_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real2_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real3_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real3_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real3_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real3_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real3_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real4_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real4_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real4_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real4_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.real4_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real4_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td colspan="5" class="bg-success">Total</td>
-                    <td>@{{ item_kebun_plasma.real1_produksi + item_kebun_plasma.real2_produksi + item_kebun_plasma.real3_produksi + item_kebun_plasma.real4_produksi  }}</td>
-                    <td>@{{ item_kebun_plasma.real1_nilai + item_kebun_plasma.real2_nilai + item_kebun_plasma.real3_nilai + item_kebun_plasma.real4_nilai  }}</td>
-                </tr>
+            <template v-if="item.list_kebun_tahunan_plasma.length>0">
+                <div v-for="(item_kebun_plasma, index2) in item.list_kebun_tahunan_plasma" :key="'tabel_tahunan_list_plasma'+index2">
+                    <tr>
+                        <td colspan="9">1. Nama Kebun :
+                        <input type="text" v-model="item_kebun_plasma.nama_kebun"></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td rowspan="10">
+                            Provinsi:<br/>
+                            <input type="text"  v-model="item_kebun_plasma.kode_prov"><br/>
+                            Kabupaten:<br/>
+                            <input type="text" v-model="item_kebun_plasma.kode_kab"><br/>
+                            Kecamatan:<br/>
+                            <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
+                            Desa:<br/>
+                            <input type="text" v-model="item_kebun_plasma.kode_desa">
+                        </td>
+                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td>I</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real1_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real2_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real2_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real2_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real2_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real2_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real3_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real3_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real3_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real3_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real3_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real4_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real4_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real4_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real4_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.real4_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real4_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td colspan="5" class="bg-success">Total</td>
+                        <td>@{{ item_kebun_plasma.real1_produksi + item_kebun_plasma.real2_produksi + item_kebun_plasma.real3_produksi + item_kebun_plasma.real4_produksi  }}</td>
+                        <td>@{{ item_kebun_plasma.real1_nilai + item_kebun_plasma.real2_nilai + item_kebun_plasma.real3_nilai + item_kebun_plasma.real4_nilai  }}</td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target1_nilai" size="3"></td>
-                </tr>
+                    <tr class="text-center">
+                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target1_nilai" size="3"></td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target2_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target2_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target2_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target2_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target2_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target3_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target3_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target3_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target3_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target3_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target4_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target4_tsm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target4_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target4_ttm" size="3"></td>
-                    <td><input type="text" size="3" v-model="item_kebun_plasma.target4_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target4_nilai" size="3"></td>
-                </tr>                
-                
-                <tr class="text-center">
-                    <td colspan="5" class="bg-success">Total</td>
-                    <td>@{{ item_kebun_plasma.target1_produksi + item_kebun_plasma.target2_produksi + item_kebun_plasma.target3_produksi + item_kebun_plasma.target4_produksi  }}</td>
-                    <td>@{{ item_kebun_plasma.target1_nilai + item_kebun_plasma.target2_nilai + item_kebun_plasma.target3_nilai + item_kebun_plasma.target4_nilai  }}</td>
-                </tr>
-            </div>
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target2_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target2_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target2_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target2_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target2_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target3_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target3_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target3_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target3_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target3_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target4_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target4_tsm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target4_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target4_ttm" size="3"></td>
+                        <td><input type="text" size="3" v-model="item_kebun_plasma.target4_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target4_nilai" size="3"></td>
+                    </tr>                
+                    
+                    <tr class="text-center">
+                        <td colspan="5" class="bg-success">Total</td>
+                        <td>@{{ item_kebun_plasma.target1_produksi + item_kebun_plasma.target2_produksi + item_kebun_plasma.target3_produksi + item_kebun_plasma.target4_produksi  }}</td>
+                        <td>@{{ item_kebun_plasma.target1_nilai + item_kebun_plasma.target2_nilai + item_kebun_plasma.target3_nilai + item_kebun_plasma.target4_nilai  }}</td>
+                    </tr>
+                </div>
+            </template>
         </table>
     </div>
 
@@ -604,83 +608,85 @@
                 </td>
             </tr>
             
-            <div v-for="(item_kebun_sendiri, index2)  in item.list_kebun_semusim_sendiri" :key="'tabel_semusim_list_sendiri'+index2">
-                <tr><td colspan="9">1. Nama Kebun : <input type="text" v-model="item_kebun_sendiri.nama_kebun" ></td></tr>
-                <tr class="text-center">
-                    <td rowspan="10">
-                        Provinsi:<br/>
-                        <input type="text"  v-model="item_kebun_sendiri.kode_prov"><br/>
-                        Kabupaten:<br/>
-                        <input type="text" v-model="item_kebun_sendiri.kode_kab"><br/>
-                        Kecamatan:<br/>
-                        <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
-                        Desa:<br/>
-                        <input type="text" v-model="item_kebun_sendiri.kode_desa">
-                    </td>
-                    <td rowspan="5">Realisasi Tahun 2020</td>
-                    <td>I</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
-                </tr>
+            <template v-if="item.list_kebun_semusim_sendiri.length>0">
+                <div v-for="(item_kebun_sendiri, index2)  in item.list_kebun_semusim_sendiri" :key="'tabel_semusim_list_sendiri'+index2">
+                    <tr><td colspan="9">1. Nama Kebun : <input type="text" v-model="item_kebun_sendiri.nama_kebun" ></td></tr>
+                    <tr class="text-center">
+                        <td rowspan="10">
+                            Provinsi:<br/>
+                            <input type="text"  v-model="item_kebun_sendiri.kode_prov"><br/>
+                            Kabupaten:<br/>
+                            <input type="text" v-model="item_kebun_sendiri.kode_kab"><br/>
+                            Kecamatan:<br/>
+                            <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
+                            Desa:<br/>
+                            <input type="text" v-model="item_kebun_sendiri.kode_desa">
+                        </td>
+                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td>I</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real2_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real3_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real4_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.real4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real4_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td class="bg-success">Total</td>
-                    <td>@{{ item_kebun_sendiri.real1_luas_tanam + item_kebun_sendiri.real2_luas_tanam + item_kebun_sendiri.real3_luas_tanam + item_kebun_sendiri.real4_luas_tanam  }}</td>
-                    <td>@{{ item_kebun_sendiri.real1_luas_panen + item_kebun_sendiri.real2_luas_panen + item_kebun_sendiri.real3_luas_panen + item_kebun_sendiri.real4_luas_panen  }}</td>
-                    <td>@{{ item_kebun_sendiri.real1_produksi + item_kebun_sendiri.real2_produksi + item_kebun_sendiri.real3_produksi + item_kebun_sendiri.real4_produksi  }}</td>
-                    <td>@{{ item_kebun_sendiri.real1_nilai + item_kebun_sendiri.real2_nilai + item_kebun_sendiri.real3_nilai + item_kebun_sendiri.real4_nilai  }}</td>
-                </tr>
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real2_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real3_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real4_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.real4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real4_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td class="bg-success">Total</td>
+                        <td>@{{ item_kebun_sendiri.real1_luas_tanam + item_kebun_sendiri.real2_luas_tanam + item_kebun_sendiri.real3_luas_tanam + item_kebun_sendiri.real4_luas_tanam  }}</td>
+                        <td>@{{ item_kebun_sendiri.real1_luas_panen + item_kebun_sendiri.real2_luas_panen + item_kebun_sendiri.real3_luas_panen + item_kebun_sendiri.real4_luas_panen  }}</td>
+                        <td>@{{ item_kebun_sendiri.real1_produksi + item_kebun_sendiri.real2_produksi + item_kebun_sendiri.real3_produksi + item_kebun_sendiri.real4_produksi  }}</td>
+                        <td>@{{ item_kebun_sendiri.real1_nilai + item_kebun_sendiri.real2_nilai + item_kebun_sendiri.real3_nilai + item_kebun_sendiri.real4_nilai  }}</td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target2_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target3_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target4_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_sendiri.target4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target4_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td class="bg-success">Total</td>
-                    <td>@{{ item_kebun_sendiri.target1_luas_tanam + item_kebun_sendiri.target2_luas_tanam + item_kebun_sendiri.target3_luas_tanam + item_kebun_sendiri.target4_luas_tanam  }}</td>
-                    <td>@{{ item_kebun_sendiri.target1_luas_panen + item_kebun_sendiri.target2_luas_panen + item_kebun_sendiri.target3_luas_panen + item_kebun_sendiri.target4_luas_panen  }}</td>
-                    <td>@{{ item_kebun_sendiri.target1_produksi + item_kebun_sendiri.target2_produksi + item_kebun_sendiri.target3_produksi + item_kebun_sendiri.target4_produksi  }}</td>
-                    <td>@{{ item_kebun_sendiri.target1_nilai + item_kebun_sendiri.target2_nilai + item_kebun_sendiri.target3_nilai + item_kebun_sendiri.target4_nilai  }}</td>
-                </tr>
-            </div>
+                    <tr class="text-center">
+                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target2_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target3_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target4_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_sendiri.target4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target4_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td class="bg-success">Total</td>
+                        <td>@{{ item_kebun_sendiri.target1_luas_tanam + item_kebun_sendiri.target2_luas_tanam + item_kebun_sendiri.target3_luas_tanam + item_kebun_sendiri.target4_luas_tanam  }}</td>
+                        <td>@{{ item_kebun_sendiri.target1_luas_panen + item_kebun_sendiri.target2_luas_panen + item_kebun_sendiri.target3_luas_panen + item_kebun_sendiri.target4_luas_panen  }}</td>
+                        <td>@{{ item_kebun_sendiri.target1_produksi + item_kebun_sendiri.target2_produksi + item_kebun_sendiri.target3_produksi + item_kebun_sendiri.target4_produksi  }}</td>
+                        <td>@{{ item_kebun_sendiri.target1_nilai + item_kebun_sendiri.target2_nilai + item_kebun_sendiri.target3_nilai + item_kebun_sendiri.target4_nilai  }}</td>
+                    </tr>
+                </div>
+            </template>
             
             <tr>
                 <td colspan="7">
@@ -690,83 +696,85 @@
                 </td>
             </tr>
             
-            <div v-for="(item_kebun_plasma, index2)  in item.list_kebun_semusim_plasma" :key="'tabel_semusim_list_plasma'+index2">
-                <tr><td colspan="9">1. Nama Kebun : <input type="text" v-model="item_kebun_plasma.nama_kebun" ></td></tr>
-                <tr class="text-center">
-                    <td rowspan="10">
-                        Provinsi:<br/>
-                        <input type="text"  v-model="item_kebun_plasma.kode_prov"><br/>
-                        Kabupaten:<br/>
-                        <input type="text" v-model="item_kebun_plasma.kode_kab"><br/>
-                        Kecamatan:<br/>
-                        <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
-                        Desa:<br/>
-                        <input type="text" v-model="item_kebun_plasma.kode_desa">
-                    </td>
-                    <td rowspan="5">Realisasi Tahun 2020</td>
-                    <td>I</td>
-                    <td><input type="text" v-model="item_kebun_plasma.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_nilai" size="3"></td>
-                </tr>
+            <template v-if="item.list_kebun_semusim_plasma.length>0">
+                <div v-for="(item_kebun_plasma, index2)  in item.list_kebun_semusim_plasma" :key="'tabel_semusim_list_plasma'+index2">
+                    <tr><td colspan="9">1. Nama Kebun : <input type="text" v-model="item_kebun_plasma.nama_kebun" ></td></tr>
+                    <tr class="text-center">
+                        <td rowspan="10">
+                            Provinsi:<br/>
+                            <input type="text"  v-model="item_kebun_plasma.kode_prov"><br/>
+                            Kabupaten:<br/>
+                            <input type="text" v-model="item_kebun_plasma.kode_kab"><br/>
+                            Kecamatan:<br/>
+                            <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
+                            Desa:<br/>
+                            <input type="text" v-model="item_kebun_plasma.kode_desa">
+                        </td>
+                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td>I</td>
+                        <td><input type="text" v-model="item_kebun_plasma.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_nilai" size="3"></td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" v-model="item_kebun_plasma.real2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real2_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.real2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" v-model="item_kebun_plasma.real3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real3_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.real3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" v-model="item_kebun_plasma.real4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real4_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.real4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real4_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td class="bg-success">Total</td>
-                    <td>@{{ item_kebun_plasma.real1_luas_tanam + item_kebun_plasma.real2_luas_tanam + item_kebun_plasma.real3_luas_tanam + item_kebun_plasma.real4_luas_tanam  }}</td>
-                    <td>@{{ item_kebun_plasma.real1_luas_panen + item_kebun_plasma.real2_luas_panen + item_kebun_plasma.real3_luas_panen + item_kebun_plasma.real4_luas_panen  }}</td>
-                    <td>@{{ item_kebun_plasma.real1_produksi + item_kebun_plasma.real2_produksi + item_kebun_plasma.real3_produksi + item_kebun_plasma.real4_produksi  }}</td>
-                    <td>@{{ item_kebun_plasma.real1_nilai + item_kebun_plasma.real2_nilai + item_kebun_plasma.real3_nilai + item_kebun_plasma.real4_nilai  }}</td>
-                </tr>
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" v-model="item_kebun_plasma.real2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real2_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.real2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" v-model="item_kebun_plasma.real3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real3_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.real3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" v-model="item_kebun_plasma.real4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real4_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.real4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real4_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td class="bg-success">Total</td>
+                        <td>@{{ item_kebun_plasma.real1_luas_tanam + item_kebun_plasma.real2_luas_tanam + item_kebun_plasma.real3_luas_tanam + item_kebun_plasma.real4_luas_tanam  }}</td>
+                        <td>@{{ item_kebun_plasma.real1_luas_panen + item_kebun_plasma.real2_luas_panen + item_kebun_plasma.real3_luas_panen + item_kebun_plasma.real4_luas_panen  }}</td>
+                        <td>@{{ item_kebun_plasma.real1_produksi + item_kebun_plasma.real2_produksi + item_kebun_plasma.real3_produksi + item_kebun_plasma.real4_produksi  }}</td>
+                        <td>@{{ item_kebun_plasma.real1_nilai + item_kebun_plasma.real2_nilai + item_kebun_plasma.real3_nilai + item_kebun_plasma.real4_nilai  }}</td>
+                    </tr>
 
-                <tr class="text-center">
-                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
-                    <td><input type="text" v-model="item_kebun_plasma.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>II</td>
-                    <td><input type="text" v-model="item_kebun_plasma.target2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target2_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.target2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target2_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>III</td>
-                    <td><input type="text" v-model="item_kebun_plasma.target3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target3_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.target3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target3_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td>IV</td>
-                    <td><input type="text" v-model="item_kebun_plasma.target4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target4_luas_panen" size="3"></td>
-                    <td><input type="text" v-model="item_kebun_plasma.target4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target4_nilai" size="3"></td>
-                </tr>
-                
-                <tr class="text-center">
-                    <td class="bg-success">Total</td>
-                    <td>@{{ item_kebun_plasma.target1_luas_tanam + item_kebun_plasma.target2_luas_tanam + item_kebun_plasma.target3_luas_tanam + item_kebun_plasma.target4_luas_tanam  }}</td>
-                    <td>@{{ item_kebun_plasma.target1_luas_panen + item_kebun_plasma.target2_luas_panen + item_kebun_plasma.target3_luas_panen + item_kebun_plasma.target4_luas_panen  }}</td>
-                    <td>@{{ item_kebun_plasma.target1_produksi + item_kebun_plasma.target2_produksi + item_kebun_plasma.target3_produksi + item_kebun_plasma.target4_produksi  }}</td>
-                    <td>@{{ item_kebun_plasma.target1_nilai + item_kebun_plasma.target2_nilai + item_kebun_plasma.target3_nilai + item_kebun_sendiri.target4_nilai  }}</td>
-                </tr>
-            </div>
+                    <tr class="text-center">
+                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td><input type="text" v-model="item_kebun_plasma.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>II</td>
+                        <td><input type="text" v-model="item_kebun_plasma.target2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target2_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.target2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target2_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>III</td>
+                        <td><input type="text" v-model="item_kebun_plasma.target3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target3_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.target3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target3_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td>IV</td>
+                        <td><input type="text" v-model="item_kebun_plasma.target4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target4_luas_panen" size="3"></td>
+                        <td><input type="text" v-model="item_kebun_plasma.target4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target4_nilai" size="3"></td>
+                    </tr>
+                    
+                    <tr class="text-center">
+                        <td class="bg-success">Total</td>
+                        <td>@{{ item_kebun_plasma.target1_luas_tanam + item_kebun_plasma.target2_luas_tanam + item_kebun_plasma.target3_luas_tanam + item_kebun_plasma.target4_luas_tanam  }}</td>
+                        <td>@{{ item_kebun_plasma.target1_luas_panen + item_kebun_plasma.target2_luas_panen + item_kebun_plasma.target3_luas_panen + item_kebun_plasma.target4_luas_panen  }}</td>
+                        <td>@{{ item_kebun_plasma.target1_produksi + item_kebun_plasma.target2_produksi + item_kebun_plasma.target3_produksi + item_kebun_plasma.target4_produksi  }}</td>
+                        <td>@{{ item_kebun_plasma.target1_nilai + item_kebun_plasma.target2_nilai + item_kebun_plasma.target3_nilai + item_kebun_sendiri.target4_nilai  }}</td>
+                    </tr>
+                </div>
+            </template>
         </table>
     </div>
 
