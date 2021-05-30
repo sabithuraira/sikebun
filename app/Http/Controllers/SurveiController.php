@@ -555,6 +555,14 @@ class SurveiController extends Controller
 
         return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2'));
     }
+
+    public function index_tahunan(Request $request){
+        $datas = SurveiTahunan::where('user_id', '=', Auth::user()->company_id)->paginate();
+        $datas->withPath('survei/index_tahunan');
+        $datas->appends($request->all());    
+        
+        return view('survei.index_tahunan', compact('datas'));
+    }
     
     public function karet_print($id){}
     
@@ -943,6 +951,8 @@ class SurveiController extends Controller
         }
     }
     
+
+
     public function tahunan(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
@@ -967,7 +977,7 @@ class SurveiController extends Controller
 
             return response()->json([
                 'data'=>$model, 
-                'rincian_tahun'=> $rincian_tahunan, 
+                'rincian_tahunan'=> $rincian_tahunan, 
                 'rincian_semusim'=> $rincian_semusim
             ]);
         }

@@ -77,8 +77,8 @@
           @endhasanyrole
             
           @hasanyrole('admin|operator|approval')
-            <li class="nav-item {{ (request()->is('survei/tahunan*')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('survei/tahunan') }}">
+            <li class="nav-item {{ (request()->is('survei/tahunan*') || request()->is('survei/index_tahunan*')) ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('survei/index_tahunan') }}">
                 <i class="material-icons">library_books</i>
                 <p>Tahunan</p>
               </a>

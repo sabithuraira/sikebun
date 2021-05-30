@@ -22,9 +22,9 @@ class RincianTahunanSemusimResource extends JsonResource
             'survei_id'    => $this->survei_id,
             'kode_tanaman'    => $this->kode_tanaman,
             'sendiri_bentuk_produksi'    => $this->sendiri_bentuk_produksi,
-            'sendiri_bentuk_rendemen'    => $this->sendiri_bentuk_rendemen,
+            'sendiri_rata_rendemen'    => $this->sendiri_rata_rendemen,
             'plasma_bentuk_produksi'    => $this->plasma_bentuk_produksi,
-            'plasam_bentuk_rendemen'    => $this->plasam_bentuk_rendemen,
+            'plasma_rata_rendemen'    => $this->plasma_rata_rendemen,
             'bibit_tanaman'    => $this->bibit_tanaman,
             'pupuk1'    => $this->pupuk1,
             'pupuk2'    => $this->pupuk2,
@@ -35,8 +35,8 @@ class RincianTahunanSemusimResource extends JsonResource
             'sewa_alat'    => $this->sewa_alat,
             'pengeluaran_lainnya'    => $this->pengeluaran_lainnya,
             'biaya_kemitraan'    => $this->biaya_kemitraan,
-            'list_kebun_tahunan_sendiri'    => KebunTahunanSemusim::where('survei_id', '=', $this->survei_id)->where('rincian_id', '=', $this->id)->where('jenis', '=', 1)->get(),
-            'list_kebun_tahunan_plasma'    => KebunTahunanSemusim::where('survei_id', '=', $this->survei_id)->where('rincian_id', '=', $this->id)->where('jenis', '=', 2)->get()
+            'list_kebun_semusim_sendiri'    => KebunTahunanSemusim::where('survei_id', '=', $this->survei_id)->where('rincian_id', '=', $this->id)->where('jenis', '=', 1)->get(),
+            'list_kebun_semusim_plasma'    => KebunTahunanSemusim::where('survei_id', '=', $this->survei_id)->where('rincian_id', '=', $this->id)->where('jenis', '=', 2)->get()
         ];
     }
 }

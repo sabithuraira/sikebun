@@ -315,7 +315,6 @@
 
     <div v-for="(item, index)  in rincian_tahunan" :key="'tabel_tahunan'+index">
         <hr/>
-        <br/><br/>
         <span class="text-right">Jenis Tanaman Tahunan I: @{{ item.kode_tanaman }}</span>
         <table class="table-border" style="min-width:100%">
             <tr class="bg-success text-center">
@@ -594,7 +593,6 @@
 
     <div v-for="(item, index)  in rincian_semusim" :key="'tabel_semusim'+index">
         <hr/>
-        <br/><br/>
         <span class="text-right">Jenis Tanaman Semusim I: @{{ item.kode_tanaman }}</span>
         <table class="table-border" style="min-width:100%">
             <tr class="bg-success text-center">
@@ -709,7 +707,7 @@
                             @{{ wujud_item.jenis }} - @{{ wujud_item.wujud }}
                         </option>
                     </select>
-                    &nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <input type="text" v-model="item.plasma_rata_rendemen"> persen
+                    &nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <input type="text" v-model="item.plasma_rata_rendemen"> %
                 </td>
             </tr>
             
@@ -811,133 +809,133 @@
         
         <tr>
             <td>a. Bibit Tanaman</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_bibit'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_bibit'+index">
                 <input type="text" v-model="item.bibit_tanaman" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_bibit'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_bibit'+index">
                 <input type="text" v-model="item.bibit_tanaman" size="3">
             </td>
         </tr>
         
         <tr>
             <td>b. Pupuk/Stimulan</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupuk'+index"></td>
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupuk'+index"></td>
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupuk'+index"></td>
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupuk'+index"></td>
         </tr>
         
         <tr>
             <td>(1) <input type="text" v-model="form.pupuk1"></td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupuka'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupuka'+index">
                 <input type="text" v-model="item.pupuk1" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupuka'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupuka'+index">
                 <input type="text" v-model="item.pupuk1" size="3">
             </td>
         </tr>
         
         <tr>
             <td>(2) <input type="text" v-model="form.pupuk2"> dst</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupukb'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupukb'+index">
                 <input type="text" v-model="item.pupuk2" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupukb'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupukb'+index">
                 <input type="text" v-model="item.pupuk2" size="3">
             </td>
         </tr>
 
         <tr>
             <td>c. Pestisida</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida'+index"></td>
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida'+index"></td>
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida'+index"></td>
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida'+index"></td>
         </tr>
         
         <tr>
             <td>(1) <input type="text" v-model="form.pestisida1"></td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida1'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida1'+index">
                 <input type="text" v-model="item.pestisida1" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida1'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida1'+index">
                 <input type="text" v-model="item.pestisida1" size="3">
             </td>
         </tr>
         
         <tr>
             <td>(2) <input type="text" v-model="form.pestisida2"> dst</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida2'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida2'+index">
                 <input type="text" v-model="item.pestisida2" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida2'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida2'+index">
                 <input type="text" v-model="item.pestisida2" size="3">
             </td>
         </tr>
         
         <tr>
             <td>d. Bahan bakar untuk budidaya perkebunan</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_bahan_bakar'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_bahan_bakar'+index">
                 <input type="text" v-model="item.bahan_bakar_budidaya" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_bahan_bakar'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_bahan_bakar'+index">
                 <input type="text" v-model="item.bahan_bakar_budidaya" size="3">
             </td>
         </tr>
         
         <tr>
             <td>e. Sewa Lahan</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_sewa_lahan'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_sewa_lahan'+index">
                 <input type="text" v-model="item.sewa_lahan" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_sewa_lahan'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_sewa_lahan'+index">
                 <input type="text" v-model="item.sewa_lahan" size="3">
             </td>
         </tr>
         
         <tr>
             <td>f. Sewa Alat</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_sewa_alat'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_sewa_alat'+index">
                 <input type="text" v-model="item.sewa_alat" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_sewa_alat'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_sewa_alat'+index">
                 <input type="text" v-model="item.sewa_alat" size="3">
             </td>
         </tr>
         
         <tr>
             <td>g. Pengeluaran lainnya</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pengeluaran_lainnya'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pengeluaran_lainnya'+index">
                 <input type="text" v-model="item.pengeluaran_lainnya" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pengeluaran_lainnya'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pengeluaran_lainnya'+index">
                 <input type="text" v-model="item.pengeluaran_lainnya" size="3">
             </td>
         </tr>
         
         <tr>
             <td>Total (Rincian a s.d Rincian g)</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_total'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_total'+index">
                 @{{ customChangeFloat(item.bibit_tanaman) + customChangeFloat(item.pupuk1) + customChangeFloat(item.pupuk2) + customChangeFloat(item.pestisida1) + customChangeFloat(item.pestisida2) + customChangeFloat(item.bahan_bakar_budidaya) + customChangeFloat(item.sewa_lahan) + customChangeFloat(item.sewa_alat) + customChangeFloat(item.pengeluaran_lainnya) }}
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_total'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_total'+index">
                 @{{ customChangeFloat(item.bibit_tanaman) + customChangeFloat(item.pupuk1) + customChangeFloat(item.pupuk2) + customChangeFloat(item.pestisida1) + customChangeFloat(item.pestisida2) + customChangeFloat(item.bahan_bakar_budidaya) + customChangeFloat(item.sewa_lahan) + customChangeFloat(item.sewa_alat) + customChangeFloat(item.pengeluaran_lainnya) }}
             </td>
         </tr>
         
         <tr>
             <td>h. Biaya untuk kemitraan (pupuk, benin, dll)</td>
-            <td v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_biaya_kemitraan'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_biaya_kemitraan'+index">
                 <input type="text" v-model="item.biaya_kemitraan" size="3">
             </td>
             
-            <td v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_biaya_kemitraan'+index">
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_biaya_kemitraan'+index">
                 <input type="text" v-model="item.biaya_kemitraan" size="3">
             </td>
         </tr>
@@ -1111,7 +1109,14 @@
         </tr>
     </table>
 
-    <button class="btn btn-info" @click="saveData()">SIMPAN</button>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-info" @click="saveData()">SIMPAN DRAFT</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-success" @click="saveCleanData()">SIMPAN CLEAN</button>
+        </div>
+    </div>
 
     <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
