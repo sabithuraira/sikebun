@@ -31,14 +31,14 @@
             <td>RAHASIA</td>
             <td colspan="2" class="text-right">
                 TAHUN
-                <select name="tahun" v-model="form.tahun" disabled>
+                <select disabled name="tahun" v-model="form.tahun" disabled>
                     <option>- Pilih Tahun -</option>
                     @for($i = 2020 ;$i <= date('Y'); $i++))
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                 </select>
                 TRIWULAN
-                <select name="triwulan" v-model="form.triwulan" disabled>
+                <select disabled name="triwulan" v-model="form.triwulan" disabled>
                     <option>- Pilih TW -</option>
                     @for($i = 1;$i < 5; $i++))
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -54,12 +54,12 @@
             <td>101. Nama Perusahaan/Kantor Administratur</td>
             <td><input type="text"  disabled name="nama_perusahaan" v-model="form.nama_perusahaan"></td>
             <td>103. Nama Group Perusahaan</td>
-            <td><input type="text" disabled name="nama_grup" v-model="form.nama_grup"></td>
+            <td><input type="text" name="nama_grup" v-model="form.nama_grup"></td>
         </tr>
         
         <tr>
             <td colspan="2">&nbsp;&nbsp;&nbsp;a. Alamat Lengkap Administratur Kebun:<input type="text" disabled name="alamat" v-model="form.alamat"></td>
-            <td colspan="2">&nbsp;&nbsp;&nbsp;a. Alamat Lengkap Group Perusahaan:<input type="text" disabled name="alamat_grup" v-model="form.alamat_grup"></td>
+            <td colspan="2">&nbsp;&nbsp;&nbsp;a. Alamat Lengkap Group Perusahaan:<input type="text" name="alamat_grup" v-model="form.alamat_grup"></td>
         </tr>
         
         <tr>
@@ -68,19 +68,19 @@
                 &nbsp;&nbsp;&nbsp; Telepon: <input type="text" disabled name="telp" v-model="form.telp">
             </td>
             <td colspan="2">
-                &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" disabled name="kode_pos_grup"  v-model="form.kode_pos_grup">
-                &nbsp;&nbsp;&nbsp; Telepon: <input type="text" disabled name="telepon_grup"  v-model="form.telepon_grup">
+                &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" name="kode_pos_grup"  v-model="form.kode_pos_grup">
+                &nbsp;&nbsp;&nbsp; Telepon: <input type="text" name="telepon_grup"  v-model="form.telepon_grup">
             </td>
         </tr>
         
         <tr>
             <td colspan="2">
-                &nbsp;&nbsp;&nbsp; Email: <input type="text" disabled name="email" v-model="form.email">
+                &nbsp;&nbsp;&nbsp; Email: <input type="text" name="email" v-model="form.email">
                 &nbsp;&nbsp;&nbsp; Fax: <input type="text" disabled name="fax" v-model="form.fax">
             </td>
             <td colspan="2">
-                &nbsp;&nbsp;&nbsp; Email: <input type="text" disabled name="email_grup"  v-model="form.email_grup">
-                &nbsp;&nbsp;&nbsp; Fax: <input type="text" disabled name="fax_grup"  v-model="form.fax_grup">
+                &nbsp;&nbsp;&nbsp; Email: <input type="text" name="email_grup"  v-model="form.email_grup">
+                &nbsp;&nbsp;&nbsp; Fax: <input type="text" name="fax_grup"  v-model="form.fax_grup">
             </td>
         </tr>
         
@@ -88,11 +88,11 @@
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
             <td>
                 <input type="text" name="kode_prov" disabled v-model="form.kode_prov" size="4">@{{ form.label_prov }}
-                <input type="hidden" name="label_prov" v-model="form.label_prov">
+                <input type="hidden" name="label_prov" disabled v-model="form.label_prov">
             </td>
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
             <td>
-                <input type="text" disabled name="kode_prov_grup" v-model="form.kode_prov_grup">
+                <input type="text" name="kode_prov_grup" v-model="form.kode_prov_grup">
                 <input type="hidden" name="label_prov_grup" v-model="form.label_prov_grup">
             </td>
         </tr>
@@ -110,7 +110,7 @@
             </td>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select id="kode_kab_grup" disabled v-model="form.kode_kab_grup" @change="namaKab(2)">
+                <select id="kode_kab_grup" v-model="form.kode_kab_grup" @change="namaKab(2)">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_grup_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -133,7 +133,7 @@
             </td>
             <td>104. Status permodalan/pemilikan *)</td>
             <td>
-                <select disabled name="status_pemodalan_grup" v-model="form.status_pemodalan_grup">
+                <select name="status_pemodalan_grup" v-model="form.status_pemodalan_grup">
                     <option value="1">1. PMDN</option>
                     <option value="2">2. PMA</option>
                 </select>
@@ -153,7 +153,7 @@
             </td>
             <td>105. Bentuk Badan Hukum</td>
             <td>
-                <select disabled name="badan_hukum_grup" v-model="form.badan_hukum_grup">
+                <select name="badan_hukum_grup" v-model="form.badan_hukum_grup">
                     <option value="">- Pilih Bentuk Badan Hukum -</option>
                     <option value="1">1. PTPN</option>
                     <option value="2">2. Perusahaan Daerah</option>
@@ -169,10 +169,10 @@
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; f. Nama Contact Person</td>
-            <td><input type="text" disabled name="nama_contact" v-model="form.nama_contact"></td>
+            <td><input type="text" name="nama_contact" v-model="form.nama_contact"></td>
             <td>106. Apakah Sebagai Pelaksana Kemitraan</td>
             <td>
-                <select disabled name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan">
+                <select name="apakah_pelaksana_kemitraan" v-model="form.apakah_pelaksana_kemitraan">
                     <option value="1">1. Ya</option>
                     <option value="2">2. Tidak</option>
                 </select>
@@ -180,10 +180,10 @@
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; g. Nomor HP/Telp.</td>
-            <td><input type="text" disabled name="nomor_hp" v-model="form.nomor_hp"></td>
+            <td><input type="text" name="nomor_hp" v-model="form.nomor_hp"></td>
             <td>107. Apakah mempunyai Kebun Plasma yang belum dikonversi</td>
             <td>
-                <select disabled name="punya_kebun_plasma" v-model="form.punya_kebun_plasma">
+                <select name="punya_kebun_plasma" v-model="form.punya_kebun_plasma">
                     <option value="1">1. Ya</option>
                     <option value="2">2. Tidak</option>
                 </select>
@@ -194,7 +194,7 @@
             <td colspan="2"><b>Kondisi Perusahaan: Aktif/Tutup Sementara/Non Respon/Tidak Ditemukan *)</b></td>
             <td>108. Apakah mempunyai unit pengolahan produksi</td>
             <td>
-                <select disabled name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan">
+                <select name="punya_unit_pengolahan" v-model="form.punya_unit_pengolahan">
                     <option value="1">1. Ya</option>
                     <option value="2">2. Tidak</option>
                 </select>
@@ -203,9 +203,9 @@
         
         <tr>
             <td>102. Nama Kantor Pusat</td>
-            <td><input type="text" disabled name="nama_kantor_pusat" v-model="form.nama_kantor_pusat"></td>
+            <td><input disabled type="text" name="nama_kantor_pusat" v-model="form.nama_kantor_pusat"></td>
             <td>109. Tahun Berdiri/Operasional Perusahaan</td>
-            <td><input type="text" disabled name="tahun_berdiri" v-model="form.tahun_berdiri"></td>
+            <td><input type="text" name="tahun_berdiri" v-model="form.tahun_berdiri"></td>
         </tr>
         
         <tr>
@@ -217,7 +217,7 @@
         <tr>
             <td colspan="2">
                 &nbsp;&nbsp;&nbsp; Kode Pos: <input type="text" disabled name="kode_pos_kantor_pusat" v-model="form.kode_pos_kantor_pusat">
-                Telepon: <input type="text" disabled name="telp_kantor_pusat" v-model="form.telp_kantor_pusat">
+                Telepon: <input type="text" name="telp_kantor_pusat" disabled v-model="form.telp_kantor_pusat">
             </td>
             <td colspan="3" rowspan="4">
                 <table style="min-width:100%">
@@ -226,18 +226,18 @@
                     </tr>
                     <tr>
                         <td>201. Nama</td>
-                        <td><input type="text" disabled name="nama_pencacah" v-model="form.nama_pencacah" /></td>
-                        <td><input type="text" disabled name="nama_pemeriksa" v-model="form.nama_pemeriksa" /></td>
+                        <td><input type="text" name="nama_pencacah" v-model="form.nama_pencacah" /></td>
+                        <td><input type="text" name="nama_pemeriksa" v-model="form.nama_pemeriksa" /></td>
                     </tr>
                     <tr>
                         <td>202. Tanggal</td>
-                        <td><input type="text" disabled name="tanggal_pencacah" v-model="form.tanggal_pencacah" /></td>
-                        <td><input type="text" disabled name="tanggal_pemeriksa" v-model="form.tanggal_pemeriksa" /></td>
+                        <td><input type="text" name="tanggal_pencacah" v-model="form.tanggal_pencacah" /></td>
+                        <td><input type="text" name="tanggal_pemeriksa" v-model="form.tanggal_pemeriksa" /></td>
                     </tr>
                     <tr>
                         <td>203. Tanda Tangan</td>
-                        <td><input type="text" disabled name="ttd_pencacah" v-model="form.ttd_pencacah" /></td>
-                        <td><input type="text" disabled name="ttd_pemeriksa" v-model="form.ttd_pemeriksa" /></td>
+                        <td><input type="text" name="ttd_pencacah" v-model="form.ttd_pencacah" /></td>
+                        <td><input type="text" name="ttd_pemeriksa" v-model="form.ttd_pemeriksa" /></td>
                     </tr>
                 </table>
             </td>
@@ -245,8 +245,8 @@
         
         <tr>
             <td colspan="2">
-                &nbsp;&nbsp;&nbsp; Email: <input type="text" disabled name="email_kantor_pusat" v-model="form.email_kantor_pusat">
-                Fax: <input type="text" disabled name="fax_kantor_pusat" v-model="form.fax_kantor_pusat">
+                &nbsp;&nbsp;&nbsp; Email: <input type="text" name="email_kantor_pusat" v-model="form.email_kantor_pusat">
+                Fax: <input type="text" name="fax_kantor_pusat" disabled v-model="form.fax_kantor_pusat">
             </td>
         </tr>
         
@@ -261,7 +261,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select disabled id="kode_kab_kantor_pusat" v-model="form.kode_kab_kantor_pusat"  @change="namaKab(3)">
+                <select id="kode_kab_kantor_pusat" disabled v-model="form.kode_kab_kantor_pusat"  @change="namaKab(3)">
                     <option value="">- Pilih Kabupaten -</option>
                     <option v-for="v in list_pusat_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
@@ -348,64 +348,64 @@
         <tr><td colspan="16">1. Kebun Sendiri/Inti</td></tr>
         
         <tr v-for="(item, index) in rincian1" :key="'rincian1'+index">
-            <td><input type="text" disabled v-model="item.rincian"></td>
-            <td><input type="text" disabled v-model="item.tbm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.tsm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.tstm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.ttm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.produksi1" size="3"></td>
-            <td><input type="text" disabled v-model="item.tbm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.tsm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.tstm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.ttm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.produksi2" size="3"></td>
-            <td><input type="text" disabled v-model="item.tbm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.tsm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.tstm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.ttm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.produksi3" size="3"></td>
+            <td><input type="text" v-model="item.rincian"></td>
+            <td><input type="text" v-model="item.tbm1" size="3"></td>
+            <td><input type="text" v-model="item.tsm1" size="3"></td>
+            <td><input type="text" v-model="item.tstm1" size="3"></td>
+            <td><input type="text" v-model="item.ttm1" size="3"></td>
+            <td><input type="text" v-model="item.produksi1" size="3"></td>
+            <td><input type="text" v-model="item.tbm2" size="3"></td>
+            <td><input type="text" v-model="item.tsm2" size="3"></td>
+            <td><input type="text" v-model="item.tstm2" size="3"></td>
+            <td><input type="text" v-model="item.ttm2" size="3"></td>
+            <td><input type="text" v-model="item.produksi2" size="3"></td>
+            <td><input type="text" v-model="item.tbm3" size="3"></td>
+            <td><input type="text" v-model="item.tsm3" size="3"></td>
+            <td><input type="text" v-model="item.tstm3" size="3"></td>
+            <td><input type="text" v-model="item.ttm3" size="3"></td>
+            <td><input type="text" v-model="item.produksi3" size="3"></td>
         </tr>
 
         <tr><td colspan="16">2. Kebun Plasma yang Belum Dikonversi/Kemitraan</td></tr>
         
         <tr v-for="(item, index) in rincian2" :key="'rincian2'+index">
-            <td><input type="text" disabled v-model="item.rincian"></td>
-            <td><input type="text" disabled v-model="item.tbm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.tsm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.tstm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.ttm1" size="3"></td>
-            <td><input type="text" disabled v-model="item.produksi1" size="3"></td>
-            <td><input type="text" disabled v-model="item.tbm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.tsm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.tstm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.ttm2" size="3"></td>
-            <td><input type="text" disabled v-model="item.produksi2" size="3"></td>
-            <td><input type="text" disabled v-model="item.tbm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.tsm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.tstm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.ttm3" size="3"></td>
-            <td><input type="text" disabled v-model="item.produksi3" size="3"></td>
+            <td><input type="text" v-model="item.rincian"></td>
+            <td><input type="text" v-model="item.tbm1" size="3"></td>
+            <td><input type="text" v-model="item.tsm1" size="3"></td>
+            <td><input type="text" v-model="item.tstm1" size="3"></td>
+            <td><input type="text" v-model="item.ttm1" size="3"></td>
+            <td><input type="text" v-model="item.produksi1" size="3"></td>
+            <td><input type="text" v-model="item.tbm2" size="3"></td>
+            <td><input type="text" v-model="item.tsm2" size="3"></td>
+            <td><input type="text" v-model="item.tstm2" size="3"></td>
+            <td><input type="text" v-model="item.ttm2" size="3"></td>
+            <td><input type="text" v-model="item.produksi2" size="3"></td>
+            <td><input type="text" v-model="item.tbm3" size="3"></td>
+            <td><input type="text" v-model="item.tsm3" size="3"></td>
+            <td><input type="text" v-model="item.tstm3" size="3"></td>
+            <td><input type="text" v-model="item.ttm3" size="3"></td>
+            <td><input type="text" v-model="item.produksi3" size="3"></td>
         </tr>
 
         <tr>
             <td>3. Total</td>
-            <td><input type="text" disabled name="301_a3_total_tbm_bulan1" v-model="form['301_a3_total_tbm_bulan1']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_tsm_bulan1" v-model="form['301_a3_total_tsm_bulan1']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_tstm_bulan1" v-model="form['301_a3_total_tstm_bulan1']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_ttm_bulan1" v-model="form['301_a3_total_ttm_bulan1']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_produksi_bulan1" v-model="form['301_a3_total_produksi_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tbm_bulan1" v-model="form['301_a3_total_tbm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tsm_bulan1" v-model="form['301_a3_total_tsm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tstm_bulan1" v-model="form['301_a3_total_tstm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_ttm_bulan1" v-model="form['301_a3_total_ttm_bulan1']" size="3"></td>
+            <td><input type="text" name="301_a3_total_produksi_bulan1" v-model="form['301_a3_total_produksi_bulan1']" size="3"></td>
             
-            <td><input type="text" disabled name="301_a3_total_tbm_bulan2" v-model="form['301_a3_total_tbm_bulan2']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_tsm_bulan2" v-model="form['301_a3_total_tsm_bulan2']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_tstm_bulan2" v-model="form['301_a3_total_tstm_bulan2']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_ttm_bulan2" v-model="form['301_a3_total_ttm_bulan2']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_produksi_bulan2" v-model="form['301_a3_total_produksi_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tbm_bulan2" v-model="form['301_a3_total_tbm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tsm_bulan2" v-model="form['301_a3_total_tsm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tstm_bulan2" v-model="form['301_a3_total_tstm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_ttm_bulan2" v-model="form['301_a3_total_ttm_bulan2']" size="3"></td>
+            <td><input type="text" name="301_a3_total_produksi_bulan2" v-model="form['301_a3_total_produksi_bulan2']" size="3"></td>
             
-            <td><input type="text" disabled name="301_a3_total_tbm_bulan3" v-model="form['301_a3_total_tbm_bulan3']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_tsm_bulan3" v-model="form['301_a3_total_tsm_bulan3']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_tstm_bulan3" v-model="form['301_a3_total_tstm_bulan3']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_ttm_bulan3" v-model="form['301_a3_total_ttm_bulan3']" size="3"></td>
-            <td><input type="text" disabled name="301_a3_total_produksi_bulan3" v-model="form['301_a3_total_produksi_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tbm_bulan3" v-model="form['301_a3_total_tbm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tsm_bulan3" v-model="form['301_a3_total_tsm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_tstm_bulan3" v-model="form['301_a3_total_tstm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_ttm_bulan3" v-model="form['301_a3_total_ttm_bulan3']" size="3"></td>
+            <td><input type="text" name="301_a3_total_produksi_bulan3" v-model="form['301_a3_total_produksi_bulan3']" size="3"></td>
         </tr>
         <tr>
             <td>B. Kode Bentuk Produksi</td>
@@ -413,31 +413,31 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" disabled name="301_b_bulan1" v-model="form['301_b_bulan1']" size="3"></td>
+            <td><input type="text" name="301_b_bulan1" v-model="form['301_b_bulan1']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" disabled name="301_b_bulan2" v-model="form['301_b_bulan2']" size="3"></td>
+            <td><input type="text" name="301_b_bulan2" v-model="form['301_b_bulan2']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" disabled name="301_b_bulan3" v-model="form['301_b_bulan3']" size="3"></td>
+            <td><input type="text" name="301_b_bulan3" v-model="form['301_b_bulan3']" size="3"></td>
         </tr>
         <tr>
             <td colspan="5">    C. Rendemen dari <b>TANDAN BUAH SEGAR</b> menjadi <b><i>CRUDE PALM OIL</i></b></td>
-            <td><input type="text" disabled name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"></td>
+            <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" disabled name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"></td>
+            <td><input type="text" name="301_c_bulan2" v-model="form['301_c_bulan2']" size="3"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><input type="text" disabled name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"></td>
+            <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"></td>
         </tr>
         <tr>
             <td colspan="16">**) Kode Produksi (pilih salah satu) :  1. Tandan Buah Segar (TBS) &nbsp;&nbsp;&nbsp; 2. Crude Palm Oil (CPO) &nbsp;&nbsp;&nbsp; </td>
@@ -463,23 +463,23 @@
         
         <tr>
             <td>a.	Diolah sendiri (jika Blok I, Rincian 108 berkode 1)</td>
-            <td colspan="5"><input disabled type="text" name="302_2a" v-model="form['302_2a']" size="3"></td>
-            <td colspan="5"><input disabled type="text" name="302_3a" v-model="form['302_3a']" size="3"></td>
-            <td colspan="5"><input disabled type="text" name="302_4a" v-model="form['302_4a']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_2a" v-model="form['302_2a']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_3a" v-model="form['302_3a']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_4a" v-model="form['302_4a']" size="3"></td>
         </tr>
         
         <tr>
             <td>b. 	Dijual ke pihak lain</td>
-            <td colspan="5"><input disabled type="text" name="302_2a" v-model="form['302_2b']" size="3"></td>
-            <td colspan="5"><input disabled type="text" name="302_3a" v-model="form['302_3b']" size="3"></td>
-            <td colspan="5"><input disabled type="text" name="302_4a" v-model="form['302_4b']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_2a" v-model="form['302_2b']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_3a" v-model="form['302_3b']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_4a" v-model="form['302_4b']" size="3"></td>
         </tr>
         
         <tr>
             <td>c. 	Rusak/susut/hilang</td>
-            <td colspan="5"><input disabled type="text" name="302_2a" v-model="form['302_2c']" size="3"></td>
-            <td colspan="5"><input disabled type="text" name="302_3a" v-model="form['302_3c']" size="3"></td>
-            <td colspan="5"><input disabled type="text" name="302_4a" v-model="form['302_4c']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_2a" v-model="form['302_2c']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_3a" v-model="form['302_3c']" size="3"></td>
+            <td colspan="5"><input type="text" name="302_4a" v-model="form['302_4c']" size="3"></td>
         </tr>
         
         <tr>
@@ -496,11 +496,11 @@
         <tr>
             <td colspan="9">
                 Catatan
-                <textarea class="form-control" disabled v-model="form.catatan" name="catatan" row="4"></textarea>
+                <textarea class="form-control" v-model="form.catatan" name="catatan" row="4"></textarea>
             </td>
             <td colspan="7">
                 Diisi Dengan Sebenarnya<br/>
-                <input type="text" disabled name="diisi_di" v-model="form.diisi_di">, <input disabled type="text" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
+                <input type="text" name="diisi_di" v-model="form.diisi_di">, <input type="text" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
                 Administratur/Pengurus <br/><br/><br/><br/>
                 .........................<br/>
                 (Nama jelas, tanda tangan dan stempel perusahaan)
@@ -564,7 +564,8 @@ var vm = new Vue({
             $.ajax({
                 url :  self.pathname+"/"+self.form.id+"/sawit_send",
                 method : 'post',
-                dataType: 'json'
+                dataType: 'json',
+                data: data_post
             }).done(function (data) {
                 $('#wait_progres').modal('hide');
                 window.location.href = self.pathname + "/index_sawit"

@@ -29,14 +29,16 @@
                                     <small><i>(Terakhir diperbaharui {{ date('d M Y h:i', strtotime($value->updated_at)) }})</i></small>
                                 </td>
                                 <td class="text-center">
+                                    @hasanyrole('admin')
                                     <a href="{{ url('survei/'.$value->id.'/tahunan_print') }}" class="btn btn-primary btn-link btn-sm">
-                                        <i class="material-icons">search</i>
+                                        <i class="material-icons">print</i>
                                     </a>
+                                    @endhasanyrole
                                 </td>
                                 <td class="text-center">
                                     @if($value->status_dokumen>=2)
                                         @hasanyrole('admin|approval')
-                                        <a href="{{ url('survei/'.$value->id.'/tahunan') }}" class="btn btn-primary btn-link btn-sm">
+                                        <a href="{{ url('survei/'.$value->tahun.'/tahunan') }}" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">search</i>
                                         </a>
                                         @endhasanyrole

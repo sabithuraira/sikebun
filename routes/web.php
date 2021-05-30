@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth', 'role:operator']], function () {
     Route::get('/survei/tahunan', [SurveiController::class, 'tahunan']);
     Route::post('/survei/tahunan', [SurveiController::class, 'tahunan_store']);
     Route::post('/survei/tahunan_clean', [SurveiController::class, 'tahunan_clean_store']);
+    Route::post('/survei/{id}/tahunan_send', [SurveiController::class, 'tahunan_send_store']);
 }); 
 
 Route::group(['middleware' => ['role:admin|approval']], function () {   
