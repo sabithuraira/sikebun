@@ -517,7 +517,8 @@
             </td>
             <td colspan="7">
                 Diisi Dengan Sebenarnya<br/>
-                <input type="text" name="diisi_di" v-model="form.diisi_di">, <input type="text" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
+                <input type="text" name="diisi_di" v-model="form.diisi_di">, 
+                <input type="text"  class="datetimepicker4" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
                 Administratur/Pengurus <br/><br/><br/><br/>
                 .........................<br/>
                 (Nama jelas, tanda tangan dan stempel perusahaan)
@@ -991,6 +992,10 @@ $(document).ready(function() {
     vm.setKab(1);
     vm.setKab(2);
     vm.setKab(3);
+    
+    $('.datetimepicker4').datetimepicker({
+            format: 'DD/MM/YYYY'
+    });
 });
 </script>
 @endsection

@@ -1078,16 +1078,16 @@
         </tr>
         <tr>
             <td>1. Nama Pencacah : </td>
-            <td><input type="text" v-model="form.nama_pencacah"></td>
+            <td><input disabled type="text" v-model="form.nama_pencacah"></td>
             <td>1. Nama Pemeriksa : </td>
-            <td><input type="text" v-model="form.nama_pemeriksa"></td>
+            <td><input disabled type="text" v-model="form.nama_pemeriksa"></td>
         </tr>
         
         <tr>
             <td>2. Tanggal Pencacahan : </td>
-            <td><input type="text" v-model="form.tanggal_pencacah"></td>
+            <td><input disabled type="text" v-model="form.tanggal_pencacah"></td>
             <td>2. Tanggal Pemeriksaan : </td>
-            <td><input type="text" v-model="form.tanggal_pemeriksa"></td>
+            <td><input disabled type="text" v-model="form.tanggal_pemeriksa"></td>
         </tr>
         
         <tr>
@@ -1103,7 +1103,7 @@
         </tr>
         <tr>
             <td>
-                Diisi dengan sebenarnya di : <input type="text" v-model="form.diisi_di">. Pada Tanggal : <input type="text" v-model="form.diisi_tanggal"><br/>
+                Diisi dengan sebenarnya di : <input type="text" v-model="form.diisi_di">. Pada Tanggal : <input class="datetimepicker4" type="text" v-model="form.diisi_tanggal"><br/>
                 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp  Nama Administratur/Pengurus Perkebunan<input type="text" v-model="form.diisi_administratur"><br/>
             </td>
         </tr>
@@ -1566,6 +1566,10 @@ $(document).ready(function() {
     vm.setKab(1);
     vm.setKab(2);
     vm.setKab(3);
+    
+    $('.datetimepicker4').datetimepicker({
+            format: 'DD/MM/YYYY'
+    });
 });
 </script>
 @endsection
