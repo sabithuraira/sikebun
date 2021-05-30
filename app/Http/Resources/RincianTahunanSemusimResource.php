@@ -3,8 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Model\RincianTahunanSemusim;
-use App\Model\KebunTahunanSemusim;
+use App\Models\RincianTahunanSemusim;
+use App\Models\KebunTahunanSemusim;
 
 class RincianTahunanSemusimResource extends JsonResource
 {

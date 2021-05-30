@@ -9,5 +9,5 @@ class RincianTahunanTahun extends Model
 {
     use HasFactory;
     
-    protected $table = "kebun_tahunan_tahun";
+    protected $table = "rincian_tahunan_tahun";
 }

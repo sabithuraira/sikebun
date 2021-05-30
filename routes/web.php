@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/survei/karet/{tahun}/{triwulan}/show', [SurveiController::class, 'show_karet']);
     
     Route::get('/survei/index_tahunan', [SurveiController::class, 'index_tahunan']);
+    Route::get('/survei/tahunan/{tahun}/show', [SurveiController::class, 'show_tahunan']);
 
     Route::post('/survei/get_kab', [SurveiController::class, 'getKab']);
     Route::post('/survei/get_kec', [SurveiController::class, 'getKec']);
@@ -39,7 +40,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/user/change_password', [UserController::class, 'change_password_store']);
 });
 
-Route::group(['middleware' => ['role:admin']], function () {   
+Route::group(['middleware' => ['auth', 'role:admin']], function () {   
     Route::resource('role', RoleController::class);
     Route::resource('user_role', UserRoleController::class);
     
@@ -49,7 +50,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     
 });
 
-Route::group(['middleware' => ['role:operator']], function () {   
+Route::group(['middleware' => ['auth', 'role:operator']], function () {   
     Route::get('/user/edit', [UserController::class, 'edit']);
     Route::post('/user/update', [UserController::class, 'update']);
 

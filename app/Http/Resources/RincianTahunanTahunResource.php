@@ -3,7 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Model\KebunTahunanTahun;
+use App\Models\RincianTahunanTahun;
+use App\Models\KebunTahunanTahun;
 
 class RincianTahunanTahunResource extends JsonResource
 {
@@ -15,7 +16,7 @@ class RincianTahunanTahunResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = RincianTahunanSemusim::find($this->id);
+        $data = RincianTahunanTahun::find($this->id);
         return [
             'id'    => $this->id,
             'survei_id'    => $this->survei_id,
