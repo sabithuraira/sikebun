@@ -238,6 +238,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->status_dokumen= 1;
+        $model->diisi_administratur=$request->diisi_administratur;
 
         $model->updated_by = Auth::id();
 
@@ -399,6 +400,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->status_dokumen= 3;
+        $model->diisi_administratur=$request->diisi_administratur;
 
         if($model->save()){
             $all_rincian1 = [];
@@ -567,6 +569,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->status_dokumen= 3;
+        $model->diisi_administratur=$request->diisi_administratur;
 
         if($model->save()){
             $all_rincian1 = [];
@@ -753,6 +756,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->status_dokumen= 2;
+        $model->diisi_administratur=$request->diisi_administratur;
 
         $model->updated_by = Auth::id();
 
@@ -991,6 +995,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->status_dokumen= 1;
+        $model->diisi_administratur=$request->diisi_administratur;
 
         $model->updated_by = Auth::id();
 
@@ -1170,6 +1175,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->status_dokumen= 2;
+        $model->diisi_administratur=$request->diisi_administratur;
 
         $model->updated_by = Auth::id();
 

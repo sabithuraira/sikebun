@@ -518,9 +518,9 @@
             <td colspan="7">
                 Diisi Dengan Sebenarnya<br/>
                 <input type="text" name="diisi_di" v-model="form.diisi_di">, 
-                <input type="text"  class="datetimepicker4" name="diisi_tanggal" v-model="form.diisi_tanggal"> <br/>
+                <input type="text" id="diisi_tanggal"  class="datetimepicker4" name="diisi_tanggal" :value="form.diisi_tanggal"> <br/>
                 Administratur/Pengurus <br/><br/><br/><br/>
-                .........................<br/>
+                <input type="text" name="diisi_administratur" v-model="form.diisi_administratur"><br/>
                 (Nama jelas, tanda tangan dan stempel perusahaan)
             </td>
         </tr>
@@ -604,6 +604,7 @@ var vm = new Vue({
             catatan: '',
             diisi_di: '',
             diisi_tanggal: '',
+            diisi_administratur: '',
             status_dokumen: '',
 
             created_by: '',
@@ -818,6 +819,7 @@ var vm = new Vue({
                 catatan: '',
                 diisi_di: '',
                 diisi_tanggal: '',
+                diisi_administratur: '',
                 status_dokumen: '',
 
                 created_by: '',
@@ -994,7 +996,11 @@ $(document).ready(function() {
     vm.setKab(3);
     
     $('.datetimepicker4').datetimepicker({
-            format: 'DD/MM/YYYY'
+        format: 'DD-MM-YYYY'
+    });
+    
+    $("#diisi_tanggal").on("dp.change", function (e) {
+        vm.form.diisi_tanggal = this.value;
     });
 });
 </script>

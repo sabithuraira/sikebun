@@ -1104,7 +1104,7 @@
         <tr>
             <td>
                 Diisi dengan sebenarnya di : <input type="text" v-model="form.diisi_di">. 
-                Pada Tanggal : <input type="text" class="datetimepicker4" v-model="form.diisi_tanggal"><br/>
+                Pada Tanggal : <input type="text" id="diisi_tanggal" class="datetimepicker4" :value="form.diisi_tanggal"><br/>
                 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp  Nama Administratur/Pengurus Perkebunan<input type="text" v-model="form.diisi_administratur"><br/>
             </td>
         </tr>
@@ -1683,7 +1683,11 @@ $(document).ready(function() {
     vm.setKab(3);
     
     $('.datetimepicker4').datetimepicker({
-            format: 'DD/MM/YYYY'
+        format: 'DD-MM-YYYY'
+    });
+    
+    $("#diisi_tanggal").on("dp.change", function (e) {
+        vm.form.diisi_tanggal = this.value;
     });
 });
 </script>
