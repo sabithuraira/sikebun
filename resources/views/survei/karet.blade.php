@@ -329,7 +329,12 @@
             <td>(9)</td><td>(10)</td><td>(11)</td><td>(12)</td><td>(13)</td><td>(14)</td><td>(15)</td><td>(16)</td>
         </tr>
         
-        <tr><td colspan="16">1. Kebun Sendiri/Inti</td></tr>
+        <tr>
+            <td colspan="16">
+                1. Kebun Sendiri/Inti  &nbsp;&nbsp;
+                <button class="btn btn-info btn-sm" @click="addRincian(1)">Tambah Kebun Sendiri</button>
+            </td>
+        </tr>
         
         <tr v-for="(item, index) in rincian1" :key="'rincian1'+index">
             <td><input type="text" v-model="item.rincian"></td>
@@ -350,7 +355,12 @@
             <td><input type="text" v-model="item.produksi3" size="3"></td>
         </tr>
 
-        <tr><td colspan="16">2. Kebun Plasma yang Belum Dikonversi/Kemitraan</td></tr>
+        <tr>
+            <td colspan="16">
+                2. Kebun Plasma yang Belum Dikonversi/Kemitraan   &nbsp;&nbsp;
+                <button class="btn btn-info btn-sm" @click="addRincian(2)">Tambah Kebun Plasma</button>
+            </td>
+        </tr>
         
         <tr v-for="(item, index) in rincian2" :key="'rincian2'+index">
             <td><input type="text" v-model="item.rincian"></td>
@@ -880,8 +890,9 @@ var vm = new Vue({
             }
             else{
                 self.setDataKosong()
+                
                 for(var i=self.rincian1.length;i<3;i++)
-                        self.addRincian(1)   
+                    self.addRincian(1)   
                 for(var i=self.rincian2.length;i<3;i++)
                     self.addRincian(2)
             }
