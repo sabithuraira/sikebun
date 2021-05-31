@@ -100,13 +100,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select id="kode_kab" disabled v-model="form.kode_kab" @change="setKec()">
-                    <option value="">- Pilih Kabupaten -</option>
-                    <option v-for="v in list_kab" :key="v.idKab" :value="v.idKab">
-                        @{{ v.idKab }} - @{{ v.nmKab }}
-                    </option>
-                </select>
-                <input type="hidden" name="label_kab" v-model="form.label_kab">
+                <input disabled class="form-control" type="text" :value="form.kode_kab + ' - ' + form.label_kab">
             </td>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
@@ -123,13 +117,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; d. Kecamatan</td>
             <td>
-                <select id="kode_kec" disabled v-model="form.kode_kec" @change="setDesa()">
-                    <option value="">- Pilih Kecamatan -</option>
-                    <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
-                        @{{ v.idKec }} - @{{ v.nmKec }}
-                    </option>
-                </select>
-                <input type="hidden" name="label_kec" v-model="form.label_kec">
+                <input disabled class="form-control" type="text" :value="form.kode_kec + ' - ' + form.label_kec">
             </td>
             <td>104. Status permodalan/pemilikan *)</td>
             <td>
@@ -143,13 +131,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; e. Desa/Kelurahan *)</td>
             <td>
-                <select id="kode_desa" disabled v-model="form.kode_desa" @click="namaDesa()">
-                    <option value="">- Pilih Desa -</option>
-                    <option v-for="v in list_desa" :key="v.idDesa" :value="v.idDesa">
-                        @{{ v.idDesa }} - @{{ v.nmDesa }}
-                    </option>
-                </select>
-                <input type="hidden" name="label_desa" v-model="form.label_desa">
+                <input disabled class="form-control" type="text" :value="form.kode_desa + ' - ' + form.label_desa">
             </td>
             <td>105. Bentuk Badan Hukum</td>
             <td>

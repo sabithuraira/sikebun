@@ -45,13 +45,13 @@
             <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_karet') }}">
                 <i class="material-icons">library_books</i>
-                <p>Triwulanan - Karet</p>
+                <p>SKB Triwulanan - Karet</p>
               </a>
             </li>
             <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_sawit') }}">
                 <i class="material-icons">library_books</i>
-                <p>Triwulanan - Kelapa Sawit</p>
+                <p>SKB Triwulanan - Kelapa Sawit</p>
               </a>
             </li>
           @else
@@ -60,7 +60,7 @@
                 <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
                   <a class="nav-link" href="{{ url('survei/index_karet') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Triwulanan - Karet</p>
+                    <p>SKB Triwulanan - Karet</p>
                   </a>
                 </li>
               @endif 
@@ -69,7 +69,7 @@
                 <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
                   <a class="nav-link" href="{{ url('survei/index_sawit') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Triwulanan - Kelapa Sawit</p>
+                    <p>SKB Triwulanan - Kelapa Sawit</p>
                   </a>
                 </li>
               @endif
@@ -80,7 +80,7 @@
             <li class="nav-item {{ (request()->is('survei/tahunan*') || request()->is('survei/index_tahunan*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_tahunan') }}">
                 <i class="material-icons">library_books</i>
-                <p>Tahunan</p>
+                <p>SKB Tahunan</p>
               </a>
             </li>
           @endhasanyrole

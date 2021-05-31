@@ -51,13 +51,17 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Provinsi</label>
-                                <input type="text" class="form-control" name="kode_prov" v-model="form.kode_prov">
+                                <input type="text" disabled class="form form-control" name="kode_prov" :value="form.kode_prov + ' - SUMATERA SELATAN'">
                             </div>
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Kabupaten/Kota</label>
-                            <input type="text" class="form-control" name="kode_kab" v-model="form.kode_kab">
+                            <label class="bmd-label-floating">Pilih Kabupaten/Kota</label>
+                            <select class="form form-control" id="kode_kab" name="kode_kab" v-model="form.kode_kab" @change="setKec()">
+                                <option v-for="v in list_kab" :key="v.idKab" :value="v.idKab">
+                                    @{{ v.idKab }} - @{{ v.nmKab }}
+                                </option>
+                            </select>
                         </div>
                         </div>
                     </div>
@@ -65,14 +69,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Kecamatan</label>
-                                <input type="text" class="form-control" name="kode_kec" v-model="form.kode_kec">
+                                <label class="bmd-label-floating">Pilih Kecamatan</label>
+                                <select class="form-control" name="kode_kec" v-model="form.kode_kec" @change="setDesa()">
+                                    <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
+                                        @{{ v.idKec }} - @{{ v.nmKec }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Desa/Kelurahan</label>
-                            <input type="text" class="form-control" name="kode_desa"  v-model="form.kode_desa">
+                            <label class="bmd-label-floating">Pilih Desa/Kelurahan</label>
+                            <select class="form-control" name="kode_desa" v-model="form.kode_desa">
+                                <option v-for="v in list_desa" :key="v.idDesa" :value="v.idDesa">
+                                    @{{ v.idDesa }} - @{{ v.nmDesa }}
+                                </option>
+                            </select>
                         </div>
                         </div>
                     </div>
@@ -144,6 +156,17 @@
             </div>
         </div>
     </form>
+    
+    <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center"><img src="{!! asset('img/loading.gif') !!}" width="200" height="200" alt="Loading..."></div>
+                    <h4 class="text-center">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -156,7 +179,6 @@
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script>
-    
 var vm = new Vue({  
     el: "#app_vue",
     data:  {
@@ -180,6 +202,9 @@ var vm = new Vue({
             created_by: '', updated_by: '',
             created_at: '', updated_at: '',
         },
+        list_kab: {!! json_encode($list_kab16) !!}, 
+        list_pusat_prov: [],list_pusat_kab: [],
+        list_kec: [], list_desa: [],
     },
     methods: {
         setDatas: function(){
@@ -198,6 +223,13 @@ var vm = new Vue({
                 }).done(function (data) {
                     if(data.data!=null){
                         self.form = data.data;
+                        if(self.form.kode_kab!='' || self.form.kode_kab!=null){
+                            self.setKec();
+                        }
+
+                        if(self.form.kode_kec!='' || self.form.kode_kec!=null){
+                            self.setDesa();
+                        }
                     }
                     else{
                         self.form = {
@@ -225,7 +257,6 @@ var vm = new Vue({
                 });
             }
             else{
-                
                 self.form = {
                             nama_perusahaan: '', 
                             alamat_perusahaan: '', kode_pos_perusahaan: '',telp_perusahaan: '', fax_perusahaan: '',
@@ -243,6 +274,47 @@ var vm = new Vue({
                             created_at: '', updated_at: ''
                         }
             }
+        },
+        setKec: function(){
+            $('#wait_progres').modal('show');
+            var self = this;
+
+            $.ajax({
+                url :  self.pathname+"/survei/get_kec",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: self.form.kode_prov,
+                    kode_kab: self.form.kode_kab,
+                },
+            }).done(function (data) {
+                self.list_kec = data.result 
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
+        },
+        setDesa: function(){
+            $('#wait_progres').modal('show');
+            var self = this;
+
+            $.ajax({
+                url :  self.pathname+"/survei/get_desa",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: self.form.kode_prov,
+                    kode_kab: self.form.kode_kab,
+                    kode_kec: self.form.kode_kec,
+                },
+            }).done(function (data) {
+                self.list_desa = data.result 
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
         },
     }
 });

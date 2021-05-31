@@ -78,19 +78,25 @@
         <tr>
             <td></td>
             <td>c. Kabupaten/Kota *)</td>
-            <td colspan="2" class="text-right"><input type="text" size="3" v-model="form.kode_kab" disabled></td>
+            <td colspan="2" class="text-right">
+                <input disabled class="form-control" type="text" :value="form.kode_kab + ' - ' + form.label_kab">
+            </td>
         </tr>
         
         <tr>
             <td></td>
             <td>d. Kecamatan</td>
-            <td colspan="2" class="text-right"><input type="text" size="3" v-model="form.kode_kec" disabled></td>
+            <td colspan="2" class="text-right">
+                <input disabled class="form-control" type="text" :value="form.kode_kec + ' - ' + form.label_kec">
+            </td>
         </tr>
         
         <tr>
             <td></td>
             <td>e. Desa/Kelurahan *)</td>
-            <td colspan="2" class="text-right"><input type="text" size="3" v-model="form.kode_desa" disabled></td>
+            <td colspan="2" class="text-right">
+                <input disabled class="form-control" type="text" :value="form.kode_desa + ' - ' + form.label_desa">
+            </td>
         </tr>
         <tr>
             <td></td>
@@ -235,7 +241,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4">Tulis Jenis Tanaman Perkebunan Tahunan dan atau Tanaman Perkebunan Semusim yang diusahakan</td>
+            <td colspan="4">5. Tulis Jenis Tanaman Perkebunan Tahunan dan atau Tanaman Perkebunan Semusim yang diusahakan</td>
         </tr>
         
         <tr>
@@ -295,8 +301,6 @@
                     <option value="1">Ya</option>
                     <option value="2">Tidak</option>
                 </select>
-
-                <input type="text"  v-model="form.punya_unit_pengolahan" placeholder="keterangan jika lainnya">
             </td>
         </tr>
         
