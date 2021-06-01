@@ -866,6 +866,17 @@
                 <input type="text" v-model="item.pupuk2" size="3">
             </td>
         </tr>
+        
+        <tr>
+            <td>(3) <input type="text" v-model="form.pupuk3"> dst</td>
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupukc'+index">
+                <input type="text" v-model="item.pupuk3" size="3">
+            </td>
+            
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupukc'+index">
+                <input type="text" v-model="item.pupuk3" size="3">
+            </td>
+        </tr>
 
         <tr>
             <td>c. Pestisida</td>
@@ -892,6 +903,17 @@
             
             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida2'+index">
                 <input type="text" v-model="item.pestisida2" size="3">
+            </td>
+        </tr>
+        
+        <tr>
+            <td>(3) <input type="text" v-model="form.pestisida3"> dst</td>
+            <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida3'+index">
+                <input type="text" v-model="item.pestisida3" size="3">
+            </td>
+            
+            <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida3'+index">
+                <input type="text" v-model="item.pestisida3" size="3">
             </td>
         </tr>
         
@@ -942,11 +964,11 @@
         <tr>
             <td>Total (Rincian a s.d Rincian g)</td>
             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_total'+index">
-                @{{ customChangeFloat(item.bibit_tanaman) + customChangeFloat(item.pupuk1) + customChangeFloat(item.pupuk2) + customChangeFloat(item.pestisida1) + customChangeFloat(item.pestisida2) + customChangeFloat(item.bahan_bakar_budidaya) + customChangeFloat(item.sewa_lahan) + customChangeFloat(item.sewa_alat) + customChangeFloat(item.pengeluaran_lainnya) }}
+                @{{ customChangeFloat(item.bibit_tanaman) + customChangeFloat(item.pupuk1) + customChangeFloat(item.pupuk2) + customChangeFloat(item.pupuk3) + customChangeFloat(item.pestisida1) + customChangeFloat(item.pestisida2) + customChangeFloat(item.pestisida3) + customChangeFloat(item.bahan_bakar_budidaya) + customChangeFloat(item.sewa_lahan) + customChangeFloat(item.sewa_alat) + customChangeFloat(item.pengeluaran_lainnya) }}
             </td>
             
             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_total'+index">
-                @{{ customChangeFloat(item.bibit_tanaman) + customChangeFloat(item.pupuk1) + customChangeFloat(item.pupuk2) + customChangeFloat(item.pestisida1) + customChangeFloat(item.pestisida2) + customChangeFloat(item.bahan_bakar_budidaya) + customChangeFloat(item.sewa_lahan) + customChangeFloat(item.sewa_alat) + customChangeFloat(item.pengeluaran_lainnya) }}
+                @{{ customChangeFloat(item.bibit_tanaman) + customChangeFloat(item.pupuk1) + customChangeFloat(item.pupuk2) + customChangeFloat(item.pupuk3) + customChangeFloat(item.pestisida1) + customChangeFloat(item.pestisida2) + customChangeFloat(item.pestisida3) + customChangeFloat(item.bahan_bakar_budidaya) + customChangeFloat(item.sewa_lahan) + customChangeFloat(item.sewa_alat) + customChangeFloat(item.pengeluaran_lainnya) }}
             </td>
         </tr>
         
@@ -1292,7 +1314,8 @@ var vm = new Vue({
             pendapatan_hasil_kemitraan: '', pendapatan_dari_sewa: '',
             pendapatan_jual_bibit: '', pendapatan_bersih_lain: '',
 
-            pupuk1: '', pupuk2: '', pestisida1: '', pestisida2: '',
+            pupuk1: '', pupuk2: '', pupuk3: '', 
+            pestisida1: '', pestisida2: '',pestisida3: '',
 
             nama_pencacah: 'SIKEBUN',
             tanggal_pencacah: new Date().toLocaleDateString(),
@@ -1330,7 +1353,8 @@ var vm = new Vue({
                     luas_plasma_5: '', luas_plasma_5_10: '', luas_plasma_11_25: '', luas_plasma_25: '',
                     sendiri_bentuk_produksi: '', sendiri_rata_rendemen: '', 
                     plasma_bentuk_produksi: '', plasma_rata_rendemen: '', 
-                    bibit_tanaman: '', pupuk1: '', pupuk2: '', pestisida1: '', pestisida2: '',
+                    bibit_tanaman: '', pupuk1: '', pupuk2: '',pupuk3: '', 
+                    pestisida1: '', pestisida2: '', pestisida3: '',
                     bahan_bakar_budidaya: '', sewa_lahan: '', sewa_alat: '', 
                     pengeluaran_lainnya: '', biaya_kemitraan: '', 
                     list_kebun_tahunan_sendiri: [], 
@@ -1342,7 +1366,8 @@ var vm = new Vue({
                     id: 0, survei_id: '', kode_tanaman: '', 
                     sendiri_bentuk_produksi: '', sendiri_rata_rendemen: '', 
                     plasma_bentuk_produksi: '', plasma_rata_rendemen: '', 
-                    bibit_tanaman: '', pupuk1: '', pupuk2: '', pestisida1: '', pestisida2: '',
+                    bibit_tanaman: '', pupuk1: '', pupuk2: '',pupuk3: '', 
+                    pestisida1: '', pestisida2: '', pestisida3: '',
                     bahan_bakar_budidaya: '', sewa_lahan: '', sewa_alat: '', 
                     pengeluaran_lainnya: '', biaya_kemitraan: '', 
                     list_kebun_semusim_sendiri: [], 
@@ -1434,10 +1459,11 @@ var vm = new Vue({
                     data: data_post,
                 }).done(function (data) {
                     $('#wait_progres').modal('hide');
-                    window.location.href = pathname + "/index_tahunan"
+                    window.location.href = self.pathname + "/index_tahunan"
                 }).fail(function (msg) {
                     console.log(JSON.stringify(msg));
                     $('#wait_progres').modal('hide');
+                    window.location.href = self.pathname + "/index_tahunan"
                 });
             }
             else{
@@ -1550,7 +1576,8 @@ var vm = new Vue({
                 pendapatan_hasil_kemitraan: '', pendapatan_dari_sewa: '',
                 pendapatan_jual_bibit: '', pendapatan_bersih_lain: '',
 
-                pupuk1: '', pupuk2: '', pestisida1: '', pestisida2: '',
+                pupuk1: '', pupuk2: '', pupuk3: '', 
+                pestisida1: '', pestisida2: '', pestisida3: '',
 
                 nama_pencacah: 'SIKEBUN',
                 tanggal_pencacah: new Date().toLocaleDateString(),

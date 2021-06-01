@@ -170,7 +170,7 @@ class SurveiController extends Controller
         $model->label_kab = $request->label_kab;
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -343,7 +343,7 @@ class SurveiController extends Controller
         $model->label_kab = $request->label_kab;
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -522,7 +522,7 @@ class SurveiController extends Controller
         $model->label_kab = $request->label_kab;
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -719,7 +719,7 @@ class SurveiController extends Controller
         $model->label_kab = $request->label_kab;
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -873,6 +873,8 @@ class SurveiController extends Controller
                 }
             }
         }
+        
+        return response()->json(['result'=>1]);
     }
 
     public function show_sawit($tahun, $triwulan){
@@ -970,7 +972,7 @@ class SurveiController extends Controller
         $model->label_kab = $request->label_kab;
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -1123,6 +1125,8 @@ class SurveiController extends Controller
                 }
             }
         }
+        
+        return response()->json(['result'=>1]);
     }
 
     public function karet_clean_store(Request $request){
@@ -1159,7 +1163,7 @@ class SurveiController extends Controller
         $model->label_kab = $request->label_kab;
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -1313,6 +1317,8 @@ class SurveiController extends Controller
                 }
             }
         }
+        
+        return response()->json(['result'=>1]);
     }
 
     public function show_karet($tahun, $triwulan){
@@ -1400,7 +1406,7 @@ class SurveiController extends Controller
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
 
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -1469,8 +1475,10 @@ class SurveiController extends Controller
         
         $model->pupuk1 = $request->pupuk1;
         $model->pupuk2 = $request->pupuk2;
+        $model->pupuk3 = $request->pupuk3;
         $model->pestisida1 = $request->pestisida1;
         $model->pestisida2 = $request->pestisida2;
+        $model->pestisida3 = $request->pestisida3;
         
         $model->nama_pencacah = $request->nama_pencacah;
         $model->tanggal_pencacah = date('Y-m-d', strtotime($request->tanggal_pencacah));
@@ -1525,8 +1533,10 @@ class SurveiController extends Controller
                     $model_rincian->bibit_tanaman = $value['bibit_tanaman'];
                     $model_rincian->pupuk1 = $value['pupuk1'];
                     $model_rincian->pupuk2 = $value['pupuk2'];
+                    $model_rincian->pupuk3 = $value['pupuk3'];
                     $model_rincian->pestisida1 = $value['pestisida1'];
                     $model_rincian->pestisida2 = $value['pestisida2'];
+                    $model_rincian->pestisida3 = $value['pestisida3'];
                     $model_rincian->bahan_bakar_budidaya = $value['bahan_bakar_budidaya'];
                     $model_rincian->sewa_lahan = $value['sewa_lahan'];
                     $model_rincian->pengeluaran_lainnya = $value['pengeluaran_lainnya'];
@@ -1715,8 +1725,10 @@ class SurveiController extends Controller
                     $model_rincian->bibit_tanaman = $value['bibit_tanaman'];
                     $model_rincian->pupuk1 = $value['pupuk1'];
                     $model_rincian->pupuk2 = $value['pupuk2'];
+                    $model_rincian->pupuk3 = $value['pupuk3'];
                     $model_rincian->pestisida1 = $value['pestisida1'];
                     $model_rincian->pestisida2 = $value['pestisida2'];
+                    $model_rincian->pestisida3 = $value['pestisida3'];
                     $model_rincian->bahan_bakar_budidaya = $value['bahan_bakar_budidaya'];
                     $model_rincian->sewa_lahan = $value['sewa_lahan'];
                     $model_rincian->sewa_alat = $value['sewa_alat'];
@@ -1852,6 +1864,8 @@ class SurveiController extends Controller
                 } 
             }
         }
+        
+        return response()->json(['result'=>1]);
     }
 
     public function tahunan_clean_store(Request $request){
@@ -1888,7 +1902,7 @@ class SurveiController extends Controller
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
 
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -1958,8 +1972,10 @@ class SurveiController extends Controller
         
         $model->pupuk1 = $request->pupuk1;
         $model->pupuk2 = $request->pupuk2;
+        $model->pupuk3 = $request->pupuk3;
         $model->pestisida1 = $request->pestisida1;
         $model->pestisida2 = $request->pestisida2;
+        $model->pestisida3 = $request->pestisida3;
         
         $model->nama_pencacah = $request->nama_pencacah;
         $model->tanggal_pencacah = date('Y-m-d', strtotime($request->tanggal_pencacah));
@@ -2014,8 +2030,10 @@ class SurveiController extends Controller
                     $model_rincian->bibit_tanaman = $value['bibit_tanaman'];
                     $model_rincian->pupuk1 = $value['pupuk1'];
                     $model_rincian->pupuk2 = $value['pupuk2'];
+                    $model_rincian->pupuk3 = $value['pupuk3'];
                     $model_rincian->pestisida1 = $value['pestisida1'];
                     $model_rincian->pestisida2 = $value['pestisida2'];
+                    $model_rincian->pestisida3 = $value['pestisida3'];
                     $model_rincian->bahan_bakar_budidaya = $value['bahan_bakar_budidaya'];
                     $model_rincian->sewa_lahan = $value['sewa_lahan'];
                     $model_rincian->pengeluaran_lainnya = $value['pengeluaran_lainnya'];
@@ -2204,8 +2222,10 @@ class SurveiController extends Controller
                     $model_rincian->bibit_tanaman = $value['bibit_tanaman'];
                     $model_rincian->pupuk1 = $value['pupuk1'];
                     $model_rincian->pupuk2 = $value['pupuk2'];
+                    $model_rincian->pupuk3 = $value['pupuk3'];
                     $model_rincian->pestisida1 = $value['pestisida1'];
                     $model_rincian->pestisida2 = $value['pestisida2'];
+                    $model_rincian->pestisida3 = $value['pestisida3'];
                     $model_rincian->bahan_bakar_budidaya = $value['bahan_bakar_budidaya'];
                     $model_rincian->sewa_lahan = $value['sewa_lahan'];
                     $model_rincian->sewa_alat = $value['sewa_alat'];
@@ -2341,6 +2361,8 @@ class SurveiController extends Controller
                 } 
             }
         }
+        
+        return response()->json(['result'=>1]);
     }
 
     public function tahunan_send_store(Request $request, $id){
@@ -2362,7 +2384,7 @@ class SurveiController extends Controller
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
 
-        $model->nama_contact = $request->name_contact;
+        $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
         $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
@@ -2432,8 +2454,10 @@ class SurveiController extends Controller
         
         $model->pupuk1 = $request->pupuk1;
         $model->pupuk2 = $request->pupuk2;
+        $model->pupuk3 = $request->pupuk3;
         $model->pestisida1 = $request->pestisida1;
         $model->pestisida2 = $request->pestisida2;
+        $model->pestisida3 = $request->pestisida3;
         
         $model->nama_pencacah = $request->nama_pencacah;
         $model->tanggal_pencacah = date('Y-m-d', strtotime($request->tanggal_pencacah));
@@ -2488,8 +2512,10 @@ class SurveiController extends Controller
                     $model_rincian->bibit_tanaman = $value['bibit_tanaman'];
                     $model_rincian->pupuk1 = $value['pupuk1'];
                     $model_rincian->pupuk2 = $value['pupuk2'];
+                    $model_rincian->pupuk3 = $value['pupuk3'];
                     $model_rincian->pestisida1 = $value['pestisida1'];
                     $model_rincian->pestisida2 = $value['pestisida2'];
+                    $model_rincian->pestisida3 = $value['pestisida3'];
                     $model_rincian->bahan_bakar_budidaya = $value['bahan_bakar_budidaya'];
                     $model_rincian->sewa_lahan = $value['sewa_lahan'];
                     $model_rincian->pengeluaran_lainnya = $value['pengeluaran_lainnya'];
@@ -2678,8 +2704,10 @@ class SurveiController extends Controller
                     $model_rincian->bibit_tanaman = $value['bibit_tanaman'];
                     $model_rincian->pupuk1 = $value['pupuk1'];
                     $model_rincian->pupuk2 = $value['pupuk2'];
+                    $model_rincian->pupuk3 = $value['pupuk3'];
                     $model_rincian->pestisida1 = $value['pestisida1'];
                     $model_rincian->pestisida2 = $value['pestisida2'];
+                    $model_rincian->pestisida3 = $value['pestisida3'];
                     $model_rincian->bahan_bakar_budidaya = $value['bahan_bakar_budidaya'];
                     $model_rincian->sewa_lahan = $value['sewa_lahan'];
                     $model_rincian->sewa_alat = $value['sewa_alat'];
@@ -2815,6 +2843,8 @@ class SurveiController extends Controller
                 } 
             }
         }
+        
+        return response()->json(['result'=>1]);
     }
 
     public function detail_tahunan($tahun){
