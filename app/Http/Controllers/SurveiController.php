@@ -8,6 +8,7 @@ use App\Models\SurveiKaret;
 use App\Models\RincianKaret;
 use App\Models\SurveiSawit;
 use App\Models\RincianSawit;
+use App\Models\Prov;
 use App\Models\Kab;
 use App\Models\Kec;
 use App\Models\Desa;
@@ -71,6 +72,7 @@ class SurveiController extends Controller
         $model = SurveiSawit::find($id);
         $rincian1 = [];
         $rincian2 = [];
+        $list_prov = Prov::get();
 
         // print_r($model);die();
         if($model!=null){
@@ -78,13 +80,14 @@ class SurveiController extends Controller
             $rincian2 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
         }
 
-        return view('survei.detail_sawit', compact('model', 'rincian1', 'rincian2'));
+        return view('survei.detail_sawit', compact('model', 'rincian1', 'rincian2', 'list_prov'));
     }
 
     public function sawit(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
-        return view('survei.sawit', compact('user_profile'));
+        $list_prov = Prov::get();
+        return view('survei.sawit', compact('user_profile', 'list_prov'));
     }
 
     public function sawit_print($id){
@@ -187,8 +190,19 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
+
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
         $model->badan_hukum_grup = $request->badan_hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
@@ -349,8 +363,18 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
         $model->badan_hukum_grup = $request->hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
@@ -518,8 +542,18 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
         $model->badan_hukum_grup = $request->hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
@@ -705,8 +739,18 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
         $model->badan_hukum_grup = $request->hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
@@ -863,13 +907,14 @@ class SurveiController extends Controller
         $model = SurveiKaret::find($id);
         $rincian1 = [];
         $rincian2 = [];
+        $list_prov = Prov::get();
 
         if($model!=null){
             $rincian1 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
             $rincian2 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
         }
 
-        return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2'));
+        return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2', 'list_prov'));
     }
 
     public function index_tahunan(Request $request){
@@ -886,8 +931,9 @@ class SurveiController extends Controller
     public function karet(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
+        $list_prov = Prov::get();
         // $user_profile = ProfilPerusahaan::where('user_id', '=', Auth::id())->first();
-        return view('survei.karet', compact('user_profile'));
+        return view('survei.karet', compact('user_profile', 'list_prov'));
     }
     
     public function karet_store(Request $request){
@@ -944,8 +990,17 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
         $model->badan_hukum_grup = $request->badan_hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
@@ -1124,8 +1179,18 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
         $model->badan_hukum_grup = $request->hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
@@ -1273,8 +1338,9 @@ class SurveiController extends Controller
     public function tahunan(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
+        $list_prov = Prov::get();
         // $user_profile = ProfilPerusahaan::where('user_id', '=', Auth::id())->first();
-        return view('survei.tahunan', compact('user_profile'));
+        return view('survei.tahunan', compact('user_profile', 'list_prov'));
     }
     
     public function show_tahunan($tahun){
@@ -1354,8 +1420,17 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
 
         $model->status_pemodalan = $request->status_pemodalan;
         $model->badan_hukum = $request->badan_hukum;
@@ -1833,8 +1908,18 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
 
         $model->status_pemodalan = $request->status_pemodalan;
         $model->badan_hukum = $request->badan_hukum;
@@ -2297,8 +2382,18 @@ class SurveiController extends Controller
         $model->email_grup = $request->email_grup;
         $model->kode_prov_grup = $request->kode_prov_grup;
         $model->kode_kab_grup= $request->kode_kab_grup;
-        $model->label_prov_grup = $request->label_prov_grup;
-        $model->label_kab_grup = $request->label_kab_grup;
+        
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
 
         $model->status_pemodalan = $request->status_pemodalan;
         $model->badan_hukum = $request->badan_hukum;
@@ -2725,6 +2820,7 @@ class SurveiController extends Controller
     public function detail_tahunan($tahun){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
-        return view('survei.detail_tahunan', compact('user_profile', 'tahun'));
+        $list_prov = Prov::get();
+        return view('survei.detail_tahunan', compact('user_profile', 'tahun', 'list_prov'));
     }
 }

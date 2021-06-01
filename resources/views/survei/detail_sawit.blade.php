@@ -92,8 +92,11 @@
             </td>
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
             <td>
-                <input type="text" name="kode_prov_grup" v-model="form.kode_prov_grup">
-                <input type="hidden" name="label_prov_grup" v-model="form.label_prov_grup">
+                <select name="kode_prov_grup" v-model="form.kode_prov_grup" @change="setKab()">
+                    <option v-for="v in list_grup_prov" :key="v.idProv" :value="v.idProv">
+                        @{{ v.idProv }} - @{{ v.namaProv }}
+                    </option>
+                </select>
             </td>
         </tr>
         
@@ -104,13 +107,12 @@
             </td>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select id="kode_kab_grup" v-model="form.kode_kab_grup" @change="namaKab(2)">
-                    <option value="">- Pilih Kabupaten -</option>
+                <select name="kode_kab_grup" v-model="form.kode_kab_grup">
+                    <option>- Pilih Kabupaten/Kota -</option>
                     <option v-for="v in list_grup_kab" :key="v.idKab" :value="v.idKab">
                         @{{ v.idKab }} - @{{ v.nmKab }}
                     </option>
                 </select>
-                <input type="hidden" name="label_kab_grup" v-model="form.label_kab_grup">
             </td>
         </tr>
         
@@ -235,21 +237,14 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp; b. Provinsi</td>
             <td>
-                <input type="text" disabled name="kode_prov_kantor_pusat" v-model="form.kode_prov_kantor_pusat">
-                <input type="hidden" name="label_prov_kantor_pusat" v-model="form.label_prov_kantor_pusat">
+                <input disabled class="form-control" type="text" :value="form.kode_prov_kantor_pusat + ' - ' + form.label_prov_kantor_pusat">
             </td>
         </tr>
         
         <tr>
             <td>&nbsp;&nbsp;&nbsp; c. Kabupaten/Kota *)</td>
             <td>
-                <select id="kode_kab_kantor_pusat" disabled v-model="form.kode_kab_kantor_pusat"  @change="namaKab(3)">
-                    <option value="">- Pilih Kabupaten -</option>
-                    <option v-for="v in list_pusat_kab" :key="v.idKab" :value="v.idKab">
-                        @{{ v.idKab }} - @{{ v.nmKab }}
-                    </option>
-                </select>
-                <input type="hidden" name="label_kab_kantor_pusat" v-model="form.label_kab_kantor_pusat">
+                <input disabled class="form-control" type="text" :value="form.kode_kab_kantor_pusat + ' - ' + form.label_kab_kantor_pusat">
             </td>
         </tr>
     </table>
@@ -536,7 +531,9 @@ var vm = new Vue({
         form: {!! json_encode($model) !!},
         rincian1: {!! json_encode($rincian1) !!}, 
         rincian2: {!! json_encode($rincian2) !!},
-        list_kab: [], list_pusat_kab: [], list_grup_kab: [],
+        list_kab: [], list_pusat_kab: [], 
+        list_grup_prov:  {!! json_encode($list_prov) !!},
+        list_grup_kab: [],
         list_kec: [], list_desa: [],
     },
     computed: {
@@ -569,11 +566,31 @@ var vm = new Vue({
                 window.location.href = self.pathname + "/index_sawit"
             });
         },
+        setKab: function(){
+            $('#wait_progres').modal('show');
+            var self = this;
+
+            $.ajax({
+                url :  self.pathname+"/get_kab",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: self.form.kode_prov_grup,
+                },
+            }).done(function (data) {
+                self.list_grup_kab = data.result 
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
+        },
     }
 });
 
 
 $(document).ready(function() { 
+    vm.setKab();
     $('.datetimepicker4').datetimepicker({
         format: 'DD-MM-YYYY'
     });

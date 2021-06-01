@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Prov;
 use App\Models\Kab;
 use App\Models\Kec;
 use App\Models\Desa;
@@ -87,8 +88,10 @@ class UserController extends Controller
         $model = User::find(Auth::id());
         $perusahaan = ProfilPerusahaan::find($model->company_id);
         $list_kab16 = Kab::where('idProv', '=', 16)->get();
+        $list_prov = Prov::get();
         return view('user.edit', compact(
-            'model', 'perusahaan', 'list_kab16'
+            'model', 'perusahaan', 'list_kab16', 
+            'list_prov'
         ));
     }
 
@@ -133,8 +136,18 @@ class UserController extends Controller
         $model_profil->fax_kantor_pusat = $request->fax_kantor_pusat;
         $model_profil->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
         $model_profil->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
-        $model_profil->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
-        $model_profil->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
+        
+        $prov_pusat = Prov::where('idProv', '=', $request->kode_prov_kantor_pusat)->first();
+        if($prov_pusat!=null){
+            $model_profil->label_prov_kantor_pusat = $prov_pusat->namaProv;
+            
+            $kab_pusat = Kab::where('idProv', '=', $request->kode_prov_kantor_pusat)
+                            ->where('idKab', '=', $request->kode_kab_kantor_pusat)
+                            ->first();
+            if($kab_pusat!=null){
+                $model_profil->label_kab_kantor_pusat = $kab_pusat->nmKab;
+            }
+        }
         $model_profil->updated_by = Auth::id();
         $model_profil->save();
         

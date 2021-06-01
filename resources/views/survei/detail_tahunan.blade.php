@@ -136,13 +136,17 @@
         <tr>
             <td></td>
             <td>b. Provinsi</td>
-            <td colspan="2" class="text-right"><input type="text" size="3" disabled v-model="form.kode_prov_kantor_pusat"></td>
+            <td colspan="2" class="text-right">
+                <input disabled class="form-control" type="text" :value="form.kode_prov_kantor_pusat + ' - ' + form.label_prov_kantor_pusat">
+            </td>
         </tr>
         
         <tr>
             <td></td>
             <td>c. Kabupaten/Kota *)</td>
-            <td colspan="2" class="text-right"><input type="text" size="3" disabled v-model="form.kode_kab_kantor_pusat"></td>
+            <td colspan="2" class="text-right">
+                <input disabled class="form-control" type="text" :value="form.kode_kab_kantor_pusat + ' - ' + form.label_kab_kantor_pusat">
+            </td>
         </tr>
 
         <tr>
@@ -172,13 +176,26 @@
         <tr>
             <td></td>
             <td>b. Provinsi</td>
-            <td colspan="2" class="text-right"><input type="text"  v-model="form.kode_prov_grup" size="3"></td>
+            <td colspan="2" class="text-right">
+                <select name="kode_prov_grup" v-model="form.kode_prov_grup" @change="setKab()">
+                    <option v-for="v in list_grup_prov" :key="v.idProv" :value="v.idProv">
+                        @{{ v.idProv }} - @{{ v.namaProv }}
+                    </option>
+                </select>
+            </td>
         </tr>
         
         <tr>
             <td></td>
             <td>c. Kabupaten/Kota *)</td>
-            <td colspan="2" class="text-right"><input type="text" v-model="form.kode_kab_grup" size="3"></td>
+            <td colspan="2" class="text-right">
+                <select name="kode_kab_grup" v-model="form.kode_kab_grup">
+                    <option>- Pilih Kabupaten/Kota -</option>
+                    <option v-for="v in list_grup_kab" :key="v.idKab" :value="v.idKab">
+                        @{{ v.idKab }} - @{{ v.nmKab }}
+                    </option>
+                </select>
+            </td>
         </tr>
 
         <tr><td colspan="4"><i>*) Coret yang tidak sesuai</i></td></tr>
@@ -1285,7 +1302,9 @@ var vm = new Vue({
             updated_by: '',
         },
         rincian_tahunan: [], rincian_semusim: [],
-        list_kab: [], list_pusat_kab: [], list_grup_kab: [],
+        list_kab: [], list_pusat_kab: [], 
+        list_grup_prov:  {!! json_encode($list_prov) !!},
+        list_grup_kab: [],
         list_kec: [], list_desa: [],
         user_profile: {!! json_encode($user_profile) !!},
     },
@@ -1456,6 +1475,8 @@ var vm = new Vue({
                         self.form = data.data;
                         self.rincian_tahunan = data.rincian_tahunan;
                         self.rincian_semusim = data.rincian_semusim;
+                        
+                        vm.setKab();
                     }
                     else{
                         self.setDataKosong()
@@ -1471,105 +1492,30 @@ var vm = new Vue({
                 self.setDataKosong()
             }
         },
-        setKab: function(kab_mana){
+        setKab: function(){
             $('#wait_progres').modal('show');
             var self = this;
-            var kd_prov = ''
-            if(kab_mana==1) kd_prov = self.form.kode_prov 
-            else if(kab_mana==2)  kd_prov = self.form.kode_prov_kantor_pusat
-            else if(kab_mana==3)  kd_prov = self.form.kode_prov_grup
-            
+
             $.ajax({
                 url :  self.pathname+"/get_kab",
                 method : 'post',
                 dataType: 'json',
                 data:{
-                    kode_prov: kd_prov,
+                    kode_prov: self.form.kode_prov_grup,
                 },
             }).done(function (data) {
-                    
-                if(kab_mana==1) self.list_kab = data.result 
-                else if(kab_mana==2) self.list_pusat_kab = data.result 
-                else if(kab_mana==3) self.list_grup_kab = data.result 
-
+                self.list_grup_kab = data.result 
                 $('#wait_progres').modal('hide');
             }).fail(function (msg) {
                 console.log(JSON.stringify(msg));
                 $('#wait_progres').modal('hide');
             });
         },
-        setKec: function(){
-            $('#wait_progres').modal('show');
-            var self = this;
-
-            var index_kab = $("#kode_kab")[0].selectedIndex;
-            self.form.label_kab = self.list_kab[index_kab-1].nmKab
-
-            $.ajax({
-                url :  self.pathname+"/get_kec",
-                method : 'post',
-                dataType: 'json',
-                data:{
-                    kode_prov: self.form.kode_prov,
-                    kode_kab: self.form.kode_kab,
-                },
-            }).done(function (data) {
-                self.list_kec = data.result 
-                $('#wait_progres').modal('hide');
-            }).fail(function (msg) {
-                console.log(JSON.stringify(msg));
-                $('#wait_progres').modal('hide');
-            });
-        },
-        setDesa: function(){
-            $('#wait_progres').modal('show');
-            var self = this;
-            
-            var index_kec = $("#kode_kec")[0].selectedIndex;
-            self.form.label_kec = self.list_kec[index_kec-1].nmKec
-
-            $.ajax({
-                url :  self.pathname+"/get_desa",
-                method : 'post',
-                dataType: 'json',
-                data:{
-                    kode_prov: self.form.kode_prov,
-                    kode_kab: self.form.kode_kab,
-                    kode_kec: self.form.kode_kec,
-                },
-            }).done(function (data) {
-                self.list_desa = data.result 
-                $('#wait_progres').modal('hide');
-            }).fail(function (msg) {
-                console.log(JSON.stringify(msg));
-                $('#wait_progres').modal('hide');
-            });
-        },
-        namaDesa: function(){
-            var self = this;
-            var index_desa = $("#kode_desa")[0].selectedIndex;
-            if(index_desa>0) self.form.label_desa = self.list_desa[index_desa-1].nmDesa
-        },
-        namaKab: function(kab_mana){
-            var self = this;
-            
-            if(kab_mana==2){
-                var index_kab = $("#kode_kab_grup")[0].selectedIndex;
-                self.form.label_kab_grup = self.list_grup_kab[index_kab-1].nmKab
-            }
-            else if(kab_mana==3){
-                var index_kab = $("#kode_kab_kantor_pusat")[0].selectedIndex;
-                self.form.label_kab_kantor_pusat = self.list_pusat_kab[index_kab-1].nmKab
-            }
-        }
     }
 });
 
 $(document).ready(function() {
     vm.setDatas();
-    vm.setKab(1);
-    vm.setKab(2);
-    vm.setKab(3);
     
     $('.datetimepicker4').datetimepicker({
         format: 'DD-MM-YYYY'

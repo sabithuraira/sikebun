@@ -138,14 +138,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Provinsi Kantor Pusat</label>
-                                <input type="text" class="form-control" name="kode_prov_kantor_pusat" v-model="form.kode_prov_kantor_pusat">
+                                <label class="bmd-label-floating">Pilih Provinsi Kantor Pusat</label>
+                                <select class="form form-control" name="kode_prov_kantor_pusat" v-model="form.kode_prov_kantor_pusat" @change="setKab()">
+                                    <option v-for="v in list_pusat_prov" :key="v.idProv" :value="v.idProv">
+                                        @{{ v.idProv }} - @{{ v.namaProv }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Kab/Kota Kantor Pusat</label>
-                                <input type="text" class="form-control" name="kode_kab_kantor_pusat" v-model="form.kode_kab_kantor_pusat">
+                                <label class="bmd-label-floating">Pilih Kab/Kota Kantor Pusat</label>
+                                <select class="form form-control" name="kode_kab_kantor_pusat" v-model="form.kode_kab_kantor_pusat">
+                                    <option v-for="v in list_pusat_kab" :key="v.idKab" :value="v.idKab">
+                                        @{{ v.idKab }} - @{{ v.nmKab }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -203,7 +211,8 @@ var vm = new Vue({
             created_at: '', updated_at: '',
         },
         list_kab: {!! json_encode($list_kab16) !!}, 
-        list_pusat_prov: [],list_pusat_kab: [],
+        list_pusat_prov: {!! json_encode($list_prov) !!},
+        list_pusat_kab: [],
         list_kec: [], list_desa: [],
     },
     methods: {
@@ -229,6 +238,10 @@ var vm = new Vue({
 
                         if(self.form.kode_kec!='' || self.form.kode_kec!=null){
                             self.setDesa();
+                        }
+                        
+                        if(self.form.kode_prov_kantor_pusat!='' || self.form.kode_prov_kantor_pusat!=null){
+                            self.setKab();
                         }
                     }
                     else{
@@ -274,6 +287,25 @@ var vm = new Vue({
                             created_at: '', updated_at: ''
                         }
             }
+        },
+        setKab: function(){
+            $('#wait_progres').modal('show');
+            var self = this;
+
+            $.ajax({
+                url :  self.pathname+"/survei/get_kab",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: self.form.kode_prov_kantor_pusat,
+                },
+            }).done(function (data) {
+                self.list_pusat_kab = data.result 
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
         },
         setKec: function(){
             $('#wait_progres').modal('show');
