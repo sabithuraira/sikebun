@@ -924,7 +924,11 @@ $(document).ready(function() {
     vm.setDatas();
     
     $('.datetimepicker4').datetimepicker({
-        format: 'DD-MM-YYYY'
+        format: 'DD-MM-YYYY',
+        icons: {
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+        }
     });
     
     $("#diisi_tanggal").on("dp.change", function (e) {
