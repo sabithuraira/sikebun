@@ -38,6 +38,16 @@
                     <td><a target="_blank" href="https://drive.google.com/file/d/1ltjQ07uK4GKbIiYswjzmoSLFh8kmTfBx/view?usp=sharing">Unduh</a></td>
                 </tr>
             </table>
+            <hr/><br/>
+            
+            <div class="row d-flex justify-content-center">
+                <img src="{{ asset('img/infografis1.jpg') }}" width="400">
+                <img src="{{ asset('img/infografis2.jpg') }}" width="400">
+                <img src="{{ asset('img/infografis3.jpg') }}" width="400">
+                <img src="{{ asset('img/infografis4.jpg') }}" width="400">
+                <img src="{{ asset('img/infografis5.jpg') }}" width="400">
+                <img src="{{ asset('img/infografis6.jpg') }}" width="400">
+            </div>
         </div>
     </div>
 </div>
