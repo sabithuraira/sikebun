@@ -611,10 +611,10 @@ class SurveiController extends Controller
                 $all_rincian1 = $request->rincian1;
             foreach($all_rincian1 as $key=>$value){
                 if($value['rincian']!=''){
-                    $model_rincian = new RincianSawit;
+                    $model_rincian = new RincianKaret;
         
                     if($value['id']!=0){
-                        $temp_model_rincian = RincianSawit::find($value['id']);
+                        $temp_model_rincian = RincianKaret::find($value['id']);
                         if($temp_model_rincian!=null){
                             $model_rincian = $temp_model_rincian;
                         }
@@ -647,10 +647,10 @@ class SurveiController extends Controller
                 $all_rincian2 = $request->rincian2;
             foreach($all_rincian2 as $key=>$value){
                 if($value['rincian']!=''){
-                    $model_rincian = new RincianSawit;
+                    $model_rincian = new RincianKaret;
         
                     if($value['id']!=0){
-                        $temp_model_rincian = RincianSawit::find($value['id']);
+                        $temp_model_rincian = RincianKaret::find($value['id']);
                         if($temp_model_rincian!=null){
                             $model_rincian = $temp_model_rincian;
                         }
