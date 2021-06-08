@@ -20,6 +20,7 @@ use App\Http\Controllers\UserRoleController;
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', function () { return view('dashboard'); });
+    Route::get('/infografis', function () { return view('infografis'); });
     
     Route::get('/survei/index_sawit', [SurveiController::class, 'index_sawit']);
     Route::get('/survei/sawit/{tahun}/{triwulan}/show', [SurveiController::class, 'show_sawit']);

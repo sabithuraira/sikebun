@@ -24,7 +24,7 @@
         <tr class="text-center">
             <td colspan="3">
                 <h4>SURVEI PERUSAHAAN PERKEBUNAN TAHUNAN</h4>
-                <h4>TAHUN 2020</h4>
+                <h4>TAHUN @{{ form.tahun }}</h4>
             </td>
         </tr>
         
@@ -41,6 +41,73 @@
             </td>
         </tr>
     </table>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="blok1-tab" data-toggle="tab" href="#blok1" role="tab" aria-controls="blok1" aria-selected="true">Blok I</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="blok2-tab" data-toggle="tab" href="#blok2" role="tab" aria-controls="blok2" aria-selected="false">Blok II</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="blok3-tab" data-toggle="tab" href="#blok3" role="tab" aria-controls="blok3" aria-selected="false">Blok III</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="blok4-tab" data-toggle="tab" href="#blok4" role="tab" aria-controls="blok4" aria-selected="false">Blok IV</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="blok5-tab" data-toggle="tab" href="#blok5" role="tab" aria-controls="blok5" aria-selected="false">Blok V</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="blok6-tab" data-toggle="tab" href="#blok6" role="tab" aria-controls="blok6" aria-selected="false">Blok VI</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="blok7-tab" data-toggle="tab" href="#blok7" role="tab" aria-controls="blok7" aria-selected="false">Blok VII</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="blok8-tab" data-toggle="tab" href="#blok8" role="tab" aria-controls="blok8" aria-selected="false">Blok VIII</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="blok1" role="tabpanel" aria-labelledby="blok1-tab">
+
+        </div>
+
+        <div class="tab-pane fade" id="blok2" role="tabpanel" aria-labelledby="blok2-tab">
+            Blok2
+        </div>
+        
+        <div class="tab-pane fade" id="blok3" role="tabpanel" aria-labelledby="blok3-tab">
+            blok3
+        </div>
+        
+        <div class="tab-pane fade" id="blok4" role="tabpanel" aria-labelledby="blok4-tab">
+            blok4
+        </div>
+        
+        <div class="tab-pane fade" id="blok5" role="tabpanel" aria-labelledby="blok5-tab">
+            blok5
+        </div>
+        
+        <div class="tab-pane fade" id="blok6" role="tabpanel" aria-labelledby="blok6-tab">
+            blok6
+        </div>
+        
+        <div class="tab-pane fade" id="blok7" role="tabpanel" aria-labelledby="blok7-tab">
+            blok7
+        </div>
+        
+        <div class="tab-pane fade" id="blok8" role="tabpanel" aria-labelledby="blok8-tab">
+            blok8
+        </div>
+    </div>
 
     <table class="table-border" style="min-width:100%">
         <tr class="bg-success text-center"><td colspan="4"><b>I. PENGENALAN TEMPAT</b></td></tr>
@@ -1044,8 +1111,10 @@
         
         <tr>
             <td>Total</td>
-            <td></td><td></td>
-            <td></td><td></td>
+            <td>@{{ customChangeFloat(form.bpt_admin_laki)+customChangeFloat(form.bpt_admin_perempuan)+customChangeFloat(form.bptt_admin_laki)+customChangeFloat(form.bptt_admin_perempuan) }}</td>
+            <td>@{{ customChangeFloat(form.upt_admin_laki)+customChangeFloat(form.upt_admin_perempuan)+customChangeFloat(form.uptt_admin_laki)+customChangeFloat(form.uptt_admin_perempuan) }}</td>
+            <td>@{{ customChangeFloat(form.bpt_kebun_laki)+customChangeFloat(form.bpt_kebun_perempuan)+customChangeFloat(form.bptt_kebun_laki)+customChangeFloat(form.bptt_kebun_perempuan) }}</td>
+            <td>@{{ customChangeFloat(form.upt_kebun_laki)+customChangeFloat(form.upt_kebun_perempuan)+customChangeFloat(form.uptt_kebun_laki)+customChangeFloat(form.uptt_kebun_perempuan) }}</td>
         </tr>
     </table>
 
@@ -1098,7 +1167,9 @@
         
         <tr>
             <td>7. Total (R1 s.d R6)</td>
-            <td></td>
+            <td>@{{ customChangeFloat(form.pendapatan_bersih_kebun)+customChangeFloat(form.pendapatan_bersih_tani_lain)
+                +customChangeFloat(form.pendapatan_hasil_kemitraan)+customChangeFloat(form.pendapatan_dari_sewa)
+                +customChangeFloat(form.pendapatan_jual_bibit)+customChangeFloat(form.pendapatan_bersih_lain) }}</td>
         </tr>
     </table>
 
@@ -1488,6 +1559,17 @@ var vm = new Vue({
             if(self.form.badan_hukum=='') msg_error.push("Badan Hukum Wajib Diisi")
             if(self.form.status_pemodalan=='') msg_error.push("Status Pemodalan Wajib Diisi")
             if(self.form.apakah_pelaksana_kemitraan=='') msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
+
+            var pengeluaran_tahunan = 0;
+            for(var i=0;i<this.rincian_tahunan.length;i++){
+                if((this.customChangeFloat(this.rincian_tahunan[i].bibit_tanaman) + this.customChangeFloat(this.rincian_tahunan[i].pupuk1) + this.customChangeFloat(this.rincian_tahunan[i].pupuk2) + this.customChangeFloat(this.rincian_tahunan[i].pupuk3) + this.customChangeFloat(this.rincian_tahunan[i].pestisida1) + this.customChangeFloat(this.rincian_tahunan[i].pestisida2) + this.customChangeFloat(this.rincian_tahunan[i].pestisida3) + this.customChangeFloat(this.rincian_tahunan[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_tahunan[i].sewa_lahan) + this.customChangeFloat(this.rincian_tahunan[i].sewa_alat) + this.customChangeFloat(this.rincian_tahunan[i].pengeluaran_lainnya))==0)
+                    msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+            }
+            
+            for(var i=0;i<this.rincian_semusim.length;i++){
+                if((this.customChangeFloat(this.rincian_semusim[i].bibit_tanaman) + this.customChangeFloat(this.rincian_semusim[i].pupuk1) + this.customChangeFloat(this.rincian_semusim[i].pupuk2) + this.customChangeFloat(this.rincian_semusim[i].pupuk3) + this.customChangeFloat(this.rincian_semusim[i].pestisida1) + this.customChangeFloat(this.rincian_semusim[i].pestisida2) + this.customChangeFloat(this.rincian_semusim[i].pestisida3) + this.customChangeFloat(this.rincian_semusim[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_semusim[i].sewa_lahan) + this.customChangeFloat(this.rincian_semusim[i].sewa_alat) + this.customChangeFloat(this.rincian_semusim[i].pengeluaran_lainnya))==0)
+                    msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+            }
 
             if(msg_error.length==0){
                 var data_post = self.form

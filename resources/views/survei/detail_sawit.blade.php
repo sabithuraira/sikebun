@@ -376,23 +376,23 @@
 
         <tr>
             <td>3. Total</td>
-            <td><input type="text" name="301_a3_total_tbm_bulan1" v-model="form['301_a3_total_tbm_bulan1']" size="3"></td>
-            <td><input type="text" name="301_a3_total_tsm_bulan1" v-model="form['301_a3_total_tsm_bulan1']" size="3"></td>
-            <td><input type="text" name="301_a3_total_tstm_bulan1" v-model="form['301_a3_total_tstm_bulan1']" size="3"></td>
-            <td><input type="text" name="301_a3_total_ttm_bulan1" v-model="form['301_a3_total_ttm_bulan1']" size="3"></td>
-            <td><input type="text" name="301_a3_total_produksi_bulan1" v-model="form['301_a3_total_produksi_bulan1']" size="3"></td>
+            <td>@{{ t301_a3_total_tbm_bulan1 }}</td>
+            <td>@{{ t301_a3_total_tsm_bulan1 }}</td>
+            <td>@{{ t301_a3_total_tstm_bulan1 }}</td>
+            <td>@{{ t301_a3_total_ttm_bulan1 }}</td>
+            <td>@{{ t301_a3_total_produksi_bulan1 }}</td>
             
-            <td><input type="text" name="301_a3_total_tbm_bulan2" v-model="form['301_a3_total_tbm_bulan2']" size="3"></td>
-            <td><input type="text" name="301_a3_total_tsm_bulan2" v-model="form['301_a3_total_tsm_bulan2']" size="3"></td>
-            <td><input type="text" name="301_a3_total_tstm_bulan2" v-model="form['301_a3_total_tstm_bulan2']" size="3"></td>
-            <td><input type="text" name="301_a3_total_ttm_bulan2" v-model="form['301_a3_total_ttm_bulan2']" size="3"></td>
-            <td><input type="text" name="301_a3_total_produksi_bulan2" v-model="form['301_a3_total_produksi_bulan2']" size="3"></td>
+            <td>@{{ t301_a3_total_tbm_bulan2 }}</td>
+            <td>@{{ t301_a3_total_tsm_bulan2 }}</td>
+            <td>@{{ t301_a3_total_tstm_bulan2 }}</td>
+            <td>@{{ t301_a3_total_ttm_bulan2 }}</td>
+            <td>@{{ t301_a3_total_produksi_bulan2 }}</td>
             
-            <td><input type="text" name="301_a3_total_tbm_bulan3" v-model="form['301_a3_total_tbm_bulan3']" size="3"></td>
-            <td><input type="text" name="301_a3_total_tsm_bulan3" v-model="form['301_a3_total_tsm_bulan3']" size="3"></td>
-            <td><input type="text" name="301_a3_total_tstm_bulan3" v-model="form['301_a3_total_tstm_bulan3']" size="3"></td>
-            <td><input type="text" name="301_a3_total_ttm_bulan3" v-model="form['301_a3_total_ttm_bulan3']" size="3"></td>
-            <td><input type="text" name="301_a3_total_produksi_bulan3" v-model="form['301_a3_total_produksi_bulan3']" size="3"></td>
+            <td>@{{ t301_a3_total_tbm_bulan3 }}</td>
+            <td>@{{ t301_a3_total_tsm_bulan3 }}</td>
+            <td>@{{ t301_a3_total_tstm_bulan3 }}</td>
+            <td>@{{ t301_a3_total_ttm_bulan3 }}</td>
+            <td>@{{ t301_a3_total_produksi_bulan3 }}</td>
         </tr>
         <tr>
             <td>B. Kode Bentuk Produksi</td>
@@ -539,9 +539,222 @@ var vm = new Vue({
     computed: {
         pathname(){
             return window.location.pathname.replace("/"+this.form.id+"/sawit", "")
+        },
+        t301_a3_total_tbm_bulan1(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tbm1=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tbm1)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tbm1=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tbm1)
+            }
+            return total
+        },
+        t301_a3_total_tsm_bulan1(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tsm1=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tsm1)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tsm1=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tsm1)
+            }
+            return total
+        },
+        t301_a3_total_tstm_bulan1(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tstm1=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tstm1)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tstm1=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tstm1)
+            }
+            return total
+        },
+        t301_a3_total_ttm_bulan1(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].ttm1=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].ttm1)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].ttm1=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].ttm1)
+            }
+            return total
+        },
+        t301_a3_total_produksi_bulan1(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].produksi1=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].produksi1)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].produksi1=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].produksi1)
+            }
+            return total
+        },
+        t301_a3_total_tbm_bulan2(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tbm2=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tbm2)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tbm2=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tbm2)
+            }
+            return total
+        },
+        t301_a3_total_tsm_bulan2(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tsm2=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tsm2)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tsm2=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tsm2)
+            }
+            return total
+        },
+        t301_a3_total_tstm_bulan2(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tstm2=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tstm2)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tstm2=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tstm2)
+            }
+            return total
+        },
+        t301_a3_total_ttm_bulan2(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].ttm2=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].ttm2)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].ttm2=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].ttm2)
+            }
+            return total
+        },
+        t301_a3_total_produksi_bulan2(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].produksi2=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].produksi2)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].produksi2=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].produksi2)
+            }
+            return total
+        },
+        t301_a3_total_tbm_bulan3(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tbm3=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tbm3)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tbm3=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tbm3)
+            }
+            return total
+        },
+        t301_a3_total_tsm_bulan3(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tsm3=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tsm3)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tsm3=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tsm3)
+            }
+            return total
+        },
+        t301_a3_total_tstm_bulan3(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].tstm3=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].tstm3)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].tstm3=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].tstm3)
+            }
+            return total
+        },
+        t301_a3_total_ttm_bulan3(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].ttm3=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].ttm3)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].ttm3=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].ttm3)
+            }
+            return total
+        },
+        t301_a3_total_produksi_bulan3(){
+            var total = 0
+            for(var i=0;i<this.rincian1.length;i++){
+                if(this.rincian1[i].produksi3=='') total += 0;
+                else total +=  parseFloat(this.rincian1[i].produksi3)
+            }
+            
+            for(var i=0;i<this.rincian2.length;i++){
+                if(this.rincian2[i].produksi3=='') total += 0;
+                else total +=  parseFloat(this.rincian2[i].produksi3)
+            }
+            return total
         }
     },
     methods: {
+        addRincian: function (jenis_rincian) {
+            if(jenis_rincian==1){
+                this.rincian1.push({
+                    id: 0, survei_id: '', jenis: '1', rincian: '',
+                    tbm1: '', tsm1: '', tstm1: '', ttm1: '', produksi1: '',
+                    tbm2: '', tsm2: '', tstm2: '', ttm2: '', produksi2: '',
+                    tbm3: '', tsm3: '', tstm3: '', ttm3: '', produksi3: ''
+                })
+            }
+            else{
+                this.rincian2.push({
+                    id: 0, survei_id: '', jenis: '2', rincian: '',
+                    tbm1: '', tsm1: '', tstm1: '', ttm1: '', produksi1: '',
+                    tbm2: '', tsm2: '', tstm2: '', ttm2: '', produksi2: '',
+                    tbm3: '', tsm3: '', tstm3: '', ttm3: '', produksi3: ''
+                }) 
+            }
+        },
         sendData: function () {
             var self = this;
             $('#wait_progres').modal('show');

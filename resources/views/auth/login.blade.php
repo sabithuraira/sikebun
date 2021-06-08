@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="card-header card-header-primary">
-            <h4 class="card-title">Login</h4>
-            <p class="card-category">Selamat datang, silahkan masukkan akun anda</p>
+            <h4 class="card-title">Sistem Input Data Perkebunan Tahunan</h4>
+            <p class="card-category">Perusahaan Besar Swasta (PBS)</p>
         </div>
         <div class="card-body">
             @if(session('status'))
