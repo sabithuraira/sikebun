@@ -372,11 +372,23 @@
                         
                         <tr>
                             <td colspan="4">
-                                <select>
-                                    <option v-for="item in list_jenis_tanaman_tahunan" :key="item.kode">
-                                        @{{ item.kode }} - @{{ item.label }} 
-                                    </option>
-                                </select>
+                                <div v-for="(item, index)  in rincian_tahunan" :key="'tahunan_diolah'+index">
+                                    <select  required v-model="item.tanaman_diolah">
+                                        <option>- Pilih Tanaman -</option>
+                                        <option v-for="item in list_jenis_tanaman_tahunan" :key="item.kode">
+                                            @{{ item.kode }} - @{{ item.label }} 
+                                        </option>
+                                    </select>
+                                </div>
+                                
+                                <div v-for="(item, index)  in rincian_semusim" :key="'semusim_diolah'+index">
+                                    <select  required v-model="item.tanaman_diolah">
+                                        <option>- Pilih Tanaman -</option>
+                                        <option v-for="item in list_jenis_tanaman_semusim" :key="item.kode">
+                                            @{{ item.kode }} - @{{ item.label }} 
+                                        </option>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -1404,7 +1416,7 @@ var vm = new Vue({
         addRincian: function (jenis_rincian) {
             if(jenis_rincian==1){
                 this.rincian_tahunan.push({
-                    id: 0, survei_id: '', kode_tanaman: '', 
+                    id: 0, survei_id: '', kode_tanaman: '', tanaman_diolah: '', 
                     luas_sendiri_5: '', luas_sendiri_5_10: '', luas_sendiri_11_25: '', luas_sendiri_25: '',
                     luas_plasma_5: '', luas_plasma_5_10: '', luas_plasma_11_25: '', luas_plasma_25: '',
                     sendiri_bentuk_produksi: '', sendiri_rata_rendemen: '', 
@@ -1419,7 +1431,7 @@ var vm = new Vue({
             }
             else{
                 this.rincian_semusim.push({
-                    id: 0, survei_id: '', kode_tanaman: '', 
+                    id: 0, survei_id: '', kode_tanaman: '', tanaman_diolah: '',
                     sendiri_bentuk_produksi: '', sendiri_rata_rendemen: '', 
                     plasma_bentuk_produksi: '', plasma_rata_rendemen: '', 
                     bibit_tanaman: '', pupuk1: '', pupuk2: '',pupuk3: '', 

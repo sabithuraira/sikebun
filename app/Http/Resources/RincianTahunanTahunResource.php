@@ -21,11 +21,11 @@ class RincianTahunanTahunResource extends JsonResource
             'id'    => $this->id,
             'survei_id'    => $this->survei_id,
             'kode_tanaman'    => $this->kode_tanaman,
+            'tanaman_diolah'    => $this->tanaman_diolah,
             'luas_sendiri_5'    => $this->luas_sendiri_5,
             'luas_sendiri_5_10'    => $this->luas_sendiri_5_10,
             'luas_sendiri_11_25'    => $this->luas_sendiri_11_25,
             'luas_sendiri_25'    => $this->luas_sendiri_25,
-            
             'luas_plasma_5'    => $this->luas_plasma_5,
             'luas_plasma_5_10'    => $this->luas_plasma_5_10,
             'luas_plasma_11_25'    => $this->luas_plasma_11_25,

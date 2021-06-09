@@ -21,6 +21,7 @@ class RincianTahunanSemusimResource extends JsonResource
             'id'    => $this->id,
             'survei_id'    => $this->survei_id,
             'kode_tanaman'    => $this->kode_tanaman,
+            'tanaman_diolah'    => $this->tanaman_diolah,
             'sendiri_bentuk_produksi'    => $this->sendiri_bentuk_produksi,
             'sendiri_rata_rendemen'    => $this->sendiri_rata_rendemen,
             'plasma_bentuk_produksi'    => $this->plasma_bentuk_produksi,

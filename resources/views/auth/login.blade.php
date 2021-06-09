@@ -7,8 +7,8 @@
                 <div class="col-md-6"><img src="{{ asset('img/logo_sikebun.png') }}" width="150px" /></div>
             </div>
         </div>
-        <div class="card-header card-header-primary">
-            <h4 class="card-title">Sistem Input Data Perkebunan Tahunan</h4>
+        <div class="card-header card-header-success">
+            <h4 class="card-title">Single Input Data Perkebunan</h4>
             <p class="card-category">Perusahaan Besar Swasta (PBS)</p>
         </div>
         <div class="card-body">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary pull-right">Login</button>
+                <button type="submit" class="btn btn-success pull-right">Login</button>
                 <div class="clearfix"></div>
             </form>
         </div>

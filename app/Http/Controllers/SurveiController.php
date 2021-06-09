@@ -1517,6 +1517,7 @@ class SurveiController extends Controller
     
                     $model_rincian->survei_id = $model->id;
                     $model_rincian->kode_tanaman = $value['kode_tanaman'];
+                    $model_rincian->tanaman_diolah = $value['tanaman_diolah'];
                     $model_rincian->luas_sendiri_5 = $value['luas_sendiri_5'];
                     $model_rincian->luas_sendiri_5_10 = $value['luas_sendiri_5_10'];
                     $model_rincian->luas_sendiri_11_25 = $value['luas_sendiri_11_25'];
@@ -1717,7 +1718,7 @@ class SurveiController extends Controller
     
                     $model_rincian->survei_id = $model->id;
                     $model_rincian->kode_tanaman = $value['kode_tanaman'];
-
+                    $model_rincian->tanaman_diolah = $value['tanaman_diolah'];
                     $model_rincian->sendiri_bentuk_produksi = $value['sendiri_bentuk_produksi'];
                     $model_rincian->sendiri_rata_rendemen = $value['sendiri_rata_rendemen'];
                     $model_rincian->plasma_bentuk_produksi = $value['plasma_bentuk_produksi'];
@@ -2014,6 +2015,7 @@ class SurveiController extends Controller
     
                     $model_rincian->survei_id = $model->id;
                     $model_rincian->kode_tanaman = $value['kode_tanaman'];
+                    $model_rincian->tanaman_diolah = $value['tanaman_diolah'];
                     $model_rincian->luas_sendiri_5 = $value['luas_sendiri_5'];
                     $model_rincian->luas_sendiri_5_10 = $value['luas_sendiri_5_10'];
                     $model_rincian->luas_sendiri_11_25 = $value['luas_sendiri_11_25'];
@@ -2200,7 +2202,6 @@ class SurveiController extends Controller
             }
 
             ////////////////////
-            
             foreach($rincian_semusim as $key=>$value){
                 if($value['kode_tanaman']!=''){
                     $model_rincian = new RincianTahunanSemusim;
@@ -2214,7 +2215,7 @@ class SurveiController extends Controller
     
                     $model_rincian->survei_id = $model->id;
                     $model_rincian->kode_tanaman = $value['kode_tanaman'];
-
+                    $model_rincian->tanaman_diolah = $value['tanaman_diolah'];
                     $model_rincian->sendiri_bentuk_produksi = $value['sendiri_bentuk_produksi'];
                     $model_rincian->sendiri_rata_rendemen = $value['sendiri_rata_rendemen'];
                     $model_rincian->plasma_bentuk_produksi = $value['plasma_bentuk_produksi'];
@@ -2496,6 +2497,7 @@ class SurveiController extends Controller
     
                     $model_rincian->survei_id = $model->id;
                     $model_rincian->kode_tanaman = $value['kode_tanaman'];
+                    $model_rincian->tanaman_diolah = $value['tanaman_diolah'];
                     $model_rincian->luas_sendiri_5 = $value['luas_sendiri_5'];
                     $model_rincian->luas_sendiri_5_10 = $value['luas_sendiri_5_10'];
                     $model_rincian->luas_sendiri_11_25 = $value['luas_sendiri_11_25'];
@@ -2696,7 +2698,7 @@ class SurveiController extends Controller
     
                     $model_rincian->survei_id = $model->id;
                     $model_rincian->kode_tanaman = $value['kode_tanaman'];
-
+                    $model_rincian->tanaman_diolah = $value['tanaman_diolah'];
                     $model_rincian->sendiri_bentuk_produksi = $value['sendiri_bentuk_produksi'];
                     $model_rincian->sendiri_rata_rendemen = $value['sendiri_rata_rendemen'];
                     $model_rincian->plasma_bentuk_produksi = $value['plasma_bentuk_produksi'];
