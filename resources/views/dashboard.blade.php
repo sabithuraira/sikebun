@@ -8,9 +8,12 @@
             &nbsp;&nbsp;
             <br/><br/>
             <div class="row d-flex justify-content-center">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YSOmcDKHUJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dBG-Va_SQWw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            
+            <hr/>
+            <div class="row d-flex justify-content-center">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/rC6iHlYeghs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             <hr/><br/>
             
             <table class="table-border" style="min-width:100%">

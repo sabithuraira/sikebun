@@ -45,6 +45,12 @@
                                         </a>
                                         @endhasanyrole
                                     @endif
+                                    
+                                    @hasanyrole('operator')
+                                    <a href="{{ url('survei/'.$value->id.'/watch_karet') }}" class="btn btn-primary btn-link btn-sm">
+                                        <i class="material-icons">search</i>
+                                    </a>
+                                    @endhasanyrole
                                 </td>
                             </tr>
                         @endforeach

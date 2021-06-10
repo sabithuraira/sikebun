@@ -261,7 +261,7 @@
 
                 <div class="tab-pane" id="blok2" aria-labelledby="blok2-tab">
                     <table style="min-width:100%"  class="table-border">
-                        <tr><td class="bg-success text-center" colspan="4"><b>II. KETERANGAN UMUM PERUSHAAN</b></td></tr>
+                        <tr><td class="bg-success text-center" colspan="4"><b>II. KETERANGAN UMUM PERUSAHAAN</b></td></tr>
                         <tr>
                             <td colspan="3">1. Kondisi Perusahaan Berdasarkan Hasil Kunjungan ? (Lingkari salah satu kode yang sesuai)</td>
                             <td class="text-right">
@@ -490,7 +490,6 @@
                                 </td>
                             </tr>
                             
-                            <tr><td colspan="9"><button class="btn btn-info" @click="addKebunRincian(1,1,index)">Tambah Kebun Sendiri</button></td></tr>
                             <template v-if="item.list_kebun_tahunan_sendiri.length>0" v-for="(item_kebun_sendiri, index2)  in item.list_kebun_tahunan_sendiri">
                                 <tr><td colspan="9">@{{ index2+1 }}. Nama Kebun : <input type="text" v-model="item_kebun_sendiri.nama_kebun" ></td></tr>
                                 <tr class="text-center">
@@ -572,9 +571,11 @@
                                     <td>@{{ customChangeFloat(item_kebun_sendiri.target1_nilai) + customChangeFloat(item_kebun_sendiri.target2_nilai) + customChangeFloat(item_kebun_sendiri.target3_nilai) + customChangeFloat(item_kebun_sendiri.target4_nilai)  }}</td>
                                 </tr>
                             </template>
+                            
+                            <tr><td colspan="9"><button class="btn btn-info" @click="addKebunRincian(1,1,index)">Tambah Kebun Sendiri</button></td></tr>
                             <tr>
                                 <td colspan="9">
-                                    a. Kebun Plasma yang Belum Dikonversi/Kemitraan
+                                    b. Kebun Plasma yang Belum Dikonversi/Kemitraan
                                     &nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: 
                                     <select v-model="item.plasma_bentuk_produksi">
                                         <option v-for="(wujud_item, index_wujud) in list_wujud_tahunan" :value="wujud_item.id" :key="'wujud_tahunan_plasma'+index_wujud">
@@ -585,7 +586,6 @@
                                 </td>
                             </tr>
 
-                            <tr><td colspan="9"><button class="btn btn-info" @click="addKebunRincian(1,2,index)">Tambah Kebun Plasma</button></td></tr>
                             <template v-if="item.list_kebun_tahunan_plasma.length>0" v-for="(item_kebun_plasma, index2) in item.list_kebun_tahunan_plasma">
                                 <tr>
                                     <td colspan="9">@{{ index2+1 }}. Nama Kebun :
@@ -670,6 +670,7 @@
                                     <td>@{{ customChangeFloat(item_kebun_plasma.target1_nilai) + customChangeFloat(item_kebun_plasma.target2_nilai) + customChangeFloat(item_kebun_plasma.target3_nilai) + customChangeFloat(item_kebun_plasma.target4_nilai)  }}</td>
                                 </tr>
                             </template>
+                            <tr><td colspan="9"><button class="btn btn-info" @click="addKebunRincian(1,2,index)">Tambah Kebun Plasma</button></td></tr>
                         </table>
                     </div>
 
@@ -701,7 +702,6 @@
                                 </td>
                             </tr>
                         
-                            <tr><td colspan="7"><button class="btn btn-info" @click="addKebunRincian(2,1,index)">Tambah Kebun Sendiri</button></td></tr>
                             <template v-if="item.list_kebun_semusim_sendiri.length>0" v-for="(item_kebun_sendiri, index2)  in item.list_kebun_semusim_sendiri">
                                 <tr><td colspan="9">@{{ index2+1 }}. Nama Kebun : <input type="text" v-model="item_kebun_sendiri.nama_kebun" ></td></tr>
                                 <tr class="text-center">
@@ -780,9 +780,11 @@
                                 </tr>
                             </template>
                             
+                            <tr><td colspan="7"><button class="btn btn-info" @click="addKebunRincian(2,1,index)">Tambah Kebun Sendiri</button></td></tr>
+                            
                             <tr>
                                 <td colspan="7">
-                                    a. Kebun Plasma yang Belum Dikonversi/Kemitraan
+                                    b. Kebun Plasma yang Belum Dikonversi/Kemitraan
                                     &nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: 
                                     <select v-model="item.plasma_bentuk_produksi">
                                         <option v-for="(wujud_item, index_wujud) in list_wujud_musiman" :value="wujud_item.id" :key="'wujud_musiman_sendiri'+index_wujud">
@@ -793,7 +795,6 @@
                                 </td>
                             </tr>
                             
-                            <tr><td colspan="7"><button class="btn btn-info" @click="addKebunRincian(2,2,index)">Tambah Kebun Plasma</button></td></tr>
                             <template v-if="item.list_kebun_semusim_plasma.length>0" v-for="(item_kebun_plasma, index2)  in item.list_kebun_semusim_plasma">
                                 <tr><td colspan="9">@{{ index2+1 }}. Nama Kebun : <input type="text" v-model="item_kebun_plasma.nama_kebun" ></td></tr>
                                 <tr class="text-center">
@@ -871,6 +872,7 @@
                                     <td>@{{ customChangeFloat(item_kebun_plasma.target1_nilai) + customChangeFloat(item_kebun_plasma.target2_nilai) + customChangeFloat(item_kebun_plasma.target3_nilai) + customChangeFloat(item_kebun_plasma.target4_nilai)  }}</td>
                                 </tr>
                             </template>
+                            <tr><td colspan="7"><button class="btn btn-info" @click="addKebunRincian(2,2,index)">Tambah Kebun Plasma</button></td></tr>
                         </table>
                     </div>
                 </div>

@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function(){
     
     Route::get('/survei/index_tahunan', [SurveiController::class, 'index_tahunan']);
     Route::get('/survei/tahunan/{tahun}/show', [SurveiController::class, 'show_tahunan']);
+    
+    Route::get('/survei/{id}/watch_karet', [SurveiController::class, 'watch_karet']);
+    Route::get('/survei/{id}/watch_sawit', [SurveiController::class, 'watch_sawit']);
+    Route::get('/survei/{id}/watch_tahunan', [SurveiController::class, 'watch_tahunan']);
 
     Route::post('/survei/get_kab', [SurveiController::class, 'getKab']);
     Route::post('/survei/get_kec', [SurveiController::class, 'getKec']);

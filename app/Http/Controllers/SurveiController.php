@@ -83,6 +83,21 @@ class SurveiController extends Controller
         return view('survei.detail_sawit', compact('model', 'rincian1', 'rincian2', 'list_prov'));
     }
 
+    
+    public function watch_sawit($id){
+        $model = SurveiSawit::find($id);
+        $rincian1 = [];
+        $rincian2 = [];
+        $list_prov = Prov::get();
+
+        if($model!=null){
+            $rincian1 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
+            $rincian2 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
+        }
+
+        return view('survei.watch_sawit', compact('model', 'rincian1', 'rincian2', 'list_prov'));
+    }
+
     public function sawit(){
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
@@ -917,6 +932,20 @@ class SurveiController extends Controller
         }
 
         return view('survei.detail_karet', compact('model', 'rincian1', 'rincian2', 'list_prov'));
+    }
+
+    public function watch_karet($id){
+        $model = SurveiKaret::find($id);
+        $rincian1 = [];
+        $rincian2 = [];
+        $list_prov = Prov::get();
+
+        if($model!=null){
+            $rincian1 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
+            $rincian2 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
+        }
+
+        return view('survei.watch_karet', compact('model', 'rincian1', 'rincian2', 'list_prov'));
     }
 
     public function index_tahunan(Request $request){
@@ -2854,5 +2883,12 @@ class SurveiController extends Controller
         $user_profile = ProfilPerusahaan::find($model->company_id);
         $list_prov = Prov::get();
         return view('survei.detail_tahunan', compact('user_profile', 'tahun', 'list_prov'));
+    }
+
+    public function watch_tahunan($tahun){
+        $model = User::find(Auth::id());
+        $user_profile = ProfilPerusahaan::find($model->company_id);
+        $list_prov = Prov::get();
+        return view('survei.watch_tahunan', compact('user_profile', 'tahun', 'list_prov'));
     }
 }
