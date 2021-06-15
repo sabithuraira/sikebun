@@ -61,18 +61,18 @@ Route::group(['middleware' => ['auth', 'role:operator']], function () {
 
     Route::get('/survei/sawit', [SurveiController::class, 'sawit']);
     Route::post('/survei/sawit', [SurveiController::class, 'sawit_store']);
-    Route::post('/survei/{id}/sawit_send', [SurveiController::class, 'sawit_send_store']);
+    Route::post('/survei/{id}/{status}/sawit_send', [SurveiController::class, 'sawit_send_store']);
     Route::post('/survei/sawit_clean', [SurveiController::class, 'sawit_clean_store']);
     
     Route::get('/survei/karet', [SurveiController::class, 'karet']);
     Route::post('/survei/karet', [SurveiController::class, 'karet_store']);
-    Route::post('/survei/{id}/karet_send', [SurveiController::class, 'karet_send_store']);
+    Route::post('/survei/{id}/{status}/karet_send', [SurveiController::class, 'karet_send_store']);
     Route::post('/survei/karet_clean', [SurveiController::class, 'karet_clean_store']);
     
     Route::get('/survei/tahunan', [SurveiController::class, 'tahunan']);
     Route::post('/survei/tahunan', [SurveiController::class, 'tahunan_store']);
     Route::post('/survei/tahunan_clean', [SurveiController::class, 'tahunan_clean_store']);
-    Route::post('/survei/{id}/tahunan_send', [SurveiController::class, 'tahunan_send_store']);
+    Route::post('/survei/{id}/{status}/tahunan_send', [SurveiController::class, 'tahunan_send_store']);
 }); 
 
 Route::group(['middleware' => ['role:admin|approval']], function () {   

@@ -1223,12 +1223,23 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <button class="btn btn-info" @click="saveData()">SIMPAN DRAFT</button>
-        </div>
-        <div class="col-md-6">
-            <button class="btn btn-success" @click="saveCleanData()">SIMPAN CLEAN</button>
-        </div>
+        <template v-if="form.status_dokumen=='' || form.status_dokumen==1">
+            <div class="col-md-6">
+                <button class="btn btn-info" @click="saveData()">SIMPAN DRAFT</button>
+            </div>
+        </template>
+        
+        <template v-if="form.status_dokumen=='' || form.status_dokumen<=2">
+            <div class="col-md-6">
+                <button class="btn btn-success" @click="saveCleanData()">SIMPAN CLEAN</button>
+            </div>
+        </template>
+        
+        <template v-if="form.status_dokumen==2">
+            <div class="col-md-6">
+                <button class="btn btn-success" @click="sendApproval()">KIRIM KE APPROVAL</button>
+            </div>
+        </template>
     </div>
 
     <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
@@ -1311,7 +1322,7 @@ var vm = new Vue({
             {id: 5, jenis: 'Kapok', wujud: "Buah kapok kering"},
             {id: 6, jenis: 'Karet', wujud: "Lateks"},
             {id: 7, jenis: 'Kayu Manis', wujud: "Kulit Batang Basah"},
-            {id: 8, jenis: 'Kelapa Sawit', wujud: "Tandan Buah Segar (TSS)"},
+            {id: 8, jenis: 'Kelapa Sawit', wujud: "Tandan Buah Segar (TBS)"},
             {id: 9, jenis: 'Kelapa Dalam', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Kelapa Hibrida', wujud: "Buah Kelapa"},
             {id: 11, jenis: 'Kemiri', wujud: "Bunga Basah"},
@@ -1332,7 +1343,7 @@ var vm = new Vue({
             {id: 5, jenis: 'Rami/Rosela', wujud: "Batang basah"},
             {id: 6, jenis: 'Sereh Wangi', wujud: "Daun basah"},
             {id: 7, jenis: 'Tebu', wujud: "Batang  Basah"},
-            {id: 8, jenis: 'Tembakau', wujud: "Tandan Buah Segar (TSS)"},
+            {id: 8, jenis: 'Tembakau', wujud: "Tandan Buah Segar (TBS)"},
             {id: 9, jenis: 'Yute', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Nilam', wujud: "Buah Kelapa"},
         ],
@@ -1429,6 +1440,10 @@ var vm = new Vue({
                     list_kebun_tahunan_sendiri: [], 
                     list_kebun_tahunan_plasma: [],
                 })
+
+                var cur_index = this.rincian_tahunan.length - 1;
+                this.addKebunRincian(1, 1, cur_index);
+                this.addKebunRincian(1, 2, cur_index);
             }
             else{
                 this.rincian_semusim.push({
@@ -1442,6 +1457,10 @@ var vm = new Vue({
                     list_kebun_semusim_sendiri: [], 
                     list_kebun_semusim_plasma: [],
                 }) 
+                
+                var cur_index = this.rincian_semusim.length - 1;
+                this.addKebunRincian(2, 1, cur_index);
+                this.addKebunRincian(2, 2, cur_index);
             }
         },
         addKebunRincian: function (jenis_rincian, jenis_kebun, index_rincian) {
@@ -1592,6 +1611,76 @@ var vm = new Vue({
                 $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
                 $.ajax({
                     url :  self.pathname+"/tahunan_clean",
+                    method : 'post',
+                    dataType: 'json',
+                    data: data_post,
+                }).done(function (data) {
+                    $('#wait_progres').modal('hide');
+                    window.location.href = self.pathname + "/index_tahunan"
+                }).fail(function (msg) {
+                    console.log(JSON.stringify(msg));
+                    $('#wait_progres').modal('hide');
+                    window.location.href = self.pathname + "/index_tahunan"
+                });
+            }
+            else{
+                $('#wait_progres').modal('hide');
+                alert(msg_error.join("\n"))
+            }
+        },
+        sendApproval: function(){
+            var self = this;
+            $('#wait_progres').modal('show');
+
+            var msg_error = []
+
+            if(self.form.tahun=='') msg_error.push("Tahun Wajib Diisi")
+            if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
+            if(self.form.nama_perusahaan=='') msg_error.push("Nama Perusahaan Wajib Diisi")
+            if(self.form.alamat=='') msg_error.push("Alamat Wajib Diisi")
+            if(self.form.kode_prov=='') msg_error.push("Provinsi Perusahaan Wajib Diisi")
+            if(self.form.kode_kab=='') msg_error.push("Kabupaten/Kota Perusahaan Wajib Diisi")
+            
+            if(self.form.kondisi_perusahaan=='') msg_error.push("Kondisi Perusahaan Wajib Diisi")
+            if(self.form.badan_hukum=='') msg_error.push("Badan Hukum Wajib Diisi")
+            if(self.form.status_pemodalan=='') msg_error.push("Status Pemodalan Wajib Diisi")
+            if(self.form.apakah_pelaksana_kemitraan=='') msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
+
+            var pengeluaran_tahunan = 0;
+            for(var i=0;i<this.rincian_tahunan.length;i++){
+                if((this.customChangeFloat(this.rincian_tahunan[i].bibit_tanaman) + this.customChangeFloat(this.rincian_tahunan[i].pupuk1) + this.customChangeFloat(this.rincian_tahunan[i].pupuk2) + this.customChangeFloat(this.rincian_tahunan[i].pupuk3) + this.customChangeFloat(this.rincian_tahunan[i].pestisida1) + this.customChangeFloat(this.rincian_tahunan[i].pestisida2) + this.customChangeFloat(this.rincian_tahunan[i].pestisida3) + this.customChangeFloat(this.rincian_tahunan[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_tahunan[i].sewa_lahan) + this.customChangeFloat(this.rincian_tahunan[i].sewa_alat) + this.customChangeFloat(this.rincian_tahunan[i].pengeluaran_lainnya))==0)
+                    msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+            }
+            
+            for(var i=0;i<this.rincian_semusim.length;i++){
+                if((this.customChangeFloat(this.rincian_semusim[i].bibit_tanaman) + this.customChangeFloat(this.rincian_semusim[i].pupuk1) + this.customChangeFloat(this.rincian_semusim[i].pupuk2) + this.customChangeFloat(this.rincian_semusim[i].pupuk3) + this.customChangeFloat(this.rincian_semusim[i].pestisida1) + this.customChangeFloat(this.rincian_semusim[i].pestisida2) + this.customChangeFloat(this.rincian_semusim[i].pestisida3) + this.customChangeFloat(this.rincian_semusim[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_semusim[i].sewa_lahan) + this.customChangeFloat(this.rincian_semusim[i].sewa_alat) + this.customChangeFloat(this.rincian_semusim[i].pengeluaran_lainnya))==0)
+                    msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+            }
+            
+            if(this.customChangeFloat(this.form.bpt_admin_laki)+this.customChangeFloat(this.form.bpt_admin_perempuan)+this.customChangeFloat(this.form.bptt_admin_laki)+this.customChangeFloat(this.form.bptt_admin_perempuan)==0) 
+                msg_error.push("Isian Jumlah Pekerja Administrator minimal lebih dari 0")
+            if(this.customChangeFloat(this.form.upt_admin_laki)+this.customChangeFloat(this.form.upt_admin_perempuan)+this.customChangeFloat(this.form.uptt_admin_laki)+this.customChangeFloat(this.form.uptt_admin_perempuan)==0)
+                msg_error.push("Isian Upah Pekerja Administrator minimal lebih dari 0")
+            if(this.customChangeFloat(this.form.bpt_kebun_laki)+this.customChangeFloat(this.form.bpt_kebun_perempuan)+this.customChangeFloat(this.form.bptt_kebun_laki)+this.customChangeFloat(this.form.bptt_kebun_perempuan)==0)
+                msg_error.push("Isian Jumlah Pekerja Kebun minimal lebih dari 0")
+            if(this.customChangeFloat(this.form.upt_kebun_laki)+this.customChangeFloat(this.form.upt_kebun_perempuan)+this.customChangeFloat(this.form.uptt_kebun_laki)+this.customChangeFloat(this.form.uptt_kebun_perempuan)==0)
+                msg_error.push("Isian Upah Pekerja Kebun minimal lebih dari 0")
+
+                
+            if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
+                                +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
+                                +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
+                msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            }
+
+            if(msg_error.length==0){
+                var data_post = self.form
+                var rincian = { rincian_tahunan: self.rincian_tahunan, rincian_semusim: self.rincian_semusim }
+                data_post = { ...data_post, ...rincian }
+
+                $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
+                $.ajax({
+                    url :  self.pathname+"/" + self.form.id + "/3/tahunan_send",
                     method : 'post',
                     dataType: 'json',
                     data: data_post,

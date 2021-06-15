@@ -82,7 +82,6 @@ class SurveiController extends Controller
 
         return view('survei.detail_sawit', compact('model', 'rincian1', 'rincian2', 'list_prov'));
     }
-
     
     public function watch_sawit($id){
         $model = SurveiSawit::find($id);
@@ -342,7 +341,7 @@ class SurveiController extends Controller
         }
     }
     
-    public function sawit_send_store(Request $request, $id){
+    public function sawit_send_store(Request $request, $id, $status){
         $model = SurveiSawit::find($id);
         $model->nama_perusahaan = $request->nama_perusahaan;
         $model->alamat = $request->alamat;
@@ -438,7 +437,7 @@ class SurveiController extends Controller
         $model->catatan =$request->catatan;
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
-        $model->status_dokumen= 3;
+        $model->status_dokumen= $status;
         $model->diisi_administratur=$request->diisi_administratur;
 
         if($model->save()){
@@ -520,7 +519,7 @@ class SurveiController extends Controller
         }
     }
     
-    public function karet_send_store(Request $request, $id){
+    public function karet_send_store(Request $request, $id, $status){
         $model = SurveiKaret::find($id);
 
         $model->nama_perusahaan = $request->nama_perusahaan;
@@ -617,7 +616,7 @@ class SurveiController extends Controller
         $model->catatan =$request->catatan;
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
-        $model->status_dokumen= 3;
+        $model->status_dokumen= $status;
         $model->diisi_administratur=$request->diisi_administratur;
 
         if($model->save()){
@@ -2395,7 +2394,7 @@ class SurveiController extends Controller
         return response()->json(['result'=>1]);
     }
 
-    public function tahunan_send_store(Request $request, $id){
+    public function tahunan_send_store(Request $request, $id, $status){
         $model = SurveiTahunan::find($id);
         $model->user_id = Auth::user()->company_id;
         
@@ -2500,7 +2499,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->diisi_administratur=$request->diisi_administratur;
-        $model->status_dokumen= 3;
+        $model->status_dokumen= $status_dokumen;
 
         $model->updated_by = Auth::id();
 

@@ -1224,9 +1224,15 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-success" @click="sendData()">KIRIM DATA</button>
-        </div>
+        <template v-if="form.status_dokumen==3 || form.status_dokumen==4">
+            <div class="col-md-6 text-center">
+                <button class="btn btn-info" @click="sendData(4)">SIMPAN PERBAIKAN</button>
+            </div>
+            
+            <div class="col-md-6 text-center">
+                <button class="btn btn-success" @click="sendData(5)">KIRIM KE BPS</button>
+            </div>
+        </template>
     </div>
 
     <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
@@ -1309,7 +1315,7 @@ var vm = new Vue({
             {id: 5, jenis: 'Kapok', wujud: "Buah kapok kering"},
             {id: 6, jenis: 'Karet', wujud: "Lateks"},
             {id: 7, jenis: 'Kayu Manis', wujud: "Kulit Batang Basah"},
-            {id: 8, jenis: 'Kelapa Sawit', wujud: "Tandan Buah Segar (TSS)"},
+            {id: 8, jenis: 'Kelapa Sawit', wujud: "Tandan Buah Segar (TBS)"},
             {id: 9, jenis: 'Kelapa Dalam', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Kelapa Hibrida', wujud: "Buah Kelapa"},
             {id: 11, jenis: 'Kemiri', wujud: "Bunga Basah"},
@@ -1330,7 +1336,7 @@ var vm = new Vue({
             {id: 5, jenis: 'Rami/Rosela', wujud: "Batang basah"},
             {id: 6, jenis: 'Sereh Wangi', wujud: "Daun basah"},
             {id: 7, jenis: 'Tebu', wujud: "Batang  Basah"},
-            {id: 8, jenis: 'Tembakau', wujud: "Tandan Buah Segar (TSS)"},
+            {id: 8, jenis: 'Tembakau', wujud: "Tandan Buah Segar (TBS)"},
             {id: 9, jenis: 'Yute', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Nilam', wujud: "Buah Kelapa"},
         ],
@@ -1506,7 +1512,7 @@ var vm = new Vue({
                 }
             }
         },
-        sendData: function () {
+        sendData: function (status_data) {
             var self = this;
             $('#wait_progres').modal('show');
 
@@ -1558,7 +1564,7 @@ var vm = new Vue({
 
                 $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
                 $.ajax({
-                    url :  self.pathname+"/" + self.form.id + "/tahunan_send",
+                    url :  self.pathname+"/" + self.form.id + "/" + status_data + "/tahunan_send",
                     method : 'post',
                     dataType: 'json',
                     data: data_post,

@@ -29,8 +29,8 @@
                                     <small><i>(Terakhir diperbaharui {{ date('d M Y h:i', strtotime($value->updated_at)) }})</i></small>
                                 </td>
                                 <td class="text-center">
-                                    @if($value->status_dokumen>=2)
-                                        @hasanyrole('admin|approval')
+                                    @if($value->status_dokumen>=3)
+                                        @hasanyrole('admin|approval|pemeriksa')
                                         <a href="{{ url('survei/'.$value->id.'/sawit_print') }}" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">print</i>
                                         </a>
@@ -38,7 +38,7 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    @if($value->status_dokumen>=2)
+                                    @if($value->status_dokumen>=3 && $value->status_dokumen < 5)
                                         @hasanyrole('admin|approval')
                                         <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">search</i>

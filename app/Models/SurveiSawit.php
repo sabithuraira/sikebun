@@ -13,10 +13,13 @@ class SurveiSawit extends Model
     
     public function getListStatusAttribute(){
         return [
-            1 => 'SAVED',
-            2 => 'CLEAN',
-            3 => 'SEND',
-            4 => 'SELESAI',
+            1 => 'SAVED - ERROR',
+            2 => 'SAVED - CLEAN',
+            3 => 'SEND - APPROVAL',
+            4 => 'PERBAIKAN - APPROVAL',
+            5 => 'SEND - BPS',
+            6 => 'PERBAIKAN - PEMERIKSA',
+            7 => 'OK',
         ];
     }
 }

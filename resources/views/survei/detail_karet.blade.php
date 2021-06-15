@@ -496,9 +496,15 @@
     </table>
 
     <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-info" @click="sendData()">KIRIM DATA</button>
-        </div>
+        <template v-if="form.status_dokumen==3 || form.status_dokumen==4">
+            <div class="col-md-6 text-center">
+                <button class="btn btn-info" @click="sendData(4)">SIMPAN PERBAIKAN</button>
+            </div>
+            
+            <div class="col-md-6 text-center">
+                <button class="btn btn-success" @click="sendData(5)">KIRIM KE BPS</button>
+            </div>
+        </template>
     </div>
 
     <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">
@@ -754,28 +760,56 @@ var vm = new Vue({
                 }) 
             }
         },
-        sendData: function () {
+        sendData: function (status_data) {
             var self = this;
             $('#wait_progres').modal('show');
-            
-            var data_post = self.form
-            var rincian = { rincian1: self.rincian1, rincian2: self.rincian2 }
-            data_post = { ...data_post, ...rincian }
 
-            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
-            $.ajax({
-                url :  self.pathname+"/"+self.form.id+"/karet_send",
-                method : 'post',
-                dataType: 'json',
-                data: data_post
-            }).done(function (data) {
+            var msg_error = []
+
+            if(self.form.tahun=='') msg_error.push("Tahun Wajib Diisi")
+            if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
+            if(self.form.nama_perusahaan=='') msg_error.push("Nama Perusahaan Wajib Diisi")
+            if(self.form.alamat=='') msg_error.push("Alamat Wajib Diisi")
+            if(self.form.kode_prov=='') msg_error.push("Provinsi Perusahaan Wajib Diisi")
+            if(self.form.kode_kab=='') msg_error.push("Kabupaten/Kota Perusahaan Wajib Diisi")
+
+            var d302a = (self.form['302_2a']==null || self.form['302_2a'].length==0) ? 0 : parseFloat(self.form['302_2a']);
+            var d303a = (self.form['302_3a']==null ||self.form['302_3a'].length==0) ? 0 : parseFloat(self.form['302_3a']);
+            var d304a = (self.form['302_4a']==null ||self.form['302_4a'].length==0) ? 0 : parseFloat(self.form['302_4a']);
+            var d302b = (self.form['302_2b']==null ||self.form['302_2b'].length==0) ? 0 : parseFloat(self.form['302_2b']);
+            var d303b = (self.form['302_3b']==null ||self.form['302_3b'].length==0) ? 0 : parseFloat(self.form['302_3b']);
+            var d304b = (self.form['302_4b']==null ||self.form['302_4b'].length==0) ? 0 : parseFloat(self.form['302_4b']);
+            var d302c = (self.form['302_2c']==null ||self.form['302_2c'].length==0) ? 0 : parseFloat(self.form['302_2c']);
+            var d303c = (self.form['302_3c']==null ||self.form['302_3c'].length==0) ? 0 : parseFloat(self.form['302_3c']);
+            var d304c = (self.form['302_4c']==null ||self.form['302_4c'].length==0) ? 0 : parseFloat(self.form['302_4c']);
+            if(d302a+d302b+d302c!=100) msg_error.push("Jumlah 302A tidak 100")
+            if(d303a+d303b+d303c!=100) msg_error.push("Jumlah 303A tidak 100")
+            if(d304a+d304b+d304c!=100) msg_error.push("Jumlah 304A tidak 100")
+            
+            if(msg_error.length==0){
+                var data_post = self.form
+                var rincian = { rincian1: self.rincian1, rincian2: self.rincian2 }
+                data_post = { ...data_post, ...rincian }
+
+                $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
+                $.ajax({
+                    url :  self.pathname+"/"+self.form.id+"/" + status_data + "/karet_send",
+                    method : 'post',
+                    dataType: 'json',
+                    data: data_post
+                }).done(function (data) {
+                    $('#wait_progres').modal('hide');
+                    window.location.href = self.pathname + "/index_karet"
+                }).fail(function (msg) {
+                    console.log(JSON.stringify(msg));
+                    $('#wait_progres').modal('hide');
+                    window.location.href = self.pathname + "/index_karet"
+                });
+            }
+            else{
                 $('#wait_progres').modal('hide');
-                window.location.href = self.pathname + "/index_karet"
-            }).fail(function (msg) {
-                console.log(JSON.stringify(msg));
-                $('#wait_progres').modal('hide');
-                window.location.href = self.pathname + "/index_karet"
-            });
+                alert(msg_error.join("\n"))
+            }
         },
         setKab: function(){
             $('#wait_progres').modal('show');
