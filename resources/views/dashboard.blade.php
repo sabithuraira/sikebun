@@ -42,6 +42,11 @@
                     <td>Pedoman Pengisian SKB Tahunan</td>
                     <td><a target="_blank" href="https://drive.google.com/file/d/1ltjQ07uK4GKbIiYswjzmoSLFh8kmTfBx/view?usp=sharing">Unduh</a></td>
                 </tr>
+                
+                <tr>
+                    <td>Pedoman Penggunaan Website</td>
+                    <td><a target="_blank" href="#">Unduh</a></td>
+                </tr>
             </table>
             
             <hr/>

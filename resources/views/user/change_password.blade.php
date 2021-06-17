@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-12 card">
         <div class="card-header card-header-primary">
-            <h4 class="card-title">Rubah Password</h4>
+            <h4 class="card-title">Ubah Password</h4>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ url('user/change_password') }}">

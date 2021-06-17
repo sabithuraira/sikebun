@@ -105,49 +105,30 @@ class SurveiController extends Controller
     }
 
     public function sawit_print($id){
-        // $datas=array();
-        // $month = date('m');
-        // $year = date('Y');
-        // $type = 1;
+        $model = SurveiSawit::find($id);
+        $rincian1 = [];
+        $rincian2 = [];
+        $list_bulan = [];
+        $list_prov = Prov::get();
 
-        // if(strlen($request->get('p_month'))>0)
-        //     $month = $request->get('p_month');
+        if($model!=null){
+            $rincian1 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
+            $rincian2 = RincianSawit::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
 
-        // if(strlen($request->get('p_year'))>0)
-        //     $year = $request->get('p_year');
-            
-        // // if(strlen($request->get('p_type'))>0)
-        // $type = $_POST['action'];
-            
-        // if(strlen($request->get('p_user'))>0){
-        //     $user_id = $request->get('p_user');
-        //     $user = \App\User::where('email', '=', $user_id)->first();
-        // }
+            if($model->triwulan==1) $list_bulan = ['Januari', 'Februari', 'Maret'];
+            else if($model->triwulan==2)  $list_bulan = ['April', 'Mei', 'Juni'];
+            else if($model->triwulan==3)  $list_bulan = ['Juli', 'Agustus', 'September'];
+            else if($model->triwulan==4)  $list_bulan = ['Oktober', 'November', 'Desember'];
+        }
 
-        // $model = new \App\Ckp;
-        // $datas = $model->CkpBulanan(1, $month, $year, $user_id);
+        $pdf = PDF::loadView('survei.print_sawit', 
+            compact('model', 'rincian1', 'rincian2', 'list_prov', 'list_bulan'))
+            ->setPaper('a4', 'landscape');
 
-        // $monthLabel = config('app.months')[$month];
-        // $monthName = date("F", mktime(0, 0, 0, $month, 10));
-        // $last_day_month  = date('t', mktime(0, 0, 0, $month, 10)); //date("t");
-        // $first_working_day = date('d F Y', strtotime("+0 weekday $monthName $year"));
-        // $last_working_day = date('d F Y', strtotime('last weekday '.date("F Y", strtotime('next month '.$monthName.' '.$year))));
-
-        // $pdf = PDF::loadView('ckp.print', compact('month', 
-        //     'year', 'type', 'model', 'datas', 'user', 
-        //     'monthName', 'monthLabel', 'last_day_month',
-        //     'first_working_day', 'last_working_day'))
-        //     ->setPaper('a4', 'landscape');
-        
-        // $nama_file = $user_id.'_CKP_';
-        // if($type==1)
-        //     $nama_file .= 'T_';
-        // else
-        //     $nama_file .= 'R_';
-
-        // $nama_file .= $month .'_'.$year.'.pdf';
-
-        // return $pdf->download($nama_file);
+        $nama_file = 'sawit_'.$id.'.pdf';
+        return $pdf->download($nama_file);
+        // return view('survei.print_sawit', 
+        //     compact('model', 'rincian1', 'rincian2', 'list_prov', 'list_bulan'));
     }
     
     public function sawit_store(Request $request){
@@ -956,6 +937,28 @@ class SurveiController extends Controller
     }
     
     public function karet_print($id){
+        $model = SurveiKaret::find($id);
+        $rincian1 = [];
+        $rincian2 = [];
+        $list_bulan = [];
+        $list_prov = Prov::get();
+
+        if($model!=null){
+            $rincian1 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 1)->get();
+            $rincian2 = RincianKaret::where('survei_id', '=', $model->id)->where('jenis', '=', 2)->get();
+            
+            if($model->triwulan==1) $list_bulan = ['Januari', 'Februari', 'Maret'];
+            else if($model->triwulan==2)  $list_bulan = ['April', 'Mei', 'Juni'];
+            else if($model->triwulan==3)  $list_bulan = ['Juli', 'Agustus', 'September'];
+            else if($model->triwulan==4)  $list_bulan = ['Oktober', 'November', 'Desember'];
+        }
+        
+        $pdf = PDF::loadView('survei.print_sawit', 
+            compact('model', 'rincian1', 'rincian2', 'list_prov', 'list_bulan'))
+            ->setPaper('a4', 'landscape');
+
+        $nama_file = 'sawit_'.$id.'.pdf';
+        return $pdf->download($nama_file);
     }
     
     public function karet(){
@@ -2889,5 +2892,24 @@ class SurveiController extends Controller
         $user_profile = ProfilPerusahaan::find($model->company_id);
         $list_prov = Prov::get();
         return view('survei.watch_tahunan', compact('user_profile', 'tahun', 'list_prov'));
+    }
+
+    public function tahunan_print($id){
+        $model = SurveiTahunan::find($id);
+        $rincian_tahunan = null;
+        $rincian_semusim = null;
+
+        $data_rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
+        $data_rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
+
+        $rincian_tahunan = RincianTahunanTahunResource::collection($data_rincian_tahunan);
+        $rincian_semusim = RincianTahunanSemusimResource::collection($data_rincian_semusim);
+
+        $pdf = PDF::loadView('survei.print_tahunan', 
+            compact('model', 'rincian_tahunan', 'rincian_semusim'))
+            ->setPaper('a4', 'landscape');
+
+        $nama_file = 'tahunan_'.$id.'.pdf';
+        return $pdf->download($nama_file);
     }
 }

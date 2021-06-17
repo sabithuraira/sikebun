@@ -119,7 +119,7 @@
           <li class="nav-item {{ (request()->is('user/change_password*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('user/change_password') }}">
                 <i class="material-icons">fingerprint</i>
-                <p>Rubah Password</p>
+                <p>Ubah Password</p>
               </a>
             </li>
 

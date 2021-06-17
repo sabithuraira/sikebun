@@ -413,7 +413,7 @@
             <td><input type="text" name="301_b_bulan3" v-model="form['301_b_bulan3']" size="3"></td>
         </tr>
         <tr>
-            <td colspan="5">    C. Rendemen dari <b>TANDAN BUAH SEGAR</b> menjadi <b><i>CRUDE PALM OIL</i></b></td>
+            <td colspan="5">    C. Rendemen dari <b>LATEKS</b> menjadi bentuk produksi pada Rincian B kolom (6), (11), (16)</td>
             <td><input type="text" name="301_c_bulan1" v-model="form['301_c_bulan1']" size="3"></td>
             <td></td>
             <td></td>
@@ -427,7 +427,7 @@
             <td><input type="text" name="301_c_bulan3" v-model="form['301_c_bulan3']" size="3"></td>
         </tr>
         <tr>
-            <td colspan="16">**) Kode Produksi (pilih salah satu) :  1. Tandan Buah Segar (TBS) &nbsp;&nbsp;&nbsp; 2. Crude Palm Oil (CPO) &nbsp;&nbsp;&nbsp; </td>
+            <td colspan="16">**) Kode Produksi (pilih salah satu) :  1. Lateks &nbsp;&nbsp;&nbsp; 2. Lateks Kering &nbsp;&nbsp;&nbsp; 3. Lump &nbsp;&nbsp;&nbsp; 4. Slab &nbsp;&nbsp;&nbsp; 5. Sit Angin &nbsp;&nbsp;&nbsp; </td>
         </tr>
         
         <tr>
