@@ -31,7 +31,7 @@
                                 <td class="text-center">
                                     @if($value->status_dokumen>=3)
                                         @hasanyrole('admin|approval|pemeriksa')
-                                        <a href="{{ url('survei/'.$value->id.'/tahunan_print') }}" class="btn btn-primary btn-link btn-sm">
+                                        <a href="{{ url('survei/'.$value->id.'/karet_print') }}" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">print</i>
                                         </a>
                                         @endhasanyrole

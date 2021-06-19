@@ -9,17 +9,17 @@
         <table width="100%">
             <tr align="center">
                 <td width="25%">
-                    <img src="{{ asset('img') }}/logobps.png" width="130" />
+                    <img src="{{ asset('img') }}/logobps.png" width="125" />
                 </td>
                 <td  width="50%">
-                    <img src="{{ asset('img') }}/garuda.png" width="55" />
+                    <img src="{{ asset('img') }}/garuda.png" width="50" />
                     <p>REPUBLIK INDONESIA</p>
                     
-                    <b>SURVEI PERUSAHAAN PERKEBUNAN KELAPA SAWIT TRIWULANAN</b> <br/>
+                    <b>SURVEI PERUSAHAAN PERKEBUNAN KARET TRIWULANAN</b> <br/>
                     <b>TAHUN {{ $model->tahun }}</b>
                 </td>
                 <td width="25%">
-                    <p>SKP21 - KELAPA SAWIT</p>
+                    <p>SKP21 - KARET</p>
                 </td>
             </tr>
             
@@ -227,26 +227,26 @@
             </tr>
         </table>
 
-        <small><i>*) Coret yang tidak sesuai</i></small>
+        <i class="small-text">*) Coret yang tidak sesuai</i>
         <table width="100%">
             <tr>
                 <td width="70%">
                     <div class="table-border border-green">
-                        <small>
-                            <b align="center">PERHATIAN</b><br/>
-                            <b>- Tujuan Survei</b><br/> 
-                            Memperoleh data statistik perkebunan yang dapat dipercaya dan tepat waktu untuk perencanaan pembangunan sektor perkebunan.<br/>
-                            <b>-Kewenangan pengumpulan data, kerahasiaan data yang diberikan dan kewajiban memberikan jawaban</b>
+                        <small class="small-text">
+                            <b align="center" class="small-text">PERHATIAN</b><br/>
+                            <b class="small-text">- Tujuan Survei</b><br/> 
+                            <span class="small-text">Memperoleh data statistik perkebunan yang dapat dipercaya dan tepat waktu untuk perencanaan pembangunan sektor perkebunan.</span><br/>
+                            <b class="small-text">-Kewenangan pengumpulan data, kerahasiaan data yang diberikan dan kewajiban memberikan jawaban</b>
                             <ul>
-                                <li>Pelaksanaan survei ini berdasarkan Undang-Undang No. 16 Tahun 1997 tentang Statistik Pasal 11.</li>
-                                <li>Kerahasiaan data yang diberikan dijamin oleh Undang-Undang No. 16 Tahun 1997 tentang Statistik Pasal 21.</li>
-                                <li>Setiap responden wajib memberikan keterangan yang diperlukan dalam penyelenggaraan statistik dasar oleh Badan Pusat Statistik sesuai dengan Undang-Undang No. 16 Tahun 1997 tentang Statistik Pasal 27.</li>
+                                <li class="small-text">Pelaksanaan survei ini berdasarkan Undang-Undang No. 16 Tahun 1997 tentang Statistik Pasal 11.</li>
+                                <li class="small-text">Kerahasiaan data yang diberikan dijamin oleh Undang-Undang No. 16 Tahun 1997 tentang Statistik Pasal 21.</li>
+                                <li class="small-text">Setiap responden wajib memberikan keterangan yang diperlukan dalam penyelenggaraan statistik dasar oleh Badan Pusat Statistik sesuai dengan Undang-Undang No. 16 Tahun 1997 tentang Statistik Pasal 27.</li>
                             </ul>
                         </small>
                     </div>
                 </td>
                 <td>
-                    <small>
+                    <small class="border border-dark small-text">
                     Perlu bantuan atau penjelasan :<br/>
                     Bila perlu bantuan atau penjelasan lebih lanjut tentang survei ini, silahkan hubungi <br/> Subdit. Statistik Perkebunan<br/>
                     Jl. Dr Sutomo No. 6-8, Jakarta 10710. Telp : (021) 3810291 – 5, 3841195
@@ -256,7 +256,7 @@
             </tr>
         </table>
 
-        <br/><br/>
+        <br/>
 
         <table class="table-border border-green" width="100%">
             <tr><td colspan="16" align="center" class="bg-green"><b>III. LUAS TANAMAN, PRODUKSI DAN DISTRIBUSI PRODUKSI</b></td></tr>

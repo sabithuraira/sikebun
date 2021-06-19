@@ -953,11 +953,11 @@ class SurveiController extends Controller
             else if($model->triwulan==4)  $list_bulan = ['Oktober', 'November', 'Desember'];
         }
         
-        $pdf = PDF::loadView('survei.print_sawit', 
+        $pdf = PDF::loadView('survei.print_karet', 
             compact('model', 'rincian1', 'rincian2', 'list_prov', 'list_bulan'))
             ->setPaper('a4', 'landscape');
 
-        $nama_file = 'sawit_'.$id.'.pdf';
+        $nama_file = 'karet_'.$id.'.pdf';
         return $pdf->download($nama_file);
     }
     
@@ -2502,7 +2502,7 @@ class SurveiController extends Controller
         $model->diisi_di=$request->diisi_di;
         $model->diisi_tanggal= date('Y-m-d', strtotime($request->diisi_tanggal));
         $model->diisi_administratur=$request->diisi_administratur;
-        $model->status_dokumen= $status_dokumen;
+        $model->status_dokumen= $status;
 
         $model->updated_by = Auth::id();
 
@@ -2899,17 +2899,52 @@ class SurveiController extends Controller
         $rincian_tahunan = null;
         $rincian_semusim = null;
 
-        $data_rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
-        $data_rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
+        $rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
+        $rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
+        
+        $list_wujud_tahunan = [
+            ["id" => 1, "jenis" => 'Cengkeh Ambon', "wujud" => "Bunga Basah"],
+            ["id" => 2, "jenis" => 'Cengkeh Zanibar', "wujud" => "Bunga Basah"],
+            ["id" => 3, "jenis" => 'Jambu Mete', "wujud" => "Biji Basah"],
+            ["id" => 4, "jenis" => 'Kakao', "wujud" => "Buah masa/glondong"],
+            ["id" => 5, "jenis" => 'Kapok', "wujud" => "Buah kapok kering"],
+            ["id" => 6, "jenis" => 'Karet', "wujud" => "Lateks"],
+            ["id" => 7, "jenis" => 'Kayu Manis', "wujud" => "Kulit Batang Basah"],
+            ["id" => 8, "jenis" => 'Kelapa Sawit', "wujud" => "Tandan Buah Segar (TBS)"],
+            ["id" => 9, "jenis" => 'Kelapa Dalam', "wujud" => "Buah Kelapa"],
+            ["id" => 10, "jenis" => 'Kelapa Hibrida', "wujud" => "Buah Kelapa"],
+            ["id" => 11, "jenis" => 'Kemiri', "wujud" => "Bunga Basah"],
+            ["id" => 12, "jenis" => 'Kina', "wujud" => "Kulit kina basah"],
+            ["id" => 13, "jenis" => 'Kopi Arabika', "wujud" => "Buah masak/glondong"],
+            ["id" => 14, "jenis" => 'Kopi Robusta', "wujud" => "Buah masak/glondong"],
+            ["id" => 15, "jenis" => 'Lada', "wujud" => "Buah masak/glondong"],
+            ["id" => 16, "jenis" => 'Panili/Vanili', "wujud" => "Buah Segar/biji panili"],
+            ["id" => 17, "jenis" => 'Teh', "wujud" => "Daun Basah"],
+            ["id" => 18, "jenis" => 'Pala', "wujud" => "Biji pala basah"],
+            ["id" => 19, "jenis" => 'Sagu', "wujud" => "Pohon sagu"],
+        ];
 
-        $rincian_tahunan = RincianTahunanTahunResource::collection($data_rincian_tahunan);
-        $rincian_semusim = RincianTahunanSemusimResource::collection($data_rincian_semusim);
+        $list_wujud_musiman = [
+            ["id" => 1, "jenis" => 'Abaca/Manila', "wujud" => "Serat Basah"],
+            ["id" => 2, "jenis" => 'Akar Wangi', "wujud" => "Akar Basah"],
+            ["id" => 3, "jenis" => 'Kapas', "wujud" => "Buah Masak"],
+            ["id" => 4, "jenis" => 'Kenaf', "wujud" => "Batang basah"],
+            ["id" => 5, "jenis" => 'Rami/Rosela', "wujud" => "Batang basah"],
+            ["id" => 6, "jenis" => 'Sereh Wangi', "wujud" => "Daun basah"],
+            ["id" => 7, "jenis" => 'Tebu', "wujud" => "Batang  Basah"],
+            ["id" => 8, "jenis" => 'Tembakau', "wujud" => "Tandan Buah Segar (TBS)"],
+            ["id" => 9, "jenis" => 'Yute', "wujud" => "Buah Kelapa"],
+            ["id" => 10, "jenis" => 'Nilam', "wujud" => "Buah Kelapa"],
+        ];
 
         $pdf = PDF::loadView('survei.print_tahunan', 
-            compact('model', 'rincian_tahunan', 'rincian_semusim'))
-            ->setPaper('a4', 'landscape');
+            compact('model', 'rincian_tahunan', 'rincian_semusim',  
+             'list_wujud_tahunan', 'list_wujud_musiman'))
+            ->setPaper('a4', 'potrait');
 
         $nama_file = 'tahunan_'.$id.'.pdf';
         return $pdf->download($nama_file);
+        // return view('survei.print_tahunan', compact('model', 'rincian_tahunan', 'rincian_semusim', 
+        //     'list_wujud_tahunan', 'list_wujud_musiman'));
     }
 }

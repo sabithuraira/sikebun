@@ -36,11 +36,11 @@
                 </tr>
                 <tr>
                     <td>Pedoman Pengisian SKB Triwulanan</td>
-                    <td><a target="_blank" href="https://drive.google.com/file/d/1HgcCPtXPStKCo73K3uCj04s3S1PxR7jE/view?usp=sharing">Unduh</a></td>
+                    <td><a target="_blank" href="https://drive.google.com/file/d/1zVklxGScU6nQEOFX9S6hPtaogpaZbRWo/view?usp=sharing">Unduh</a></td>
                 </tr>
                 <tr>
                     <td>Pedoman Pengisian SKB Tahunan</td>
-                    <td><a target="_blank" href="https://drive.google.com/file/d/1ltjQ07uK4GKbIiYswjzmoSLFh8kmTfBx/view?usp=sharing">Unduh</a></td>
+                    <td><a target="_blank" href="https://drive.google.com/file/d/1EUmGUJB36sAfA0sd8Yp4whII0YL3BNj-/view?usp=sharing">Unduh</a></td>
                 </tr>
                 
                 <tr>

@@ -47,7 +47,7 @@
                                     @endif
                                     
                                     @hasanyrole('operator')
-                                    <a href="{{ url('survei/'.$value->id.'/watch_tahunan') }}" class="btn btn-primary btn-link btn-sm">
+                                    <a href="{{ url('survei/'.$value->tahun.'/watch_tahunan') }}" class="btn btn-primary btn-link btn-sm">
                                         <i class="material-icons">search</i>
                                     </a>
                                     @endhasanyrole

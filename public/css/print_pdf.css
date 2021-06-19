@@ -1,6 +1,6 @@
 * {
     font-family: Segoe UI, Arial, sans-serif;
-    font-size: small
+    font-size: x-small
 }
 
 .small-text {
@@ -9,6 +9,10 @@
 
 .bg-green{
     background-color: #00b300;
+}
+
+.bg-orange{
+    background-color: orange;
 }
 
 tr,td {
@@ -21,11 +25,11 @@ tr,td {
 }
 
 .table-border {
-    border: 1px solid black;
+    border: 0.1px solid black;
 }
 
 .table-border td,th {
-    border: 1px solid black;
+    border: 0.1px solid black;
 }
 
 .border-green {
@@ -36,10 +40,19 @@ tr,td {
     border-color: #00b300
 }
 
+.border-orange {
+    border-color: orange
+}
+
+.border-orange td,th {
+    border-color: orange
+}
+
 .table-woborder{ border: none; }
 .table-woborder td, th{ border: none; }
 td.table-woborder { border: none; }
 td.table-wobordertb { border-top: none; border-bottom: none; }
+td.table-woborderrl { border-right: none; border-left: none; }
 
 tfoot tr td {
     font-weight: bold;
@@ -66,3 +79,5 @@ footer {
     text-align: center;
     line-height: 35px;
 }
+
+.page-break { page-break-after: always; }
