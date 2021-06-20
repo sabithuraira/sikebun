@@ -22,4 +22,9 @@ class SurveiTahunan extends Model
             7 => 'OK',
         ];
     }
+    
+    public function company()
+    {
+        return $this->hasOne(ProfilPerusahaan::class, 'id', 'user_id');
+    }
 }

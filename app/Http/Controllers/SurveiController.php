@@ -62,6 +62,9 @@ class SurveiController extends Controller
 
     public function index_sawit(Request $request){
         $datas = SurveiSawit::where('user_id', '=', Auth::user()->company_id)->paginate();
+        if(Auth::user()->hasRole('pemeriksa')){
+            $datas = SurveiSawit::paginate();
+        }
         $datas->withPath('survei/index_sawit');
         $datas->appends($request->all());    
         
@@ -894,6 +897,9 @@ class SurveiController extends Controller
 
     public function index_karet(Request $request){
         $datas = SurveiKaret::where('user_id', '=', Auth::user()->company_id)->paginate();
+        if(Auth::user()->hasRole('pemeriksa')){
+            $datas = SurveiKaret::paginate();
+        }
         $datas->withPath('survei/index_karet');
         $datas->appends($request->all());    
         
@@ -930,6 +936,9 @@ class SurveiController extends Controller
 
     public function index_tahunan(Request $request){
         $datas = SurveiTahunan::where('user_id', '=', Auth::user()->company_id)->paginate();
+        if(Auth::user()->hasRole('pemeriksa')){
+            $datas = SurveiTahunan::paginate();
+        }
         $datas->withPath('survei/index_tahunan');
         $datas->appends($request->all());    
         

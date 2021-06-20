@@ -497,6 +497,7 @@
     </table>
 
     <div class="row">
+        @hasanyrole('approval')
         <template v-if="form.status_dokumen==3 || form.status_dokumen==4">
             <div class="col-md-6 text-center">
                 <button class="btn btn-info" @click="sendData(4)">SIMPAN PERBAIKAN</button>
@@ -506,6 +507,19 @@
                 <button class="btn btn-success" @click="sendData(5)">KIRIM KE BPS</button>
             </div>
         </template>
+        @endhasanyrole
+
+        @hasanyrole('pemeriksa')
+        <template v-if="form.status_dokumen==5 || form.status_dokumen==6">
+            <div class="col-md-6 text-center">
+                <button class="btn btn-info" @click="sendData(6)">SIMPAN PERBAIKAN - PEMERIKSA</button>
+            </div>
+            
+            <div class="col-md-6 text-center">
+                <button class="btn btn-success" @click="sendData(7)">NYATAKAN SELESAI</button>
+            </div>
+        </template>
+        @endhasanyrole
     </div>
 
     <div class="modal hide" id="wait_progres" tabindex="-1" role="dialog">

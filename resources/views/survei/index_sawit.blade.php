@@ -23,7 +23,12 @@
                         @foreach($datas as $key=>$value)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>Triwulan: {{ $value->triwulan }} Tahun: {{ $value->tahun }}</td>
+                                <td>
+                                    @hasanyrole('pemeriksa')
+                                        <p>{{ $value->company->nama_perusahaan }}</p>
+                                    @endhasanyrole
+                                    Triwulan: {{ $value->triwulan }} Tahun: {{ $value->tahun }}
+                                </td>
                                 <td>
                                     {{ $value->listStatus[$value->status_dokumen] }}<br/>
                                     <small><i>(Terakhir diperbaharui {{ date('d M Y h:i', strtotime($value->updated_at)) }})</i></small>
@@ -38,8 +43,8 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    @if($value->status_dokumen>=3 && $value->status_dokumen < 5)
-                                        @hasanyrole('admin|approval')
+                                    @if($value->status_dokumen>=3 && $value->status_dokumen<=6)
+                                        @hasanyrole('admin|approval|pemeriksa')
                                         <a href="{{ url('survei/'.$value->id.'/sawit') }}" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">search</i>
                                         </a>
