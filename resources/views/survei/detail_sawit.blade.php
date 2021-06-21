@@ -511,11 +511,15 @@
 
         @hasanyrole('pemeriksa')
         <template v-if="form.status_dokumen==5 || form.status_dokumen==6">
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
+                <button class="btn btn-danger" @click="sendData(4)">KEMBALIKAN KE APPROVAL</button>
+            </div>
+
+            <div class="col-md-4 text-center">
                 <button class="btn btn-info" @click="sendData(6)">SIMPAN PERBAIKAN - PEMERIKSA</button>
             </div>
             
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                 <button class="btn btn-success" @click="sendData(7)">NYATAKAN SELESAI</button>
             </div>
         </template>
@@ -815,6 +819,7 @@ var vm = new Vue({
                 }).done(function (data) {
                     $('#wait_progres').modal('hide');
                     window.location.href = self.pathname + "/index_sawit"
+                    // console.log(data)
                 }).fail(function (msg) {
                     console.log(JSON.stringify(msg));
                     $('#wait_progres').modal('hide');

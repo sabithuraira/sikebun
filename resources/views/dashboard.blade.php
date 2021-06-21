@@ -49,7 +49,7 @@
                 
                 <tr>
                     <td>Pedoman Penggunaan Website</td>
-                    <td><a target="_blank" href="#">Unduh</a></td>
+                    <td><a target="_blank" href="https://drive.google.com/file/d/1OB8rYLX7b0wPJkRCS1vZOZDm22kUHHSr/view?usp=sharing">Unduh</a></td>
                 </tr>
             </table>
             

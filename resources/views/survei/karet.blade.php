@@ -946,17 +946,17 @@ var vm = new Vue({
 
                 $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
                 $.ajax({
-                    url :  self.pathname+"/sawit_clean",
+                    url :  self.pathname+"/karet_clean",
                     method : 'post',
                     dataType: 'json',
                     data: data_post,
                 }).done(function (data) {
                     $('#wait_progres').modal('hide');
-                    window.location.href = self.pathname + "/index_sawit"
+                    window.location.href = self.pathname + "/index_karet"
                 }).fail(function (msg) {
                     console.log(JSON.stringify(msg));
                     $('#wait_progres').modal('hide');
-                    window.location.href = self.pathname + "/index_sawit"
+                    window.location.href = self.pathname + "/index_karet"
                 });
             }
             else{
@@ -1003,11 +1003,11 @@ var vm = new Vue({
                     data: data_post,
                 }).done(function (data) {
                     $('#wait_progres').modal('hide');
-                    window.location.href = self.pathname + "/index_sawit"
+                    window.location.href = self.pathname + "/index_karet"
                 }).fail(function (msg) {
                     console.log(JSON.stringify(msg));
                     $('#wait_progres').modal('hide');
-                    window.location.href = self.pathname + "/index_sawit"
+                    window.location.href = self.pathname + "/index_karet"
                 });
             }
             else{

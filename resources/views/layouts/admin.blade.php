@@ -49,7 +49,7 @@
             </li>
           @endhasanyrole
           
-          @hasanyrole('admin')
+          @hasanyrole('admin|pemeriksa')
             <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_karet') }}">
                 <i class="material-icons">library_books</i>
@@ -84,7 +84,7 @@
             @endhasanyrole
           @endhasanyrole
             
-          @hasanyrole('admin|operator|approval')
+          @hasanyrole('admin|operator|approval|pemeriksa')
             <li class="nav-item {{ (request()->is('survei/tahunan*') || request()->is('survei/index_tahunan*')) ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('survei/index_tahunan') }}">
                 <i class="material-icons">library_books</i>
