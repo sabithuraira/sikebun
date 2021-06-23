@@ -327,40 +327,40 @@ class SurveiController extends Controller
     
     public function sawit_send_store(Request $request, $id, $status){
         $model = SurveiSawit::find($id);
-        $model->nama_perusahaan = $request->nama_perusahaan;
-        $model->alamat = $request->alamat;
-        $model->kode_pos = $request->kode_pos;
-        $model->telp = $request->telp;
-        $model->email = $request->email;
-        $model->fax = $request->fax;
-        $model->kode_prov = $request->kode_prov;
-        $model->kode_kab = $request->kode_kab;
-        $model->kode_kec = $request->kode_kec;
-        $model->kode_desa= $request->kode_desa;
-        $model->label_prov = $request->label_prov;
-        $model->label_kab = $request->label_kab;
-        $model->label_kec = $request->label_kec;
-        $model->label_desa = $request->label_desa;
+        // $model->nama_perusahaan = $request->nama_perusahaan;
+        // $model->alamat = $request->alamat;
+        // $model->kode_pos = $request->kode_pos;
+        // $model->telp = $request->telp;
+        // $model->email = $request->email;
+        // $model->fax = $request->fax;
+        // $model->kode_prov = $request->kode_prov;
+        // $model->kode_kab = $request->kode_kab;
+        // $model->kode_kec = $request->kode_kec;
+        // $model->kode_desa= $request->kode_desa;
+        // $model->label_prov = $request->label_prov;
+        // $model->label_kab = $request->label_kab;
+        // $model->label_kec = $request->label_kec;
+        // $model->label_desa = $request->label_desa;
         $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
-        $model->nama_kantor_pusat = $request->nama_kantor_pusat;
-        $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
-        $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
-        $model->telp_kantor_pusat = $request->telp_kantor_pusat;
-        $model->email_kantor_pusat = $request->email_kantor_pusat;
-        $model->fax_kantor_pusat = $request->fax_kantor_pusat;
-        $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
-        $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
-        $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
-        $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
-        $model->nama_grup = $request->nama_grup;
-        $model->alamat_grup = $request->alamat_grup;
-        $model->kode_pos_grup =$request->kode_pos_grup;
-        $model->telepon_grup = $request->telepon_grup;
-        $model->fax_grup= $request->fax_grup;
-        $model->email_grup = $request->email_grup;
-        $model->kode_prov_grup = $request->kode_prov_grup;
-        $model->kode_kab_grup= $request->kode_kab_grup;
+        // $model->nama_kantor_pusat = $request->nama_kantor_pusat;
+        // $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
+        // $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
+        // $model->telp_kantor_pusat = $request->telp_kantor_pusat;
+        // $model->email_kantor_pusat = $request->email_kantor_pusat;
+        // $model->fax_kantor_pusat = $request->fax_kantor_pusat;
+        // $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
+        // $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
+        // $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
+        // $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
+        // $model->nama_grup = $request->nama_grup;
+        // $model->alamat_grup = $request->alamat_grup;
+        // $model->kode_pos_grup =$request->kode_pos_grup;
+        // $model->telepon_grup = $request->telepon_grup;
+        // $model->fax_grup= $request->fax_grup;
+        // $model->email_grup = $request->email_grup;
+        // $model->kode_prov_grup = $request->kode_prov_grup;
+        // $model->kode_kab_grup= $request->kode_kab_grup;
         
         $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
         if($prov_grup!=null){
@@ -506,40 +506,40 @@ class SurveiController extends Controller
     public function karet_send_store(Request $request, $id, $status){
         $model = SurveiKaret::find($id);
 
-        $model->nama_perusahaan = $request->nama_perusahaan;
-        $model->alamat = $request->alamat;
-        $model->kode_pos = $request->kode_pos;
-        $model->telp = $request->telp;
-        $model->email = $request->email;
-        $model->fax = $request->fax;
-        $model->kode_prov = $request->kode_prov;
-        $model->kode_kab = $request->kode_kab;
-        $model->kode_kec = $request->kode_kec;
-        $model->kode_desa= $request->kode_desa;
-        $model->label_prov = $request->label_prov;
-        $model->label_kab = $request->label_kab;
-        $model->label_kec = $request->label_kec;
-        $model->label_desa = $request->label_desa;
+        // $model->nama_perusahaan = $request->nama_perusahaan;
+        // $model->alamat = $request->alamat;
+        // $model->kode_pos = $request->kode_pos;
+        // $model->telp = $request->telp;
+        // $model->email = $request->email;
+        // $model->fax = $request->fax;
+        // $model->kode_prov = $request->kode_prov;
+        // $model->kode_kab = $request->kode_kab;
+        // $model->kode_kec = $request->kode_kec;
+        // $model->kode_desa= $request->kode_desa;
+        // $model->label_prov = $request->label_prov;
+        // $model->label_kab = $request->label_kab;
+        // $model->label_kec = $request->label_kec;
+        // $model->label_desa = $request->label_desa;
         $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
-        $model->nama_kantor_pusat = $request->nama_kantor_pusat;
-        $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
-        $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
-        $model->telp_kantor_pusat = $request->telp_kantor_pusat;
-        $model->email_kantor_pusat = $request->email_kantor_pusat;
-        $model->fax_kantor_pusat = $request->fax_kantor_pusat;
-        $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
-        $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
-        $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
-        $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
-        $model->nama_grup = $request->nama_grup;
-        $model->alamat_grup = $request->alamat_grup;
-        $model->kode_pos_grup =$request->kode_pos_grup;
-        $model->telepon_grup = $request->telepon_grup;
-        $model->fax_grup= $request->fax_grup;
-        $model->email_grup = $request->email_grup;
-        $model->kode_prov_grup = $request->kode_prov_grup;
-        $model->kode_kab_grup= $request->kode_kab_grup;
+        // $model->nama_kantor_pusat = $request->nama_kantor_pusat;
+        // $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
+        // $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
+        // $model->telp_kantor_pusat = $request->telp_kantor_pusat;
+        // $model->email_kantor_pusat = $request->email_kantor_pusat;
+        // $model->fax_kantor_pusat = $request->fax_kantor_pusat;
+        // $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
+        // $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
+        // $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
+        // $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
+        // $model->nama_grup = $request->nama_grup;
+        // $model->alamat_grup = $request->alamat_grup;
+        // $model->kode_pos_grup =$request->kode_pos_grup;
+        // $model->telepon_grup = $request->telepon_grup;
+        // $model->fax_grup= $request->fax_grup;
+        // $model->email_grup = $request->email_grup;
+        // $model->kode_prov_grup = $request->kode_prov_grup;
+        // $model->kode_kab_grup= $request->kode_kab_grup;
         
         $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
         if($prov_grup!=null){
@@ -2408,43 +2408,43 @@ class SurveiController extends Controller
 
     public function tahunan_send_store(Request $request, $id, $status){
         $model = SurveiTahunan::find($id);
-        $model->user_id = Auth::user()->company_id;
+        // $model->user_id = Auth::user()->company_id;
         
-        $model->nama_perusahaan = $request->nama_perusahaan;
-        $model->alamat = $request->alamat;
-        $model->kode_pos = $request->kode_pos;
-        $model->telp = $request->telp;
-        $model->email = $request->email;
-        $model->fax = $request->fax;
-        $model->kode_prov = $request->kode_prov;
-        $model->kode_kab = $request->kode_kab;
-        $model->kode_kec = $request->kode_kec;
-        $model->kode_desa= $request->kode_desa;
-        $model->label_prov = $request->label_prov;
-        $model->label_kab = $request->label_kab;
-        $model->label_kec = $request->label_kec;
-        $model->label_desa = $request->label_desa;
+        // $model->nama_perusahaan = $request->nama_perusahaan;
+        // $model->alamat = $request->alamat;
+        // $model->kode_pos = $request->kode_pos;
+        // $model->telp = $request->telp;
+        // $model->email = $request->email;
+        // $model->fax = $request->fax;
+        // $model->kode_prov = $request->kode_prov;
+        // $model->kode_kab = $request->kode_kab;
+        // $model->kode_kec = $request->kode_kec;
+        // $model->kode_desa= $request->kode_desa;
+        // $model->label_prov = $request->label_prov;
+        // $model->label_kab = $request->label_kab;
+        // $model->label_kec = $request->label_kec;
+        // $model->label_desa = $request->label_desa;
 
         $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
-        $model->nama_kantor_pusat = $request->nama_kantor_pusat;
-        $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
-        $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
-        $model->telp_kantor_pusat = $request->telp_kantor_pusat;
-        $model->email_kantor_pusat = $request->email_kantor_pusat;
-        $model->fax_kantor_pusat = $request->fax_kantor_pusat;
-        $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
-        $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
-        $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
-        $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
-        $model->nama_grup = $request->nama_grup;
-        $model->alamat_grup = $request->alamat_grup;
-        $model->kode_pos_grup =$request->kode_pos_grup;
-        $model->telepon_grup = $request->telepon_grup;
-        $model->fax_grup= $request->fax_grup;
-        $model->email_grup = $request->email_grup;
-        $model->kode_prov_grup = $request->kode_prov_grup;
-        $model->kode_kab_grup= $request->kode_kab_grup;
+        // $model->nama_kantor_pusat = $request->nama_kantor_pusat;
+        // $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
+        // $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
+        // $model->telp_kantor_pusat = $request->telp_kantor_pusat;
+        // $model->email_kantor_pusat = $request->email_kantor_pusat;
+        // $model->fax_kantor_pusat = $request->fax_kantor_pusat;
+        // $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
+        // $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
+        // $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
+        // $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
+        // $model->nama_grup = $request->nama_grup;
+        // $model->alamat_grup = $request->alamat_grup;
+        // $model->kode_pos_grup =$request->kode_pos_grup;
+        // $model->telepon_grup = $request->telepon_grup;
+        // $model->fax_grup= $request->fax_grup;
+        // $model->email_grup = $request->email_grup;
+        // $model->kode_prov_grup = $request->kode_prov_grup;
+        // $model->kode_kab_grup= $request->kode_kab_grup;
         
         $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
         if($prov_grup!=null){
@@ -2889,18 +2889,46 @@ class SurveiController extends Controller
         return response()->json(['result'=>1]);
     }
 
-    public function detail_tahunan($tahun){
-        $model = User::find(Auth::id());
-        $user_profile = ProfilPerusahaan::find($model->company_id);
+    public function detail_tahunan($id){
+        // $model = User::find(Auth::id());
+        // $user_profile = ProfilPerusahaan::find($model->company_id);
+        // $list_prov = Prov::get();
+        // return view('survei.detail_tahunan', compact('user_profile', 'id', 'list_prov'));
+        $model = SurveiTahunan::find($id);
+        $rincian_tahunan = []; 
+        $rincian_semusim = [];
+        if($model!=null){   
+            $data_rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
+            $data_rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
+
+            $rincian_tahunan = RincianTahunanTahunResource::collection($data_rincian_tahunan);
+            $rincian_semusim = RincianTahunanSemusimResource::collection($data_rincian_semusim);    
+        }
+        
         $list_prov = Prov::get();
-        return view('survei.detail_tahunan', compact('user_profile', 'tahun', 'list_prov'));
+        return view('survei.detail_tahunan', compact('model', 'rincian_tahunan', 
+            'rincian_semusim', 'list_prov'));
     }
 
-    public function watch_tahunan($tahun){
-        $model = User::find(Auth::id());
-        $user_profile = ProfilPerusahaan::find($model->company_id);
+    public function watch_tahunan($id){
+        // $model = User::find(Auth::id());
+        // $user_profile = ProfilPerusahaan::find($model->company_id);
+        // $list_prov = Prov::get();
+        // return view('survei.watch_tahunan', compact('user_profile', 'tahun', 'list_prov'));
+        $model = SurveiTahunan::find($id);
+        $rincian_tahunan = []; 
+        $rincian_semusim = [];
+        if($model!=null){   
+            $data_rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
+            $data_rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
+
+            $rincian_tahunan = RincianTahunanTahunResource::collection($data_rincian_tahunan);
+            $rincian_semusim = RincianTahunanSemusimResource::collection($data_rincian_semusim);    
+        }
+        
         $list_prov = Prov::get();
-        return view('survei.watch_tahunan', compact('user_profile', 'tahun', 'list_prov'));
+        return view('survei.watch_tahunan', compact('model', 'rincian_tahunan', 
+            'rincian_semusim', 'list_prov'));
     }
 
     public function tahunan_print($id){

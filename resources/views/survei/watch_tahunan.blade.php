@@ -1326,248 +1326,19 @@ var vm = new Vue({
             {id: 9, jenis: 'Yute', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Nilam', wujud: "Buah Kelapa"},
         ],
-        form: {
-            id: 0, tahun: {!! json_encode($tahun) !!},  nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
-            alamat: '', kode_pos: '',telp: '', email: '', fax: '',
-            kode_prov: '16', kode_kab: '', kode_kec: '', kode_desa: '', 
-            label_prov: 'SUMATERA SELATAN',label_kab: '', label_kec: '', label_desa: '',
-            nama_contact: '', nomor_hp: '',
-            nama_kantor_pusat: '',
-            alamat_kantor_pusat: '',
-            kode_pos_kantor_pusat: '',
-            telp_kantor_pusat: '',
-            email_kantor_pusat: '',
-            fax_kantor_pusat: '',
-            kode_prov_kantor_pusat: '',
-            kode_kab_kantor_pusat: '',
-            label_prov_kantor_pusat: '',
-            label_kab_kantor_pusat: '',
-            nama_grup: '',
-            alamat_grup: '',
-            kode_pos_grup: '',
-            telepon_grup: '',
-            fax_grup: '',
-            email_grup: '',
-            kode_prov_grup: '',
-            kode_kab_grup: '',
-            label_prov_grup: '',
-            label_kab_grup: '',
-
-            kondisi_perusahaan: '', badan_hukum: '',
-            status_pemodalan: '', 
-            masa_berlaku_hgu_dari: '', masa_berlaku_hgu_sampai: '', 
-            apakah_pelaksana_kemitraan: '', jenis_kemitraan: '', jenis_kemitraan_lainnya: '',
-            punya_unit_pengolahan: '',
-
-            bpt_admin_laki: '',bpt_admin_perempuan: '',
-            bpt_kebun_laki: '',bpt_kebun_perempuan: '',
-            upt_admin_laki: '',upt_admin_perempuan: '',
-            upt_kebun_laki: '',upt_kebun_perempuan: '',
-            
-            bptt_admin_laki: '',bptt_admin_perempuan: '',
-            bptt_kebun_laki: '',bptt_kebun_perempuan: '',
-            uptt_admin_laki: '',uptt_admin_perempuan: '',
-            uptt_kebun_laki: '',uptt_kebun_perempuan: '',
-
-            pendapatan_bersih_kebun: '', pendapatan_bersih_tani_lain: '',
-            pendapatan_hasil_kemitraan: '', pendapatan_dari_sewa: '',
-            pendapatan_jual_bibit: '', pendapatan_bersih_lain: '',
-
-            pupuk1: '', pupuk2: '', pupuk3: '', 
-            pestisida1: '', pestisida2: '', pestisida3: '',
-
-            nama_pencacah: '', tanggal_pencacah: '', ttd_pencacah: '',
-            nama_pemeriksa: '', tanggal_pemeriksa: '', ttd_pemeriksa: '',
-            catatan: '',
-            diisi_di: '',
-            diisi_tanggal: '',
-            diisi_administratur: '',
-            status_dokumen: '',
-
-            created_by: '',
-            updated_by: '',
-        },
-        rincian_tahunan: [], rincian_semusim: [],
+        rincian_tahunan: {!! json_encode($rincian_tahunan) !!}, 
+        rincian_semusim: {!! json_encode($rincian_semusim) !!},
         list_kab: [], list_pusat_kab: [], 
         list_grup_prov:  {!! json_encode($list_prov) !!},
         list_grup_kab: [],
         list_kec: [], list_desa: [],
-        user_profile: {!! json_encode($user_profile) !!},
+        form: {!! json_encode($model) !!},
     },
     computed: {
         tahun() { return this.form.tahun },
         pathname(){ return window.location.pathname.replace("/" + this.form.tahun + "/watch_tahunan", "") } ,
     },
-    watch: {
-        tahun(){ this.setDatas(); }
-    },
     methods: {
-        addRincian: function (jenis_rincian) {
-            if(jenis_rincian==1){
-                this.rincian_tahunan.push({
-                    id: 0, survei_id: '', kode_tanaman: '', tanaman_diolah: '',
-                    luas_sendiri_5: '', luas_sendiri_5_10: '', luas_sendiri_11_25: '', luas_sendiri_25: '',
-                    luas_plasma_5: '', luas_plasma_5_10: '', luas_plasma_11_25: '', luas_plasma_25: '',
-                    sendiri_bentuk_produksi: '', sendiri_rata_rendemen: '', 
-                    plasma_bentuk_produksi: '', plasma_rata_rendemen: '', 
-                    bibit_tanaman: '', pupuk1: '', pupuk2: '', pupuk3: '', 
-                    pestisida1: '', pestisida2: '', pestisida3: '',
-                    bahan_bakar_budidaya: '', sewa_lahan: '', sewa_alat: '', 
-                    pengeluaran_lainnya: '', biaya_kemitraan: '', 
-                    list_kebun_tahunan_sendiri: [], 
-                    list_kebun_tahunan_plasma: [],
-                })
-            }
-            else{
-                this.rincian_semusim.push({
-                    id: 0, survei_id: '', kode_tanaman: '', tanaman_diolah: '',
-                    sendiri_bentuk_produksi: '', sendiri_rata_rendemen: '', 
-                    plasma_bentuk_produksi: '', plasma_rata_rendemen: '', 
-                    bibit_tanaman: '', pupuk1: '', pupuk2: '', pupuk3: '', 
-                    pestisida1: '', pestisida2: '', pestisida3: '',
-                    bahan_bakar_budidaya: '', sewa_lahan: '', sewa_alat: '', 
-                    pengeluaran_lainnya: '', biaya_kemitraan: '', 
-                    list_kebun_semusim_sendiri: [], 
-                    list_kebun_semusim_plasma: [],
-                }) 
-            }
-        },
-        addKebunRincian: function (jenis_rincian, jenis_kebun, index_rincian) {
-            if(jenis_rincian==1){
-                if(jenis_kebun==1){
-                    this.rincian_tahunan[index_rincian].list_kebun_tahunan_sendiri.push({
-                        id: 0, survei_id: '', rincian_id: '', jenis: '1', nama_kebun: '',
-                        kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '',
-                        real1_tbm: '',real1_tsm: '', real1_tstm: '', real1_ttm: '', real1_produksi: '', real1_nilai: '',
-                        real2_tbm: '',real2_tsm: '', real2_tstm: '', real2_ttm: '', real2_produksi: '', real2_nilai: '',
-                        real3_tbm: '',real3_tsm: '', real3_tstm: '', real3_ttm: '', real3_produksi: '', real3_nilai: '',
-                        real4_tbm: '',real4_tsm: '', real4_tstm: '', real4_ttm: '', real4_produksi: '', real4_nilai: '',
-                        
-                        target1_tbm: '',target1_tsm: '', target1_tstm: '', target1_ttm: '', target1_produksi: '', target1_nilai: '',
-                        target2_tbm: '',target2_tsm: '', target2_tstm: '', target2_ttm: '', target2_produksi: '', target2_nilai: '',
-                        target3_tbm: '',target3_tsm: '', target3_tstm: '', target3_ttm: '', target3_produksi: '', target3_nilai: '',
-                        target4_tbm: '',target4_tsm: '', target4_tstm: '', target4_ttm: '', target4_produksi: '', target4_nilai: '',
-                    })
-                }
-                else{
-                    this.rincian_tahunan[index_rincian].list_kebun_tahunan_plasma.push({
-                        id: 0, survei_id: '', rincian_id: '', jenis: '2', nama_kebun: '',
-                        kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '',
-                        real1_tbm: '',real1_tsm: '', real1_tstm: '', real1_ttm: '', real1_produksi: '', real1_nilai: '',
-                        real2_tbm: '',real2_tsm: '', real2_tstm: '', real2_ttm: '', real2_produksi: '', real2_nilai: '',
-                        real3_tbm: '',real3_tsm: '', real3_tstm: '', real3_ttm: '', real3_produksi: '', real3_nilai: '',
-                        real4_tbm: '',real4_tsm: '', real4_tstm: '', real4_ttm: '', real4_produksi: '', real4_nilai: '',
-                        
-                        target1_tbm: '',target1_tsm: '', target1_tstm: '', target1_ttm: '', target1_produksi: '', target1_nilai: '',
-                        target2_tbm: '',target2_tsm: '', target2_tstm: '', target2_ttm: '', target2_produksi: '', target2_nilai: '',
-                        target3_tbm: '',target3_tsm: '', target3_tstm: '', target3_ttm: '', target3_produksi: '', target3_nilai: '',
-                        target4_tbm: '',target4_tsm: '', target4_tstm: '', target4_ttm: '', target4_produksi: '', target4_nilai: '',
-                    })
-                }
-            }
-            else{
-                if(jenis_kebun==1){
-                    this.rincian_semusim[index_rincian].list_kebun_semusim_sendiri.push({
-                        id: 0, survei_id: '', rincian_id: '', jenis: '1', nama_kebun: '',
-                        kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '',
-                        real1_luas_tanam: '',real1_luas_panen: '', real1_produksi: '', real1_nilai: '',
-                        real2_luas_tanam: '',real2_luas_panen: '', real2_produksi: '', real2_nilai: '',
-                        real3_luas_tanam: '',real3_luas_panen: '', real3_produksi: '', real3_nilai: '',
-                        real4_luas_tanam: '',real4_luas_panen: '', real4_produksi: '', real4_nilai: '',
-                        
-                        target1_luas_tanam: '',target1_luas_panen: '', target1_produksi: '', target1_nilai: '',
-                        target2_luas_tanam: '',target2_luas_panen: '', target2_produksi: '', target2_nilai: '',
-                        target3_luas_tanam: '',target3_luas_panen: '', target3_produksi: '', target3_nilai: '',
-                        target4_luas_tanam: '',target4_luas_panen: '', target4_produksi: '', target4_nilai: '',
-                    })
-                }
-                else{
-                    this.rincian_semusim[index_rincian].list_kebun_semusim_plasma.push({
-                        id: 0, survei_id: '', rincian_id: '', jenis: '2', nama_kebun: '',
-                        kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '',
-                        real1_luas_tanam: '',real1_luas_panen: '', real1_produksi: '', real1_nilai: '',
-                        real2_luas_tanam: '',real2_luas_panen: '', real2_produksi: '', real2_nilai: '',
-                        real3_luas_tanam: '',real3_luas_panen: '', real3_produksi: '', real3_nilai: '',
-                        real4_luas_tanam: '',real4_luas_panen: '', real4_produksi: '', real4_nilai: '',
-                        
-                        target1_luas_tanam: '',target1_luas_panen: '', target1_produksi: '', target1_nilai: '',
-                        target2_luas_tanam: '',target2_luas_panen: '', target2_produksi: '', target2_nilai: '',
-                        target3_luas_tanam: '',target3_luas_panen: '', target3_produksi: '', target3_nilai: '',
-                        target4_luas_tanam: '',target4_luas_panen: '', target4_produksi: '', target4_nilai: '',
-                    })
-                }
-            }
-        },
-        sendData: function (status_data) {
-            var self = this;
-            $('#wait_progres').modal('show');
-
-            var msg_error = []
-
-            if(self.form.tahun=='') msg_error.push("Tahun Wajib Diisi")
-            if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
-            if(self.form.nama_perusahaan=='') msg_error.push("Nama Perusahaan Wajib Diisi")
-            if(self.form.alamat=='') msg_error.push("Alamat Wajib Diisi")
-            if(self.form.kode_prov=='') msg_error.push("Provinsi Perusahaan Wajib Diisi")
-            if(self.form.kode_kab=='') msg_error.push("Kabupaten/Kota Perusahaan Wajib Diisi")
-            
-            if(self.form.kondisi_perusahaan=='') msg_error.push("Kondisi Perusahaan Wajib Diisi")
-            if(self.form.badan_hukum=='') msg_error.push("Badan Hukum Wajib Diisi")
-            if(self.form.status_pemodalan=='') msg_error.push("Status Pemodalan Wajib Diisi")
-            if(self.form.apakah_pelaksana_kemitraan=='') msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
-
-            var pengeluaran_tahunan = 0;
-            for(var i=0;i<this.rincian_tahunan.length;i++){
-                if((this.customChangeFloat(this.rincian_tahunan[i].bibit_tanaman) + this.customChangeFloat(this.rincian_tahunan[i].pupuk1) + this.customChangeFloat(this.rincian_tahunan[i].pupuk2) + this.customChangeFloat(this.rincian_tahunan[i].pupuk3) + this.customChangeFloat(this.rincian_tahunan[i].pestisida1) + this.customChangeFloat(this.rincian_tahunan[i].pestisida2) + this.customChangeFloat(this.rincian_tahunan[i].pestisida3) + this.customChangeFloat(this.rincian_tahunan[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_tahunan[i].sewa_lahan) + this.customChangeFloat(this.rincian_tahunan[i].sewa_alat) + this.customChangeFloat(this.rincian_tahunan[i].pengeluaran_lainnya))==0)
-                    msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
-            }
-            
-            for(var i=0;i<this.rincian_semusim.length;i++){
-                if((this.customChangeFloat(this.rincian_semusim[i].bibit_tanaman) + this.customChangeFloat(this.rincian_semusim[i].pupuk1) + this.customChangeFloat(this.rincian_semusim[i].pupuk2) + this.customChangeFloat(this.rincian_semusim[i].pupuk3) + this.customChangeFloat(this.rincian_semusim[i].pestisida1) + this.customChangeFloat(this.rincian_semusim[i].pestisida2) + this.customChangeFloat(this.rincian_semusim[i].pestisida3) + this.customChangeFloat(this.rincian_semusim[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_semusim[i].sewa_lahan) + this.customChangeFloat(this.rincian_semusim[i].sewa_alat) + this.customChangeFloat(this.rincian_semusim[i].pengeluaran_lainnya))==0)
-                    msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
-            }
-            
-            if(this.customChangeFloat(this.form.bpt_admin_laki)+this.customChangeFloat(this.form.bpt_admin_perempuan)+this.customChangeFloat(this.form.bptt_admin_laki)+this.customChangeFloat(this.form.bptt_admin_perempuan)==0) 
-                msg_error.push("Isian Jumlah Pekerja Administrator minimal lebih dari 0")
-            if(this.customChangeFloat(this.form.upt_admin_laki)+this.customChangeFloat(this.form.upt_admin_perempuan)+this.customChangeFloat(this.form.uptt_admin_laki)+this.customChangeFloat(this.form.uptt_admin_perempuan)==0)
-                msg_error.push("Isian Upah Pekerja Administrator minimal lebih dari 0")
-            if(this.customChangeFloat(this.form.bpt_kebun_laki)+this.customChangeFloat(this.form.bpt_kebun_perempuan)+this.customChangeFloat(this.form.bptt_kebun_laki)+this.customChangeFloat(this.form.bptt_kebun_perempuan)==0)
-                msg_error.push("Isian Jumlah Pekerja Kebun minimal lebih dari 0")
-            if(this.customChangeFloat(this.form.upt_kebun_laki)+this.customChangeFloat(this.form.upt_kebun_perempuan)+this.customChangeFloat(this.form.uptt_kebun_laki)+this.customChangeFloat(this.form.uptt_kebun_perempuan)==0)
-                msg_error.push("Isian Upah Pekerja Kebun minimal lebih dari 0")
-
-                
-            if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
-                                +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
-                                +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
-                msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
-            }
-
-            if(msg_error.length==0){
-                var data_post = self.form
-                var rincian = { rincian_tahunan: self.rincian_tahunan, rincian_semusim: self.rincian_semusim }
-                data_post = { ...data_post, ...rincian }
-
-                $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
-                $.ajax({
-                    url :  self.pathname+"/" + self.form.id + "/" + status_data + "/tahunan_send",
-                    method : 'post',
-                    dataType: 'json',
-                    data: data_post,
-                }).done(function (data) {
-                    $('#wait_progres').modal('hide');
-                    window.location.href = self.pathname + "/index_tahunan"
-                }).fail(function (msg) {
-                    console.log(JSON.stringify(msg));
-                    $('#wait_progres').modal('hide');
-                    window.location.href = self.pathname + "/index_tahunan"
-                });
-            }
-            else{
-                $('#wait_progres').modal('hide');
-                alert(msg_error.join("\n"))
-            }
-        },
         customChangeFloat: function(nilai){
             if(isNaN(parseFloat(nilai))) return 0
             else return parseFloat(nilai)
@@ -1624,8 +1395,6 @@ var vm = new Vue({
 });
 
 $(document).ready(function() {
-    vm.setDatas();
-    
     $('.datetimepicker4').datetimepicker({
         format: 'DD-MM-YYYY',
         icons: {

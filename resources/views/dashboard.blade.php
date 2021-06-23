@@ -38,6 +38,12 @@
                     <td>Nota Kesapahaman BPS dan GAPKI Tentang Penyediaan, Pemanfaatan dan Pengembangan Data/Informasi Statistik Kelapa Sawit</td>
                     <td><a target="_blank" href="https://drive.google.com/file/d/1XL4Z0F8yKkgLDKa3VdaURcvECsYjcMlq/view?usp=sharing">Unduh</a></td>
                 </tr>
+                
+                <tr>
+                    <td>Pedoman Survei Perusahaan Perkebunan</td>
+                    <td><a target="_blank" href="https://drive.google.com/file/d/1UHcEaIAACYP_cBVbKsOms2p6EPbSCvzQ/view?usp=sharing">Unduh</a></td>
+                </tr>
+
                 <tr>
                     <td>Pedoman Pengisian SKB Triwulanan</td>
                     <td><a target="_blank" href="https://drive.google.com/file/d/1zVklxGScU6nQEOFX9S6hPtaogpaZbRWo/view?usp=sharing">Unduh</a></td>

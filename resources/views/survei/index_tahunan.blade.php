@@ -45,14 +45,14 @@
                                 <td class="text-center">
                                     @if($value->status_dokumen>=3 && $value->status_dokumen<=6)
                                         @hasanyrole('admin|approval|pemeriksa')
-                                        <a href="{{ url('survei/'.$value->tahun.'/tahunan') }}" class="btn btn-primary btn-link btn-sm">
+                                        <a href="{{ url('survei/'.$value->id.'/tahunan') }}" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">search</i>
                                         </a>
                                         @endhasanyrole
                                     @endif
                                     
                                     @hasanyrole('operator')
-                                    <a href="{{ url('survei/'.$value->tahun.'/watch_tahunan') }}" class="btn btn-primary btn-link btn-sm">
+                                    <a href="{{ url('survei/'.$value->id.'/watch_tahunan') }}" class="btn btn-primary btn-link btn-sm">
                                         <i class="material-icons">search</i>
                                     </a>
                                     @endhasanyrole

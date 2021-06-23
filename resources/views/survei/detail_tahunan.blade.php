@@ -1358,77 +1358,17 @@ var vm = new Vue({
             {id: 9, jenis: 'Yute', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Nilam', wujud: "Buah Kelapa"},
         ],
-        form: {
-            id: 0, tahun: {!! json_encode($tahun) !!},  nama_perusahaan: '', user_id: {!! json_encode(Auth::id()) !!},
-            alamat: '', kode_pos: '',telp: '', email: '', fax: '',
-            kode_prov: '16', kode_kab: '', kode_kec: '', kode_desa: '', 
-            label_prov: 'SUMATERA SELATAN',label_kab: '', label_kec: '', label_desa: '',
-            nama_contact: '', nomor_hp: '',
-            nama_kantor_pusat: '',
-            alamat_kantor_pusat: '',
-            kode_pos_kantor_pusat: '',
-            telp_kantor_pusat: '',
-            email_kantor_pusat: '',
-            fax_kantor_pusat: '',
-            kode_prov_kantor_pusat: '',
-            kode_kab_kantor_pusat: '',
-            label_prov_kantor_pusat: '',
-            label_kab_kantor_pusat: '',
-            nama_grup: '',
-            alamat_grup: '',
-            kode_pos_grup: '',
-            telepon_grup: '',
-            fax_grup: '',
-            email_grup: '',
-            kode_prov_grup: '',
-            kode_kab_grup: '',
-            label_prov_grup: '',
-            label_kab_grup: '',
-
-            kondisi_perusahaan: '', badan_hukum: '',
-            status_pemodalan: '', 
-            masa_berlaku_hgu_dari: '', masa_berlaku_hgu_sampai: '', 
-            apakah_pelaksana_kemitraan: '', jenis_kemitraan: '', jenis_kemitraan_lainnya: '',
-            punya_unit_pengolahan: '',
-
-            bpt_admin_laki: '',bpt_admin_perempuan: '',
-            bpt_kebun_laki: '',bpt_kebun_perempuan: '',
-            upt_admin_laki: '',upt_admin_perempuan: '',
-            upt_kebun_laki: '',upt_kebun_perempuan: '',
-            
-            bptt_admin_laki: '',bptt_admin_perempuan: '',
-            bptt_kebun_laki: '',bptt_kebun_perempuan: '',
-            uptt_admin_laki: '',uptt_admin_perempuan: '',
-            uptt_kebun_laki: '',uptt_kebun_perempuan: '',
-
-            pendapatan_bersih_kebun: '', pendapatan_bersih_tani_lain: '',
-            pendapatan_hasil_kemitraan: '', pendapatan_dari_sewa: '',
-            pendapatan_jual_bibit: '', pendapatan_bersih_lain: '',
-
-            pupuk1: '', pupuk2: '', pupuk3: '', 
-            pestisida1: '', pestisida2: '', pestisida3: '',
-
-            nama_pencacah: '', tanggal_pencacah: '', ttd_pencacah: '',
-            nama_pemeriksa: '', tanggal_pemeriksa: '', ttd_pemeriksa: '',
-            catatan: '',
-            diisi_di: '',
-            diisi_tanggal: '',
-            diisi_administratur: '',
-            status_dokumen: '',
-
-            created_by: '',
-            updated_by: '',
-        },
-        rincian_tahunan: [], rincian_semusim: [],
+        rincian_tahunan: {!! json_encode($rincian_tahunan) !!}, 
+        rincian_semusim: {!! json_encode($rincian_semusim) !!},
         list_kab: [], list_pusat_kab: [], 
         list_grup_prov:  {!! json_encode($list_prov) !!},
         list_grup_kab: [],
         list_kec: [], list_desa: [],
-        user_profile: {!! json_encode($user_profile) !!},
+        form: {!! json_encode($model) !!},
     },
     computed: {
         tahun() { return this.form.tahun },
-        pathname(){ return window.location.pathname.replace("/" + this.form.tahun + "/tahunan", "") } ,
+        pathname(){ return window.location.pathname.replace("/" + this.form.id + "/tahunan", "") } ,
     },
     watch: {
         tahun(){ this.setDatas(); }
@@ -1603,41 +1543,6 @@ var vm = new Vue({
         customChangeFloat: function(nilai){
             if(isNaN(parseFloat(nilai))) return 0
             else return parseFloat(nilai)
-        },
-        setDatas: function(){
-            var self = this;
-            if(self.form.tahun.toString().length>0){
-                $('#wait_progres').modal('show');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                })
-                $.ajax({
-                    url : self.pathname+"/tahunan/"+self.form.tahun + "/show" ,
-                    method : 'get',
-                    dataType: 'json',
-                }).done(function (data) {
-                    if(data.data!=null){
-                        self.form = data.data;
-                        self.rincian_tahunan = data.rincian_tahunan;
-                        self.rincian_semusim = data.rincian_semusim;
-                        
-                        vm.setKab();
-                    }
-                    else{
-                        self.setDataKosong()
-                    }
-
-                    $('#wait_progres').modal('hide');
-                }).fail(function (msg) {
-                    console.log(JSON.stringify(msg));
-                    $('#wait_progres').modal('hide');
-                });
-            }
-            else{
-                self.setDataKosong()
-            }
         },
         setKab: function(){
             $('#wait_progres').modal('show');
