@@ -374,7 +374,7 @@ class SurveiController extends Controller
             }
         }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
-        $model->badan_hukum_grup = $request->hukum_grup;
+        $model->badan_hukum_grup = $request->badan_hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
         $model->punya_kebun_plasma = $request->punya_kebun_plasma;
         $model->punya_unit_pengolahan = $request->punya_unit_pengolahan;
@@ -553,7 +553,7 @@ class SurveiController extends Controller
             }
         }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
-        $model->badan_hukum_grup = $request->hukum_grup;
+        $model->badan_hukum_grup = $request->badan_hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
         $model->punya_kebun_plasma = $request->punya_kebun_plasma;
         $model->punya_unit_pengolahan = $request->punya_unit_pengolahan;
@@ -750,7 +750,7 @@ class SurveiController extends Controller
             }
         }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
-        $model->badan_hukum_grup = $request->hukum_grup;
+        $model->badan_hukum_grup = $request->badan_hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
         $model->punya_kebun_plasma = $request->punya_kebun_plasma;
         $model->punya_unit_pengolahan = $request->punya_unit_pengolahan;
@@ -1236,7 +1236,7 @@ class SurveiController extends Controller
             }
         }
         $model->status_pemodalan_grup = $request->status_pemodalan_grup;
-        $model->badan_hukum_grup = $request->hukum_grup;
+        $model->badan_hukum_grup = $request->badan_hukum_grup;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
         $model->punya_kebun_plasma = $request->punya_kebun_plasma;
         $model->punya_unit_pengolahan = $request->punya_unit_pengolahan;

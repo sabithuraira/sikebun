@@ -235,12 +235,7 @@
                             <td></td>
                             <td>c. Kabupaten/Kota *)</td>
                             <td colspan="2" class="text-right">
-                                <select disabled name="kode_kab_grup" v-model="form.kode_kab_grup">
-                                    <option>- Pilih Kabupaten/Kota -</option>
-                                    <option v-for="v in list_grup_kab" :key="v.idKab" :value="v.idKab">
-                                        @{{ v.idKab }} - @{{ v.nmKab }}
-                                    </option>
-                                </select>
+                                <input disabled class="form-control" type="text" :value="form.kode_kab_grup + ' - ' + form.label_kab_grup">
                             </td>
                         </tr>
 
