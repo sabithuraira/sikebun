@@ -65,7 +65,7 @@ class SurveiController extends Controller
         if(Auth::user()->hasRole('pemeriksa')){
             $datas = SurveiSawit::paginate();
         }
-        $datas->withPath('survei/index_sawit');
+        $datas->withPath('index_sawit');
         $datas->appends($request->all());    
         
         return view('survei.index_sawit', compact('datas'));
@@ -900,7 +900,7 @@ class SurveiController extends Controller
         if(Auth::user()->hasRole('pemeriksa')){
             $datas = SurveiKaret::paginate();
         }
-        $datas->withPath('survei/index_karet');
+        $datas->withPath('index_karet');
         $datas->appends($request->all());    
         
         return view('survei.index_karet', compact('datas'));
@@ -939,7 +939,7 @@ class SurveiController extends Controller
         if(Auth::user()->hasRole('pemeriksa')){
             $datas = SurveiTahunan::paginate();
         }
-        $datas->withPath('survei/index_tahunan');
+        $datas->withPath('index_tahunan');
         $datas->appends($request->all());    
         
         return view('survei.index_tahunan', compact('datas'));

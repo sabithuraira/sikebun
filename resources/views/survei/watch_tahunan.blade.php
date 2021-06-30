@@ -6,7 +6,7 @@
         <tr>
             <td colspan="2"></td>
             <td class="text-center">
-                <u><b>SKP20-TAHUNAN</b></u><br/>
+                <u><b>@{{ 'SKP'+form.tahun.toString().substr(2,2)+'-TAHUNAN'  }}</b></u><br/>
                 <br>ADMINISTRATUR KEBUN</br>
             </td>
         </tr>
@@ -24,7 +24,7 @@
         <tr class="text-center">
             <td colspan="3">
                 <h4>SURVEI PERUSAHAAN PERKEBUNAN TAHUNAN</h4>
-                <h4>TAHUN 2020</h4>
+                <h4>TAHUN @{{ form.tahun }}</h4>
             </td>
         </tr>
         
@@ -395,7 +395,7 @@
                             <tr class="bg-success text-center">
                                 <td colspan="9">III.A UMUR TANAMAN, LUAS TANAMAN, DAN PRODUKSI<br/>TANAMAN PERKEBUNAN TAHUNAN</td>
                             </tr>
-                            <tr><td colspan="9">1. Umur Tanaman dan Luas Tanaman Tahun 2020</td></tr>
+                            <tr><td colspan="9">1. Umur Tanaman dan Luas Tanaman Tahun @{{ form.tahun }}</td></tr>
                             <tr>
                                 <td colspan="4">a. Kebun Sendiri/Inti</td>
                                 <td></td>
@@ -448,7 +448,7 @@
                                 <td class="bg-success">Total</td>
                                 <td colspan="3">@{{ customChangeFloat(item.luas_plasma_5) + customChangeFloat(item.luas_plasma_5_10) + customChangeFloat(item.luas_plasma_11_25) + customChangeFloat(item.luas_plasma_25) }}</td>
                             </tr>
-                            <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun 2020 dan Target Tahun 2021</td></tr>
+                            <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun @{{ form.tahun }} dan Target Tahun @{{ form.tahun+1 }}</td></tr>
                             <tr  class="text-center">
                                 <td colspan="2" rowspan="3">Nama Kebun dan Lokasi Kebun</td>
                                 <td rowspan="3">Periode (Triwulan)</td>
@@ -496,7 +496,7 @@
                                         Desa:<br/>
                                         <input disabled type="text" v-model="item_kebun_sendiri.kode_desa">
                                     </td>
-                                    <td rowspan="5">Realisasi Tahun 2020</td>
+                                    <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
                                     <td><input disabled type="text" size="3" v-model="item_kebun_sendiri.real1_tbm"></td><td><input disabled type="text"  v-model="item_kebun_sendiri.real1_tsm" size="3"></td>
                                     <td><input disabled type="text" size="3" v-model="item_kebun_sendiri.real1_tstm"></td><td><input disabled type="text"  v-model="item_kebun_sendiri.real1_ttm" size="3"></td>
@@ -531,7 +531,7 @@
                                 </tr>
 
                                 <tr class="text-center">
-                                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                                    <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input disabled type="text" size="3" v-model="item_kebun_sendiri.target1_tbm"></td><td><input disabled type="text"  v-model="item_kebun_sendiri.target1_tsm" size="3"></td>
                                     <td><input disabled type="text" size="3" v-model="item_kebun_sendiri.target1_tstm"></td><td><input disabled type="text"  v-model="item_kebun_sendiri.target1_ttm" size="3"></td>
                                     <td><input disabled type="text" size="3" v-model="item_kebun_sendiri.target1_produksi"></td><td><input disabled type="text"  v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
@@ -595,7 +595,7 @@
                                         Desa:<br/>
                                         <input type="text" v-model="item_kebun_plasma.kode_desa">
                                     </td>
-                                    <td rowspan="5">Realisasi Tahun 2020</td>
+                                    <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_ttm" size="3"></td>
@@ -630,7 +630,7 @@
                                 </tr>
 
                                 <tr class="text-center">
-                                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                                    <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_ttm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target1_nilai" size="3"></td>
@@ -708,7 +708,7 @@
                                         Desa:<br/>
                                         <input type="text" v-model="item_kebun_sendiri.kode_desa">
                                     </td>
-                                    <td rowspan="5">Realisasi Tahun 2020</td>
+                                    <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_luas_panen" size="3"></td>
                                     <td><input type="text" v-model="item_kebun_sendiri.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
@@ -741,7 +741,7 @@
                                 </tr>
 
                                 <tr class="text-center">
-                                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                                    <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_luas_panen" size="3"></td>
                                     <td><input type="text" v-model="item_kebun_sendiri.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
                                 </tr>
@@ -801,7 +801,7 @@
                                         Desa:<br/>
                                         <input type="text" v-model="item_kebun_plasma.kode_desa">
                                     </td>
-                                    <td rowspan="5">Realisasi Tahun 2020</td>
+                                    <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
                                     <td><input type="text" v-model="item_kebun_plasma.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_luas_panen" size="3"></td>
                                     <td><input type="text" v-model="item_kebun_plasma.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_nilai" size="3"></td>
@@ -834,7 +834,7 @@
                                 </tr>
 
                                 <tr class="text-center">
-                                    <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                                    <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" v-model="item_kebun_plasma.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_luas_panen" size="3"></td>
                                     <td><input type="text" v-model="item_kebun_plasma.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_nilai" size="3"></td>
                                 </tr>
@@ -873,7 +873,7 @@
                 <div class="tab-pane" id="blok4" aria-labelledby="blok4-tab">
                     <table class="table-border" style="min-width:100%">
                         <tr class="bg-success text-center">
-                            <td colspan="5">IV. PENGELUARAN UNTUK SARANA PRODUKSI YANG DIGUNAKAN UNTUK BUDAYA<br/>SELAMA TAHUN 2020</td>
+                            <td colspan="5">IV. PENGELUARAN UNTUK SARANA PRODUKSI YANG DIGUNAKAN UNTUK BUDAYA<br/>SELAMA TAHUN @{{ form.tahun }}</td>
                         </tr>
                         <tr class="text-center">
                             <td rowspan="2">Jenis Sarana Produksi</td>
@@ -1044,7 +1044,7 @@
                 <div class="tab-pane" id="blok5" aria-labelledby="blok5-tab">
                     <table class="table-border" style="min-width:100%">
                         <tr class="bg-success text-center">
-                            <td colspan="5">V. JUMLAH DAN UPAH TENAGA KERJA SELAMA TAHUN 2020</td>
+                            <td colspan="5">V. JUMLAH DAN UPAH TENAGA KERJA SELAMA TAHUN @{{ form.tahun }}</td>
                         </tr>
                         <tr class="text-center">
                             <td rowspan="2">Tenaga Kerja</td>
@@ -1111,7 +1111,7 @@
                 <div class="tab-pane" id="blok6" aria-labelledby="blok6-tab">
                     <table class="table-border" style="min-width:100%">
                         <tr class="bg-success text-center">
-                            <td colspan="2">VI. PENDAPATAN/PENERIMAAN PERUSAHAAN PERKEBUNAN TAHUN 2020</td>
+                            <td colspan="2">VI. PENDAPATAN/PENERIMAAN PERUSAHAAN PERKEBUNAN TAHUN @{{ form.tahun }}</td>
                         </tr>
                         <tr class="text-center">
                             <td><b>Jenis Pendapatan/Penerimaan</b></td>
@@ -1123,7 +1123,7 @@
                         
                         <tr>
                             <td>
-                                1. Pendapatan Bersih dari Usaha Tanaman Perkebunan { Blok IIIA R.2a jumlah tahun 2020, kol.(7) jenis tanaman tahunan I  + Blok IIIA R.2a jumlah tahun 2020, kol.(7)  jenis tanaman tahunan II + Blok IIIA R.2a jumlah tahun 2020, kol.(7)  jenis tanaman tahunan III + Blok IIIB R.a jumlah tahun 2020 kol.(6) jenis tanaman semusim I + Blok IIIB R.a jumlah tahun 2020 kol.(6)  jenis tanaman semusim II + Blok IIIB R.a jumlah tahun 2020 kol.(6)  jenis tanaman semusim III - Blok IV Rincian total kol.(2) - Blok V Rincian Jumlah kol (3) - Blok V Rincian Jumlah kol (5) }
+                                1. Pendapatan Bersih dari Usaha Tanaman Perkebunan { Blok IIIA R.2a jumlah tahun @{{ form.tahun }}, kol.(7) jenis tanaman tahunan I  + Blok IIIA R.2a jumlah tahun @{{ form.tahun }}, kol.(7)  jenis tanaman tahunan II + Blok IIIA R.2a jumlah tahun @{{ form.tahun }}, kol.(7)  jenis tanaman tahunan III + Blok IIIB R.a jumlah tahun @{{ form.tahun }} kol.(6) jenis tanaman semusim I + Blok IIIB R.a jumlah tahun @{{ form.tahun }} kol.(6)  jenis tanaman semusim II + Blok IIIB R.a jumlah tahun @{{ form.tahun }} kol.(6)  jenis tanaman semusim III - Blok IV Rincian total kol.(2) - Blok V Rincian Jumlah kol (3) - Blok V Rincian Jumlah kol (5) }
                             </td>
                             <td><input type="text" v-model="form.pendapatan_bersih_kebun"></td>
                         </tr>
