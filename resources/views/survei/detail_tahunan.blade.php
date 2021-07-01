@@ -1189,14 +1189,14 @@
                             <td>1. Nama Pencacah : </td>
                             <td><input type="text" disabled v-model="form.nama_pencacah"></td>
                             <td>1. Nama Pemeriksa : </td>
-                            <td><input type="text" disabled v-model="form.nama_pemeriksa"></td>
+                            <td><input type="text" :disabled="(form.status_dokumen<5)" v-model="form.nama_pemeriksa"></td>
                         </tr>
                         
                         <tr>
                             <td>2. Tanggal Pencacahan : </td>
                             <td><input type="text" disabled v-model="form.tanggal_pencacah"></td>
                             <td>2. Tanggal Pemeriksaan : </td>
-                            <td><input type="text" disabled v-model="form.tanggal_pemeriksa"></td>
+                            <td><input type="text" :disabled="(form.status_dokumen<5)" v-model="form.tanggal_pemeriksa"></td>
                         </tr>
                         
                         <tr>
@@ -1227,7 +1227,7 @@
         @hasanyrole('approval')
         <template v-if="form.status_dokumen==3 || form.status_dokumen==4">
             <div class="col-md-6 text-center">
-                <button class="btn btn-info" @click="sendData(4)">SIMPAN PERBAIKAN</button>
+                <button class="btn btn-info" @click="sendData(4)">SIMPAN</button>
             </div>
             
             <div class="col-md-6 text-center">
@@ -1243,7 +1243,7 @@
             </div>
 
             <div class="col-md-4 text-center">
-                <button class="btn btn-info" @click="sendData(6)">SIMPAN PERBAIKAN - PEMERIKSA</button>
+                <button class="btn btn-info" @click="sendData(6)">SIMPAN - PEMERIKSA</button>
             </div>
             
             <div class="col-md-4 text-center">
@@ -1371,7 +1371,7 @@ var vm = new Vue({
         pathname(){ return window.location.pathname.replace("/" + this.form.id + "/tahunan", "") } ,
     },
     watch: {
-        tahun(){ this.setDatas(); }
+        // tahun(){ this.setDatas(); }
     },
     methods: {
         addRincian: function (jenis_rincian) {
@@ -1508,6 +1508,20 @@ var vm = new Vue({
             if(this.customChangeFloat(this.form.upt_kebun_laki)+this.customChangeFloat(this.form.upt_kebun_perempuan)+this.customChangeFloat(this.form.uptt_kebun_laki)+this.customChangeFloat(this.form.uptt_kebun_perempuan)==0)
                 msg_error.push("Isian Upah Pekerja Kebun minimal lebih dari 0")
 
+            ////////
+            if((this.customChangeFloat(this.form.bpt_admin_laki)==0 && this.customChangeFloat(this.form.upt_admin_laki)!=0) || (this.customChangeFloat(this.form.bpt_admin_laki)!=0 && this.customChangeFloat(this.form.upt_admin_laki)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bpt_admin_perempuan)==0 && this.customChangeFloat(this.form.upt_admin_perempuan)!=0) || (this.customChangeFloat(this.form.bpt_admin_perempuan)!=0 && this.customChangeFloat(this.form.upt_admin_perempuan)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bptt_admin_laki)==0 && this.customChangeFloat(this.form.uptt_admin_laki)!=0) || (this.customChangeFloat(this.form.bptt_admin_laki)!=0 && this.customChangeFloat(this.form.uptt_admin_laki)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bptt_admin_perempuan)==0 && this.customChangeFloat(this.form.uptt_admin_perempuan)!=0) || (this.customChangeFloat(this.form.bptt_admin_perempuan)!=0 && this.customChangeFloat(this.form.uptt_admin_perempuan)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            /////////
                 
             if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
                                 +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
@@ -1567,7 +1581,7 @@ var vm = new Vue({
 });
 
 $(document).ready(function() {
-    vm.setDatas();
+    // vm.setDatas();
     
     $('.datetimepicker4').datetimepicker({
         format: 'DD-MM-YYYY',

@@ -1596,7 +1596,20 @@ var vm = new Vue({
                 msg_error.push("Isian Jumlah Pekerja Kebun minimal lebih dari 0")
             if(this.customChangeFloat(this.form.upt_kebun_laki)+this.customChangeFloat(this.form.upt_kebun_perempuan)+this.customChangeFloat(this.form.uptt_kebun_laki)+this.customChangeFloat(this.form.uptt_kebun_perempuan)==0)
                 msg_error.push("Isian Upah Pekerja Kebun minimal lebih dari 0")
-
+            ////////
+            if((this.customChangeFloat(this.form.bpt_admin_laki)==0 && this.customChangeFloat(this.form.upt_admin_laki)!=0) || (this.customChangeFloat(this.form.bpt_admin_laki)!=0 && this.customChangeFloat(this.form.upt_admin_laki)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bpt_admin_perempuan)==0 && this.customChangeFloat(this.form.upt_admin_perempuan)!=0) || (this.customChangeFloat(this.form.bpt_admin_perempuan)!=0 && this.customChangeFloat(this.form.upt_admin_perempuan)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bptt_admin_laki)==0 && this.customChangeFloat(this.form.uptt_admin_laki)!=0) || (this.customChangeFloat(this.form.bptt_admin_laki)!=0 && this.customChangeFloat(this.form.uptt_admin_laki)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bptt_admin_perempuan)==0 && this.customChangeFloat(this.form.uptt_admin_perempuan)!=0) || (this.customChangeFloat(this.form.bptt_admin_perempuan)!=0 && this.customChangeFloat(this.form.uptt_admin_perempuan)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            /////////
             if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
                                 +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
                                 +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
@@ -1666,6 +1679,20 @@ var vm = new Vue({
             if(this.customChangeFloat(this.form.upt_kebun_laki)+this.customChangeFloat(this.form.upt_kebun_perempuan)+this.customChangeFloat(this.form.uptt_kebun_laki)+this.customChangeFloat(this.form.uptt_kebun_perempuan)==0)
                 msg_error.push("Isian Upah Pekerja Kebun minimal lebih dari 0")
 
+            ////////
+            if((this.customChangeFloat(this.form.bpt_admin_laki)==0 && this.customChangeFloat(this.form.upt_admin_laki)!=0) || (this.customChangeFloat(this.form.bpt_admin_laki)!=0 && this.customChangeFloat(this.form.upt_admin_laki)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bpt_admin_perempuan)==0 && this.customChangeFloat(this.form.upt_admin_perempuan)!=0) || (this.customChangeFloat(this.form.bpt_admin_perempuan)!=0 && this.customChangeFloat(this.form.upt_admin_perempuan)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bptt_admin_laki)==0 && this.customChangeFloat(this.form.uptt_admin_laki)!=0) || (this.customChangeFloat(this.form.bptt_admin_laki)!=0 && this.customChangeFloat(this.form.uptt_admin_laki)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            if((this.customChangeFloat(this.form.bptt_admin_perempuan)==0 && this.customChangeFloat(this.form.uptt_admin_perempuan)!=0) || (this.customChangeFloat(this.form.bptt_admin_perempuan)!=0 && this.customChangeFloat(this.form.uptt_admin_perempuan)==0))
+                msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
+                
+            /////////
                 
             if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
                                 +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)

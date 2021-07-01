@@ -16,9 +16,9 @@ class SurveiTahunan extends Model
             1 => 'SAVED - ERROR',
             2 => 'SAVED - CLEAN',
             3 => 'SEND - APPROVAL',
-            4 => 'PERBAIKAN - APPROVAL',
+            4 => 'SIMPAN - APPROVAL',
             5 => 'SEND - BPS',
-            6 => 'PERBAIKAN - PEMERIKSA',
+            6 => 'SIMPAN - PEMERIKSA',
             7 => 'OK',
         ];
     }

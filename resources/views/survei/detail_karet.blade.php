@@ -499,7 +499,7 @@
         @hasanyrole('approval')
         <template v-if="form.status_dokumen==3 || form.status_dokumen==4">
             <div class="col-md-6 text-center">
-                <button class="btn btn-info" @click="sendData(4)">SIMPAN PERBAIKAN</button>
+                <button class="btn btn-info" @click="sendData(4)">SIMPAN</button>
             </div>
             
             <div class="col-md-6 text-center">
@@ -515,7 +515,7 @@
             </div>
 
             <div class="col-md-4 text-center">
-                <button class="btn btn-info" @click="sendData(6)">SIMPAN PERBAIKAN - PEMERIKSA</button>
+                <button class="btn btn-info" @click="sendData(6)">SIMPAN - PEMERIKSA</button>
             </div>
             
             <div class="col-md-4 text-center">

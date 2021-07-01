@@ -2895,6 +2895,8 @@ class SurveiController extends Controller
         // $list_prov = Prov::get();
         // return view('survei.detail_tahunan', compact('user_profile', 'id', 'list_prov'));
         $model = SurveiTahunan::find($id);
+        if($model->tanggal_pemeriksa=='1970-01-01')
+            $model->tanggal_pemeriksa = date('Y-m-d');
         $rincian_tahunan = []; 
         $rincian_semusim = [];
         if($model!=null){   

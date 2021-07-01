@@ -10,7 +10,7 @@
             <tr>
                 <td colspan="2"></td>
                 <td align="center">
-                    <u><b>SKP20-TAHUNAN</b></u><br/>
+                    <u><b>SKP{{ substr($model->tahun,2,2) }}-TAHUNAN</b></u><br/>
                     <br>ADMINISTRATUR KEBUN</br>
                 </td>
             </tr>
@@ -340,7 +340,7 @@
                 <tr class="bg-green" align="center">
                     <td colspan="9">III.A UMUR TANAMAN, LUAS TANAMAN, DAN PRODUKSI<br/>TANAMAN PERKEBUNAN TAHUNAN</td>
                 </tr>
-                <tr><td colspan="9">1. Umur Tanaman dan Luas Tanaman Tahun 2020</td></tr>
+                <tr><td colspan="9">1. Umur Tanaman dan Luas Tanaman Tahun {{ $model->tahun }}</td></tr>
                 <tr>
                     <td colspan="4">a. Kebun Sendiri/Inti</td>
                     <td class="bg-green"></td>
@@ -402,7 +402,7 @@
                     <td class="bg-green">Total</td>
                     <td colspan="3" align="center">{{ customChangeFloat($value->luas_plasma_5) + customChangeFloat($value->luas_plasma_5_10) + customChangeFloat($value->luas_plasma_11_25) + customChangeFloat($value->luas_plasma_25) }}</td>
                 </tr>
-                <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun 2020 dan Target Tahun 2021</td></tr>
+                <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun {{ $model->tahun }} dan Target Tahun {{ $model->tahun+1 }}</td></tr>
                 <tr  align="center">
                     <td colspan="2" rowspan="3">Nama Kebun dan Lokasi Kebun</td>
                     <td rowspan="3">Periode (Triwulan)</td>
@@ -447,7 +447,7 @@
                             Desa:<br/>
                             {{ $item_kebun_sendiri->kode_desa }}
                         </td>
-                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td rowspan="5">Realisasi Tahun {{ $model->tahun }}</td>
                         <td>I</td>
                         <td>{{ $item_kebun_sendiri->real1_tbm }}</td><td>{{ $item_kebun_sendiri->real1_tsm }}</td>
                         <td>{{ $item_kebun_sendiri->real1_tstm }}</td><td>{{ $item_kebun_sendiri->real1_ttm }}</td>
@@ -482,7 +482,7 @@
                     </tr>
 
                     <tr align="center">
-                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td rowspan="5">Target Tahun {{ $model->tahun+1 }}</td><td>I</td>
                         <td>{{ $item_kebun_sendiri->target1_tbm }}</td><td>{{ $item_kebun_sendiri->target1_tsm }}</td>
                         <td>{{ $item_kebun_sendiri->target1_tstm }}</td><td>{{ $item_kebun_sendiri->target1_ttm }}</td>
                         <td>{{ $item_kebun_sendiri->target1_produksi }}</td><td>{{ $item_kebun_sendiri->target1_nilai }}</td>
@@ -543,7 +543,7 @@
                             Desa:<br/>
                             {{ $item_kebun_plasma->kode_desa }}
                         </td>
-                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td rowspan="5">Realisasi Tahun {{ $model->tahun }}</td>
                         <td>I</td>
                         <td>{{ $item_kebun_plasma->real1_tbm }}<td></td>{{ $item_kebun_plasma->real1_tsm }}</td>
                         <td>{{ $item_kebun_plasma->real1_tstm }}<td></td>{{ $item_kebun_plasma->real1_ttm }}</td>
@@ -578,7 +578,7 @@
                     </tr>
 
                     <tr align="center">
-                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td rowspan="5">Target Tahun {{ $model->tahun+1 }}</td><td>I</td>
                         <td>{{ $item_kebun_plasma->target1_tbm }}</td><td>{{ $item_kebun_plasma->target1_tsm }}</td>
                         <td>{{ $item_kebun_plasma->target1_tstm }}</td><td>{{ $item_kebun_plasma->target1_ttm }}</td>
                         <td>{{ $item_kebun_plasma->target1_produksi }}</td><td>{{ $item_kebun_plasma->target1_nilai }}</td>
@@ -640,40 +640,40 @@
                 </tr>
             
                 @foreach($value->getList_kebun_semusim_sendiriAttribute() as $index2=>$item_kebun_sendiri)
-                    <tr><td colspan="9">{{ $index2+1 }}. Nama Kebun : {{ $item_kebun_sendiri.nama_kebun }}</td></tr>
+                    <tr><td colspan="9">{{ $index2+1 }}. Nama Kebun : {{ $item_kebun_sendiri->nama_kebun }}</td></tr>
                     <tr align="center">
                         <td rowspan="10">
                             Provinsi:<br/>
-                            {{ $item_kebun_sendiri.kode_prov }}<br/>
+                            {{ $item_kebun_sendiri->kode_prov }}<br/>
                             Kabupaten:<br/>
-                            {{ $item_kebun_sendiri.kode_kab }}<br/>
+                            {{ $item_kebun_sendiri->kode_kab }}<br/>
                             Kecamatan:<br/>
-                            {{ $item_kebun_sendiri.kode_kec }}<br/>
+                            {{ $item_kebun_sendiri->kode_kec }}<br/>
                             Desa:<br/>
-                            {{ $item_kebun_sendiri.kode_desa }}
+                            {{ $item_kebun_sendiri->kode_desa }}
                         </td>
-                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td rowspan="5">Realisasi Tahun {{ $model->tahun }}</td>
                         <td>I</td>
-                        <td>{{ $item_kebun_sendiri.real1_luas_tanam }}</td><td>{{ $item_kebun_sendiri.real1_luas_panen }}</td>
-                        <td>{{ $item_kebun_sendiri.real1_produksi }}</td><td>{{ $item_kebun_sendiri.real1_nilai }}</td>
+                        <td>{{ $item_kebun_sendiri->real1_luas_tanam }}</td><td>{{ $item_kebun_sendiri->real1_luas_panen }}</td>
+                        <td>{{ $item_kebun_sendiri->real1_produksi }}</td><td>{{ $item_kebun_sendiri->real1_nilai }}</td>
                     </tr>
 
                     <tr align="center">
                         <td>II</td>
-                        <td>{{ $item_kebun_sendiri.real2_luas_tanam }}</td><td>{{ $item_kebun_sendiri.real2_luas_panen }}</td>
-                        <td>{{ $item_kebun_sendiri.real2_produksi }}</td><td>{{ $item_kebun_sendiri.real2_nilai }}</td>
+                        <td>{{ $item_kebun_sendiri->real2_luas_tanam }}</td><td>{{ $item_kebun_sendiri->real2_luas_panen }}</td>
+                        <td>{{ $item_kebun_sendiri->real2_produksi }}</td><td>{{ $item_kebun_sendiri->real2_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
                         <td>III</td>
-                        <td>{{ $item_kebun_sendiri.real3_luas_tanam }}</td><td>{{ $item_kebun_sendiri.real3_luas_panen }}</td>
-                        <td>{{ $item_kebun_sendiri.real3_produksi }}</td><td>{{ $item_kebun_sendiri.real3_nilai }}</td>
+                        <td>{{ $item_kebun_sendiri->real3_luas_tanam }}</td><td>{{ $item_kebun_sendiri->real3_luas_panen }}</td>
+                        <td>{{ $item_kebun_sendiri->real3_produksi }}</td><td>{{ $item_kebun_sendiri->real3_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
                         <td>IV</td>
-                        <td>{{ $item_kebun_sendiri.real4_luas_tanam }}</td><td>{{ $item_kebun_sendiri.real4_luas_panen }}</td>
-                        <td>{{ $item_kebun_sendiri.real4_produksi }}</td><td>{{ $item_kebun_sendiri.real4_nilai }}</td>
+                        <td>{{ $item_kebun_sendiri->real4_luas_tanam }}</td><td>{{ $item_kebun_sendiri->real4_luas_panen }}</td>
+                        <td>{{ $item_kebun_sendiri->real4_produksi }}</td><td>{{ $item_kebun_sendiri->real4_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
@@ -685,7 +685,7 @@
                     </tr>
 
                     <tr align="center">
-                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td rowspan="5">Target Tahun {{ $model->tahun+1 }}</td><td>I</td>
                         <td>{{ $item_kebun_sendiri->target1_luas_tanam }}</td><td>{{ $item_kebun_sendiri->target1_luas_panen }}</td>
                         <td>{{ $item_kebun_sendiri->target1_produksi }}</td><td>{{ $item_kebun_sendiri->target1_nilai }}</td>
                     </tr>
@@ -740,7 +740,7 @@
                             Desa:<br/>
                             {{ $item_kebun_plasma->kode_desa }}
                         </td>
-                        <td rowspan="5">Realisasi Tahun 2020</td>
+                        <td rowspan="5">Realisasi Tahun {{ $model->tahun }}</td>
                         <td>I</td>
                         <td>{{ $item_kebun_plasma->real1_luas_tanam }}</td><td>{{ $item_kebun_plasma->real1_luas_panen }}</td>
                         <td>{{ $item_kebun_plasma->real1_produksi }}</td><td>{{ $item_kebun_plasma->real1_nilai }}</td>
@@ -773,7 +773,7 @@
                     </tr>
 
                     <tr align="center">
-                        <td rowspan="5">Target Tahun 2021</td><td>I</td>
+                        <td rowspan="5">Target Tahun {{ $model->tahun+1 }}</td><td>I</td>
                         <td>{{ $item_kebun_plasma->target1_luas_tanam }}</td><td>{{ $item_kebun_plasma->target1_luas_panen }}</td>
                         <td>{{ $item_kebun_plasma->target1_produksi }}</td><td>{{ $item_kebun_plasma->target1_nilai }}</td>
                     </tr>
@@ -810,7 +810,7 @@
         <div class="page-break"></div>    
         <table class="table-border" style="min-width:100%">
             <tr  class="bg-green" align="center">
-                <td colspan="{{ count($rincian_tahunan) + count($rincian_semusim) + 1 }}">IV. PENGELUARAN UNTUK SARANA PRODUKSI YANG DIGUNAKAN UNTUK BUDAYA<br/>SELAMA TAHUN 2020</td>
+                <td colspan="{{ count($rincian_tahunan) + count($rincian_semusim) + 1 }}">IV. PENGELUARAN UNTUK SARANA PRODUKSI YANG DIGUNAKAN UNTUK BUDAYA<br/>SELAMA TAHUN {{ $model->tahun }}</td>
             </tr>
             <tr align="center">
                 <td rowspan="2">Jenis Sarana Produksi</td>
@@ -1000,7 +1000,7 @@
         <div class="page-break"></div>
         <table class="table-border" style="min-width:100%">
             <tr class="bg-green" align="center">
-                <td colspan="5">V. JUMLAH DAN UPAH TENAGA KERJA SELAMA TAHUN 2020</td>
+                <td colspan="5">V. JUMLAH DAN UPAH TENAGA KERJA SELAMA TAHUN {{ $model->tahun }}</td>
             </tr>
             <tr align="center">
                 <td rowspan="2">Tenaga Kerja</td>
@@ -1066,7 +1066,7 @@
         <div class="page-break"></div>
         <table class="table-border" style="min-width:100%">
             <tr class="bg-green" align="center">
-                <td colspan="2">VI. PENDAPATAN/PENERIMAAN PERUSAHAAN PERKEBUNAN TAHUN 2020</td>
+                <td colspan="2">VI. PENDAPATAN/PENERIMAAN PERUSAHAAN PERKEBUNAN TAHUN {{ $model->tahun }}</td>
             </tr>
             <tr align="center">
                 <td><b>Jenis Pendapatan/Penerimaan</b></td>
@@ -1078,7 +1078,7 @@
             
             <tr>
                 <td>
-                    1. Pendapatan Bersih dari Usaha Tanaman Perkebunan { Blok IIIA R.2a jumlah tahun 2020, kol.(7) jenis tanaman tahunan I  + Blok IIIA R.2a jumlah tahun 2020, kol.(7)  jenis tanaman tahunan II + Blok IIIA R.2a jumlah tahun 2020, kol.(7)  jenis tanaman tahunan III + Blok IIIB R.a jumlah tahun 2020 kol.(6) jenis tanaman semusim I + Blok IIIB R.a jumlah tahun 2020 kol.(6)  jenis tanaman semusim II + Blok IIIB R.a jumlah tahun 2020 kol.(6)  jenis tanaman semusim III - Blok IV Rincian total kol.(2) - Blok V Rincian Jumlah kol (3) - Blok V Rincian Jumlah kol (5) }
+                    1. Pendapatan Bersih dari Usaha Tanaman Perkebunan { Blok IIIA R.2a jumlah tahun {{ $model->tahun }}, kol.(7) jenis tanaman tahunan I  + Blok IIIA R.2a jumlah tahun {{ $model->tahun }}, kol.(7)  jenis tanaman tahunan II + Blok IIIA R.2a jumlah tahun {{ $model->tahun }}, kol.(7)  jenis tanaman tahunan III + Blok IIIB R.a jumlah tahun {{ $model->tahun }} kol.(6) jenis tanaman semusim I + Blok IIIB R.a jumlah tahun {{ $model->tahun }} kol.(6)  jenis tanaman semusim II + Blok IIIB R.a jumlah tahun {{ $model->tahun }} kol.(6)  jenis tanaman semusim III - Blok IV Rincian total kol.(2) - Blok V Rincian Jumlah kol (3) - Blok V Rincian Jumlah kol (5) }
                 </td>
                 <td>{{ $model->pendapatan_bersih_kebun }}</td>
             </tr>
