@@ -18,6 +18,7 @@ use App\Models\KebunTahunanSemusim;
 use App\Models\KebunTahunanTahun;
 use App\Models\RincianTahunanSemusim;
 use App\Models\RincianTahunanTahun;
+use App\Models\SurveiCatatan;
 use App\Http\Resources\RincianTahunanSemusimResource;
 use App\Http\Resources\RincianTahunanTahunResource;
 use Illuminate\Support\Facades\Auth;
@@ -2409,42 +2410,10 @@ class SurveiController extends Controller
     public function tahunan_send_store(Request $request, $id, $status){
         $model = SurveiTahunan::find($id);
         // $model->user_id = Auth::user()->company_id;
+        $status_awal = $model->status_dokumen;
         
-        // $model->nama_perusahaan = $request->nama_perusahaan;
-        // $model->alamat = $request->alamat;
-        // $model->kode_pos = $request->kode_pos;
-        // $model->telp = $request->telp;
-        // $model->email = $request->email;
-        // $model->fax = $request->fax;
-        // $model->kode_prov = $request->kode_prov;
-        // $model->kode_kab = $request->kode_kab;
-        // $model->kode_kec = $request->kode_kec;
-        // $model->kode_desa= $request->kode_desa;
-        // $model->label_prov = $request->label_prov;
-        // $model->label_kab = $request->label_kab;
-        // $model->label_kec = $request->label_kec;
-        // $model->label_desa = $request->label_desa;
-
         $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
-        // $model->nama_kantor_pusat = $request->nama_kantor_pusat;
-        // $model->alamat_kantor_pusat = $request->alamat_kantor_pusat;
-        // $model->kode_pos_kantor_pusat = $request->kode_pos_kantor_pusat;
-        // $model->telp_kantor_pusat = $request->telp_kantor_pusat;
-        // $model->email_kantor_pusat = $request->email_kantor_pusat;
-        // $model->fax_kantor_pusat = $request->fax_kantor_pusat;
-        // $model->kode_prov_kantor_pusat = $request->kode_prov_kantor_pusat;
-        // $model->kode_kab_kantor_pusat = $request->kode_kab_kantor_pusat;
-        // $model->label_prov_kantor_pusat = $request->label_prov_kantor_pusat;
-        // $model->label_kab_kantor_pusat = $request->label_kab_kantor_pusat;
-        // $model->nama_grup = $request->nama_grup;
-        // $model->alamat_grup = $request->alamat_grup;
-        // $model->kode_pos_grup =$request->kode_pos_grup;
-        // $model->telepon_grup = $request->telepon_grup;
-        // $model->fax_grup= $request->fax_grup;
-        // $model->email_grup = $request->email_grup;
-        // $model->kode_prov_grup = $request->kode_prov_grup;
-        // $model->kode_kab_grup= $request->kode_kab_grup;
         
         $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
         if($prov_grup!=null){
@@ -2518,6 +2487,8 @@ class SurveiController extends Controller
         if($model->save()){
             $rincian_tahunan = [];
             $rincian_semusim = [];
+            $list_catatan = [];
+
             if($request->has('rincian_tahunan'))
                 $rincian_tahunan = $request->rincian_tahunan;
                 
@@ -2884,6 +2855,37 @@ class SurveiController extends Controller
                     }
                 } 
             }
+
+            if($status_awal>=5){
+                
+                if($request->has('list_catatan'))
+                    $list_catatan = $request->list_catatan;
+
+                foreach($list_catatan as $key=>$value){
+                    if($value['blok']!='' && $value['rincian']!='' && $value['keterangan']!=''){
+                        $model_catatan = new SurveiCatatan;
+            
+                        if($value['id']!=0){
+                            $temp_model_catatan = SurveiCatatan::find($value['id']);
+                            if($temp_model_catatan!=null)
+                                $model_catatan = $temp_model_catatan;
+                            else
+                                $model_catatan->created_by =  Auth::id();
+                        }
+                        else{
+                            $model_catatan->created_by =  Auth::id();
+                        }
+        
+                        $model_catatan->survei_id = $model->id;
+                        $model_catatan->blok = $value['blok'];
+                        $model_catatan->rincian = $value['rincian'];
+                        $model_catatan->keterangan = $value['keterangan'];
+                        
+                        $model_catatan->updated_by = Auth::id();
+                        $model_catatan->save();
+                    }
+                }
+            }
         }
         
         return response()->json(['result'=>1]);
@@ -2899,17 +2901,20 @@ class SurveiController extends Controller
             $model->tanggal_pemeriksa = date('Y-m-d');
         $rincian_tahunan = []; 
         $rincian_semusim = [];
+        $list_catatan = [];
         if($model!=null){   
             $data_rincian_tahunan = RincianTahunanTahun::where('survei_id', '=', $model->id)->get();
             $data_rincian_semusim = RincianTahunanSemusim::where('survei_id', '=', $model->id)->get();
 
             $rincian_tahunan = RincianTahunanTahunResource::collection($data_rincian_tahunan);
             $rincian_semusim = RincianTahunanSemusimResource::collection($data_rincian_semusim);    
+            
+            $list_catatan = SurveiCatatan::where('survei_id', '=', $model->id)->get();
         }
         
         $list_prov = Prov::get();
         return view('survei.detail_tahunan', compact('model', 'rincian_tahunan', 
-            'rincian_semusim', 'list_prov'));
+            'rincian_semusim', 'list_prov', 'list_catatan'));
     }
 
     public function watch_tahunan($id){

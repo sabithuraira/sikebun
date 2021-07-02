@@ -89,7 +89,6 @@ Route::group(['middleware' => ['role:admin|approval|pemeriksa|operator']], funct
     Route::post('/survei/{id}/{status}/tahunan_send', [SurveiController::class, 'tahunan_send_store']);
 });
 
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

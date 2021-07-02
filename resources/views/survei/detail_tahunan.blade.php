@@ -1223,6 +1223,46 @@
         </div>
     </div>
 
+    <template v-if="form.status_dokumen>=5">
+        <table class="table-border" style="min-width:100%">
+            <tr><td colspan="4">Catatan Koreksi: <button class="btn btn-info" @click="addCatatan()">Tambah Catatan</button></td></tr>
+            <tr align="center">
+                <th>No</th>
+                <th>Blok</th>
+                <th>Rincian</th>
+                <th>Keterangan</th>
+            </tr>
+
+            <tr v-for="(model, index_model) in list_catatan" :key="'catatan_'+index_model">
+                <td>@{{ index_model+1 }}</td>
+                <td><input class="form form-control" type="text" v-model="model.blok" size="3"></td>
+                <td><input class="form form-control" type="text" v-model="model.rincian" size="3"></td>
+                <td><textarea class="form form-control" v-model="model.keterangan"> </textarea> </td>
+            </tr>
+        </table>
+    </template>
+    
+    <template v-else>
+        <template v-if="list_catatan.length>0">
+            <table class="table-border" style="min-width:100%">
+                <tr><td colspan="4">Catatan dari pemeriksa:</td></tr>
+                <tr align="center">
+                    <th>No</th>
+                    <th>Blok</th>
+                    <th>Rincian</th>
+                    <th>Keterangan</th>
+                </tr>
+
+                <tr v-for="(model, index_model) in list_catatan" :key="'catatan_'+index_model">
+                    <td>@{{ index_model+1 }}</td>
+                    <td>@{{ model.blok }}</td>
+                    <td>@{{ model.rincian }}</td>
+                    <td>@{{ model.keterangan }}</td>
+                </tr>
+            </table>
+        </template>
+    </template>
+
     <div class="row">
         @hasanyrole('approval')
         <template v-if="form.status_dokumen==3 || form.status_dokumen==4">
@@ -1275,7 +1315,7 @@
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script>
-    
+
 var vm = new Vue({  
     el: "#app_vue",
     data:  {
@@ -1358,6 +1398,7 @@ var vm = new Vue({
             {id: 9, jenis: 'Yute', wujud: "Buah Kelapa"},
             {id: 10, jenis: 'Nilam', wujud: "Buah Kelapa"},
         ],
+        list_catatan: {!! json_encode($list_catatan) !!},
         rincian_tahunan: {!! json_encode($rincian_tahunan) !!}, 
         rincian_semusim: {!! json_encode($rincian_semusim) !!},
         list_kab: [], list_pusat_kab: [], 
@@ -1374,6 +1415,15 @@ var vm = new Vue({
         // tahun(){ this.setDatas(); }
     },
     methods: {
+        addCatatan: function(){
+            this.list_catatan.push({
+                id: 0,
+                survei_id: '',
+                blok: '',
+                rincian: '',
+                keterangan: '',
+            });
+        },
         addRincian: function (jenis_rincian) {
             if(jenis_rincian==1){
                 this.rincian_tahunan.push({
@@ -1531,7 +1581,7 @@ var vm = new Vue({
 
             if(msg_error.length==0){
                 var data_post = self.form
-                var rincian = { rincian_tahunan: self.rincian_tahunan, rincian_semusim: self.rincian_semusim }
+                var rincian = { rincian_tahunan: self.rincian_tahunan, rincian_semusim: self.rincian_semusim, list_catatan: self.list_catatan }
                 data_post = { ...data_post, ...rincian }
 
                 $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')} })
