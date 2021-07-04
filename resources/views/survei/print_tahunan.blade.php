@@ -428,8 +428,10 @@
                     <td colspan="9">
                         a. Kebun Sendiri/Inti
                         <p>&nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: 
-                        {{ $list_wujud_tahunan[$value->sendiri_bentuk_produksi]['jenis'] }} - 
-                        {{ $list_wujud_tahunan[$value->sendiri_bentuk_produksi]['wujud'] }}</p>
+                        @if($value->sendiri_bentuk_produksi!=null)
+                            {{ $list_wujud_tahunan[$value->sendiri_bentuk_produksi-1]['jenis'] }} - 
+                            {{ $list_wujud_tahunan[$value->sendiri_bentuk_produksi-1]['wujud'] }}</p>
+                        @endif
                         <p>&nbsp;&nbsp;&nbsp; - Rata-rata rendemen: {{ $value->sendiri_rata_rendemen }} %</p>
                     </td>
                 </tr>
@@ -521,8 +523,11 @@
                         b. Kebun Plasma yang Belum Dikonversi/Kemitraan
                         
                         <p>&nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: 
-                        {{ $list_wujud_tahunan[$value->plasma_bentuk_produksi+1]['jenis'] }} - 
-                        {{ $list_wujud_tahunan[$value->plasma_bentuk_produksi+1]['wujud'] }}</p>
+                        
+                        @if($value->plasma_bentuk_produksi!=null)
+                            {{ $list_wujud_tahunan[$value->plasma_bentuk_produksi-1]['jenis'] }} - 
+                            {{ $list_wujud_tahunan[$value->plasma_bentuk_produksi-1]['wujud'] }}</p>
+                        @endif
                         <p>&nbsp;&nbsp;&nbsp; - Rata-rata rendemen: {{ $value->plasma_rata_rendemen }} %</p>
                     </td>
                 </tr>
@@ -633,8 +638,11 @@
                     <td colspan="7">
                         a. Kebun Sendiri/Inti
                         <p>&nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: 
-                        {{ $list_wujud_musiman[$value->sendiri_bentuk_produksi+1]['jenis'] }} - 
-                        {{ $list_wujud_musiman[$value->sendiri_bentuk_produksi+1]['wujud'] }}</p>
+                        
+                        @if($value->sendiri_bentuk_produksi!=null)
+                            {{ $list_wujud_musiman[$value->sendiri_bentuk_produksi-1]['jenis'] }} - 
+                            {{ $list_wujud_musiman[$value->sendiri_bentuk_produksi-1]['wujud'] }}</p>
+                        @endif
                         <p>&nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <{{ $value->sendiri_rata_rendemen }} %</p>
                     </td>
                 </tr>
@@ -721,13 +729,16 @@
                     <td colspan="7">
                         b. Kebun Plasma yang Belum Dikonversi/Kemitraan
                         &nbsp;&nbsp;&nbsp; - Wujud produksi dalam bentuk: 
-                        {{ $list_wujud_musiman[$value->plasma_bentuk_produksi+1]['jenis'] }} - 
-                        {{ $list_wujud_musiman[$value->plasma_bentuk_produksi+1]['wujud'] }}</p>
+                        
+                        @if($value->plasma_bentuk_produksi!=null)
+                            {{ $list_wujud_musiman[$value->plasma_bentuk_produksi-1]['jenis'] }} - 
+                            {{ $list_wujud_musiman[$value->plasma_bentuk_produksi-1]['wujud'] }}</p>
+                        @endif
                         <p>&nbsp;&nbsp;&nbsp; - Rata-rata rendemen: <{{ $value->plasma_rata_rendemen }} %</p>
                     </td>
                 </tr>
                 
-                @foreach($value->getList_kebun_semusim_plasmaAttribute() as $index2=>$item_kebun_sendiri)
+                @foreach($value->getList_kebun_semusim_plasmaAttribute() as $index2=>$item_kebun_plasma)
                     <tr><td colspan="9">{{ $index2+1 }}. Nama Kebun : {{ $item_kebun_plasma->nama_kebun }}</td></tr>
                     <tr align="center">
                         <td rowspan="10">

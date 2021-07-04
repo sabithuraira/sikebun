@@ -1587,157 +1587,161 @@ class SurveiController extends Controller
                     if($model_rincian->save()){
                         if (array_key_exists('list_kebun_tahunan_sendiri', $value)) {
                             foreach($value['list_kebun_tahunan_sendiri'] as $key2=>$value2){
-                                $rincian_kebun_tahun = new KebunTahunanTahun;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_tahun = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_tahun = new KebunTahunanTahun;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_tahun = $temp_model_kebun;
+                                        }
                                     }
-                                }
-    
-                                $rincian_kebun_tahun->survei_id = $model->id;
-                                $rincian_kebun_tahun->rincian_id = $model_rincian->id;
-                                $rincian_kebun_tahun->jenis = 1;
-                                $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
-                                $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
-                                $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
-                                $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
-                                $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
-                                $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
-                                $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
-                                $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
-                                $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
-                                $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
-                                $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
-                                $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
-                                $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
-                                $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
-                                $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
-                                $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
-                                $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
-                                
-                                $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
-                                $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
-                                $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
-                                $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
-                                $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
-                                $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
-                                $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
-                                $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
-                                $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
-                                $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
-                                $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
-                                $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
-                                $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
-                                $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
-                                $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
-                                $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
-                                $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_tahun->save();
+        
+                                    $rincian_kebun_tahun->survei_id = $model->id;
+                                    $rincian_kebun_tahun->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_tahun->jenis = 1;
+                                    $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
+                                    $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
+                                    $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
+                                    $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
+                                    $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
+                                    $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
+                                    $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
+                                    $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
+                                    $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
+                                    $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
+                                    $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
+                                    $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
+                                    $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
+                                    $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
+                                    $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
+                                    $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
+                                    $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
+                                    $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
+                                    $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
+                                    $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
+                                    $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
+                                    $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
+                                    $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
+                                    $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
+                                    $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
+                                    $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
+                                    $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
+                                    $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
+                                    $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
+                                    $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
+                                    $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
+                                    $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
+                                    $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_tahun->save();
+                                } 
                             }
                         }
                         ///////////////
                         if (array_key_exists('list_kebun_tahunan_plasma', $value)) {
                             foreach($value['list_kebun_tahunan_plasma'] as $key2=>$value2){
-                                $rincian_kebun_tahun = new KebunTahunanTahun;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_tahun = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_tahun = new KebunTahunanTahun;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_tahun = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_tahun->survei_id = $model->id;
+                                    $rincian_kebun_tahun->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_tahun->jenis = 2;
+                                    $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
+                                    $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
+                                    $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
+                                    $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
+                                    $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
+                                    $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
+                                    $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
+                                    $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
+                                    $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
+                                    $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
+                                    $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
+                                    $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
+                                    $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
+                                    $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
+                                    $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
+                                    $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
+                                    $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
+                                    $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
+                                    $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
+                                    $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
+                                    $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
+                                    $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
+                                    $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
+                                    $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
+                                    $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
+                                    $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
+                                    $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
+                                    $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
+                                    $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
+                                    $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
+                                    $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
+                                    $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
+                                    $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_tahun->save();
                                 }
-    
-                                $rincian_kebun_tahun->survei_id = $model->id;
-                                $rincian_kebun_tahun->rincian_id = $model_rincian->id;
-                                $rincian_kebun_tahun->jenis = 2;
-                                $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
-                                $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
-                                $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
-                                $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
-                                $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
-                                $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
-                                $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
-                                $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
-                                $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
-                                $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
-                                $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
-                                $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
-                                $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
-                                $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
-                                $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
-                                $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
-                                $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
-                                
-                                $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
-                                $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
-                                $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
-                                $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
-                                $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
-                                $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
-                                $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
-                                $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
-                                $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
-                                $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
-                                $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
-                                $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
-                                $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
-                                $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
-                                $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
-                                $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
-                                $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_tahun->save();
                             }
                         }
                     }
@@ -1780,126 +1784,130 @@ class SurveiController extends Controller
                     if($model_rincian->save()){
                         if (array_key_exists('list_kebun_semusim_sendiri', $value)) {
                             foreach($value['list_kebun_semusim_sendiri'] as $key2=>$value2){
-                                $rincian_kebun_semusim = new KebunTahunanSemusim;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_semusim = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_semusim = new KebunTahunanSemusim;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_semusim = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_semusim->survei_id = $model->id;
+                                    $rincian_kebun_semusim->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_semusim->jenis = 1;
+                                    $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
+                                    $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
+                                    $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
+                                    $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
+                                    $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
+                                    $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
+                                    $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
+                                    $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
+                                    $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
+        
+                                    $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
+                                    $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
+                                    $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
+                                    $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
+                                    $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
+                                    $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
+                                    $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
+                                    $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
+                                    $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_semusim->save();
                                 }
-    
-                                $rincian_kebun_semusim->survei_id = $model->id;
-                                $rincian_kebun_semusim->rincian_id = $model_rincian->id;
-                                $rincian_kebun_semusim->jenis = 1;
-                                $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
-                                $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
-                                $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
-                                $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
-                                $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
-                                $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
-                                $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
-                                $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
-                                $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
-    
-                                $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
-                                $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
-                                $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
-                                $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
-                                $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
-                                $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
-                                $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
-                                $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
-                                $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_semusim->save();
                             }
                         }
                         ///////////////
                         
                         if (array_key_exists('list_kebun_semusim_plasma', $value)) {
                             foreach($value['list_kebun_semusim_plasma'] as $key2=>$value2){
-                                $rincian_kebun_semusim = new KebunTahunanSemusim;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_semusim = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_semusim = new KebunTahunanSemusim;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_semusim = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_semusim->survei_id = $model->id;
+                                    $rincian_kebun_semusim->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_semusim->jenis = 2;
+                                    $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
+                                    $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
+                                    $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
+                                    $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
+                                    $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
+                                    $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
+                                    $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
+                                    $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
+                                    $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
+        
+                                    $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
+                                    $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
+                                    $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
+                                    $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
+                                    $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
+                                    $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
+                                    $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
+                                    $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
+                                    $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_semusim->save();
                                 }
-    
-                                $rincian_kebun_semusim->survei_id = $model->id;
-                                $rincian_kebun_semusim->rincian_id = $model_rincian->id;
-                                $rincian_kebun_semusim->jenis = 2;
-                                $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
-                                $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
-                                $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
-                                $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
-                                $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
-                                $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
-                                $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
-                                $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
-                                $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
-    
-                                $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
-                                $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
-                                $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
-                                $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
-                                $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
-                                $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
-                                $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
-                                $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
-                                $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_semusim->save();
                             }
                         }
                     }
@@ -2085,157 +2093,161 @@ class SurveiController extends Controller
                     if($model_rincian->save()){
                         if (array_key_exists('list_kebun_tahunan_sendiri', $value)) {
                             foreach($value['list_kebun_tahunan_sendiri'] as $key2=>$value2){
-                                $rincian_kebun_tahun = new KebunTahunanTahun;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_tahun = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_tahun = new KebunTahunanTahun;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_tahun = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_tahun->survei_id = $model->id;
+                                    $rincian_kebun_tahun->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_tahun->jenis = 1;
+                                    $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
+                                    $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
+                                    $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
+                                    $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
+                                    $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
+                                    $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
+                                    $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
+                                    $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
+                                    $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
+                                    $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
+                                    $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
+                                    $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
+                                    $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
+                                    $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
+                                    $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
+                                    $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
+                                    $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
+                                    $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
+                                    $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
+                                    $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
+                                    $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
+                                    $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
+                                    $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
+                                    $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
+                                    $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
+                                    $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
+                                    $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
+                                    $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
+                                    $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
+                                    $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
+                                    $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
+                                    $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
+                                    $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_tahun->save();
                                 }
-    
-                                $rincian_kebun_tahun->survei_id = $model->id;
-                                $rincian_kebun_tahun->rincian_id = $model_rincian->id;
-                                $rincian_kebun_tahun->jenis = 1;
-                                $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
-                                $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
-                                $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
-                                $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
-                                $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
-                                $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
-                                $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
-                                $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
-                                $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
-                                $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
-                                $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
-                                $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
-                                $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
-                                $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
-                                $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
-                                $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
-                                $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
-                                
-                                $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
-                                $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
-                                $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
-                                $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
-                                $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
-                                $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
-                                $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
-                                $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
-                                $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
-                                $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
-                                $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
-                                $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
-                                $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
-                                $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
-                                $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
-                                $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
-                                $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_tahun->save();
                             }
                         }
                         ///////////////
                         if (array_key_exists('list_kebun_tahunan_plasma', $value)) {
                             foreach($value['list_kebun_tahunan_plasma'] as $key2=>$value2){
-                                $rincian_kebun_tahun = new KebunTahunanTahun;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_tahun = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_tahun = new KebunTahunanTahun;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_tahun = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_tahun->survei_id = $model->id;
+                                    $rincian_kebun_tahun->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_tahun->jenis = 2;
+                                    $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
+                                    $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
+                                    $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
+                                    $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
+                                    $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
+                                    $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
+                                    $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
+                                    $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
+                                    $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
+                                    $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
+                                    $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
+                                    $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
+                                    $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
+                                    $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
+                                    $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
+                                    $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
+                                    $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
+                                    $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
+                                    $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
+                                    $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
+                                    $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
+                                    $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
+                                    $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
+                                    $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
+                                    $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
+                                    $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
+                                    $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
+                                    $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
+                                    $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
+                                    $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
+                                    $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
+                                    $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
+                                    $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_tahun->save();
                                 }
-    
-                                $rincian_kebun_tahun->survei_id = $model->id;
-                                $rincian_kebun_tahun->rincian_id = $model_rincian->id;
-                                $rincian_kebun_tahun->jenis = 2;
-                                $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
-                                $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
-                                $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
-                                $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
-                                $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
-                                $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
-                                $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
-                                $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
-                                $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
-                                $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
-                                $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
-                                $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
-                                $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
-                                $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
-                                $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
-                                $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
-                                $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
-                                
-                                $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
-                                $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
-                                $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
-                                $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
-                                $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
-                                $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
-                                $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
-                                $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
-                                $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
-                                $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
-                                $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
-                                $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
-                                $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
-                                $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
-                                $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
-                                $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
-                                $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_tahun->save();
                             }
                         }
                     }
@@ -2277,126 +2289,130 @@ class SurveiController extends Controller
                     if($model_rincian->save()){
                         if (array_key_exists('list_kebun_semusim_sendiri', $value)) {
                             foreach($value['list_kebun_semusim_sendiri'] as $key2=>$value2){
-                                $rincian_kebun_semusim = new KebunTahunanSemusim;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_semusim = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_semusim = new KebunTahunanSemusim;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_semusim = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_semusim->survei_id = $model->id;
+                                    $rincian_kebun_semusim->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_semusim->jenis = 1;
+                                    $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
+                                    $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
+                                    $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
+                                    $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
+                                    $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
+                                    $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
+                                    $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
+                                    $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
+                                    $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
+        
+                                    $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
+                                    $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
+                                    $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
+                                    $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
+                                    $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
+                                    $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
+                                    $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
+                                    $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
+                                    $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_semusim->save();
                                 }
-    
-                                $rincian_kebun_semusim->survei_id = $model->id;
-                                $rincian_kebun_semusim->rincian_id = $model_rincian->id;
-                                $rincian_kebun_semusim->jenis = 1;
-                                $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
-                                $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
-                                $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
-                                $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
-                                $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
-                                $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
-                                $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
-                                $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
-                                $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
-    
-                                $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
-                                $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
-                                $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
-                                $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
-                                $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
-                                $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
-                                $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
-                                $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
-                                $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_semusim->save();
                             }
                         }
                         ///////////////
                         
                         if (array_key_exists('list_kebun_semusim_plasma', $value)) {
                             foreach($value['list_kebun_semusim_plasma'] as $key2=>$value2){
-                                $rincian_kebun_semusim = new KebunTahunanSemusim;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_semusim = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_semusim = new KebunTahunanSemusim;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_semusim = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_semusim->survei_id = $model->id;
+                                    $rincian_kebun_semusim->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_semusim->jenis = 2;
+                                    $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
+                                    $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
+                                    $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
+                                    $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
+                                    $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
+                                    $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
+                                    $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
+                                    $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
+                                    $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
+        
+                                    $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
+                                    $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
+                                    $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
+                                    $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
+                                    $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
+                                    $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
+                                    $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
+                                    $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
+                                    $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_semusim->save();
                                 }
-    
-                                $rincian_kebun_semusim->survei_id = $model->id;
-                                $rincian_kebun_semusim->rincian_id = $model_rincian->id;
-                                $rincian_kebun_semusim->jenis = 2;
-                                $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
-                                $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
-                                $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
-                                $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
-                                $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
-                                $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
-                                $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
-                                $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
-                                $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
-    
-                                $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
-                                $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
-                                $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
-                                $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
-                                $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
-                                $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
-                                $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
-                                $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
-                                $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_semusim->save();
                             }
                         }
                     }
@@ -2537,157 +2553,161 @@ class SurveiController extends Controller
                     if($model_rincian->save()){
                         if (array_key_exists('list_kebun_tahunan_sendiri', $value)) {
                             foreach($value['list_kebun_tahunan_sendiri'] as $key2=>$value2){
-                                $rincian_kebun_tahun = new KebunTahunanTahun;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_tahun = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_tahun = new KebunTahunanTahun;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_tahun = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_tahun->survei_id = $model->id;
+                                    $rincian_kebun_tahun->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_tahun->jenis = 1;
+                                    $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
+                                    $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
+                                    $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
+                                    $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
+                                    $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
+                                    $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
+                                    $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
+                                    $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
+                                    $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
+                                    $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
+                                    $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
+                                    $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
+                                    $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
+                                    $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
+                                    $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
+                                    $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
+                                    $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
+                                    $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
+                                    $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
+                                    $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
+                                    $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
+                                    $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
+                                    $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
+                                    $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
+                                    $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
+                                    $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
+                                    $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
+                                    $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
+                                    $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
+                                    $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
+                                    $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
+                                    $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
+                                    $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_tahun->save();
                                 }
-    
-                                $rincian_kebun_tahun->survei_id = $model->id;
-                                $rincian_kebun_tahun->rincian_id = $model_rincian->id;
-                                $rincian_kebun_tahun->jenis = 1;
-                                $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
-                                $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
-                                $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
-                                $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
-                                $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
-                                $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
-                                $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
-                                $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
-                                $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
-                                $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
-                                $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
-                                $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
-                                $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
-                                $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
-                                $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
-                                $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
-                                $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
-                                
-                                $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
-                                $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
-                                $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
-                                $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
-                                $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
-                                $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
-                                $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
-                                $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
-                                $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
-                                $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
-                                $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
-                                $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
-                                $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
-                                $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
-                                $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
-                                $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
-                                $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_tahun->save();
                             }
                         }
                         ///////////////
                         if (array_key_exists('list_kebun_tahunan_plasma', $value)) {
                             foreach($value['list_kebun_tahunan_plasma'] as $key2=>$value2){
-                                $rincian_kebun_tahun = new KebunTahunanTahun;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_tahun = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_tahun = new KebunTahunanTahun;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanTahun::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_tahun = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_tahun->survei_id = $model->id;
+                                    $rincian_kebun_tahun->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_tahun->jenis = 2;
+                                    $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
+                                    $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
+                                    $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
+                                    $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
+                                    $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
+                                    $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
+                                    $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
+                                    $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
+                                    $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
+                                    $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
+                                    $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
+                                    $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
+                                    $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
+                                    $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
+                                    $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
+                                    $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
+                                    $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
+                                    $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
+                                    $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
+                                    $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
+                                    $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
+                                    $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
+                                    $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
+                                    $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
+                                    $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
+                                    $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
+                                    $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
+                                    $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
+                                    $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
+                                    $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
+                                    $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
+                                    $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
+                                    $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_tahun->save();
                                 }
-    
-                                $rincian_kebun_tahun->survei_id = $model->id;
-                                $rincian_kebun_tahun->rincian_id = $model_rincian->id;
-                                $rincian_kebun_tahun->jenis = 2;
-                                $rincian_kebun_tahun->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_tahun->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_tahun->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_tahun->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_tahun->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_tahun->real1_tbm = $value2['real1_tbm'];
-                                $rincian_kebun_tahun->real1_tsm = $value2['real1_tsm'];
-                                $rincian_kebun_tahun->real1_tstm = $value2['real1_tstm'];
-                                $rincian_kebun_tahun->real1_ttm = $value2['real1_ttm'];
-                                $rincian_kebun_tahun->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_tahun->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_tahun->real2_tbm = $value2['real2_tbm'];
-                                $rincian_kebun_tahun->real2_tsm = $value2['real2_tsm'];
-                                $rincian_kebun_tahun->real2_tstm = $value2['real2_tstm'];
-                                $rincian_kebun_tahun->real2_ttm = $value2['real2_ttm'];
-                                $rincian_kebun_tahun->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_tahun->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_tahun->real3_tbm = $value2['real3_tbm'];
-                                $rincian_kebun_tahun->real3_tsm = $value2['real3_tsm'];
-                                $rincian_kebun_tahun->real3_tstm = $value2['real3_tstm'];
-                                $rincian_kebun_tahun->real3_ttm = $value2['real3_ttm'];
-                                $rincian_kebun_tahun->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_tahun->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_tahun->real4_tbm = $value2['real4_tbm'];
-                                $rincian_kebun_tahun->real4_tsm = $value2['real4_tsm'];
-                                $rincian_kebun_tahun->real4_tstm = $value2['real4_tstm'];
-                                $rincian_kebun_tahun->real4_ttm = $value2['real4_ttm'];
-                                $rincian_kebun_tahun->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_tahun->real4_nilai = $value2['real4_nilai'];
-                                
-                                $rincian_kebun_tahun->target1_tbm = $value2['target1_tbm'];
-                                $rincian_kebun_tahun->target1_tsm = $value2['target1_tsm'];
-                                $rincian_kebun_tahun->target1_tstm = $value2['target1_tstm'];
-                                $rincian_kebun_tahun->target1_ttm = $value2['target1_ttm'];
-                                $rincian_kebun_tahun->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_tahun->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_tahun->target2_tbm = $value2['target2_tbm'];
-                                $rincian_kebun_tahun->target2_tsm = $value2['target2_tsm'];
-                                $rincian_kebun_tahun->target2_tstm = $value2['target2_tstm'];
-                                $rincian_kebun_tahun->target2_ttm = $value2['target2_ttm'];
-                                $rincian_kebun_tahun->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_tahun->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_tahun->target3_tbm = $value2['target3_tbm'];
-                                $rincian_kebun_tahun->target3_tsm = $value2['target3_tsm'];
-                                $rincian_kebun_tahun->target3_tstm = $value2['target3_tstm'];
-                                $rincian_kebun_tahun->target3_ttm = $value2['target3_ttm'];
-                                $rincian_kebun_tahun->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_tahun->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_tahun->target4_tbm = $value2['target4_tbm'];
-                                $rincian_kebun_tahun->target4_tsm = $value2['target4_tsm'];
-                                $rincian_kebun_tahun->target4_tstm = $value2['target4_tstm'];
-                                $rincian_kebun_tahun->target4_ttm = $value2['target4_ttm'];
-                                $rincian_kebun_tahun->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_tahun->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_tahun->save();
                             }
                         }
                     }
@@ -2730,126 +2750,130 @@ class SurveiController extends Controller
                     if($model_rincian->save()){
                         if (array_key_exists('list_kebun_semusim_sendiri', $value)) {
                             foreach($value['list_kebun_semusim_sendiri'] as $key2=>$value2){
-                                $rincian_kebun_semusim = new KebunTahunanSemusim;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_semusim = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_semusim = new KebunTahunanSemusim;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_semusim = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_semusim->survei_id = $model->id;
+                                    $rincian_kebun_semusim->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_semusim->jenis = 1;
+                                    $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
+                                    $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
+                                    $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
+                                    $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
+                                    $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
+                                    $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
+                                    $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
+                                    $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
+                                    $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
+        
+                                    $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
+                                    $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
+                                    $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
+                                    $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
+                                    $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
+                                    $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
+                                    $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
+                                    $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
+                                    $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_semusim->save();
                                 }
-    
-                                $rincian_kebun_semusim->survei_id = $model->id;
-                                $rincian_kebun_semusim->rincian_id = $model_rincian->id;
-                                $rincian_kebun_semusim->jenis = 1;
-                                $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
-                                $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
-                                $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
-                                $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
-                                $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
-                                $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
-                                $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
-                                $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
-                                $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
-    
-                                $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
-                                $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
-                                $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
-                                $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
-                                $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
-                                $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
-                                $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
-                                $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
-                                $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_semusim->save();
                             }
                         }
                         ///////////////
                         
                         if (array_key_exists('list_kebun_semusim_plasma', $value)) {
                             foreach($value['list_kebun_semusim_plasma'] as $key2=>$value2){
-                                $rincian_kebun_semusim = new KebunTahunanSemusim;
-                                if($value2['id']!=0){
-                                    $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
-                                    if($temp_model_kebun!=null){
-                                        $rincian_kebun_semusim = $temp_model_kebun;
+                                if($value2['nama_kebun']!=''){
+                                    $rincian_kebun_semusim = new KebunTahunanSemusim;
+                                    if($value2['id']!=0){
+                                        $temp_model_kebun = KebunTahunanSemusim::find($value2['id']);
+                                        if($temp_model_kebun!=null){
+                                            $rincian_kebun_semusim = $temp_model_kebun;
+                                        }
                                     }
+        
+                                    $rincian_kebun_semusim->survei_id = $model->id;
+                                    $rincian_kebun_semusim->rincian_id = $model_rincian->id;
+                                    $rincian_kebun_semusim->jenis = 2;
+                                    $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
+                                    $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
+                                    $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
+                                    $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
+                                    $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
+                                    
+                                    $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
+                                    $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
+                                    $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
+                                    $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
+                                    $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
+                                    $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
+                                    $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
+                                    $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
+                                    $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
+                                    $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
+                                    $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
+                                    $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
+                                    $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
+        
+                                    $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
+                                    $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
+                                    $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
+                                    $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
+                                    $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
+                                    $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
+                                    $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
+                                    $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
+                                    $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
+                                    $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
+                                    
+                                    $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
+                                    $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
+                                    $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
+                                    $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
+                                    $rincian_kebun_semusim->save();
                                 }
-    
-                                $rincian_kebun_semusim->survei_id = $model->id;
-                                $rincian_kebun_semusim->rincian_id = $model_rincian->id;
-                                $rincian_kebun_semusim->jenis = 2;
-                                $rincian_kebun_semusim->nama_kebun = $value2['nama_kebun'];
-                                $rincian_kebun_semusim->kode_prov = $value2['kode_prov'];
-                                $rincian_kebun_semusim->kode_kab = $value2['kode_kab'];
-                                $rincian_kebun_semusim->kode_kec = $value2['kode_kec'];
-                                $rincian_kebun_semusim->kode_desa = $value2['kode_desa'];
-                                
-                                $rincian_kebun_semusim->real1_luas_tanam = $value2['real1_luas_tanam'];
-                                $rincian_kebun_semusim->real1_luas_panen = $value2['real1_luas_panen'];
-                                $rincian_kebun_semusim->real1_produksi = $value2['real1_produksi'];
-                                $rincian_kebun_semusim->real1_nilai = $value2['real1_nilai'];
-                                
-                                $rincian_kebun_semusim->real2_luas_tanam = $value2['real2_luas_tanam'];
-                                $rincian_kebun_semusim->real2_luas_panen = $value2['real2_luas_panen'];
-                                $rincian_kebun_semusim->real2_produksi = $value2['real2_produksi'];
-                                $rincian_kebun_semusim->real2_nilai = $value2['real2_nilai'];
-                                
-                                $rincian_kebun_semusim->real3_luas_tanam = $value2['real3_luas_tanam'];
-                                $rincian_kebun_semusim->real3_luas_panen = $value2['real3_luas_panen'];
-                                $rincian_kebun_semusim->real3_produksi = $value2['real3_produksi'];
-                                $rincian_kebun_semusim->real3_nilai = $value2['real3_nilai'];
-                                
-                                $rincian_kebun_semusim->real4_luas_tanam = $value2['real4_luas_tanam'];
-                                $rincian_kebun_semusim->real4_luas_panen = $value2['real4_luas_panen'];
-                                $rincian_kebun_semusim->real4_produksi = $value2['real4_produksi'];
-                                $rincian_kebun_semusim->real4_nilai = $value2['real4_nilai'];
-    
-                                $rincian_kebun_semusim->target1_luas_tanam = $value2['target1_luas_tanam'];
-                                $rincian_kebun_semusim->target1_luas_panen = $value2['target1_luas_panen'];
-                                $rincian_kebun_semusim->target1_produksi = $value2['target1_produksi'];
-                                $rincian_kebun_semusim->target1_nilai = $value2['target1_nilai'];
-                                
-                                $rincian_kebun_semusim->target2_luas_tanam = $value2['target2_luas_tanam'];
-                                $rincian_kebun_semusim->target2_luas_panen = $value2['target2_luas_panen'];
-                                $rincian_kebun_semusim->target2_produksi = $value2['target2_produksi'];
-                                $rincian_kebun_semusim->target2_nilai = $value2['target2_nilai'];
-                                
-                                $rincian_kebun_semusim->target3_luas_tanam = $value2['target3_luas_tanam'];
-                                $rincian_kebun_semusim->target3_luas_panen = $value2['target3_luas_panen'];
-                                $rincian_kebun_semusim->target3_produksi = $value2['target3_produksi'];
-                                $rincian_kebun_semusim->target3_nilai = $value2['target3_nilai'];
-                                
-                                $rincian_kebun_semusim->target4_luas_tanam = $value2['target4_luas_tanam'];
-                                $rincian_kebun_semusim->target4_luas_panen = $value2['target4_luas_panen'];
-                                $rincian_kebun_semusim->target4_produksi = $value2['target4_produksi'];
-                                $rincian_kebun_semusim->target4_nilai = $value2['target4_nilai'];
-                                $rincian_kebun_semusim->save();
                             }
                         }
                     }
