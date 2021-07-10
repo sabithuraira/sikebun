@@ -1581,6 +1581,10 @@ var vm = new Vue({
             for(var i=0;i<this.rincian_tahunan.length;i++){
                 if((this.customChangeFloat(this.rincian_tahunan[i].bibit_tanaman) + this.customChangeFloat(this.rincian_tahunan[i].pupuk1) + this.customChangeFloat(this.rincian_tahunan[i].pupuk2) + this.customChangeFloat(this.rincian_tahunan[i].pupuk3) + this.customChangeFloat(this.rincian_tahunan[i].pestisida1) + this.customChangeFloat(this.rincian_tahunan[i].pestisida2) + this.customChangeFloat(this.rincian_tahunan[i].pestisida3) + this.customChangeFloat(this.rincian_tahunan[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_tahunan[i].sewa_lahan) + this.customChangeFloat(this.rincian_tahunan[i].sewa_alat) + this.customChangeFloat(this.rincian_tahunan[i].pengeluaran_lainnya))==0)
                     msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+
+                // if(this.rincian_tahunan[i].sendiri_bentuk_produksi=='')
+                //     msg_error.push("Isian Blok III.a Rincian 'Total' minimal berjumlah lebih dari 0")
+
             }
             
             for(var i=0;i<this.rincian_semusim.length;i++){

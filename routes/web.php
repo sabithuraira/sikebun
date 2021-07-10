@@ -58,6 +58,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/user/create', [UserController::class, 'create']);
     Route::post('/user', [UserController::class, 'store']);
     
+    Route::get('/user/{id}/change_user', [UserController::class, 'change_user']);
+    Route::post('/user/{id}/change_user', [UserController::class, 'update_user']);   
 });
 
 Route::group(['middleware' => ['auth', 'role:operator']], function () {   

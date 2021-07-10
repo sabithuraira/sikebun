@@ -16,6 +16,7 @@
                         <th>Nama</th>
                         <th>Username</th>
                         <th>Perusahaan</th>
+                        <th>Aksi</th>
                     </thead>
                     <tbody>
                         @foreach($datas as $key=>$value)
@@ -27,6 +28,11 @@
                                     @if($value->company_id!=null)
                                         {{ $value->company->nama_perusahaan }}
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="{{ url('user/'.Crypt::encrypt($value->id).'/change_user') }}" class="btn btn-primary btn-link btn-sm">
+                                        <i class="material-icons">edit</i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

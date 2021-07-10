@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Actions\Fortify\PasswordValidationRules;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -44,6 +45,29 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        return redirect('user');
+    }
+
+    public function change_user($id){
+        $real_id = Crypt::decrypt($id);
+        $model = User::find($real_id);
+        $list_perusahaan = ProfilPerusahaan::all();
+        return view('user.change_user', compact(
+            'model', 'list_perusahaan', 'id'
+        ));
+    }
+
+    public function update_user($id,Request $request){
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+        ])->validate();
+
+        $real_id = Crypt::decrypt($id);
+        $model = User::find($real_id);
+        $model->name = $request->name;
+        $model->company_id = $request->company_id;
+        $model->save();
+        
         return redirect('user');
     }
 
