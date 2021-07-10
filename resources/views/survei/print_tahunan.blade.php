@@ -1008,7 +1008,6 @@
             </tr>
         </table>
 
-        <div class="page-break"></div>
         <table class="table-border" style="min-width:100%">
             <tr class="bg-green" align="center">
                 <td colspan="5">V. JUMLAH DAN UPAH TENAGA KERJA SELAMA TAHUN {{ $model->tahun }}</td>
@@ -1127,7 +1126,6 @@
             </tr>
         </table>
 
-        <div class="page-break"></div>
         <table class="table-border" style="min-width:100%">
             <tr  class="bg-green" align="center">
                 <td>VII. CATATAN</td>
@@ -1137,7 +1135,6 @@
             </tr>
         </table>
 
-        <div class="page-break"></div>
         <table class="table-border" style="min-width:100%">
             <tr  class="bg-green" align="center">
                 <td colspan="4">VIII. KETERANGAN PENCACAHAN</td>
@@ -1161,7 +1158,6 @@
             </tr>
         </table>
 
-        <div class="page-break"></div>
         <table class="table-border" style="min-width:100%">
             <tr class="bg-green" align="center">
                 <td>IX. PENGESAHAN</td>

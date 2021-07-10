@@ -1616,6 +1616,13 @@ var vm = new Vue({
                 msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
             }
 
+            if(this.form.diisi_di=='')  msg_error.push("Rincian 'Diisi dengan sebenarnya di' Wajib Diisi")
+            if(this.form.diisi_tanggal=='')  msg_error.push("Rincian Tanggal Pengisian Wajib Diisi")
+            if(this.form.diisi_administratur=='')  msg_error.push("Rincian Nama Administratur/Pengurus Perkebunan Wajib Diisi")
+            
+            if(this.form.nama_contact=='')  msg_error.push("Rincian Nama Contact Person Wajib Diisi")
+            if(this.form.nomor_hp=='')  msg_error.push("Rincian Nomor HP Contact Person Wajib Diisi")
+
             if(msg_error.length==0){
                 var data_post = self.form
                 var rincian = { rincian_tahunan: self.rincian_tahunan, rincian_semusim: self.rincian_semusim }
@@ -1699,6 +1706,13 @@ var vm = new Vue({
                                 +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
                 msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
             }
+
+            if(this.form.diisi_di=='')  msg_error.push("Rincian 'Diisi dengan sebenarnya di' Wajib Diisi")
+            if(this.form.diisi_tanggal=='')  msg_error.push("Rincian Tanggal Pengisian Wajib Diisi")
+            if(this.form.diisi_administratur=='')  msg_error.push("Rincian Nama Administratur/Pengurus Perkebunan Wajib Diisi")
+
+            if(this.form.nama_contact=='')  msg_error.push("Rincian Nama Contact Person Wajib Diisi")
+            if(this.form.nomor_hp=='')  msg_error.push("Rincian Nomor HP Contact Person Wajib Diisi")
 
             if(msg_error.length==0){
                 var data_post = self.form

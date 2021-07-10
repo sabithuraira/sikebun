@@ -2443,6 +2443,26 @@ class SurveiController extends Controller
             }
         }
 
+        $model->nama_grup = $request->nama_grup;
+        $model->alamat_grup = $request->alamat_grup;
+        $model->kode_pos_grup =$request->kode_pos_grup;
+        $model->telepon_grup = $request->telepon_grup;
+        $model->fax_grup= $request->fax_grup;
+        $model->email_grup = $request->email_grup;
+        $model->kode_prov_grup = $request->kode_prov_grup;
+        $model->kode_kab_grup= $request->kode_kab_grup;
+        $prov_grup = Prov::where('idProv', '=', $request->kode_prov_grup)->first();
+        if($prov_grup!=null){
+            $model->label_prov_grup = $prov_grup->namaProv;
+            
+            $kab_grup = Kab::where('idProv', '=', $request->kode_prov_grup)
+                            ->where('idKab', '=', $request->kode_kab_grup)
+                            ->first();
+            if($kab_grup!=null){
+                $model->label_kab_grup = $kab_grup->nmKab;
+            }
+        }
+
         $model->status_pemodalan = $request->status_pemodalan;
         $model->badan_hukum = $request->badan_hukum;
         $model->apakah_pelaksana_kemitraan = $request->apakah_pelaksana_kemitraan;
