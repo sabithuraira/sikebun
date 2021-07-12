@@ -347,14 +347,14 @@
                         <tr>
                             <td colspan="3">7. Apabila rincian 6 berkode 1, kemitraannya dalam bentuk bantuan:</td>
                             <td class="text-right">
-                                <select v-model="form.jenis_kemitraan">
+                                <select :disabled="form.apakah_pelaksana_kemitraan!=1" v-model="form.jenis_kemitraan">
                                     <option value="1">1. Penyuluhan</option>
                                     <option value="2">2. Bibit/benih</option>
                                     <option value="3">3. Pemasaran</option>
                                     <option value="4">4. Lainnya</option>
                                 </select>
 
-                                <input type="text" v-model="form.jenis_kemitraan_lainnya" placeholder="keterangan jika lainnya">
+                                <input :disabled="form.jenis_kemitraan!=4" type="text" v-model="form.jenis_kemitraan_lainnya" placeholder="keterangan jika lainnya">
                             </td>
                         </tr>
 
@@ -495,9 +495,9 @@
                                 <tr class="text-center">
                                     <td rowspan="10">
                                         Provinsi:<br/>
-                                        <input type="text"  v-model="item_kebun_sendiri.kode_prov"><br/>
+                                        <input type="text" disabled v-model="item_kebun_sendiri.kode_prov"><br/>
                                         Kabupaten:<br/>
-                                        <input type="text" v-model="item_kebun_sendiri.kode_kab"><br/>
+                                        <input type="text" disabled v-model="item_kebun_sendiri.kode_kab"><br/>
                                         Kecamatan:<br/>
                                         <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
                                         Desa:<br/>
@@ -594,9 +594,9 @@
                                 <tr class="text-center">
                                     <td rowspan="10">
                                         Provinsi:<br/>
-                                        <input type="text"  v-model="item_kebun_plasma.kode_prov"><br/>
+                                        <input type="text" disabled v-model="item_kebun_plasma.kode_prov"><br/>
                                         Kabupaten:<br/>
-                                        <input type="text" v-model="item_kebun_plasma.kode_kab"><br/>
+                                        <input type="text" disabled v-model="item_kebun_plasma.kode_kab"><br/>
                                         Kecamatan:<br/>
                                         <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
                                         Desa:<br/>
@@ -707,9 +707,9 @@
                                 <tr class="text-center">
                                     <td rowspan="10">
                                         Provinsi:<br/>
-                                        <input type="text"  v-model="item_kebun_sendiri.kode_prov"><br/>
+                                        <input type="text" disabled  v-model="item_kebun_sendiri.kode_prov"><br/>
                                         Kabupaten:<br/>
-                                        <input type="text" v-model="item_kebun_sendiri.kode_kab"><br/>
+                                        <input type="text" disabled v-model="item_kebun_sendiri.kode_kab"><br/>
                                         Kecamatan:<br/>
                                         <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
                                         Desa:<br/>
@@ -799,9 +799,9 @@
                                 <tr class="text-center">
                                     <td rowspan="10">
                                         Provinsi:<br/>
-                                        <input type="text"  v-model="item_kebun_plasma.kode_prov"><br/>
+                                        <input type="text" disabled v-model="item_kebun_plasma.kode_prov"><br/>
                                         Kabupaten:<br/>
-                                        <input type="text" v-model="item_kebun_plasma.kode_kab"><br/>
+                                        <input type="text" disabled v-model="item_kebun_plasma.kode_kab"><br/>
                                         Kecamatan:<br/>
                                         <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
                                         Desa:<br/>
@@ -1468,7 +1468,7 @@ var vm = new Vue({
                 if(jenis_kebun==1){
                     this.rincian_tahunan[index_rincian].list_kebun_tahunan_sendiri.push({
                         id: 0, survei_id: '', rincian_id: '', jenis: '1', nama_kebun: '',
-                        kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '',
+                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',
                         real1_tbm: '',real1_tsm: '', real1_tstm: '', real1_ttm: '', real1_produksi: '', real1_nilai: '',
                         real2_tbm: '',real2_tsm: '', real2_tstm: '', real2_ttm: '', real2_produksi: '', real2_nilai: '',
                         real3_tbm: '',real3_tsm: '', real3_tstm: '', real3_ttm: '', real3_produksi: '', real3_nilai: '',
@@ -1483,7 +1483,7 @@ var vm = new Vue({
                 else{
                     this.rincian_tahunan[index_rincian].list_kebun_tahunan_plasma.push({
                         id: 0, survei_id: '', rincian_id: '', jenis: '2', nama_kebun: '',
-                        kode_prov: '', kode_kab: '', kode_kec: '', kode_desa: '',
+                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',
                         real1_tbm: '',real1_tsm: '', real1_tstm: '', real1_ttm: '', real1_produksi: '', real1_nilai: '',
                         real2_tbm: '',real2_tsm: '', real2_tstm: '', real2_ttm: '', real2_produksi: '', real2_nilai: '',
                         real3_tbm: '',real3_tsm: '', real3_tstm: '', real3_ttm: '', real3_produksi: '', real3_nilai: '',
@@ -1575,7 +1575,13 @@ var vm = new Vue({
             if(self.form.kondisi_perusahaan=='') msg_error.push("Kondisi Perusahaan Wajib Diisi")
             if(self.form.badan_hukum=='') msg_error.push("Badan Hukum Wajib Diisi")
             if(self.form.status_pemodalan=='') msg_error.push("Status Pemodalan Wajib Diisi")
-            if(self.form.apakah_pelaksana_kemitraan=='') msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
+            if(self.form.apakah_pelaksana_kemitraan=='') 
+                msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
+            else{
+                if(self.form.apakah_pelaksana_kemitraan==1 && self.form.jenis_kemitraan=='')
+                    msg_error.push("Isian Jenis Kemitraan Wajib Wajib Diisi Jika Perusahaan Merupakan Pelaksana Kemitraan")
+            }
+
 
             var pengeluaran_tahunan = 0;
             for(var i=0;i<this.rincian_tahunan.length;i++){
