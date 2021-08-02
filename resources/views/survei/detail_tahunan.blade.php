@@ -499,9 +499,18 @@
                                         Kabupaten:<br/>
                                         <input type="text" disabled v-model="item_kebun_sendiri.kode_kab"><br/>
                                         Kecamatan:<br/>
-                                        <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
+                                        <select class="form-control" v-model="item_kebun_sendiri.kode_kec" @change="setListDesa(1,1,index, index2)">
+                                            <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
+                                                @{{ v.idKec }} - @{{ v.nmKec }}
+                                            </option>
+                                        </select>
+                                        <br/>
                                         Desa:<br/>
-                                        <input type="text" v-model="item_kebun_sendiri.kode_desa">
+                                        <select class="form-control" v-model="item_kebun_sendiri.kode_desa">
+                                            <option v-for="v in item_kebun_sendiri.list_desa" :key="v.idDesa" :value="v.idDesa">
+                                                @{{ v.idDesa }} - @{{ v.nmDesa }}
+                                            </option>
+                                        </select>
                                     </td>
                                     <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
@@ -598,9 +607,18 @@
                                         Kabupaten:<br/>
                                         <input type="text" disabled v-model="item_kebun_plasma.kode_kab"><br/>
                                         Kecamatan:<br/>
-                                        <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
+                                        <select class="form-control" v-model="item_kebun_plasma.kode_kec" @change="setListDesa(1,2,index, index2)">
+                                            <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
+                                                @{{ v.idKec }} - @{{ v.nmKec }}
+                                            </option>
+                                        </select>
+                                        <br/>
                                         Desa:<br/>
-                                        <input type="text" v-model="item_kebun_plasma.kode_desa">
+                                        <select class="form-control" v-model="item_kebun_plasma.kode_desa">
+                                            <option v-for="v in item_kebun_plasma.list_desa" :key="v.idDesa" :value="v.idDesa">
+                                                @{{ v.idDesa }} - @{{ v.nmDesa }}
+                                            </option>
+                                        </select>
                                     </td>
                                     <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
@@ -711,9 +729,17 @@
                                         Kabupaten:<br/>
                                         <input type="text" disabled v-model="item_kebun_sendiri.kode_kab"><br/>
                                         Kecamatan:<br/>
-                                        <input type="text" v-model="item_kebun_sendiri.kode_kec"><br/>
+                                        <select class="form-control" v-model="item_kebun_sendiri.kode_kec" @change="setListDesa(2,1,index, index2)">
+                                            <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
+                                                @{{ v.idKec }} - @{{ v.nmKec }}
+                                            </option>
+                                        </select><br/>
                                         Desa:<br/>
-                                        <input type="text" v-model="item_kebun_sendiri.kode_desa">
+                                        <select class="form-control" v-model="item_kebun_sendiri.kode_desa">
+                                            <option v-for="v in item_kebun_sendiri.list_desa" :key="v.idDesa" :value="v.idDesa">
+                                                @{{ v.idDesa }} - @{{ v.nmDesa }}
+                                            </option>
+                                        </select>
                                     </td>
                                     <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
@@ -804,9 +830,18 @@
                                         Kabupaten:<br/>
                                         <input type="text" disabled v-model="item_kebun_plasma.kode_kab"><br/>
                                         Kecamatan:<br/>
-                                        <input type="text" v-model="item_kebun_plasma.kode_kec"><br/>
+                                        <select class="form-control" v-model="item_kebun_plasma.kode_kec" @change="setListDesa(2,2,index, index2)">
+                                            <option v-for="v in list_kec" :key="v.idKec" :value="v.idKec">
+                                                @{{ v.idKec }} - @{{ v.nmKec }}
+                                            </option>
+                                        </select>
+                                        <br/>
                                         Desa:<br/>
-                                        <input type="text" v-model="item_kebun_plasma.kode_desa">
+                                        <select class="form-control" v-model="item_kebun_plasma.kode_desa">
+                                            <option v-for="v in item_kebun_plasma.list_desa" :key="v.idDesa" :value="v.idDesa">
+                                                @{{ v.idDesa }} - @{{ v.nmDesa }}
+                                            </option>
+                                        </select>
                                     </td>
                                     <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
@@ -1404,7 +1439,8 @@ var vm = new Vue({
         list_kab: [], list_pusat_kab: [], 
         list_grup_prov:  {!! json_encode($list_prov) !!},
         list_grup_kab: [],
-        list_kec: [], list_desa: [],
+        list_kec:  {!! json_encode($list_kec) !!},
+        list_desa: [],
         form: {!! json_encode($model) !!},
     },
     computed: {
@@ -1459,7 +1495,7 @@ var vm = new Vue({
                 if(jenis_kebun==1){
                     this.rincian_tahunan[index_rincian].list_kebun_tahunan_sendiri.push({
                         id: 0, survei_id: '', rincian_id: '', jenis: '1', nama_kebun: '',
-                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',
+                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',list_desa: [],
                         real1_tbm: '',real1_tsm: '', real1_tstm: '', real1_ttm: '', real1_produksi: '', real1_nilai: '',
                         real2_tbm: '',real2_tsm: '', real2_tstm: '', real2_ttm: '', real2_produksi: '', real2_nilai: '',
                         real3_tbm: '',real3_tsm: '', real3_tstm: '', real3_ttm: '', real3_produksi: '', real3_nilai: '',
@@ -1474,7 +1510,7 @@ var vm = new Vue({
                 else{
                     this.rincian_tahunan[index_rincian].list_kebun_tahunan_plasma.push({
                         id: 0, survei_id: '', rincian_id: '', jenis: '2', nama_kebun: '',
-                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',
+                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',list_desa: [],
                         real1_tbm: '',real1_tsm: '', real1_tstm: '', real1_ttm: '', real1_produksi: '', real1_nilai: '',
                         real2_tbm: '',real2_tsm: '', real2_tstm: '', real2_ttm: '', real2_produksi: '', real2_nilai: '',
                         real3_tbm: '',real3_tsm: '', real3_tstm: '', real3_ttm: '', real3_produksi: '', real3_nilai: '',
@@ -1491,7 +1527,7 @@ var vm = new Vue({
                 if(jenis_kebun==1){
                     this.rincian_semusim[index_rincian].list_kebun_semusim_sendiri.push({
                         id: 0, survei_id: '', rincian_id: '', jenis: '1', nama_kebun: '',
-                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',
+                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',list_desa: [],
                         real1_luas_tanam: '',real1_luas_panen: '', real1_produksi: '', real1_nilai: '',
                         real2_luas_tanam: '',real2_luas_panen: '', real2_produksi: '', real2_nilai: '',
                         real3_luas_tanam: '',real3_luas_panen: '', real3_produksi: '', real3_nilai: '',
@@ -1506,7 +1542,7 @@ var vm = new Vue({
                 else{
                     this.rincian_semusim[index_rincian].list_kebun_semusim_plasma.push({
                         id: 0, survei_id: '', rincian_id: '', jenis: '2', nama_kebun: '',
-                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',
+                        kode_prov: '16', kode_kab: '06', kode_kec: '', kode_desa: '',list_desa: [],
                         real1_luas_tanam: '',real1_luas_panen: '', real1_produksi: '', real1_nilai: '',
                         real2_luas_tanam: '',real2_luas_panen: '', real2_produksi: '', real2_nilai: '',
                         real3_luas_tanam: '',real3_luas_panen: '', real3_produksi: '', real3_nilai: '',
@@ -1520,6 +1556,46 @@ var vm = new Vue({
                 }
             }
         },
+        setListDesa: function(jenis_rincian, jenis_kebun, index_rincian, index_kebun){
+            $('#wait_progres').modal('show');
+            var self = this;
+            var cur_kode_kec;
+            //////////////
+            if(jenis_rincian==1){
+                if(jenis_kebun==1) cur_kode_kec = self.rincian_tahunan[index_rincian].list_kebun_tahunan_sendiri[index_kebun].kode_kec;
+                else cur_kode_kec = self.rincian_tahunan[index_rincian].list_kebun_tahunan_plasma[index_kebun].kode_kec;
+            }
+            else{
+                if(jenis_kebun==1) cur_kode_kec = self.rincian_semusim[index_rincian].list_kebun_semusim_sendiri[index_kebun].kode_kec;
+                else cur_kode_kec = self.rincian_semusim[index_rincian].list_kebun_semusim_plasma[index_kebun].kode_kec;
+            }
+            //////////
+
+            $.ajax({
+                url :  self.pathname+"/get_desa",
+                method : 'post',
+                dataType: 'json',
+                data:{
+                    kode_prov: '16',
+                    kode_kab: '06',
+                    kode_kec: cur_kode_kec,
+                },
+            }).done(function (data) {
+                if(jenis_rincian==1){
+                    if(jenis_kebun==1) self.rincian_tahunan[index_rincian].list_kebun_tahunan_sendiri[index_kebun].list_desa = data.result;
+                    else self.rincian_tahunan[index_rincian].list_kebun_tahunan_plasma[index_kebun].list_desa = data.result;
+                }
+                else{
+                    if(jenis_kebun==1) self.rincian_semusim[index_rincian].list_kebun_semusim_sendiri[index_kebun].list_desa = data.result;
+                    else self.rincian_semusim[index_rincian].list_kebun_semusim_plasma[index_kebun].list_desa = data.result;
+                }
+
+                $('#wait_progres').modal('hide');
+            }).fail(function (msg) {
+                console.log(JSON.stringify(msg));
+                $('#wait_progres').modal('hide');
+            });
+        },
         sendData: function (status_data) {
             var self = this;
             $('#wait_progres').modal('show');
@@ -1527,12 +1603,8 @@ var vm = new Vue({
             var msg_error = []
 
             if(self.form.tahun=='') msg_error.push("Tahun Wajib Diisi")
-            if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
-            if(self.form.nama_perusahaan=='') msg_error.push("Nama Perusahaan Wajib Diisi")
-            if(self.form.alamat=='') msg_error.push("Alamat Wajib Diisi")
-            if(self.form.kode_prov=='') msg_error.push("Provinsi Perusahaan Wajib Diisi")
-            if(self.form.kode_kab=='') msg_error.push("Kabupaten/Kota Perusahaan Wajib Diisi")
-            
+            // if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
+    
             if(self.form.kondisi_perusahaan=='') msg_error.push("Kondisi Perusahaan Wajib Diisi")
             if(self.form.badan_hukum=='') msg_error.push("Badan Hukum Wajib Diisi")
             if(self.form.status_pemodalan=='') msg_error.push("Status Pemodalan Wajib Diisi")
@@ -1547,6 +1619,17 @@ var vm = new Vue({
             for(var i=0;i<this.rincian_tahunan.length;i++){
                 if((this.customChangeFloat(this.rincian_tahunan[i].bibit_tanaman) + this.customChangeFloat(this.rincian_tahunan[i].pupuk1) + this.customChangeFloat(this.rincian_tahunan[i].pupuk2) + this.customChangeFloat(this.rincian_tahunan[i].pupuk3) + this.customChangeFloat(this.rincian_tahunan[i].pestisida1) + this.customChangeFloat(this.rincian_tahunan[i].pestisida2) + this.customChangeFloat(this.rincian_tahunan[i].pestisida3) + this.customChangeFloat(this.rincian_tahunan[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_tahunan[i].sewa_lahan) + this.customChangeFloat(this.rincian_tahunan[i].sewa_alat) + this.customChangeFloat(this.rincian_tahunan[i].pengeluaran_lainnya))==0)
                     msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+                    
+                if(this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_25)==0)
+                    msg_error.push("Blok III.A Rincian 1.a minimal penjumlahan terisi lebih dari 0")
+                                               
+                if(self.form.apakah_pelaksana_kemitraan==1){
+                    if(this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_25)==0)
+                        msg_error.push("Blok III.A Rincian 1.b minimal penjumlahan terisi lebih dari 0")
+                }
+                
+                if(this.rincian_tahunan[i].sendiri_bentuk_produksi=='' || this.rincian_tahunan[i].sendiri_rata_rendemen=='')
+                    msg_error.push("Blok III.A Rincian 2.a harus terisi")
             }
             
             for(var i=0;i<this.rincian_semusim.length;i++){
@@ -1588,8 +1671,8 @@ var vm = new Vue({
             if(this.form.diisi_tanggal=='')  msg_error.push("Rincian Tanggal Pengisian Wajib Diisi")
             if(this.form.diisi_administratur=='')  msg_error.push("Rincian Nama Administratur/Pengurus Perkebunan Wajib Diisi")
 
-            if(this.form.nama_contact=='')  msg_error.push("Rincian Nama Contact Person Wajib Diisi")
-            if(this.form.nomor_hp=='')  msg_error.push("Rincian Nomor HP Contact Person Wajib Diisi")
+            // if(this.form.nama_contact=='')  msg_error.push("Rincian Nama Contact Person Wajib Diisi")
+            // if(this.form.nomor_hp=='')  msg_error.push("Rincian Nomor HP Contact Person Wajib Diisi")
 
             if(msg_error.length==0){
                 var data_post = self.form

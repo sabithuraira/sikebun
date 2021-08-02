@@ -1386,8 +1386,9 @@ class SurveiController extends Controller
         $model = User::find(Auth::id());
         $user_profile = ProfilPerusahaan::find($model->company_id);
         $list_prov = Prov::get();
+        $list_kec = Kec::where('idProv', '=', '16')->where('idKab', '=', '06')->get();
         // $user_profile = ProfilPerusahaan::where('user_id', '=', Auth::id())->first();
-        return view('survei.tahunan', compact('user_profile', 'list_prov'));
+        return view('survei.tahunan', compact('user_profile', 'list_prov', 'list_kec'));
     }
     
     public function show_tahunan($tahun){
@@ -2957,8 +2958,9 @@ class SurveiController extends Controller
         }
         
         $list_prov = Prov::get();
+        $list_kec = Kec::where('idProv', '=', '16')->where('idKab', '=', '06')->get();
         return view('survei.detail_tahunan', compact('model', 'rincian_tahunan', 
-            'rincian_semusim', 'list_prov', 'list_catatan'));
+            'rincian_semusim', 'list_prov', 'list_catatan', 'list_kec'));
     }
 
     public function watch_tahunan($id){
