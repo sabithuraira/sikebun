@@ -1661,10 +1661,15 @@ var vm = new Vue({
                 
             /////////
                 
-            if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
-                                +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
-                                +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
-                msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            // if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
+            //                     +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
+            //                     +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
+            //     msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            // }
+            if(this.form.pendapatan_bersih_kebun=='' && this.form.pendapatan_bersih_tani_lain==''
+                                && this.form.pendapatan_hasil_kemitraan=='' && this.form.pendapatan_dari_sewa=='' 
+                                && this.form.pendapatan_jual_bibit=='' && this.form.pendapatan_bersih_lain==''){
+                msg_error.push("Isian Rincian Pendapatan Tidak Boleh Kosong Semua")                   
             }
             
             if(this.form.diisi_di=='')  msg_error.push("Rincian 'Diisi dengan sebenarnya di' Wajib Diisi")

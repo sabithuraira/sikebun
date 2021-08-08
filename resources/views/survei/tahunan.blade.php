@@ -1715,10 +1715,19 @@ var vm = new Vue({
                 msg_error.push("Isian Banyak Pekerja dan Upah Pekerja Harus Konsisten")
                 
             /////////
-            if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
-                                +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
-                                +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
-                msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            // if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
+            //                     +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
+            //                     +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
+            //     msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            // }
+            
+            if((this.form.pendapatan_bersih_kebun=='' || this.form.pendapatan_bersih_kebun==undefined) 
+                && (this.form.pendapatan_bersih_tani_lain=='' || this.form.pendapatan_bersih_tani_lain==undefined)
+                && (this.form.pendapatan_hasil_kemitraan=='' || this.form.pendapatan_hasil_kemitraan==undefined) 
+                && (this.form.pendapatan_dari_sewa=='' || this.form.pendapatan_dari_sewa==undefined)
+                && (this.form.pendapatan_jual_bibit=='' || this.form.pendapatan_jual_bibit==undefined) 
+                && (this.form.pendapatan_bersih_lain=='' || this.form.pendapatan_bersih_lain==undefined)){
+                msg_error.push("Isian Rincian Pendapatan Tidak Boleh Kosong Semua")                   
             }
 
             if(this.form.diisi_di=='')  msg_error.push("Rincian 'Diisi dengan sebenarnya di' Wajib Diisi")
@@ -1759,22 +1768,38 @@ var vm = new Vue({
 
             var msg_error = []
 
+            
             if(self.form.tahun=='') msg_error.push("Tahun Wajib Diisi")
-            if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
-            if(self.form.nama_perusahaan=='') msg_error.push("Nama Perusahaan Wajib Diisi")
-            if(self.form.alamat=='') msg_error.push("Alamat Wajib Diisi")
-            if(self.form.kode_prov=='') msg_error.push("Provinsi Perusahaan Wajib Diisi")
-            if(self.form.kode_kab=='') msg_error.push("Kabupaten/Kota Perusahaan Wajib Diisi")
+            // if(self.form.triwulan=='') msg_error.push("Triwulan Wajib Diisi")
             
             if(self.form.kondisi_perusahaan=='') msg_error.push("Kondisi Perusahaan Wajib Diisi")
             if(self.form.badan_hukum=='') msg_error.push("Badan Hukum Wajib Diisi")
             if(self.form.status_pemodalan=='') msg_error.push("Status Pemodalan Wajib Diisi")
-            if(self.form.apakah_pelaksana_kemitraan=='') msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
+            if(self.form.apakah_pelaksana_kemitraan=='') 
+                msg_error.push("Apakah Pelaksana Kemitraan Wajib Diisi")
+            else{
+                if(self.form.apakah_pelaksana_kemitraan==1 && self.form.jenis_kemitraan=='')
+                    msg_error.push("Isian Jenis Kemitraan Wajib Wajib Diisi Jika Perusahaan Merupakan Pelaksana Kemitraan")
+            }
 
             var pengeluaran_tahunan = 0;
             for(var i=0;i<this.rincian_tahunan.length;i++){
                 if((this.customChangeFloat(this.rincian_tahunan[i].bibit_tanaman) + this.customChangeFloat(this.rincian_tahunan[i].pupuk1) + this.customChangeFloat(this.rincian_tahunan[i].pupuk2) + this.customChangeFloat(this.rincian_tahunan[i].pupuk3) + this.customChangeFloat(this.rincian_tahunan[i].pestisida1) + this.customChangeFloat(this.rincian_tahunan[i].pestisida2) + this.customChangeFloat(this.rincian_tahunan[i].pestisida3) + this.customChangeFloat(this.rincian_tahunan[i].bahan_bakar_budidaya) + this.customChangeFloat(this.rincian_tahunan[i].sewa_lahan) + this.customChangeFloat(this.rincian_tahunan[i].sewa_alat) + this.customChangeFloat(this.rincian_tahunan[i].pengeluaran_lainnya))==0)
                     msg_error.push("Isian Jumlah Blok IV Rincian 'Total' minimal berjumlah lebih dari 0")
+
+                // if(this.rincian_tahunan[i].sendiri_bentuk_produksi=='')
+                //     msg_error.push("Isian Blok III.a Rincian 'Total' minimal berjumlah lebih dari 0")
+
+                if(this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_25)==0)
+                    msg_error.push("Blok III.A Rincian 1.a minimal penjumlahan terisi lebih dari 0")
+                                
+                if(self.form.apakah_pelaksana_kemitraan==1){
+                    if(this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_25)==0)
+                        msg_error.push("Blok III.A Rincian 1.b minimal penjumlahan terisi lebih dari 0")
+                }
+
+                if(this.rincian_tahunan[i].sendiri_bentuk_produksi=='' || this.rincian_tahunan[i].sendiri_rata_rendemen=='')
+                    msg_error.push("Blok III.A Rincian 2.a harus terisi")
             }
             
             for(var i=0;i<this.rincian_semusim.length;i++){
@@ -1806,18 +1831,24 @@ var vm = new Vue({
                 
             /////////
                 
-            if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
-                                +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
-                                +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
-                msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            // if(this.customChangeFloat(this.form.pendapatan_bersih_kebun)+this.customChangeFloat(this.form.pendapatan_bersih_tani_lain)
+            //                     +this.customChangeFloat(this.form.pendapatan_hasil_kemitraan)+this.customChangeFloat(this.form.pendapatan_dari_sewa)
+            //                     +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
+            //     msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
+            // }
+            
+            if((this.form.pendapatan_bersih_kebun=='' || this.form.pendapatan_bersih_kebun==undefined) 
+                && (this.form.pendapatan_bersih_tani_lain=='' || this.form.pendapatan_bersih_tani_lain==undefined)
+                && (this.form.pendapatan_hasil_kemitraan=='' || this.form.pendapatan_hasil_kemitraan==undefined) 
+                && (this.form.pendapatan_dari_sewa=='' || this.form.pendapatan_dari_sewa==undefined)
+                && (this.form.pendapatan_jual_bibit=='' || this.form.pendapatan_jual_bibit==undefined) 
+                && (this.form.pendapatan_bersih_lain=='' || this.form.pendapatan_bersih_lain==undefined)){
+                msg_error.push("Isian Rincian Pendapatan Tidak Boleh Kosong Semua")                   
             }
 
             if(this.form.diisi_di=='')  msg_error.push("Rincian 'Diisi dengan sebenarnya di' Wajib Diisi")
             if(this.form.diisi_tanggal=='')  msg_error.push("Rincian Tanggal Pengisian Wajib Diisi")
             if(this.form.diisi_administratur=='')  msg_error.push("Rincian Nama Administratur/Pengurus Perkebunan Wajib Diisi")
-
-            if(this.form.nama_contact=='')  msg_error.push("Rincian Nama Contact Person Wajib Diisi")
-            if(this.form.nomor_hp=='')  msg_error.push("Rincian Nomor HP Contact Person Wajib Diisi")
 
             if(msg_error.length==0){
                 var data_post = self.form
