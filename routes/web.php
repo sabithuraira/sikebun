@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/user/change_password', [UserController::class, 'change_password_store']);
 });
 
-
 Route::group(['middleware' => ['auth', 'role:admin']], function () {   
     Route::resource('role', RoleController::class);
     Route::resource('user_role', UserRoleController::class);

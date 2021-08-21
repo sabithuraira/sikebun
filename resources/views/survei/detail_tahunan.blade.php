@@ -1167,7 +1167,10 @@
                             <td>
                                 1. Pendapatan Bersih dari Usaha Tanaman Perkebunan { Blok IIIA R.2a jumlah tahun @{{ form.tahun }}, kol.(7) jenis tanaman tahunan I  + Blok IIIA R.2a jumlah tahun @{{ form.tahun }}, kol.(7)  jenis tanaman tahunan II + Blok IIIA R.2a jumlah tahun @{{ form.tahun }}, kol.(7)  jenis tanaman tahunan III + Blok IIIB R.a jumlah tahun @{{ form.tahun }} kol.(6) jenis tanaman semusim I + Blok IIIB R.a jumlah tahun @{{ form.tahun }} kol.(6)  jenis tanaman semusim II + Blok IIIB R.a jumlah tahun @{{ form.tahun }} kol.(6)  jenis tanaman semusim III - Blok IV Rincian total kol.(2) - Blok V Rincian Jumlah kol (3) - Blok V Rincian Jumlah kol (5) }
                             </td>
-                            <td><input type="text" v-model="form.pendapatan_bersih_kebun"></td>
+                            <td>
+                                <button class="btn btn-info" @click="jumlah61()">Jumlahkan Otomatis</button>    
+                                <input type="text" v-model="form.pendapatan_bersih_kebun">
+                            </td>
                         </tr>
                         
                         <tr>
@@ -1451,6 +1454,87 @@ var vm = new Vue({
         // tahun(){ this.setDatas(); }
     },
     methods: {
+        jumlah61(){
+            var total61 = 0;
+            for(var i=0;i<this.rincian_tahunan.length;i++){
+                for(var j=0;j<this.rincian_tahunan[i].list_kebun_tahunan_sendiri.length;j++){
+                    var cur_tahunan = this.rincian_tahunan[i].list_kebun_tahunan_sendiri[j];
+                    total61 += (this.customChangeFloat(cur_tahunan.real1_nilai) + 
+                            this.customChangeFloat(cur_tahunan.real2_nilai) + 
+                            this.customChangeFloat(cur_tahunan.real3_nilai) + 
+                            this.customChangeFloat(cur_tahunan.real4_nilai));
+                }
+                
+                for(var j=0;j<this.rincian_tahunan[i].list_kebun_tahunan_plasma.length;j++){
+                    var cur_tahunan = this.rincian_tahunan[i].list_kebun_tahunan_plasma[j];
+                    total61 += (this.customChangeFloat(cur_tahunan.real1_nilai) + 
+                            this.customChangeFloat(cur_tahunan.real2_nilai) + 
+                            this.customChangeFloat(cur_tahunan.real3_nilai) + 
+                            this.customChangeFloat(cur_tahunan.real4_nilai));
+                }
+
+                var data_tahunan = this.rincian_tahunan[i];
+                var total_biaya = (this.customChangeFloat(data_tahunan.bibit_tanaman) + 
+                            this.customChangeFloat(data_tahunan.pupuk1) + 
+                            this.customChangeFloat(data_tahunan.pupuk2) + 
+                            this.customChangeFloat(data_tahunan.pupuk3) + 
+                            this.customChangeFloat(data_tahunan.pestisida1) + 
+                            this.customChangeFloat(data_tahunan.pestisida2) + 
+                            this.customChangeFloat(data_tahunan.pestisida3) +  
+                            this.customChangeFloat(data_tahunan.bahan_bakar_budidaya) + 
+                            this.customChangeFloat(data_tahunan.sewa_lahan) + 
+                            this.customChangeFloat(data_tahunan.sewa_alat) +  
+                            this.customChangeFloat(data_tahunan.pengeluaran_lainnya) + 
+                            this.customChangeFloat(data_tahunan.biaya_kemitraan));
+
+                total61 -= total_biaya;
+            }
+            
+            for(var i=0;i<this.rincian_semusim.length;i++){
+                for(var j=0;j<this.rincian_semusim[i].list_kebun_semusim_sendiri.length;j++){
+                    var cur_semusim = this.rincian_semusim[i].list_kebun_semusim_sendiri[j];
+                    total61 += (this.customChangeFloat(cur_semusim.real1_nilai) + 
+                            this.customChangeFloat(cur_semusim.real2_nilai) + 
+                            this.customChangeFloat(cur_semusim.real3_nilai) + 
+                            this.customChangeFloat(cur_semusim.real4_nilai));
+                }
+                
+                for(var j=0;j<this.rincian_semusim[i].list_kebun_semusim_plasma.length;j++){
+                    var cur_semusim = this.rincian_semusim[i].list_kebun_semusim_plasma[j];
+                    total61 += (this.customChangeFloat(cur_semusim.real1_nilai) + 
+                            this.customChangeFloat(cur_semusim.real2_nilai) + 
+                            this.customChangeFloat(cur_semusim.real3_nilai) + 
+                            this.customChangeFloat(cur_semusim.real4_nilai));
+                }
+
+                var data_semusim = this.rincian_semusim[i];
+                var total_biaya = (this.customChangeFloat(data_semusim.bibit_tanaman) + 
+                        this.customChangeFloat(data_semusim.pupuk1) + 
+                        this.customChangeFloat(data_semusim.pupuk2) + 
+                        this.customChangeFloat(data_semusim.pupuk3) + 
+                        this.customChangeFloat(data_semusim.pestisida1) + 
+                        this.customChangeFloat(data_semusim.pestisida2) + 
+                        this.customChangeFloat(data_semusim.pestisida3) +  
+                        this.customChangeFloat(data_semusim.bahan_bakar_budidaya) + 
+                        this.customChangeFloat(data_semusim.sewa_lahan) + 
+                        this.customChangeFloat(data_semusim.sewa_alat) +  
+                        this.customChangeFloat(data_semusim.pengeluaran_lainnya) + 
+                        this.customChangeFloat(data_semusim.biaya_kemitraan));
+
+                total61 -= total_biaya;
+            }
+
+            total61 -= (this.customChangeFloat(this.form.upt_admin_laki) + 
+                    this.customChangeFloat(this.form.upt_admin_perempuan) + 
+                    this.customChangeFloat(this.form.upt_kebun_laki) + 
+                    this.customChangeFloat(this.form.upt_kebun_perempuan) + 
+                    this.customChangeFloat(this.form.uptt_admin_laki) + 
+                    this.customChangeFloat(this.form.uptt_admin_perempuan) + 
+                    this.customChangeFloat(this.form.uptt_kebun_laki) + 
+                    this.customChangeFloat(this.form.uptt_kebun_perempuan));
+
+            this.form.pendapatan_bersih_kebun = total61;
+        },
         addCatatan: function(){
             this.list_catatan.push({
                 id: 0,
@@ -1666,9 +1750,12 @@ var vm = new Vue({
             //                     +this.customChangeFloat(this.form.pendapatan_jual_bibit)+this.customChangeFloat(this.form.pendapatan_bersih_lain)==0){
             //     msg_error.push("Isian Total Rincian Pendapatan Minimal lebih dari 0")                   
             // }
-            if(this.form.pendapatan_bersih_kebun=='' && this.form.pendapatan_bersih_tani_lain==''
-                                && this.form.pendapatan_hasil_kemitraan=='' && this.form.pendapatan_dari_sewa=='' 
-                                && this.form.pendapatan_jual_bibit=='' && this.form.pendapatan_bersih_lain==''){
+            if((this.form.pendapatan_bersih_kebun=='' || this.form.pendapatan_bersih_kebun==undefined) 
+                && (this.form.pendapatan_bersih_tani_lain=='' || this.form.pendapatan_bersih_tani_lain==undefined)
+                && (this.form.pendapatan_hasil_kemitraan=='' || this.form.pendapatan_hasil_kemitraan==undefined) 
+                && (this.form.pendapatan_dari_sewa=='' || this.form.pendapatan_dari_sewa==undefined)
+                && (this.form.pendapatan_jual_bibit=='' || this.form.pendapatan_jual_bibit==undefined) 
+                && (this.form.pendapatan_bersih_lain=='' || this.form.pendapatan_bersih_lain==undefined)){
                 msg_error.push("Isian Rincian Pendapatan Tidak Boleh Kosong Semua")                   
             }
             
