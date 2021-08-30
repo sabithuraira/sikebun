@@ -516,28 +516,28 @@
                                     <td>I</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real1_produksi"></td><td><currency-input v-model="item_kebun_sendiri.real1_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real2_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real2_produksi"></td><td> <currency-input v-model="item_kebun_sendiri.real2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real3_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real3_produksi"></td><td><currency-input v-model="item_kebun_sendiri.real3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.real4_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.real4_produksi"></td><td><currency-input v-model="item_kebun_sendiri.real4_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
@@ -550,28 +550,28 @@
                                     <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target1_produksi"></td><td><currency-input v-model="item_kebun_sendiri.target1_nilai"></currency-input></td>
                                 </tr>
 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target2_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target2_produksi"></td><td><currency-input v-model="item_kebun_sendiri.target2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target3_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target3_produksi"></td><td><currency-input v-model="item_kebun_sendiri.target3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_tbm"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_tstm"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_produksi"></td><td><input type="text"  v-model="item_kebun_sendiri.target4_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_sendiri.target4_produksi"></td><td><currency-input v-model="item_kebun_sendiri.target4_nilai"></currency-input></td>
                                 </tr>                
                                 
                                 <tr class="text-center">
@@ -624,28 +624,28 @@
                                     <td>I</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real1_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real1_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real1_produksi"></td><td><currency-input v-model="item_kebun_plasma.real1_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real2_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real2_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real2_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real2_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real2_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real2_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real2_produksi"></td><td><currency-input v-model="item_kebun_plasma.real2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real3_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real3_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real3_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real3_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real3_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real3_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real3_produksi"></td><td><currency-input v-model="item_kebun_plasma.real3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real4_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.real4_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.real4_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.real4_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real4_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.real4_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.real4_produksi"></td><td><currency-input v-model="item_kebun_plasma.real4_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
@@ -658,28 +658,28 @@
                                     <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target1_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target1_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target1_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target1_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target1_produksi"></td><td><currency-input v-model="item_kebun_plasma.target1_nilai"></currency-input></td>
                                 </tr>
 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target2_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target2_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target2_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target2_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target2_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target2_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target2_produksi"></td><td><currency-input v-model="item_kebun_plasma.target2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target3_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target3_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target3_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target3_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target3_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target3_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target3_produksi"></td><td><currency-input v-model="item_kebun_plasma.target3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target4_tbm"></td><td><input type="text"  v-model="item_kebun_plasma.target4_tsm" size="3"></td>
                                     <td><input type="text" size="3" v-model="item_kebun_plasma.target4_tstm"></td><td><input type="text"  v-model="item_kebun_plasma.target4_ttm" size="3"></td>
-                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target4_produksi"></td><td><input type="text"  v-model="item_kebun_plasma.target4_nilai" size="3"></td>
+                                    <td><input type="text" size="3" v-model="item_kebun_plasma.target4_produksi"></td><td><currency-input v-model="item_kebun_plasma.target4_nilai"></currency-input></td>
                                 </tr>                
                                 
                                 <tr class="text-center">
@@ -744,25 +744,25 @@
                                     <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real1_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.real1_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.real1_nilai"></currency-input></td>
                                 </tr>
 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.real2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real2_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.real2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real2_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.real2_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.real2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.real3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real3_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.real3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real3_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.real3_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.real3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.real4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real4_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.real4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.real4_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.real4_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.real4_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
@@ -776,25 +776,25 @@
                                 <tr class="text-center">
                                     <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target1_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.target1_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.target1_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.target2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target2_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.target2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target2_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.target2_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.target2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.target3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target3_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.target3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target3_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.target3_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.target3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" v-model="item_kebun_sendiri.target4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target4_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_sendiri.target4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_sendiri.target4_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_sendiri.target4_produksi" size="3"></td><td><currency-input v-model="item_kebun_sendiri.target4_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
@@ -845,25 +845,25 @@
                                     <td rowspan="5">Realisasi Tahun @{{ form.tahun }}</td>
                                     <td>I</td>
                                     <td><input type="text" v-model="item_kebun_plasma.real1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.real1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real1_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.real1_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.real1_nilai"></currency-input></td>
                                 </tr>
 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" v-model="item_kebun_plasma.real2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real2_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.real2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real2_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.real2_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.real2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" v-model="item_kebun_plasma.real3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real3_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.real3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real3_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.real3_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.real3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" v-model="item_kebun_plasma.real4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real4_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.real4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.real4_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.real4_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.real4_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
@@ -877,25 +877,25 @@
                                 <tr class="text-center">
                                     <td rowspan="5">Target Tahun @{{ form.tahun+1 }}</td><td>I</td>
                                     <td><input type="text" v-model="item_kebun_plasma.target1_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.target1_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target1_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.target1_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.target1_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>II</td>
                                     <td><input type="text" v-model="item_kebun_plasma.target2_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target2_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.target2_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target2_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.target2_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.target2_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>III</td>
                                     <td><input type="text" v-model="item_kebun_plasma.target3_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target3_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.target3_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target3_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.target3_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.target3_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
                                     <td>IV</td>
                                     <td><input type="text" v-model="item_kebun_plasma.target4_luas_tanam" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target4_luas_panen" size="3"></td>
-                                    <td><input type="text" v-model="item_kebun_plasma.target4_produksi" size="3"></td><td><input type="text" v-model="item_kebun_plasma.target4_nilai" size="3"></td>
+                                    <td><input type="text" v-model="item_kebun_plasma.target4_produksi" size="3"></td><td><currency-input v-model="item_kebun_plasma.target4_nilai"></currency-input></td>
                                 </tr>
                                 
                                 <tr class="text-center">
@@ -928,11 +928,11 @@
                         <tr>
                             <td>a. Bibit Tanaman</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_bibit'+index">
-                                <input type="text" v-model="item.bibit_tanaman" size="3">
+                                <currency-input v-model="item.bibit_tanaman"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_bibit'+index">
-                                <input type="text" v-model="item.bibit_tanaman" size="3">
+                                <currency-input v-model="item.bibit_tanaman"></currency-input>
                             </td>
                         </tr>
                         
@@ -945,33 +945,33 @@
                         <tr>
                             <td>(1) <input type="text" v-model="form.pupuk1"></td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupuka'+index">
-                                <input type="text" v-model="item.pupuk1" size="3">
+                                <currency-input v-model="item.pupuk1"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupuka'+index">
-                                <input type="text" v-model="item.pupuk1" size="3">
+                                <currency-input v-model="item.pupuk1"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>(2) <input type="text" v-model="form.pupuk2"> dst</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupukb'+index">
-                                <input type="text" v-model="item.pupuk2" size="3">
+                                <currency-input v-model="item.pupuk2"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupukb'+index">
-                                <input type="text" v-model="item.pupuk2" size="3">
+                                <currency-input v-model="item.pupuk2"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>(3) <input type="text" v-model="form.pupuk3"> dst</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pupukc'+index">
-                                <input type="text" v-model="item.pupuk3" size="3">
+                                <currency-input v-model="item.pupuk3"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pupukc'+index">
-                                <input type="text" v-model="item.pupuk3" size="3">
+                                <currency-input v-model="item.pupuk3"></currency-input>
                             </td>
                         </tr>
 
@@ -984,77 +984,77 @@
                         <tr>
                             <td>(1) <input type="text" v-model="form.pestisida1"></td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida1'+index">
-                                <input type="text" v-model="item.pestisida1" size="3">
+                                <currency-input v-model="item.pestisida1"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida1'+index">
-                                <input type="text" v-model="item.pestisida1" size="3">
+                                <currency-input v-model="item.pestisida1"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>(2) <input type="text" v-model="form.pestisida2"> dst</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida2'+index">
-                                <input type="text" v-model="item.pestisida2" size="3">
+                                <currency-input v-model="item.pestisida2"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida2'+index">
-                                <input type="text" v-model="item.pestisida2" size="3">
+                                <currency-input v-model="item.pestisida2"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>(3) <input type="text" v-model="form.pestisida3"> dst</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pestisida3'+index">
-                                <input type="text" v-model="item.pestisida3" size="3">
+                                <currency-input v-model="item.pestisida3"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pestisida3'+index">
-                                <input type="text" v-model="item.pestisida3" size="3">
+                                <currency-input v-model="item.pestisida3"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>d. Bahan bakar untuk budidaya perkebunan</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_bahan_bakar'+index">
-                                <input type="text" v-model="item.bahan_bakar_budidaya" size="3">
+                                <currency-input v-model="item.bahan_bakar_budidaya"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_bahan_bakar'+index">
-                                <input type="text" v-model="item.bahan_bakar_budidaya" size="3">
+                                <currency-input v-model="item.bahan_bakar_budidaya"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>e. Sewa Lahan</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_sewa_lahan'+index">
-                                <input type="text" v-model="item.sewa_lahan" size="3">
+                                <currency-input v-model="item.sewa_lahan"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_sewa_lahan'+index">
-                                <input type="text" v-model="item.sewa_lahan" size="3">
+                                <currency-input v-model="item.sewa_lahan"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>f. Sewa Alat</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_sewa_alat'+index">
-                                <input type="text" v-model="item.sewa_alat" size="3">
+                                <currency-input v-model="item.sewa_alat"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_sewa_alat'+index">
-                                <input type="text" v-model="item.sewa_alat" size="3">
+                                <currency-input v-model="item.sewa_alat"></currency-input>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>g. Pengeluaran lainnya</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_pengeluaran_lainnya'+index">
-                                <input type="text" v-model="item.pengeluaran_lainnya" size="3">
+                                <currency-input v-model="item.pengeluaran_lainnya"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_pengeluaran_lainnya'+index">
-                                <input type="text" v-model="item.pengeluaran_lainnya" size="3">
+                                <currency-input v-model="item.pengeluaran_lainnya"></currency-input>
                             </td>
                         </tr>
                         
@@ -1072,11 +1072,11 @@
                         <tr>
                             <td>h. Biaya untuk kemitraan (pupuk, benin, dll)</td>
                             <td class="text-center" v-for="(item, index)  in rincian_tahunan" :key="'pengeluaran_tahunan_biaya_kemitraan'+index">
-                                <input type="text" v-model="item.biaya_kemitraan" size="3">
+                                <currency-input v-model="item.biaya_kemitraan"></currency-input>
                             </td>
                             
                             <td class="text-center" v-for="(item, index)  in rincian_semusim" :key="'pengeluaran_semusim_biaya_kemitraan'+index">
-                                <input type="text" v-model="item.biaya_kemitraan" size="3">
+                                <currency-input v-model="item.biaya_kemitraan"></currency-input>
                             </td>
                         </tr>
                     </table>
@@ -1168,32 +1168,33 @@
                             </td>
                             <td>
                                 <button class="btn btn-info" @click="jumlah61()">Jumlahkan Otomatis</button>
-                                <input type="text" v-model="form.pendapatan_bersih_kebun"></td>
+                                <currency-input v-model="form.pendapatan_bersih_kebun"></currency-input>
+                            </td>
                         </tr>
                         
                         <tr>
                             <td>2. Pendapatan Bersih dari Usaha Pertanian Lainnya (Hortikultura, Peternakan, Perikanan, dll)</td>
-                            <td><input type="text" v-model="form.pendapatan_bersih_tani_lain"></td>
+                            <td><currency-input v-model="form.pendapatan_bersih_tani_lain"></currency-input></td>
                         </tr>
                         
                         <tr>
                             <td>3. Pendapatan dari Hasil Kemitraan</td>
-                            <td><input type="text" v-model="form.pendapatan_hasil_kemitraan"></td>
+                            <td><currency-input v-model="form.pendapatan_hasil_kemitraan"></currency-input></td>
                         </tr>
                         
                         <tr>
                             <td>4. Pendapatan Bersih dari penyewaan (Peralatan, Mesin-mesin, Transportasi, dll)</td>
-                            <td><input type="text" v-model="form.pendapatan_dari_sewa"></td>
+                            <td><currency-input v-model="form.pendapatan_dari_sewa"></currency-input></td>
                         </tr>
                         
                         <tr>
                             <td>5. Pendapatan Bersih dari penjualan bibit</td>
-                            <td><input type="text" v-model="form.pendapatan_jual_bibit"></td>
+                            <td><currency-input v-model="form.pendapatan_jual_bibit"></currency-input></td>
                         </tr>
                         
                         <tr>
                             <td>6. Pendapatan Bersih Lainnya</td>
-                            <td><input type="text" v-model="form.pendapatan_bersih_lain"></td>
+                            <td><currency-input v-model="form.pendapatan_bersih_lain"></currency-input></td>
                         </tr>
                         
                         <tr>
@@ -1301,6 +1302,39 @@
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script>
+
+Vue.component('currency-input', {
+    props: ["value"],
+    template: `
+        <div>
+            <input type="text" v-model="displayValue" @blur="isInputActive = false" @focus="isInputActive = true"/>
+        </div>`,
+    data: function() {
+        return {
+            isInputActive: false
+        }
+    },
+    computed: {
+        displayValue: {
+            get: function() {
+                if (this.isInputActive) {
+                    if(this.value==null) return "";
+                    else return this.value.toString()
+                } else {
+                    if(this.value==null || this.value=='' || isNaN(this.value)) return "Rp ";
+                    else return "Rp " + this.value.toFixed(2).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")
+                }
+            },
+            set: function(modifiedValue) {
+                let newValue = parseFloat(modifiedValue.replace(/[^\d\.]/g, ""))
+                if (isNaN(newValue)) {
+                    newValue = 0
+                }
+                this.$emit('input', newValue)
+            }
+        }
+    }
+});
     
 var vm = new Vue({  
     el: "#app_vue",
@@ -2115,7 +2149,7 @@ $(document).ready(function() {
     
     $("#diisi_tanggal").on("dp.change", function (e) {
         vm.form.diisi_tanggal = this.value;
-    });
+    });   
 });
 </script>
 @endsection

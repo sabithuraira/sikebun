@@ -550,30 +550,30 @@
                         </td>
                         <td rowspan="5">Realisasi Tahun {{ $model->tahun }}</td>
                         <td>I</td>
-                        <td>{{ $item_kebun_plasma->real1_tbm }}<td></td>{{ $item_kebun_plasma->real1_tsm }}</td>
-                        <td>{{ $item_kebun_plasma->real1_tstm }}<td></td>{{ $item_kebun_plasma->real1_ttm }}</td>
-                        <td>{{ $item_kebun_plasma->real1_produksi }}<td></td>{{ $item_kebun_plasma->real1_nilai }}</td>
+                        <td>{{ $item_kebun_plasma->real1_tbm }}</td><td>{{ $item_kebun_plasma->real1_tsm }}</td>
+                        <td>{{ $item_kebun_plasma->real1_tstm }}</td><td>{{ $item_kebun_plasma->real1_ttm }}</td>
+                        <td>{{ $item_kebun_plasma->real1_produksi }}</td><td>{{ $item_kebun_plasma->real1_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
                         <td>II</td>
-                        <td>{{ $item_kebun_plasma->real2_tbm }}<td></td>{{ $item_kebun_plasma->real2_tsm }}</td>
-                        <td>{{ $item_kebun_plasma->real2_tstm }}<td></td>{{ $item_kebun_plasma->real2_ttm }}</td>
-                        <td>{{ $item_kebun_plasma->real2_produksi }}<td></td>{{ $item_kebun_plasma->real2_nilai }}</td>
+                        <td>{{ $item_kebun_plasma->real2_tbm }}</td><td>{{ $item_kebun_plasma->real2_tsm }}</td>
+                        <td>{{ $item_kebun_plasma->real2_tstm }}</td><td>{{ $item_kebun_plasma->real2_ttm }}</td>
+                        <td>{{ $item_kebun_plasma->real2_produksi }}</td><td>{{ $item_kebun_plasma->real2_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
                         <td>III</td>
-                        <td>{{ $item_kebun_plasma->real3_tbm }}<td></td>{{ $item_kebun_plasma->real3_tsm }}</td>
-                        <td>{{ $item_kebun_plasma->real3_tstm }}<td></td>{{ $item_kebun_plasma->real3_ttm }}</td>
-                        <td>{{ $item_kebun_plasma->real3_produksi }}<td></td>{{ $item_kebun_plasma->real3_nilai }}</td>
+                        <td>{{ $item_kebun_plasma->real3_tbm }}</td><td>{{ $item_kebun_plasma->real3_tsm }}</td>
+                        <td>{{ $item_kebun_plasma->real3_tstm }}</td><td>{{ $item_kebun_plasma->real3_ttm }}</td>
+                        <td>{{ $item_kebun_plasma->real3_produksi }}</td><td>{{ $item_kebun_plasma->real3_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
                         <td>IV</td>
-                        <td>{{ $item_kebun_plasma->real4_tbm }}<td></td>{{ $item_kebun_plasma->real4_tsm }}</td>
-                        <td>{{ $item_kebun_plasma->real4_tstm }}<td></td>{{ $item_kebun_plasma->real4_ttm }}</td>
-                        <td>{{ $item_kebun_plasma->real4_produksi }}<td></td>{{ $item_kebun_plasma->real4_nilai }}</td>
+                        <td>{{ $item_kebun_plasma->real4_tbm }}</td><td>{{ $item_kebun_plasma->real4_tsm }}</td>
+                        <td>{{ $item_kebun_plasma->real4_tstm }}</td><td>{{ $item_kebun_plasma->real4_ttm }}</td>
+                        <td>{{ $item_kebun_plasma->real4_produksi }}</td><td>{{ $item_kebun_plasma->real4_nilai }}</td>
                     </tr>
                     
                     <tr align="center">
