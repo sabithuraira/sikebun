@@ -3,6 +3,18 @@
 @section('content')
 
 <div class="content">
+
+
+    <div class="modal hide fade" id="pesan" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center"><img src="{!! asset('img/popup_login.png') !!}" width="100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="card">
             &nbsp;&nbsp;
@@ -67,4 +79,13 @@
 
 @section('css')
     <link href="{{ asset('css') }}/simple_table.css" rel="stylesheet" />
+@endsection
+
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#pesan').modal('show');
+        });
+    </script>
 @endsection

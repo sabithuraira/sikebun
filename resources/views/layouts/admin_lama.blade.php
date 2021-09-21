@@ -50,14 +50,14 @@
           @endhasanyrole
           
           @hasanyrole('admin|pemeriksa')
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
+            <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
+              <a class="nav-link" href="https://skb.bps.go.id/pb">
                 <i class="material-icons">library_books</i>
                 <p>SKB Triwulanan - Karet</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
+            <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
+              <a class="nav-link" href="https://skb.bps.go.id/pb">
                 <i class="material-icons">library_books</i>
                 <p>SKB Triwulanan - Kelapa Sawit</p>
               </a>
@@ -65,8 +65,8 @@
           @else
             @hasanyrole('operator|approval')
               @if(Auth::user()->getIsKaretAttributes())
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
+                <li class="nav-item {{ (request()->is('survei/karet*') || request()->is('survei/index_karet*')) ? 'active' : '' }}">
+                  <a class="nav-link" href="https://skb.bps.go.id/pb">
                     <i class="material-icons">library_books</i>
                     <p>SKB Triwulanan - Karet</p>
                   </a>
@@ -74,8 +74,8 @@
               @endif 
 
               @if(Auth::user()->getIsSawitAttributes())
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
+                <li class="nav-item {{ (request()->is('survei/sawit*') || request()->is('survei/index_sawit*')) ? 'active' : '' }}">
+                  <a class="nav-link" href="https://skb.bps.go.id/pb">
                     <i class="material-icons">library_books</i>
                     <p>SKB Triwulanan - Kelapa Sawit</p>
                   </a>
@@ -149,32 +149,11 @@
 
         <div class="modal hide fade" id="triwulan" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">PENGUMUMAN</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="text-center">
-                          <h4>Data dapat disampaikan secara bulanan melalui website SEDAPP ONLINE</h4>
-                          <a href="https://skb.bps.go.id/pb" target="_blank" class="btn btn-info">Lanjut ke SEDAP ONLINE ></a>
-                          <br/><br/><br/>
-                          Atau dapat juga disampaikan secara triwulanan dengan mengisi<br/>
-                          dokumen hard copy dan dikirimkan melalui email<br/>
-                          <b>bps1606@bps.go.id</b><br/><br/>
-
-                          <a href="https://drive.google.com/drive/folders/1TqbUEEkkuM4F56NGToKv7BqqZqOG0bRI?usp=sharing" target="_blank" class="btn btn-info">
-                            Unduh Dokumen<br/>
-                            SKB Triwulanan Karet
-                          </a>
-
-                          <a href="https://drive.google.com/drive/folders/1I7z1tiukTlXTgeX9u8-iHsIEOuKq25u3?usp=sharing" target="_blank" class="btn btn-info">
-                            Unduh Dokumen<br/>
-                            SKB Triwulanan Kelapa Sawit
-                          </a>
+                          Data dapat disampaikan secara bulanan melalui website SEDAPP ONLINE
+                          <a href="https://skb.bps.go.id/pb" class="btn">Lanjut ke SEDAP ONLINE</a>
                         </div>
                     </div>
                 </div>
