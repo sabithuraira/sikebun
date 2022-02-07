@@ -1448,6 +1448,18 @@ class SurveiController extends Controller
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
 
+
+        $model->nama_pic = $request->nama_pic;
+        $model->jabatan_pic = $request->jabatan_pic;
+        $model->jenis_kelamin_pic = $request->jenis_kelamin_pic;
+        $model->nama_unit_pic = $request->nama_unit_pic;
+        $model->status_usaha = $request->status_usaha;
+        $model->koordinat_long = $request->koordinat_long;
+        $model->koordinat_lat = $request->koordinat_lat;
+        $model->website = $request->website;
+        $model->akun_medsos = $request->akun_medsos;
+        $model->kbli = $request->kbli;
+
         $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
@@ -1568,6 +1580,9 @@ class SurveiController extends Controller
                     $model_rincian->luas_plasma_5_10 = $value['luas_plasma_5_10'];
                     $model_rincian->luas_plasma_11_25 = $value['luas_plasma_11_25'];
                     $model_rincian->luas_plasma_25 = $value['luas_plasma_25'];
+
+                    $model_rincian->nama_produk_utama = $value['nama_produk_utama'];
+                    $model_rincian->kbki_produk_utama = $value['kbki_produk_utama'];
 
                     $model_rincian->sendiri_bentuk_produksi = $value['sendiri_bentuk_produksi'];
                     $model_rincian->sendiri_rata_rendemen = $value['sendiri_rata_rendemen'];
@@ -1953,6 +1968,17 @@ class SurveiController extends Controller
         $model->label_kec = $request->label_kec;
         $model->label_desa = $request->label_desa;
 
+        $model->nama_pic = $request->nama_pic;
+        $model->jabatan_pic = $request->jabatan_pic;
+        $model->jenis_kelamin_pic = $request->jenis_kelamin_pic;
+        $model->nama_unit_pic = $request->nama_unit_pic;
+        $model->status_usaha = $request->status_usaha;
+        $model->koordinat_long = $request->koordinat_long;
+        $model->koordinat_lat = $request->koordinat_lat;
+        $model->website = $request->website;
+        $model->akun_medsos = $request->akun_medsos;
+        $model->kbli = $request->kbli;
+
         $model->nama_contact = $request->nama_contact;
         $model->nomor_hp = $request->nomor_hp;
         $model->nama_kantor_pusat = $request->nama_kantor_pusat;
@@ -2074,6 +2100,9 @@ class SurveiController extends Controller
                     $model_rincian->luas_plasma_5_10 = $value['luas_plasma_5_10'];
                     $model_rincian->luas_plasma_11_25 = $value['luas_plasma_11_25'];
                     $model_rincian->luas_plasma_25 = $value['luas_plasma_25'];
+
+                    $model_rincian->nama_produk_utama = $value['nama_produk_utama'];
+                    $model_rincian->kbki_produk_utama = $value['kbki_produk_utama'];
 
                     $model_rincian->sendiri_bentuk_produksi = $value['sendiri_bentuk_produksi'];
                     $model_rincian->sendiri_rata_rendemen = $value['sendiri_rata_rendemen'];
@@ -2444,6 +2473,17 @@ class SurveiController extends Controller
             }
         }
 
+        $model->nama_pic = $request->nama_pic;
+        $model->jabatan_pic = $request->jabatan_pic;
+        $model->jenis_kelamin_pic = $request->jenis_kelamin_pic;
+        $model->nama_unit_pic = $request->nama_unit_pic;
+        $model->status_usaha = $request->status_usaha;
+        $model->koordinat_long = $request->koordinat_long;
+        $model->koordinat_lat = $request->koordinat_lat;
+        $model->website = $request->website;
+        $model->akun_medsos = $request->akun_medsos;
+        $model->kbli = $request->kbli;
+
         $model->nama_grup = $request->nama_grup;
         $model->alamat_grup = $request->alamat_grup;
         $model->kode_pos_grup =$request->kode_pos_grup;
@@ -2554,6 +2594,9 @@ class SurveiController extends Controller
                     $model_rincian->luas_plasma_5_10 = $value['luas_plasma_5_10'];
                     $model_rincian->luas_plasma_11_25 = $value['luas_plasma_11_25'];
                     $model_rincian->luas_plasma_25 = $value['luas_plasma_25'];
+
+                    $model_rincian->nama_produk_utama = $value['nama_produk_utama'];
+                    $model_rincian->kbki_produk_utama = $value['kbki_produk_utama'];
 
                     $model_rincian->sendiri_bentuk_produksi = $value['sendiri_bentuk_produksi'];
                     $model_rincian->sendiri_rata_rendemen = $value['sendiri_rata_rendemen'];

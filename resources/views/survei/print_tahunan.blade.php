@@ -85,14 +85,67 @@
                     {{ $model->kode_desa }} - {{ $model->label_desa }}
                 </td>
             </tr>
+
             <tr>
-                <td colspan="2">&nbsp;&nbsp;&nbsp;  f. Nama Contact Person</td>
-                <td colspan="2" align="right">{{ $model->nama_contact }}</td>
+                <td></td>
+                <td>f. Nama PIC &nbsp;&nbsp;{{ $model->nama_pic }}></td>
+                <td colspan="2" class="text-right">No. HP/Telepon: {{ $model->nomor_hp }}></td>
             </tr>
             
             <tr>
-                <td colspan="2">&nbsp;&nbsp;&nbsp; g. Nomor HP/Telp</td>
-                <td colspan="2" align="right">{{ $model->nomor_hp }}</td>
+                <td></td>
+                <td>g. Jabatan PIC &nbsp;&nbsp;{{ $model->jabatan_pic }}></td>
+                <td colspan="2" class="text-right">
+                    Jenis Kelamin: 
+                    @if($model->jenis_kelamin_pic==1) Laki-laki
+                    @elseif($model->jenis_kelamin_pic==2) Perempuan
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>h. Nama bagian/divisi/unit kerja PIC</td>
+                <td colspan="2" class="text-right">{{ $model->nama_unit_pic }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>i. Status</td>
+                <td colspan="2" class="text-right">
+                    @if($model->status_usaha==1) Aktif
+                    @elseif($model->status_usaha==2) Tutup
+                    @elseif($model->status_usaha==3) Tutup Sementara
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>j. Koordinat Lokasi Perusahaan</td>
+                <td colspan="2" class="text-right">Lintang (Latitude) {{ $model->koordinat_lat }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2" class="text-right">Bujur (Longitude) {{ $model->koordinat_long }}</td>
+            </tr>
+            
+            <tr>
+                <td></td>
+                <td>k. Website Perusahaan</td>
+                <td colspan="2" class="text-right">{{ $model->website }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>l. Akun Media Sosial (Whatsapp/Instagram, dll)</td>
+                <td colspan="2" class="text-right">{{ $model->akun_medsos }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>m. KBLI (Klasifikasi Buku Lapangan Usaha Indonesia)</td>
+                <td colspan="2" class="text-right">{{ $model->kbli }}</td>
             </tr>
 
             <tr>
@@ -167,7 +220,6 @@
             </tr>
         </table>
 
-        <i class="small-text">*) Coret yang tidak sesuai</i>
         <table width="100%">
             <tr>
                 <td>
@@ -221,21 +273,23 @@
                 <td colspan="3">2. Bentuk Badan Hukum Perusahaan</td>
                 <td align="right">
                     @if($model->badan_hukum==1)
-                        PTP Nusantara
+                        1. Persero/Perum
                     @elseif($model->badan_hukum==2)
-                        Perusahaan Daerah
+                        2. Perusahaan Daerah (PD)/Badan Usaha Milik Daerah (BUMD)
                     @elseif($model->badan_hukum==3)
-                        Persero
+                        3. Perseroan Terbatas (PT)
                     @elseif($model->badan_hukum==4)
-                        Perum
+                        4. Koperasi/KUD
                     @elseif($model->badan_hukum==5)
-                        PT
+                        5. Yayasan
                     @elseif($model->badan_hukum==6)
-                        CV
+                        6. Naamloze Vennotschap (NV)
                     @elseif($model->badan_hukum==7)
-                        Koperasi/KUD
+                        7. Commanditaire Vennotschap (CV)
                     @elseif($model->badan_hukum==8)
-                        Yayasan
+                        8. Firma
+                    @elseif($model->badan_hukum==9)
+                        9. Perwakilan Perusahaan/Lembaga Asing
                     @endif
                 </td>
             </tr>
@@ -333,6 +387,16 @@
             </tr>
         </table>
 
+
+        @php 
+            function customChangeFloat($nilai){
+                if(is_numeric($nilai))
+                    return (float)$nilai;
+                else 
+                    return 0;
+            }
+        @endphp
+
         @foreach($rincian_tahunan as $key=>$value)
             <div class="page-break"></div>
             <span align="right">Jenis Tanaman Tahunan I: {{ $value->kode_tanaman }}</span>
@@ -379,15 +443,6 @@
                     <td class="bg-green"></td>
                     <td> 11-25 </td><td colspan="3">{{ $value->luas_plasma_11_25  }}</td>
                 </tr>
-
-                @php 
-                    function customChangeFloat($nilai){
-                        if(is_numeric($nilai))
-                            return (float)$nilai;
-                        else 
-                            return 0;
-                    }
-                @endphp
                 
                 <tr align="center">
                     <td> >25 </td><td colspan="3">{{ $value->luas_sendiri_25 }}</td>
@@ -402,7 +457,8 @@
                     <td class="bg-green">Total</td>
                     <td colspan="3" align="center">{{ customChangeFloat($value->luas_plasma_5) + customChangeFloat($value->luas_plasma_5_10) + customChangeFloat($value->luas_plasma_11_25) + customChangeFloat($value->luas_plasma_25) }}</td>
                 </tr>
-                <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun {{ $model->tahun }} dan Target Tahun {{ $model->tahun+1 }}</td></tr>
+                <tr><td colspan="9">2. Nama Produk Utama yang dihasilkan tahun {{ $model->tahun }}: {{ $value->nama_produk_utama }}  - KBKI:  {{ $value->kbki_produk_utama }}</td></tr>
+                <tr><td colspan="9">3. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun {{ $model->tahun }} dan Target Tahun {{ $model->tahun+1 }}</td></tr>
                 <tr  align="center">
                     <td colspan="2" rowspan="3">Nama Kebun dan Lokasi Kebun</td>
                     <td rowspan="3">Periode (Triwulan)</td>

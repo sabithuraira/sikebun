@@ -146,14 +146,68 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td>f. Nama Contact Person</td>
-                            <td colspan="2" class="text-right"><input type="text" v-model="form.nama_contact"></td>
+                            <td>f. Nama PIC &nbsp;&nbsp;<input type="text" v-model="form.nama_pic"></td>
+                            <td colspan="2" class="text-right">No. HP/Telepon: <input type="text" v-model="form.nomor_hp"></td>
                         </tr>
                         
                         <tr>
                             <td></td>
-                            <td>g. Nomor HP/Telp</td>
-                            <td colspan="2" class="text-right"><input type="text"  v-model="form.nomor_hp"></td>
+                            <td>g. Jabatan PIC &nbsp;&nbsp;<input type="text" v-model="form.jabatan_pic"></td>
+                            <td colspan="2" class="text-right">
+                                Jenis Kelamin: 
+                                <select v-model="form.jenis_kelamin_pic">
+                                    <option value="1">Laki-laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>h. Nama bagian/divisi/unit kerja PIC</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.nama_unit_pic"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>i. Status</td>
+                            <td colspan="2" class="text-right">
+                                <select v-model="form.status_usaha">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Tutup</option>
+                                    <option value="3">Tutup Sementara</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>j. Koordinat Lokasi Perusahaan</td>
+                            <td colspan="2" class="text-right">Lintang (Latitude) <input type="text" v-model="form.koordinat_lat"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2" class="text-right">Bujur (Longitude) <input type="text" v-model="form.koordinat_long"></td>
+                        </tr>
+                        
+                        <tr>
+                            <td></td>
+                            <td>k. Website Perusahaan</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.website"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>l. Akun Media Sosial (Whatsapp/Instagram, dll)</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.akun_medsos"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>m. KBLI (Klasifikasi Buku Lapangan Usaha Indonesia)</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.kbli"></td>
                         </tr>
 
                         <tr>
@@ -244,7 +298,7 @@
                             </td>
                         </tr>
 
-                        <tr><td colspan="4"><i>*) Coret yang tidak sesuai</i></td></tr>
+                        <tr><td colspan="4"></td></tr>
                         
                         <tr><td colspan="4">
                             <span class="text-center">PERHATIAN</span><br/>
@@ -278,14 +332,24 @@
                             <td colspan="3">2. Bentuk Badan Hukum Perusahaan</td>
                             <td class="text-right">
                                 <select required v-model="form.badan_hukum">
-                                    <option value="1">PTP Nusantara</option>
+                                    <!-- <option value="1">PTP Nusantara</option>
                                     <option value="2">Perusahaan Daerah</option>
                                     <option value="3">Persero</option>
                                     <option value="4">Perum</option>
                                     <option value="5">PT</option>
                                     <option value="6">CV</option>
                                     <option value="7">Koperasi/KUD</option>
-                                    <option value="8">Yayasan</option>
+                                    <option value="8">Yayasan</option> -->
+
+                                    <option value="1">1. Persero/Perum</option>
+                                    <option value="2">2. Perusahaan Daerah (PD)/Badan Usaha Milik Daerah (BUMD)</option>
+                                    <option value="3">3. Perseroan Terbatas (PT)</option>
+                                    <option value="4">4. Koperasi/KUD</option>
+                                    <option value="5">5. Yayasan</option>
+                                    <option value="6">6. Naamloze Vennotschap (NV)</option>
+                                    <option value="7">7. Commanditaire Vennotschap (CV)</option>
+                                    <option value="8">8. Firma</option>
+                                    <option value="9">9. Perwakilan Perusahaan/Lembaga Asing</option>
                                 </select>
                             </td>
                         </tr>
@@ -455,7 +519,8 @@
                                 <td class="bg-success">Total</td>
                                 <td colspan="3">@{{ customChangeFloat(item.luas_plasma_5) + customChangeFloat(item.luas_plasma_5_10) + customChangeFloat(item.luas_plasma_11_25) + customChangeFloat(item.luas_plasma_25) }}</td>
                             </tr>
-                            <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun @{{ form.tahun }} dan Target Tahun @{{ form.tahun+1 }}</td></tr>
+                            <tr><td colspan="9">2. Nama Produk Utama yang dihasilkan tahun @{{ form.tahun }}: <input type="text" v-model="item.nama_produk_utama">  <input type="text" v-model="item.kbki_produk_utama" placeholder="Kode KBKI (diisi oleh BPS)"> </td></tr>
+                            <tr><td colspan="9">3. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun @{{ form.tahun }} dan Target Tahun @{{ form.tahun+1 }}</td></tr>
                             <tr  class="text-center">
                                 <td colspan="2" rowspan="3">Nama Kebun dan Lokasi Kebun</td>
                                 <td rowspan="3">Periode (Triwulan)</td>
@@ -1445,6 +1510,17 @@ var vm = new Vue({
             label_prov_grup: '',
             label_kab_grup: '',
 
+            nama_pic: '',
+            jabatan_pic: '',
+            jenis_kelamin_pic: '',
+            nama_unit_pic: '',
+            status_usaha: '',
+            koordinat_long: '',
+            koordinat_lat: '',
+            website: '',
+            akun_medsos: '',
+            kbli: '',
+
             kondisi_perusahaan: '', badan_hukum: '',
             status_pemodalan: '', 
             masa_berlaku_hgu_dari: '', masa_berlaku_hgu_sampai: '', 
@@ -1588,6 +1664,7 @@ var vm = new Vue({
                     plasma_bentuk_produksi: '', plasma_rata_rendemen: '', 
                     bibit_tanaman: '', pupuk1: '', pupuk2: '',pupuk3: '', 
                     pestisida1: '', pestisida2: '', pestisida3: '',
+                    nama_produk_utama: '', kbki_produk_utama: '',
                     bahan_bakar_budidaya: '', sewa_lahan: '', sewa_alat: '', 
                     pengeluaran_lainnya: '', biaya_kemitraan: '', 
                     list_kebun_tahunan_sendiri: [], 
@@ -1734,12 +1811,12 @@ var vm = new Vue({
             if(self.form.kode_prov=='' || self.form.kode_prov==undefined) msg_error.push("Provinsi Perusahaan Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
             if(self.form.kode_kab=='' || self.form.kode_kab==undefined) msg_error.push("Kabupaten/Kota Perusahaan Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
             if(self.form.kode_pos=='' || self.form.kode_pos==undefined) msg_error.push("Kode Pos Perusahaan Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
-            if(self.form.fax=='' || self.form.fax==undefined) msg_error.push("Fax Perusahaan Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
+            // if(self.form.fax=='' || self.form.fax==undefined) msg_error.push("Fax Perusahaan Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
             
             if(self.form.nama_kantor_pusat=='' || self.form.nama_kantor_pusat==undefined) msg_error.push("Nama Kantor Pusat Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
             if(self.form.alamat_kantor_pusat=='' || self.form.alamat_kantor_pusat==undefined) msg_error.push("Alamat Kantor Pusat Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
             if(self.form.kode_pos_kantor_pusat=='' || self.form.kode_pos_kantor_pusat==undefined) msg_error.push("Kode Pos Kantor Pusat Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
-            if(self.form.fax_kantor_pusat=='' || self.form.fax_kantor_pusat==undefined) msg_error.push("Fax Kantor Pusat Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
+            // if(self.form.fax_kantor_pusat=='' || self.form.fax_kantor_pusat==undefined) msg_error.push("Fax Kantor Pusat Wajib Diisi, Lengkapi Profile Perusahaan Anda pada menu 'Profile Perusahaan'")
 
             if(msg_error.length==0){
                 var data_post = self.form
@@ -1796,10 +1873,10 @@ var vm = new Vue({
                 if(this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_25)==0)
                     msg_error.push("Blok III.A Rincian 1.a minimal penjumlahan terisi lebih dari 0")
                                 
-                if(self.form.apakah_pelaksana_kemitraan==1){
-                    if(this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_25)==0)
-                        msg_error.push("Blok III.A Rincian 1.b minimal penjumlahan terisi lebih dari 0")
-                }
+                // if(self.form.apakah_pelaksana_kemitraan==1){
+                //     if(this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_25)==0)
+                //         msg_error.push("Blok III.A Rincian 1.b minimal penjumlahan terisi lebih dari 0")
+                // }
 
                 if(this.rincian_tahunan[i].sendiri_bentuk_produksi=='' || this.rincian_tahunan[i].sendiri_rata_rendemen=='')
                     msg_error.push("Blok III.A Rincian 2.a harus terisi")
@@ -1910,10 +1987,10 @@ var vm = new Vue({
                 if(this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_sendiri_25)==0)
                     msg_error.push("Blok III.A Rincian 1.a minimal penjumlahan terisi lebih dari 0")
                                 
-                if(self.form.apakah_pelaksana_kemitraan==1){
-                    if(this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_25)==0)
-                        msg_error.push("Blok III.A Rincian 1.b minimal penjumlahan terisi lebih dari 0")
-                }
+                // if(self.form.apakah_pelaksana_kemitraan==1){
+                //     if(this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_5_10) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_11_25) + this.customChangeFloat(this.rincian_tahunan[i].luas_plasma_25)==0)
+                //         msg_error.push("Blok III.A Rincian 1.b minimal penjumlahan terisi lebih dari 0")
+                // }
 
                 if(this.rincian_tahunan[i].sendiri_bentuk_produksi=='' || this.rincian_tahunan[i].sendiri_rata_rendemen=='')
                     msg_error.push("Blok III.A Rincian 2.a harus terisi")

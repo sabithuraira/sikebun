@@ -144,16 +144,71 @@
                                 <input disabled class="form-control" type="text" :value="form.kode_desa + ' - ' + form.label_desa">
                             </td>
                         </tr>
+                        
                         <tr>
                             <td></td>
-                            <td>f. Nama Contact Person</td>
-                            <td colspan="2" class="text-right"><input disabled type="text" v-model="form.nama_contact"></td>
+                            <td>f. Nama PIC &nbsp;&nbsp;<input type="text" v-model="form.nama_pic" disabled></td>
+                            <td colspan="2" class="text-right">No. HP/Telepon: <input type="text" v-model="form.nomor_hp" disabled></td>
                         </tr>
                         
                         <tr>
                             <td></td>
-                            <td>g. Nomor HP/Telp</td>
-                            <td colspan="2" class="text-right"><input disabled type="text"  v-model="form.nomor_hp"></td>
+                            <td>g. Jabatan PIC &nbsp;&nbsp;<input type="text" v-model="form.jabatan_pic" disabled></td>
+                            <td colspan="2" class="text-right">
+                                Jenis Kelamin: 
+                                <select v-model="form.jenis_kelamin_pic" disabled>
+                                    <option value="1">Laki-laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>h. Nama bagian/divisi/unit kerja PIC</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.nama_unit_pic" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>i. Status</td>
+                            <td colspan="2" class="text-right">
+                                <select v-model="form.status_usaha" disabled>
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Tutup</option>
+                                    <option value="3">Tutup Sementara</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>j. Koordinat Lokasi Perusahaan</td>
+                            <td colspan="2" class="text-right">Lintang (Latitude) <input type="text" v-model="form.koordinat_lat" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2" class="text-right">Bujur (Longitude) <input type="text" v-model="form.koordinat_long" disabled></td>
+                        </tr>
+                        
+                        <tr>
+                            <td></td>
+                            <td>k. Website Perusahaan</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.website" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>l. Akun Media Sosial (Whatsapp/Instagram, dll)</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.akun_medsos" disabled></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>m. KBLI (Klasifikasi Buku Lapangan Usaha Indonesia)</td>
+                            <td colspan="2" class="text-right"><input type="text" v-model="form.kbli" disabled></td>
                         </tr>
 
                         <tr>
@@ -239,7 +294,7 @@
                             </td>
                         </tr>
 
-                        <tr><td colspan="4"><i>*) Coret yang tidak sesuai</i></td></tr>
+                        <tr><td colspan="4"></td></tr>
                         
                         <tr><td colspan="4">
                             <span class="text-center">PERHATIAN</span><br/>
@@ -273,14 +328,24 @@
                             <td colspan="3">2. Bentuk Badan Hukum Perusahaan</td>
                             <td class="text-right">
                                 <select  disabled required v-model="form.badan_hukum">
-                                    <option value="1">PTP Nusantara</option>
+                                    <!-- <option value="1">PTP Nusantara</option>
                                     <option value="2">Perusahaan Daerah</option>
                                     <option value="3">Persero</option>
                                     <option value="4">Perum</option>
                                     <option value="5">PT</option>
                                     <option value="6">CV</option>
                                     <option value="7">Koperasi/KUD</option>
-                                    <option value="8">Yayasan</option>
+                                    <option value="8">Yayasan</option> -->
+
+                                    <option value="1">1. Persero/Perum</option>
+                                    <option value="2">2. Perusahaan Daerah (PD)/Badan Usaha Milik Daerah (BUMD)</option>
+                                    <option value="3">3. Perseroan Terbatas (PT)</option>
+                                    <option value="4">4. Koperasi/KUD</option>
+                                    <option value="5">5. Yayasan</option>
+                                    <option value="6">6. Naamloze Vennotschap (NV)</option>
+                                    <option value="7">7. Commanditaire Vennotschap (CV)</option>
+                                    <option value="8">8. Firma</option>
+                                    <option value="9">9. Perwakilan Perusahaan/Lembaga Asing</option>
                                 </select>
                             </td>
                         </tr>
@@ -448,7 +513,8 @@
                                 <td class="bg-success">Total</td>
                                 <td colspan="3">@{{ customChangeFloat(item.luas_plasma_5) + customChangeFloat(item.luas_plasma_5_10) + customChangeFloat(item.luas_plasma_11_25) + customChangeFloat(item.luas_plasma_25) }}</td>
                             </tr>
-                            <tr><td colspan="9">2. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun @{{ form.tahun }} dan Target Tahun @{{ form.tahun+1 }}</td></tr>
+                            <tr><td colspan="9">2. Nama Produk Utama yang dihasilkan tahun @{{ form.tahun }}: <input disabled type="text" v-model="item.nama_produk_utama">  <input disabled type="text" v-model="item.kbki_produk_utama" placeholder="Kode KBKI (diisi oleh BPS)"> </td></tr>
+                            <tr><td colspan="9">3. Nama Kebun, Lokasi, Luas Tanaman dan Produksi Primer Tahun @{{ form.tahun }} dan Target Tahun @{{ form.tahun+1 }}</td></tr>
                             <tr  class="text-center">
                                 <td colspan="2" rowspan="3">Nama Kebun dan Lokasi Kebun</td>
                                 <td rowspan="3">Periode (Triwulan)</td>
@@ -1356,7 +1422,8 @@ var vm = new Vue({
                         self.form = data.data;
                         self.rincian_tahunan = data.rincian_tahunan;
                         self.rincian_semusim = data.rincian_semusim;
-                        
+                        console.log("wooii")
+                        console.log(data);
                         vm.setKab();
                     }
 

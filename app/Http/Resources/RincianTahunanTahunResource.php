@@ -47,6 +47,10 @@ class RincianTahunanTahunResource extends JsonResource
             'sewa_alat'    => $this->sewa_alat,
             'pengeluaran_lainnya'    => $this->pengeluaran_lainnya,
             'biaya_kemitraan'    => $this->biaya_kemitraan,
+
+            'nama_produk_utama'    => $this->nama_produk_utama,
+            'kbki_produk_utama'    => $this->kbki_produk_utaman,
+
             'list_kebun_tahunan_sendiri'    => KebunTahunanTahun::where('survei_id', '=', $this->survei_id)->where('rincian_id', '=', $this->id)->where('jenis', '=', 1)->get(),
             'list_kebun_tahunan_plasma'    => KebunTahunanTahun::where('survei_id', '=', $this->survei_id)->where('rincian_id', '=', $this->id)->where('jenis', '=', 2)->get()
         ];

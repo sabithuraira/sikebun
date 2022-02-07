@@ -48,41 +48,6 @@
               </a>
             </li>
           @endhasanyrole
-          
-          @hasanyrole('admin|pemeriksa')
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
-                <i class="material-icons">library_books</i>
-                <p>SKB Triwulanan - Karet</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
-                <i class="material-icons">library_books</i>
-                <p>SKB Triwulanan - Kelapa Sawit</p>
-              </a>
-            </li>
-          @else
-            @hasanyrole('operator|approval')
-              @if(Auth::user()->getIsKaretAttributes())
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
-                    <i class="material-icons">library_books</i>
-                    <p>SKB Triwulanan - Karet</p>
-                  </a>
-                </li>
-              @endif 
-
-              @if(Auth::user()->getIsSawitAttributes())
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#triwulan">
-                    <i class="material-icons">library_books</i>
-                    <p>SKB Triwulanan - Kelapa Sawit</p>
-                  </a>
-                </li>
-              @endif
-            @endhasanyrole
-          @endhasanyrole
             
           @hasanyrole('admin|operator|approval|pemeriksa')
             <li class="nav-item {{ (request()->is('survei/tahunan*') || request()->is('survei/index_tahunan*')) ? 'active' : '' }}">
